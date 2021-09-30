@@ -1,5 +1,13 @@
+import './App.css';
+
+import ReviewRank from "./components/ReviewRank";
+
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <ReviewRank />
+    </div>
+  )
 }
 
 export default App;
