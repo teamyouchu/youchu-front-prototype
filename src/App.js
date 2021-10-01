@@ -1,6 +1,6 @@
 import './App.css';
 
-import ReviewRank from "./components/ReviewRank";
+import ReviewRank from "./Components/ReviewRank";
 
 function App() {
   return (
