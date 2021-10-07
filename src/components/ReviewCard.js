@@ -36,11 +36,9 @@ const Group = styled.div`
 const Category = styled.div`
   background: #F2F2F2 0% 0% no-repeat padding-box;
   border-radius: 5px;
-  opacity: 1;
   text-align: left;
   letter-spacing: 0px;
   color: #808084;
-  opacity: 1;
   font-size: 11px;
   padding: 6px 8px;
   border-radius: 5px;
@@ -127,7 +125,7 @@ export default function ReviewCard({
   return (
     <Container>
       <Img 
-        src={require('./월간윤종신.jpg').default}
+        src={require('./img/월간윤종신.jpg').default}
         alt={channelName}
         title={channelName}
       />

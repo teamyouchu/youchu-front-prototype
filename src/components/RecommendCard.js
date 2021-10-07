@@ -92,7 +92,7 @@ export default function RecommendCard({
   return (
       <Container>
             <Img 
-                src={require('./월간윤종신.jpg').default}
+                src={require('./img/월간윤종신.jpg').default}
                 alt={channelName}
                 title={channelName}
             />
