@@ -64,6 +64,26 @@ const SubscriberCount = styled.div`
   padding-bottom: 5px;
 `;
 
+const StarRatings = styled.div`
+  position: relative;
+  padding: 0px 5px 15px 0;
+`;
+
+const StarBase = styled.div`
+  color: #D8D8D8;
+  z-index: 0;
+`;
+
+const StarFill = styled.div`
+  color: #F8D26A;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: ${props => props.ratings + '%'};
+`;
+
 const Ratings = styled.div`
   font-size: 14px;
   font-weight: bold;
@@ -103,6 +123,7 @@ export default function ReviewCard({
   ratings,
   bestReview,
 }) {
+  const per = ratings * 20;
   return (
     <Container>
       <Img 
@@ -119,7 +140,11 @@ export default function ReviewCard({
           <SubscriberCount>구독자 {subscriberCount} 명</SubscriberCount>
         </Group>
         <Group>
-          <Ratings>★★★★★ {ratings}</Ratings>
+          <StarRatings>
+              <StarBase>★★★★★</StarBase>
+              <StarFill ratings={per}>★★★★★</StarFill>
+          </StarRatings>
+          <Ratings>{ratings}</Ratings>
           <ReviewCount>({reviewCount}개 리뷰)</ReviewCount>
         </Group>
         <Group>

@@ -39,6 +39,26 @@ const ChannelName = styled.div`
   padding-bottom: 3px;
 `;
 
+const StarRatings = styled.div`
+  position: relative;
+  padding: 0px 2px 5px 0;
+`;
+
+const StarBase = styled.div`
+  color: #D8D8D8;
+  z-index: 0;
+`;
+
+const StarFill = styled.div`
+  color: #F8D26A;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: ${props => props.ratings + '%'};
+`;
+
 const Ratings = styled.div`
   display: inline-block;
   font-size: 14px;
@@ -68,6 +88,7 @@ export default function RecommendCard({
     reviewCount,
     category,
 }) {
+  const per = ratings * 20;
   return (
       <Container>
             <Img 
@@ -80,7 +101,11 @@ export default function RecommendCard({
                     <ChannelName>{channelName}</ChannelName>
                 </Group>
                 <Group>
-                    <Ratings>★★★★★ {ratings}</Ratings>
+                    <StarRatings>
+                      <StarBase>★★★★★</StarBase>
+                      <StarFill ratings={per}>★★★★★</StarFill>
+                    </StarRatings>
+                    <Ratings>{ratings}</Ratings>
                     <ReviewCount>({reviewCount}개 리뷰)</ReviewCount>
                 </Group>
                 <Group>

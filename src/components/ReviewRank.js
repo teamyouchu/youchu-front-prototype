@@ -44,7 +44,7 @@ export default function ReviewRank() {
           channelName="딩고 뮤직 / dingo music"
           subscriberCount="329만"
           reviewCount="500"
-          ratings="4.0"
+          ratings="3.3"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
