@@ -1,18 +1,74 @@
 import ReviewCard from './ReviewCard';
-import './ReviewRank.css';
+import styled from 'styled-components';
+
+const RowTitle = styled.h2`
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
+const RowDescription = styled.div`
+  font-size: 14px;
+  color: #94969B;
+  font-weight: lighter;
+  margin-bottom: 20px;
+`;
+
+const Slider = styled.div`
+  position: relative;
+  margin-bottom: 60px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  // overflow: hidden;
+`;
+
+const Img = styled.img.attrs(props => ({
+  src : props.src,
+}))`
+    width: 15px;
+    height: 25px;
+`;
+
+const HandlePrev = styled.button`
+    background: rgba( 255, 255, 255, 0.5 );
+    border: 0; 
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4%;
+    z-index: 2;
+`;
+
+const HandleNext = styled.button`
+    background: rgba( 255, 255, 255, 0.5 );
+    border: 0; 
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4%;
+    z-index: 2;
+`;
 
 export default function ReviewRank() {
   return (
     <div className="row-container">
-      <h2 className="row-title">이번주 리뷰가 많은 유튜버</h2>
-      <div className="row-title-description">리뷰 보러 가보실까요?</div>
-      <div className="row-card-container">
+      <RowTitle>이번주 리뷰가 많은 유튜버</RowTitle>
+      <RowDescription>리뷰 보러 가보실까요?</RowDescription>
+      <Slider>
+        <HandlePrev>
+          <Img 
+            src={require('./img/back.png').default}
+          />
+        </HandlePrev>
         <ReviewCard
           category="음악"
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          rating="5.0"
+          ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -20,7 +76,7 @@ export default function ReviewRank() {
           channelName="딩고 뮤직 / dingo music"
           subscriberCount="329만"
           reviewCount="500"
-          rating="4.0"
+          ratings="3.3"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -28,7 +84,7 @@ export default function ReviewRank() {
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          rating="5.0"
+          ratings="2.1"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -36,7 +92,7 @@ export default function ReviewRank() {
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          rating="5.0"
+          ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -44,7 +100,7 @@ export default function ReviewRank() {
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          rating="5.0"
+          ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -52,7 +108,7 @@ export default function ReviewRank() {
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          rating="5.0"
+          ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -60,10 +116,15 @@ export default function ReviewRank() {
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          rating="5.0"
+          ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
-      </div>
+        <HandleNext>
+          <Img 
+            src={require('./img/next.png').default}
+          />
+        </HandleNext>
+      </Slider>
     </div>
   );
 }
