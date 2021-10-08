@@ -1,6 +1,7 @@
 import * as style from './styles/RVCardStyle';
 
 export default function ReviewCard({
+  img,
   category,
   channelName,
   subscriberCount,
@@ -9,13 +10,10 @@ export default function ReviewCard({
   bestReview,
 }) {
   const per = ratings * 20;
+  const imgUrl = '/images/' + img + '.jpg';
   return (
     <style.Container>
-      <style.Img
-        src={require('./img/월간윤종신.jpg').default}
-        alt={channelName}
-        title={channelName}
-      />
+      <style.Img src={imgUrl} alt={channelName} title={channelName} />
       <style.Info>
         <style.Group>
           <style.Category>{category}</style.Category>
