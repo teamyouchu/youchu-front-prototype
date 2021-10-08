@@ -1,16 +1,9 @@
 import ReviewCard from './ReviewCard';
 import styled from 'styled-components';
 
-const RowContainer = styled.div`
-  white-space: nowrap;
-  overflow-x: scroll;
-  // overflow: hidden;
-`;
-
 const RowTitle = styled.h2`
   font-size: 20px;
   font-weight: bold;
-  margin: 0px;
   margin-bottom: 5px;
 `;
 
@@ -22,8 +15,11 @@ const RowDescription = styled.div`
 `;
 
 const Slider = styled.div`
-  margin-bottom: 60px;
   position: relative;
+  margin-bottom: 60px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  // overflow: hidden;
 `;
 
 const Img = styled.img.attrs(props => ({
@@ -38,10 +34,10 @@ const HandlePrev = styled.button`
     border: 0; 
     cursor: pointer;
     position: absolute;
-    left: -2px;
     top: 0;
     bottom: 0;
     width: 4%;
+    z-index: 2;
 `;
 
 const HandleNext = styled.button`
@@ -53,11 +49,12 @@ const HandleNext = styled.button`
     top: 0;
     bottom: 0;
     width: 4%;
+    z-index: 2;
 `;
 
 export default function ReviewRank() {
   return (
-    <RowContainer>
+    <div className="row-container">
       <RowTitle>이번주 리뷰가 많은 유튜버</RowTitle>
       <RowDescription>리뷰 보러 가보실까요?</RowDescription>
       <Slider>
@@ -87,7 +84,7 @@ export default function ReviewRank() {
           channelName="월간 윤종신"
           subscriberCount="22.5만"
           reviewCount="381"
-          ratings="5.0"
+          ratings="2.1"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
@@ -128,6 +125,6 @@ export default function ReviewRank() {
           />
         </HandleNext>
       </Slider>
-    </RowContainer>
+    </div>
   );
 }

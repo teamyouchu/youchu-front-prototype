@@ -1,16 +1,9 @@
 import RecommendCard from './RecommendCard';
 import styled from 'styled-components';
 
-const RowContainer = styled.div`
-  white-space: nowrap;
-  overflow-x: scroll;
-  // overflow: hidden;
-`;
-
 const RowTitle = styled.h2`
   font-size: 20px;
   font-weight: bold;
-  margin: 0px;
   margin-bottom: 5px;
 `;
 
@@ -23,13 +16,13 @@ const RowDescription = styled.div`
 
 const CardContainer = styled.div`
   display: flex;
-  weight: 1100px;
   flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export default function ReviewRank() {
   return (
-    <RowContainer>
+    <div className="row-container">
       <RowTitle>맞춤 추천</RowTitle>
       <RowDescription>여러분이 관심 있을 유튜버를 모아봤어요!</RowDescription>
       <CardContainer>
@@ -70,6 +63,6 @@ export default function ReviewRank() {
             category="음악"
         />
       </CardContainer>
-    </RowContainer>
+    </div>
   );
 }

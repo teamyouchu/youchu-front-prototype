@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-    dispaly: flex;
-    width: 350px;
-    height: 108px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    width: 360px;
     border: 1px solid #DEDEDE;
     border-radius: 10px;
-    margin: 10px;
+    margin-bottom: 10px;
 `;
 
 const Img = styled.img.attrs(props => ({
@@ -23,8 +20,9 @@ const Img = styled.img.attrs(props => ({
 `;
 
 const Info = styled.div`
+    position: absolute;
     display: inline-block;
-    margin: 18px 20px 18px 0;
+    margin: 18px 0;
 `;
 
 const Group = styled.div`
@@ -75,11 +73,9 @@ const ReviewCount = styled.div`
 const Category = styled.div`
   background: #F2F2F2 0% 0% no-repeat padding-box;
   border-radius: 5px;
-  letter-spacing: 0px;
   color: #808084;
   font-size: 11px;
   padding: 6px 8px;
-  border-radius: 5px;
 `;
 
 export default function RecommendCard({
@@ -88,7 +84,7 @@ export default function RecommendCard({
     reviewCount,
     category,
 }) {
-  const per = ratings * 20;
+  const perRatings = ratings * 20;
   return (
       <Container>
             <Img 
@@ -103,7 +99,7 @@ export default function RecommendCard({
                 <Group>
                     <StarRatings>
                       <StarBase>★★★★★</StarBase>
-                      <StarFill ratings={per}>★★★★★</StarFill>
+                      <StarFill ratings={perRatings}>★★★★★</StarFill>
                     </StarRatings>
                     <Ratings>{ratings}</Ratings>
                     <ReviewCount>({reviewCount}개 리뷰)</ReviewCount>

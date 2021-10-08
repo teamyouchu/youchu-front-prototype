@@ -3,11 +3,11 @@ import { Home } from 'pages/index';
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
         <Route exact path="/" component={Home} />
       </Router>
-    </div>
+    </>
   );
 }
 

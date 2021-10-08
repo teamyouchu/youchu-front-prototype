@@ -4,8 +4,6 @@ const Container = styled.div`
   display: inline-block;
   width: 260px;
   height: 288px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border-radius: 10px;
   margin-right: 20px;
 `;
 
@@ -36,24 +34,21 @@ const Group = styled.div`
 const Category = styled.div`
   background: #F2F2F2 0% 0% no-repeat padding-box;
   border-radius: 5px;
-  text-align: left;
-  letter-spacing: 0px;
   color: #808084;
   font-size: 11px;
   padding: 6px 8px;
-  border-radius: 5px;
   margin-bottom: 5px;
 `;
 
 const ChannelName = styled.div`
   width: 130px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   font-size: 18px;
   font-weight: bold;
   display: inline-block;
   padding: 5px 5px 5px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const SubscriberCount = styled.div`
