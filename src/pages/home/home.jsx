@@ -1,11 +1,14 @@
 import ReviewRank from 'components/ReviewRank';
 import Recommend from 'components/Recommend';
+import * as style from './style';
 
 export default function Home() {
   return (
     <>
-      <ReviewRank />
-      <Recommend />
+      <style.Container>
+        <ReviewRank />
+        <Recommend />
+      </style.Container>
     </>
   );
 }
