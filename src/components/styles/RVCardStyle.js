@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: inline-block;
   width: 260px;
-  height: 288px;
+  height: 295px;
   margin-right: 20px;
 `;
 
@@ -22,7 +22,7 @@ export const Img = styled.img.attrs((props) => ({
 `;
 
 export const Info = styled.div`
-  margin: 5px;
+  margin: 0px;
 `;
 
 export const Group = styled.div`
@@ -38,13 +38,13 @@ export const Category = styled.div`
   color: #808084;
   font-size: 11px;
   padding: 6px 8px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 export const ChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 18px;
-  padding: 5px 5px 5px 0;
+  padding: 0 5px 5px 0;
 
   width: 130px;
   overflow: hidden;
@@ -101,12 +101,14 @@ export const BestReviewTitle = styled.div`
 export const BestReview = styled.div`
   font-family: 'SHSN-L';
   font-size: 12px;
-  width: 250px;
+  line-height: 15px;
   color: #808084;
 
+  width: 250px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  white-space: normal;
 `;

@@ -31,7 +31,7 @@ export default function ReviewRank() {
           subscriberCount="22.5만"
           reviewCount="381"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
           img="딩고 뮤직"
@@ -49,7 +49,7 @@ export default function ReviewRank() {
           subscriberCount="22.5만"
           reviewCount="381"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
           img="월간 윤종신"
@@ -58,7 +58,7 @@ export default function ReviewRank() {
           subscriberCount="22.5만"
           reviewCount="381"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
           img="월간 윤종신"
@@ -67,7 +67,7 @@ export default function ReviewRank() {
           subscriberCount="22.5만"
           reviewCount="381"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
           img="월간 윤종신"
@@ -76,7 +76,7 @@ export default function ReviewRank() {
           subscriberCount="22.5만"
           reviewCount="381"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
           img="월간 윤종신"
@@ -85,7 +85,7 @@ export default function ReviewRank() {
           subscriberCount="22.5만"
           reviewCount="381"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
       </style.Slider>
       <style.HandleNext onClick={slide_R}>
