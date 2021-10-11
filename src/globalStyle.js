@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    width: 1100px;
+    width: 1170px;
     margin: 0 auto;
     box-sizing: border-box;
   }

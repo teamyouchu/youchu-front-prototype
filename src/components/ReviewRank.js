@@ -3,13 +3,13 @@ import * as style from './styles/RowStyle';
 
 export default function ReviewRank() {
   return (
-    <div className="row-container">
+    <style.RowContainer>
       <style.RowTitle>이번주 리뷰가 많은 유튜버</style.RowTitle>
       <style.RowDescription>리뷰 보러 가보실까요?</style.RowDescription>
+      <style.HandlePrev>
+        <style.Img src={'/images/back.png'} />
+      </style.HandlePrev>
       <style.Slider>
-        <style.HandlePrev>
-          <style.Img src={'/images/back.png'} />
-        </style.HandlePrev>
         <ReviewCard
           img="월간 윤종신"
           category="음악"
@@ -73,10 +73,10 @@ export default function ReviewRank() {
           ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
-        <style.HandleNext>
-          <style.Img src={'/images/next.png'} />
-        </style.HandleNext>
       </style.Slider>
-    </div>
+      <style.HandleNext>
+        <style.Img src={'/images/next.png'} />
+      </style.HandleNext>
+    </style.RowContainer>
   );
 }
