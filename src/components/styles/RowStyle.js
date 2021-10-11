@@ -23,7 +23,7 @@ export const Slider = styled.div`
   margin-bottom: 60px;
   white-space: nowrap;
   overflow-x: scroll;
-  // overflow: hidden;
+  overflow: hidden;
 `;
 
 export const Img = styled.img.attrs((props) => ({
