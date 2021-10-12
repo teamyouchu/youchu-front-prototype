@@ -4,7 +4,7 @@ import { Button, Input } from 'semantic-ui-react';
 export const Logo = styled.span`
   font-family: 'SCD-9';
   font-size: 29px;
-  padding: 5px;
+  padding: 10px 5px;
   margin-right: 20px;
 `;
 
