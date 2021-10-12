@@ -25,6 +25,7 @@ export default function ReviewRank() {
       </style.HandlePrev>
       <style.Slider id="slider">
         <ReviewCard
+          margin="0 20px 0 0"
           img="월간 윤종신"
           category="음악"
           channelName="월간 윤종신"
@@ -34,6 +35,7 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
+          margin="0 20px 0 0"
           img="딩고 뮤직"
           category="엔터테이너"
           channelName="딩고 뮤직 / dingo music"
@@ -43,6 +45,7 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
+          margin="0 20px 0 0"
           img="월간 윤종신"
           category="음악"
           channelName="월간 윤종신"
@@ -52,6 +55,7 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
+          margin="0 20px 0 0"
           img="월간 윤종신"
           category="음악"
           channelName="월간 윤종신"
@@ -61,6 +65,7 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
+          margin="0 20px 0 0"
           img="월간 윤종신"
           category="음악"
           channelName="월간 윤종신"
@@ -70,6 +75,7 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
+          margin="0 20px 0 0"
           img="월간 윤종신"
           category="음악"
           channelName="월간 윤종신"
@@ -79,6 +85,7 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
         <ReviewCard
+          margin="0"
           img="월간 윤종신"
           category="음악"
           channelName="월간 윤종신"
