@@ -1,9 +1,12 @@
-import ReviewRank from 'components/ReviewRank';
+import YoutuberList from 'components/YoutuberList';
+import * as style from './style';
 
-export default function Home() {
+export default function List() {
   return (
     <>
-      <ReviewRank />
+      <style.Container>
+        <YoutuberList />
+      </style.Container>
     </>
   );
 }

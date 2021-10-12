@@ -1,6 +1,7 @@
 import * as style from './styles/RVCardStyle';
 
 export default function ReviewCard({
+  margin,
   img,
   category,
   channelName,
@@ -12,7 +13,7 @@ export default function ReviewCard({
   const per = ratings * 20;
   const imgUrl = '/images/' + img + '.jpg';
   return (
-    <style.Container>
+    <style.Container margin={margin}>
       <style.Img src={imgUrl} alt={channelName} title={channelName} />
       <style.Info>
         <style.Group>
