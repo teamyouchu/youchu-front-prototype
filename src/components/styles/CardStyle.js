@@ -1,28 +1,43 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const RC_Container = styled.div`
   display: inline-block;
   width: 260px;
   height: 295px;
 `;
 
+export const RCMD_Container = styled.div`
+  width: 350px;
+  height: 108px;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+`;
 export const Img = styled.img.attrs((props) => ({
   src: props.src,
   alt: props.alt,
   title: props.title,
 }))`
+  border: 1px solid #dedede;
+  border-radius: 50%;
+`;
+
+export const RC_Img = styled(Img)`
   display: block;
   width: 130px;
   height: 130px;
-  border: 1px solid #dedede;
-  border-radius: 50%;
   margin: 0 auto;
   margin-bottom: 10px;
 `;
 
-export const Info = styled.div`
-  margin: 0px;
+export const RCMD_Img = styled(Img)`
+  width: 72px;
+  height: 72px;
+  margin: 0 20px;
 `;
+
+export const Info = styled.div``;
 
 export const Group = styled.div`
   display: flex;
@@ -32,18 +47,21 @@ export const Group = styled.div`
 
 export const Category = styled.div`
   font-family: 'SHSN-M';
+  font-size: 11px;
+  color: #808084;
   background: #f2f2f2 0% 0% no-repeat padding-box;
   border-radius: 5px;
-  color: #808084;
-  font-size: 11px;
   padding: 6px 8px;
+`;
+
+export const RC_Category = styled(Category)`
   margin-bottom: 10px;
 `;
 
-export const ChannelName = styled.div`
+export const RC_ChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 18px;
-  padding: 0 5px 5px 0;
+  padding: 0 5px 8px 0;
 
   width: 130px;
   overflow: hidden;
@@ -51,16 +69,26 @@ export const ChannelName = styled.div`
   text-overflow: ellipsis;
 `;
 
+export const RCMD_ChannelName = styled.div`
+  font-family: 'SHSN-M';
+  font-size: 16px;
+  padding-bottom: 3px;
+`;
+
 export const SubscriberCount = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   color: #94969b;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 `;
 
 export const StarRatings = styled.div`
   position: relative;
   padding: 0px 5px 15px 0;
+`;
+
+export const RCMD_StarRatings = styled(StarRatings)`
+  padding: 0px 6px 6px 0;
 `;
 
 export const StarBase = styled.div`
@@ -84,11 +112,19 @@ export const Ratings = styled.div`
   padding: 0px 5px 15px 0;
 `;
 
+export const RCMD_Ratings = styled(Ratings)`
+  padding: 0px 2px 5px 0;
+`;
+
 export const ReviewCount = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   color: #94969b;
   padding-bottom: 15px;
+`;
+
+export const RCMD_ReviewCount = styled(ReviewCount)`
+  padding-bottom: 5px;
 `;
 
 export const BestReviewTitle = styled.div`

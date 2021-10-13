@@ -6,7 +6,7 @@ export default function ReviewRank() {
     <style.RowContainer>
       <style.RowTitle>맞춤 추천</style.RowTitle>
       <style.RowDescription>여러분이 관심 있을 유튜버를 모아봤어요!</style.RowDescription>
-      <style.CardContainer>
+      <style.RecommendCardContainer>
         <RecommendCard
           img="월간 윤종신"
           channelName="월간 윤종신"
@@ -49,7 +49,7 @@ export default function ReviewRank() {
           reviewCount="381"
           category="음악"
         />
-      </style.CardContainer>
+      </style.RecommendCardContainer>
     </style.RowContainer>
   );
 }
