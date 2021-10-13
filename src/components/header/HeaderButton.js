@@ -4,11 +4,13 @@ export default function HeaderButton({ color, content }) {
   return (
     <>
       {color === 'white' ? (
-        <style.HeaderButton basic color={color}>
+        <style.LoginButton basic color={color}>
           {content}
-        </style.HeaderButton>
+        </style.LoginButton>
+      ) : color === 'black' ? (
+        <style.ReviewButton color={color}>{content}</style.ReviewButton>
       ) : (
-        <style.HeaderButton color={color}>{content}</style.HeaderButton>
+        <style.RegisterButton color={color}>{content}</style.RegisterButton>
       )}
     </>
   );
