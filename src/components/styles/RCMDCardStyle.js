@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 360px;
   border: 1px solid #dedede;
   border-radius: 10px;
-  margin-bottom: 10px;
 `;
 
 export const Img = styled.img.attrs((props) => ({

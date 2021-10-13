@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: inline-block;
   width: 260px;
   height: 295px;
-  margin: ${(props) => props.margin};
 `;
 
 export const Img = styled.img.attrs((props) => ({

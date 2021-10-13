@@ -24,6 +24,9 @@ export const Slider = styled.div`
   white-space: nowrap;
   overflow-x: scroll;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  column-gap: 20px;
 `;
 
 export const Img = styled.img.attrs((props) => ({
@@ -54,7 +57,11 @@ export const HandleNext = styled.button`
 `;
 
 export const CardContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 25px;
+  row-gap: 10px;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between; */
 `;
