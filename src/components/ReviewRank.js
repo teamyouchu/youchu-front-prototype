@@ -21,9 +21,9 @@ export default function ReviewRank() {
       <style.RowTitle>이번주 리뷰가 많은 유튜버</style.RowTitle>
       <style.RowDescription>리뷰 보러 가보실까요?</style.RowDescription>
       <style.HandlePrev onClick={slide_L}>
-        <style.Img src={'/images/back.png'} />
+        <style.ArrowImg src={'/images/back.png'} />
       </style.HandlePrev>
-      <style.Slider id="slider">
+      <style.ReviewCardContainer id="slider">
         <ReviewCard
           img="월간 윤종신"
           category="음악"
@@ -43,13 +43,13 @@ export default function ReviewRank() {
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만"
         />
         <ReviewCard
-          img="월간 윤종신"
-          category="음악"
-          channelName="월간 윤종신"
-          subscriberCount="22.5만"
-          reviewCount="381"
+          img="고닝 gonying"
+          category="여행"
+          channelName="고닝 gonying"
+          subscriberCount="21"
+          reviewCount="2"
           ratings="5.0"
-          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+          bestReview="병맛이라 재밌어요 기대가 되는 채널이에요."
         />
         <ReviewCard
           img="월간 윤종신"
@@ -87,9 +87,9 @@ export default function ReviewRank() {
           ratings="5.0"
           bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
         />
-      </style.Slider>
+      </style.ReviewCardContainer>
       <style.HandleNext onClick={slide_R}>
-        <style.Img src={'/images/next.png'} />
+        <style.ArrowImg src={'/images/next.png'} />
       </style.HandleNext>
     </style.RowContainer>
   );
