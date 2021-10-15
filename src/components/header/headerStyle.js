@@ -6,16 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const BarIcon = styled(FontAwesomeIcon)`
   color: white;
   position: relative;
-  right: 125px;
-  top: 1.2px;
-  fontsize: 17px;
+  top: 1px;
+  right: 2px;
+  font-size: 14px;
 `;
 
 export const Logo = styled.span`
   font-family: 'SCD-9';
   font-size: 29px;
   padding: 10px 4px;
-  margin-right: 37px;
+  margin-right: 47px;
 `;
 
 export const Positioner = styled.div`
@@ -49,7 +49,7 @@ export const LoginButton = styled(Button)`
 
 export const ReviewButton = styled(LoginButton)`
   &&& {
-    margin-left: 15px;
+    margin-left: 0px;
     width: 140px;
   }
 `;
@@ -62,7 +62,7 @@ export const RegisterButton = styled(LoginButton)`
 
 export const Search = styled(Input)`
   width: 350px;
-  margin-left: 190px;
+  margin-left: 210px;
   &&& > input {
     border-radius: 40px;
   }
