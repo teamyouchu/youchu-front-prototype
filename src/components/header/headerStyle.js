@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 import { Button, Input } from 'semantic-ui-react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export const BarIcon = styled(FontAwesomeIcon)`
+  color: white;
+  position: relative;
+  right: 125px;
+  top: 1.2px;
+  fontsize: 17px;
+`;
+
 export const Logo = styled.span`
   font-family: 'SCD-9';
   font-size: 29px;
-  padding: 10px 5px;
-  margin-right: 20px;
+  padding: 10px 4px;
+  margin-right: 37px;
 `;
 
 export const Positioner = styled.div`
@@ -15,7 +25,7 @@ export const Positioner = styled.div`
   top: 0px;
   margin: 0px 35px;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const Background = styled.div`
