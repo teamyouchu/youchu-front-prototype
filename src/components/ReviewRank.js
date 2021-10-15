@@ -18,7 +18,7 @@ export default function ReviewRank() {
 
   return (
     <style.RowContainer>
-      <style.RowTitle>이번주 리뷰가 많은 유튜버</style.RowTitle>
+      <style.RowTitle>이번주 리뷰가 많은 유튜버 ✌</style.RowTitle>
       <style.RowDescription>리뷰 보러 가보실까요?</style.RowDescription>
       <style.HandlePrev onClick={slide_L}>
         <style.ArrowImg src={'/images/back.png'} />

@@ -1,10 +1,16 @@
 import * as style from './styles/CardStyle';
+import { useHistory } from 'react-router-dom';
 
 export default function RecommendCard({ img, channelName, ratings, reviewCount, category }) {
   const perRatings = ratings * 20;
   const imgUrl = '/images/' + img + '.jpg';
+  let history = useHistory();
+
+  function handleClick() {
+    history.push('/');
+  }
   return (
-    <style.RCMD_Container>
+    <style.RCMD_Container onClick={handleClick}>
       <style.RCMD_Img src={imgUrl} alt={channelName} title={channelName} />
       <style.Info>
         <style.Group>
