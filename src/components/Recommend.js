@@ -4,7 +4,7 @@ import * as style from './styles/RowStyle';
 export default function ReviewRank() {
   return (
     <style.RowContainer>
-      <style.RowTitle>맞춤 추천</style.RowTitle>
+      <style.RowTitle>맞춤 추천 💁</style.RowTitle>
       <style.RowDescription>여러분이 관심 있을 유튜버를 모아봤어요!</style.RowDescription>
       <style.RecommendCardContainer>
         <RecommendCard
