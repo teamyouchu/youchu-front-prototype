@@ -4,6 +4,7 @@ export const RC_Container = styled.div`
   display: inline-block;
   width: 260px;
   height: 295px;
+  cursor: pointer;
 `;
 
 export const RCMD_Container = styled.div`
@@ -13,6 +14,7 @@ export const RCMD_Container = styled.div`
   border-radius: 10px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 export const Img = styled.img.attrs((props) => ({
   src: props.src,

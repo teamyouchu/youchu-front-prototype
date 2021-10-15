@@ -1,4 +1,5 @@
 import * as style from './styles/CardStyle';
+import { useHistory } from 'react-router-dom';
 
 export default function ReviewCard({
   img,
@@ -11,8 +12,13 @@ export default function ReviewCard({
 }) {
   const per = ratings * 20;
   const imgUrl = '/images/' + img + '.jpg';
+  let history = useHistory();
+
+  function handleClick() {
+    history.push('/');
+  }
   return (
-    <style.RC_Container>
+    <style.RC_Container onClick={handleClick}>
       <style.RC_Img src={imgUrl} alt={channelName} title={channelName} />
       <style.Info>
         <style.Group>
