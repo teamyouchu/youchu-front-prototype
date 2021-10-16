@@ -4,12 +4,12 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;  
+    box-sizing: border-box;
   }
 
   body {
-    width: 1170px;
+    width: 100%;
     margin: 0 auto;
-    box-sizing: border-box;
   }
 `;
 
