@@ -2,6 +2,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 1100px;
+  margin: 0 auto;
   justify-content: space-between;
 `;
 
@@ -10,7 +11,7 @@ export const TextField = styled.p`
   font-family: 'SHSN-B';
   height: auto;
   &&& {
-    margin: 130px 35px;
+    margin: 130px 0px;
   }
 `;
 
