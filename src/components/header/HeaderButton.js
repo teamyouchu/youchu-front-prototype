@@ -6,13 +6,11 @@ export default function HeaderButton({ color, content }) {
   return (
     <>
       {color === 'white' ? (
-        <style.LoginButton basic color={color}>
-          {content}
-        </style.LoginButton>
+        <style.LoginButton basic>{content}</style.LoginButton>
       ) : color === 'black' ? (
         <Link to="/list">
           <style.ReviewButton color={color}>
-            <style.BarIcon icon={faBars} fixedWidth="20px"></style.BarIcon>
+            <style.BarIcon icon={faBars}></style.BarIcon>
             {content}
           </style.ReviewButton>
         </Link>

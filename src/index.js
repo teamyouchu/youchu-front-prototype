@@ -6,10 +6,10 @@ import App from './components/App';
 import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyle />
     <GlobalFonts />
     <App />
-  </React.StrictMode>,
+  </>,
   document.getElementById('root'),
 );
