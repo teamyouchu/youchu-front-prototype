@@ -24,15 +24,14 @@ export const Positioner = styled.div`
   position: fixed;
   top: 0px;
   margin: 0px 35px;
-  width: 100%;
   z-index: 2;
 `;
 
 export const Background = styled.div`
+  width: 1100px;
+  height: 60px;
   background: white;
-  justify-content: left;
   display: flex;
-  height: auto;
   padding: 10px 0px;
 `;
 
@@ -66,4 +65,9 @@ export const Search = styled(Input)`
   &&& > input {
     border-radius: 40px;
   }
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
