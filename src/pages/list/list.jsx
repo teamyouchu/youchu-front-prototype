@@ -44,212 +44,210 @@ export default function List() {
     },
   ];
   return (
-    <>
-      <style.Container>
-        <style.Title>전체 유튜버</style.Title>
-        <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
-        <FilterDropdown placeholder="정렬" options={sortOptions} />
-        <style.CardContainer>
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="딩고 뮤직"
-            category="엔터테이너"
-            channelName="딩고 뮤직 / dingo music"
-            subscriberCount="329만"
-            reviewCount="500"
-            ratings="3.3"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="주키니TV"
-            category="게임"
-            channelName="주키니TV"
-            subscriberCount="50.4만"
-            reviewCount="295"
-            ratings="4.1"
-            bestReview="즐겁게 게임하는 주키니입니다. 채널에 오신 여러분들 환영합니다~ 구독 좋아요♥"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-          <ReviewCard
-            img="월간 윤종신"
-            category="음악"
-            channelName="월간 윤종신"
-            subscriberCount="22.5만"
-            reviewCount="381"
-            ratings="5.0"
-            bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
-          />
-        </style.CardContainer>
-      </style.Container>
-    </>
+    <style.ListContainer>
+      <style.Title>전체 유튜버</style.Title>
+      <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
+      <FilterDropdown placeholder="정렬" options={sortOptions} />
+      <style.CardContainer>
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="딩고 뮤직"
+          category="엔터테이너"
+          channelName="딩고 뮤직 / dingo music"
+          subscriberCount="329만"
+          reviewCount="500"
+          ratings="3.3"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="주키니TV"
+          category="게임"
+          channelName="주키니TV"
+          subscriberCount="50.4만"
+          reviewCount="295"
+          ratings="4.1"
+          bestReview="즐겁게 게임하는 주키니입니다. 채널에 오신 여러분들 환영합니다~ 구독 좋아요♥"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+        <ReviewCard
+          img="월간 윤종신"
+          category="음악"
+          channelName="월간 윤종신"
+          subscriberCount="22.5만"
+          reviewCount="381"
+          ratings="5.0"
+          bestReview="제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 큰 위로가"
+        />
+      </style.CardContainer>
+    </style.ListContainer>
   );
 }
