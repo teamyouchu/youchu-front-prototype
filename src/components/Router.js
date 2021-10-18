@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { HeaderContainer, Home, List, Review } from 'pages/index';
-import * as style from './styles/ContainerStyle';
+import * as style from './styles/RouterStyle';
 
 export default function AppRouter() {
   return (
