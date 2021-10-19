@@ -22,11 +22,11 @@ export default function ReviewWrite() {
             <style.SubTitle>별점</style.SubTitle>
             <style.StarRating icon='star' maxRating={5} clearable size='huge' />
             <style.SubTitle>한줄평</style.SubTitle>
-            <style.OneSentenceInput placeholder='예 : 힘들 때 큰도움이 되었어요.' />
+            <style.OneSentenceInput minLength='10' maxLength='60' placeholder='예 : 힘들 때 큰도움이 되었어요.' />
             <style.SubTitle>장점</style.SubTitle>
-            <style.StrengthInput placeholder='이 유튜버가 가장 좋았던 점은 무엇인가요?'/>
+            <style.StrengthInput as="textarea" placeholder='이 유튜버가 가장 좋았던 점은 무엇인가요?'/>
             <style.SubTitle>단점</style.SubTitle>
-            <style.WeaknessInput placeholder='이 유튜버에게 아쉬웠던 점은 무엇인가요?'/>
+            <style.WeaknessInput as="textarea" placeholder='이 유튜버에게 아쉬웠던 점은 무엇인가요?'/>
           </style.WriteContainer>
         </style.BodyContainer>
         <style.FooterContainer>

@@ -119,11 +119,12 @@ export const OneSentenceInput = styled.input`
   color: #000000;
   letter-spacing: 0px;
 `;
+
 export const StrengthInput = styled(OneSentenceInput)`
   height: 150px;
+  resize: none;
 `;
-export const WeaknessInput = styled(OneSentenceInput)`
-  height: 150px;
+export const WeaknessInput = styled(StrengthInput)`
   margin-bottom: 0;
 `;
 
@@ -148,10 +149,14 @@ export const SubmissionBtn = styled.button`
   border: 0px;
   border-radius: 5px;
   background-color: #5c7fdf;
+  cursor: pointer;
   text-align: center;
   font-family: 'SHSN-B';
   font-size: 14px;
   line-height: 18px;
   color: #ffffff;
   letter-spacing: 0px;
+  &:hover {
+    background-color: #4c72dc;
+  }
 `;
