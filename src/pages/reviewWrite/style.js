@@ -79,7 +79,7 @@ export const BodyContainer = styled.div`
   padding: 25px 40px;
 `;
 
-export const Title2 = styled(Title)`
+export const SubTitle = styled(Title)`
   font-size: 20px;
   line-height: 25px;
   margin-bottom: 10px;
@@ -89,7 +89,8 @@ export const WriteContainer = styled.div`
   padding: 20px;
 `;
 
-export const SubTitle = styled.div`
+export const Label = styled.label`
+  display: block;
   text-align: left;
   font-family: 'SHSN-R';
   font-size: 16px;
@@ -101,11 +102,12 @@ export const SubTitle = styled.div`
 
 export const StarRating = styled(Rating)`
   &&& {
+    display: block;
     margin-bottom: 20px;
   }
 `;
 
-export const OneSentenceInput = styled.input`
+export const CommentInput = styled.input`
   width: 680px;
   height: 41px;
   border: 1px solid #dedede;
@@ -120,7 +122,7 @@ export const OneSentenceInput = styled.input`
   letter-spacing: 0px;
 `;
 
-export const StrengthInput = styled(OneSentenceInput)`
+export const StrengthInput = styled(CommentInput)`
   height: 150px;
   resize: none;
 `;
@@ -143,7 +145,7 @@ export const Warning = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SubmissionBtn = styled.button`
+export const SubmitBtn = styled.button`
   width: 170px;
   height: 40px;
   border: 0px;
