@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { HeaderContainer, Home, List, Review, ReviewWrite } from 'pages/index';
+import { TopBar, Home, List, Review, ReviewWrite } from 'pages/index';
 import * as style from './styles/RouterStyle';
 
 export default function AppRouter() {
   return (
     <>
       <Router>
-        <HeaderContainer />
+        <TopBar />
         <Switch>
           <style.Container>
             <Route exact path="/" component={Home} />

@@ -11,15 +11,20 @@ export const BarIcon = styled(FontAwesomeIcon)`
   font-size: 14px;
 `;
 
-export const Logo = styled.span`
+export const Logo = styled.button`
   font-family: 'SCD-9';
   font-size: 29px;
-  padding: 10px 4px;
   margin-right: 47px;
+  background-color: white;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Positioner = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   position: fixed;
   top: 0px;
@@ -30,12 +35,13 @@ export const Positioner = styled.div`
 export const Background = styled.div`
   width: 1100px;
   height: 60px;
+  margin: 0px auto;
   background: white;
   display: flex;
   padding: 10px 0px;
 `;
 
-export const LoginButton = styled(Button)`
+export const HeaderButton = styled(Button)`
   font-family: 'SHSN-M';
   &&& {
     font-size: 12px;
@@ -46,13 +52,21 @@ export const LoginButton = styled(Button)`
   }
 `;
 
-export const ReviewButton = styled(LoginButton)`
+export const LoginButton = styled(HeaderButton)`
+  &&& {
+    background-color: white;
+    border: 1px solid #efefef;
+    font-weight: 600;
+  }
+`;
+
+export const ReviewButton = styled(HeaderButton)`
   &&& {
     margin-left: 0px;
     width: 140px;
   }
 `;
-export const RegisterButton = styled(LoginButton)`
+export const RegisterButton = styled(HeaderButton)`
   &&& {
     margin-left: 26px;
     width: 100px;
@@ -70,4 +84,16 @@ export const Search = styled(Input)`
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const BottomBorderBar = styled.div`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  /* height: 1px; */
+  width: 100%;
+  top: 60px;
+  /* background-color: tomato; */
+  position: fixed;
 `;
