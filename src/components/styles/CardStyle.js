@@ -65,7 +65,7 @@ export const RC_ChannelName = styled.div`
   font-size: 18px;
   padding: 0 5px 8px 0;
 
-  width: 130px;
+  max-width: 130px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
