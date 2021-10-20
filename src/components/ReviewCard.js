@@ -15,7 +15,15 @@ export default function ReviewCard({
   let history = useHistory();
 
   function handleClick() {
-    history.push('/');
+    history.push({
+      pathname: '/review',
+      state: {
+        img: imgUrl,
+        channelName: channelName,
+        ratings: ratings,
+        reviewCount: reviewCount,
+      },
+    });
   }
   return (
     <style.RC_Container onClick={handleClick}>
