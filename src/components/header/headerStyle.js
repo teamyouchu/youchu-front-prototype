@@ -22,6 +22,10 @@ export const Logo = styled.button`
   }
 `;
 
+// export const HeaderContainer = styled.div`
+//   width: 100%;
+// `;
+
 export const Positioner = styled.div`
   display: flex;
   width: 100%;

@@ -13,7 +13,7 @@ export default function TopBar() {
   }
   useEffect(() => {
     window.onscroll = scrollF();
-  }, []);
+  });
   const history = useHistory();
 
   function handleReviewBtnClick() {
