@@ -22,6 +22,8 @@ export default function ReviewCard({
         channelName: channelName,
         ratings: ratings,
         reviewCount: reviewCount,
+        subscriberCount: subscriberCount,
+        category: category,
       },
     });
   }
