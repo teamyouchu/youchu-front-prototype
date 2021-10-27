@@ -22,6 +22,10 @@ export const Logo = styled.button`
   }
 `;
 
+// export const HeaderContainer = styled.div`
+//   width: 100%;
+// `;
+
 export const Positioner = styled.div`
   display: flex;
   width: 100%;
@@ -63,6 +67,7 @@ export const LoginButton = styled(HeaderButton)`
 export const ReviewButton = styled(HeaderButton)`
   &&& {
     margin-left: 0px;
+    margin-right: 22px;
     width: 140px;
   }
 `;
@@ -96,4 +101,29 @@ export const BottomBorderBar = styled.div`
   top: 60px;
   /* background-color: tomato; */
   position: fixed;
+`;
+
+export const SearchImg = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+`;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 38px;
+  margin-left: 210px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+`;
+
+export const InputYoutuber = styled.input`
+  border: none;
+  width: 100%;
+  margin-left: 20px;
+  &:focus {
+    outline: none;
+  }
 `;
