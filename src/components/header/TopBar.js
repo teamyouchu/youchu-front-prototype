@@ -24,6 +24,10 @@ export default function TopBar() {
     history.push('/');
   }
 
+  function handleLoginBtnClick() {
+    history.push('/login');
+  }
+
   return (
     <>
       <style.HeaderContainer>
@@ -36,7 +40,7 @@ export default function TopBar() {
             {/* <style.HeaderContainerrrr.BarIcon icon={faBars}></style.ReviewButton.HeaderContainer.BarIcon> */}
             <Search />
             <style.RegisterButton color="red">유튜버 등록</style.RegisterButton>
-            <style.LoginButton>로그인</style.LoginButton>
+            <style.LoginButton onClick={handleLoginBtnClick}>로그인</style.LoginButton>
           </style.Background>
         </style.Positioner>
         <style.BottomBorderBar id="navBar" />

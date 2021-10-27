@@ -34,6 +34,7 @@ export const Positioner = styled.div`
   top: 0px;
   margin: 0px 35px;
   z-index: 2;
+  background-color: #ffffff;
 `;
 
 export const Background = styled.div`

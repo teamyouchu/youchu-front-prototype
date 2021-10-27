@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
-  width: 1100px;
+  width: 1170px;
   margin: 0 auto;
 `;
 
@@ -34,7 +34,7 @@ export const BannerImg = styled.img`
 `;
 
 export const RowContainer = styled.div`
-  width: 1100px;
+  width: ${(props) => props.width || '1170px'};
   margin: 0 auto;
 `;
 
@@ -43,6 +43,7 @@ export const RowTitle = styled.div`
   font-size: 20px;
   line-height: 25px;
   margin-bottom: 5px;
+  margin-left: ${(props) => props.left || '0px'};
 `;
 
 export const RowDescription = styled.div`
@@ -51,6 +52,13 @@ export const RowDescription = styled.div`
   line-height: 18px;
   color: #94969b;
   margin-bottom: 20px;
+  margin-left: ${(props) => props.left || '0px'};
+`;
+
+export const ReviewContainer = styled.div`
+  margin: 0 auto;
+  width: 1170px;
+  display: flex;
 `;
 
 export const ArrowImg = styled.img.attrs((props) => ({
@@ -60,31 +68,19 @@ export const ArrowImg = styled.img.attrs((props) => ({
   height: 15px;
 `;
 
-export const HandlePrev = styled.button`
+export const HandleBtn = styled.button`
   background: #ffffff;
   border: 0;
   cursor: pointer;
   position: relative;
-  top: 75px;
-  left: -35px;
+  top: 49px;
   width: 35px;
+  height: 30px;
 `;
 
-export const HandleNext = styled.button`
-  background: #ffffff;
-  border: 0;
-  cursor: pointer;
-  position: relative;
-  top: -302px;
-  left: 1100px;
-  width: 35px;
-`;
-
-export const CardContainer = styled.div`
+export const ReviewCardContainer = styled.div`
   display: grid;
-`;
-
-export const ReviewCardContainer = styled(CardContainer)`
+  width: 1100px;
   white-space: nowrap;
   overflow-x: scroll;
   overflow: hidden;
@@ -93,7 +89,7 @@ export const ReviewCardContainer = styled(CardContainer)`
   margin-bottom: 60px;
 `;
 
-export const RecommendCardContainer = styled(CardContainer)`
+export const RecommendCardContainer = styled(ReviewCardContainer)`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 10px;
