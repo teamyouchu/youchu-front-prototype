@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 export default function RecommendCard({ img, channelName, ratings, reviewCount, category }) {
   const perRatings = ratings * 20;
   const imgUrl = '/images/' + img + '.jpg';
-  let history = useHistory();
+  const history = useHistory();
 
   function handleClick() {
     history.push('/');
