@@ -11,6 +11,13 @@ export const HeaderContainer = styled.div`
   top: 0px;
   z-index: 2;
   background-color: #ffffff;
+
+  box-shadow: 0;
+  transition: box-shadow 0.5s;
+  &.scrolled {
+    box-shadow: 0 0 15px #dedede;
+    /* border: 1px solid #dedede; */
+  }
 `;
 
 export const Background = styled.div`
@@ -104,14 +111,14 @@ export const LoginButton = styled(HeaderButton)`
   }
 `;
 
-export const BottomBorderBar = styled.div`
-  border-bottom: 2px solid #dedede;
-  /* height: 1px; */
-  width: 100%;
-  top: 60px;
-  /* background-color: tomato; */
-  position: fixed;
-`;
+// export const BottomBorderBar = styled.div`
+//   border-bottom: 2px solid #dedede;
+//   /* height: 1px; */
+//   width: 100%;
+//   top: 60px;
+//   /* background-color: tomato; */
+//   position: fixed;
+// `;
 
 export const Search = styled(Input)`
   width: 350px;
