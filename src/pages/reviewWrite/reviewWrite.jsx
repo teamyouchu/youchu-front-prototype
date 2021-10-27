@@ -1,6 +1,7 @@
 import * as style from './style';
 
 export default function ReviewWrite() {
+  const ChannelName = '딩고 뮤직';
   return (
     <style.reviewWriteContainer>
       <style.ContentsContainer>
@@ -12,7 +13,7 @@ export default function ReviewWrite() {
             <style.Img src='/images/딩고 뮤직.jpg' alt='딩고 뮤직' title='딩고 뮤직' />
             <style.FlexContainer>
               <style.ChannelNameTitle>유튜버 이름</style.ChannelNameTitle>
-              <style.ChannelName placeholder='딩고 뮤직' />
+              <style.ChannelName>{ChannelName}</style.ChannelName>
             </style.FlexContainer>
           </style.ChannelContainer>
         </style.HeaderContainer>
@@ -20,14 +21,14 @@ export default function ReviewWrite() {
           <style.BodyContainer>
             <style.SubTitle>유튜버 리뷰 작성하기</style.SubTitle>
             <style.WriteContainer>
-                <style.Label for="star-rating">별점</style.Label>
-                <style.StarRating id="star-rating" icon='star' maxRating={5} clearable size='huge' />
-                <style.Label for="comment">한줄평</style.Label>
-                <style.CommentInput id="comment" required minLength='10' maxLength='60' placeholder='예 : 힘들 때 큰도움이 되었어요.' />
-                <style.Label for="strength">장점</style.Label>
-                <style.StrengthInput id="strength" as="textarea" required placeholder='이 유튜버가 가장 좋았던 점은 무엇인가요?'/>
-                <style.Label for="weakness">단점</style.Label>
-                <style.WeaknessInput id="weakness" as="textarea" required placeholder='이 유튜버에게 아쉬웠던 점은 무엇인가요?'/>
+                <style.Label>별점</style.Label>
+                <style.StarRating icon='star' maxRating={5} clearable size='huge' />
+                <style.Label>한줄평</style.Label>
+                <style.CommentInput required minLength='10' maxLength='60' placeholder='예 : 힘들 때 큰도움이 되었어요.' />
+                <style.Label>장점</style.Label>
+                <style.StrengthInput as="textarea" required placeholder='이 유튜버가 가장 좋았던 점은 무엇인가요?'/>
+                <style.Label>단점</style.Label>
+                <style.WeaknessInput as="textarea" required placeholder='이 유튜버에게 아쉬웠던 점은 무엇인가요?'/>
             </style.WriteContainer>
           </style.BodyContainer>
           <style.FooterContainer>

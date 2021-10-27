@@ -60,16 +60,16 @@ export const ChannelNameTitle = styled.div`
   margin-bottom: 10px;
 `;
 
-export const ChannelName = styled.input`
+export const ChannelName = styled.div`
   width: 626px;
   height: 41px;
   border: 1px solid #dedede;
-  padding: 15px;
+  padding: 0 15px;
 
   text-align: left;
   font-family: 'SHSN-M';
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 41px;
   color: #000000;
   letter-spacing: 0px;
 `;
