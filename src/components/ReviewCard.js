@@ -28,14 +28,14 @@ export default function ReviewCard({
     });
   }
   return (
-    <style.RC_Container onClick={handleClick}>
-      <style.RC_Img src={imgUrl} alt={channelName} title={channelName} />
+    <style.RvContainer onClick={handleClick}>
+      <style.RvImg src={imgUrl} alt={channelName} title={channelName} />
       <style.Info>
         <style.Group>
-          <style.RC_Category>{category}</style.RC_Category>
+          <style.RvCategory>{category}</style.RvCategory>
         </style.Group>
         <style.Group>
-          <style.RC_ChannelName>{channelName}</style.RC_ChannelName>
+          <style.RvChannelName>{channelName}</style.RvChannelName>
           <style.SubscriberCount>구독자 {subscriberCount}명</style.SubscriberCount>
         </style.Group>
         <style.Group>
@@ -51,6 +51,6 @@ export default function ReviewCard({
           <style.BestReview>{bestReview}</style.BestReview>
         </style.Group>
       </style.Info>
-    </style.RC_Container>
+    </style.RvContainer>
   );
 }

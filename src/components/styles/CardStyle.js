@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const RC_Container = styled.div`
+export const RvContainer = styled.div`
   display: inline-block;
   width: 260px;
   height: 295px;
   cursor: pointer;
 `;
 
-export const RCMD_Container = styled.div`
+export const RcmdContainer = styled.div`
   width: 350px;
   height: 108px;
   border: 1px solid #dedede;
@@ -25,7 +25,7 @@ export const Img = styled.img.attrs((props) => ({
   border-radius: 50%;
 `;
 
-export const RC_Img = styled(Img)`
+export const RvImg = styled(Img)`
   display: block;
   width: 130px;
   height: 130px;
@@ -33,7 +33,7 @@ export const RC_Img = styled(Img)`
   margin-bottom: 10px;
 `;
 
-export const RCMD_Img = styled(Img)`
+export const RcmdImg = styled(Img)`
   width: 72px;
   height: 72px;
   margin: 0 20px;
@@ -56,11 +56,11 @@ export const Category = styled.div`
   padding: 6px 8px;
 `;
 
-export const RC_Category = styled(Category)`
+export const RvCategory = styled(Category)`
   margin-bottom: 10px;
 `;
 
-export const RC_ChannelName = styled.div`
+export const RvChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 18px;
   padding: 0 5px 8px 0;
@@ -71,7 +71,7 @@ export const RC_ChannelName = styled.div`
   text-overflow: ellipsis;
 `;
 
-export const RCMD_ChannelName = styled.div`
+export const RcmdChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 16px;
   padding-bottom: 3px;
@@ -89,7 +89,7 @@ export const StarRatings = styled.div`
   padding: 0px 5px 15px 0;
 `;
 
-export const RCMD_StarRatings = styled(StarRatings)`
+export const RcmdStarRatings = styled(StarRatings)`
   padding: 0px 6px 6px 0;
 `;
 
@@ -114,7 +114,7 @@ export const Ratings = styled.div`
   padding: 0px 5px 15px 0;
 `;
 
-export const RCMD_Ratings = styled(Ratings)`
+export const RcmdRatings = styled(Ratings)`
   padding: 0px 2px 5px 0;
 `;
 
@@ -125,7 +125,7 @@ export const ReviewCount = styled.div`
   padding-bottom: 15px;
 `;
 
-export const RCMD_ReviewCount = styled(ReviewCount)`
+export const RcmdReviewCount = styled(ReviewCount)`
   padding-bottom: 5px;
 `;
 
