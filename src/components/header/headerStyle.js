@@ -3,100 +3,109 @@ import { Button, Input } from 'semantic-ui-react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const BarIcon = styled(FontAwesomeIcon)`
-  color: white;
-  position: relative;
-  top: 1px;
-  right: 2px;
-  font-size: 14px;
-`;
-
-export const Logo = styled.button`
-  font-family: 'SCD-9';
-  font-size: 29px;
-  margin-right: 47px;
-  background-color: white;
-  border: none;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-// export const HeaderContainer = styled.div`
-//   width: 100%;
-// `;
-
-export const Positioner = styled.div`
-  display: flex;
+export const HeaderContainer = styled.div`
   width: 100%;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0px;
-  margin: 0px 35px;
   z-index: 2;
   background-color: #ffffff;
 `;
 
 export const Background = styled.div`
   width: 1100px;
-  height: 60px;
+  height: 80px;
   margin: 0px auto;
-  background: white;
   display: flex;
-  padding: 10px 0px;
+  padding: 28px 0 14px 0;
+`;
+
+export const Logo = styled.button`
+  font-family: 'SCD-9';
+  font-size: 29px;
+  margin-right: 51px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
 `;
 
 export const HeaderButton = styled(Button)`
   font-family: 'SHSN-M';
   &&& {
-    font-size: 12px;
-    margin-left: 20px;
+    font-size: 14px;
+    text-align: center;
     border-radius: 0px;
     width: 80px;
     height: 38px;
-  }
-`;
-
-export const LoginButton = styled(HeaderButton)`
-  &&& {
-    background-color: white;
-    border: 1px solid #efefef;
-    font-weight: 600;
+    padding: 0;
+    margin: 0;
   }
 `;
 
 export const ReviewButton = styled(HeaderButton)`
   &&& {
-    margin-left: 0px;
-    margin-right: 22px;
     width: 140px;
   }
 `;
+
+export const BarIcon = styled(FontAwesomeIcon)`
+  color: white;
+  margin-right: 7px;
+`;
+
+// export const HeaderContainer = styled.div`
+//   width: 100%;
+// `;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 38px;
+  margin-left: 240px;
+  border: 1px solid #707070;
+  border-radius: 30px;
+`;
+
+export const SearchImg = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 30px;
+`;
+
+export const InputYoutuber = styled.input`
+  border: none;
+  width: 270px;
+  height: 18px;
+  margin-left: 20px;
+
+  font-family: 'SHSN-M';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  &:focus {
+    outline: none;
+  }
+`;
+
 export const RegisterButton = styled(HeaderButton)`
   &&& {
-    margin-left: 26px;
+    margin-left: 10px;
     width: 100px;
   }
 `;
 
-export const Search = styled(Input)`
-  width: 350px;
-  margin-left: 210px;
-  &&& > input {
-    border-radius: 40px;
+export const LoginButton = styled(HeaderButton)`
+  &&& {
+    margin-left: 20px;
+    background-color: white;
+    border: 1px solid #dedede;
   }
 `;
 
-export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-`;
-
 export const BottomBorderBar = styled.div`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #dedede;
   /* height: 1px; */
   width: 100%;
   top: 60px;
@@ -104,27 +113,10 @@ export const BottomBorderBar = styled.div`
   position: fixed;
 `;
 
-export const SearchImg = styled.img`
-  width: 20px;
-  height: 20px;
-  margin-left: 20px;
-`;
-
-export const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
+export const Search = styled(Input)`
   width: 350px;
-  height: 38px;
   margin-left: 210px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-`;
-
-export const InputYoutuber = styled.input`
-  border: none;
-  width: 100%;
-  margin-left: 20px;
-  &:focus {
-    outline: none;
+  &&& > input {
+    border-radius: 40px;
   }
 `;
