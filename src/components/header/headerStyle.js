@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, Input } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -61,10 +61,6 @@ export const BarIcon = styled(FontAwesomeIcon)`
   margin-right: 7px;
 `;
 
-// export const HeaderContainer = styled.div`
-//   width: 100%;
-// `;
-
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
@@ -108,22 +104,5 @@ export const LoginButton = styled(HeaderButton)`
     margin-left: 20px;
     background-color: white;
     border: 1px solid #dedede;
-  }
-`;
-
-// export const BottomBorderBar = styled.div`
-//   border-bottom: 2px solid #dedede;
-//   /* height: 1px; */
-//   width: 100%;
-//   top: 60px;
-//   /* background-color: tomato; */
-//   position: fixed;
-// `;
-
-export const Search = styled(Input)`
-  width: 350px;
-  margin-left: 210px;
-  &&& > input {
-    border-radius: 40px;
   }
 `;

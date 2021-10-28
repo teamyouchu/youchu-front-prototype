@@ -13,23 +13,8 @@ export default function TopBar() {
 
   useEffect(() => {
     window.addEventListener('scroll', listener);
-
-    return () => {
-      window.removeEventListener('scroll', listener);
-    };
   }, []);
 
-  // function scrollF() {
-  //   if (document.documentElement.scrollTop < 60) {
-  //     document.getElementById('navBar').style.top = '0px';
-  //   } else {
-  //     document.getElementById('navBar').style.top = '80px';
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   window.onscroll = scrollF();
-  // });
   const history = useHistory();
 
   function handleReviewBtnClick() {
@@ -52,12 +37,10 @@ export default function TopBar() {
           <style.BarIcon icon={faBars} />
           유튜버 리뷰
         </style.ReviewButton>
-        {/* <style.HeaderContainerrrr.BarIcon icon={faBars}></style.ReviewButton.HeaderContainer.BarIcon> */}
         <Search />
         <style.RegisterButton color="red">유튜버 등록</style.RegisterButton>
         <style.LoginButton onClick={handleLoginBtnClick}>로그인</style.LoginButton>
       </style.Background>
-      {/* <style.BottomBorderBar id="navBar" /> */}
     </style.HeaderContainer>
   );
 }
