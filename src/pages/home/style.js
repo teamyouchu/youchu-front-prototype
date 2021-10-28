@@ -94,4 +94,5 @@ export const RecommendCardContainer = styled(ReviewCardContainer)`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 10px;
+  margin-bottom: 0;
 `;

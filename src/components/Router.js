@@ -15,7 +15,6 @@ export default function AppRouter() {
             <Route path="/review" component={Review} />
             <Route path="/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
-            <Route component={EmptyPage} />
           </style.Container>
           <Route component={EmptyPage} />
         </Switch>
