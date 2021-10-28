@@ -120,6 +120,9 @@ export const CommentInput = styled.input`
   line-height: 18px;
   color: #000000;
   letter-spacing: 0px;
+  &:focus {
+    outline: 2px solid #3ea6ff;
+  }
 `;
 
 export const StrengthInput = styled(CommentInput)`

@@ -69,6 +69,9 @@ export const SearchContainer = styled.div`
   margin-left: 240px;
   border: 1px solid #707070;
   border-radius: 30px;
+  &:hover {
+    border: 1px solid #3ea6ff;
+  }
 `;
 
 export const SearchImg = styled.img`
