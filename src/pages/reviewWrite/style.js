@@ -15,7 +15,7 @@ export const ContentsContainer = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
-  border: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
   padding: 25px 40px;
 `;
 
@@ -75,7 +75,7 @@ export const ChannelName = styled.div`
 `;
 
 export const BodyContainer = styled.div`
-  border: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
   padding: 25px 40px;
 `;
 
@@ -120,6 +120,9 @@ export const CommentInput = styled.input`
   line-height: 18px;
   color: #000000;
   letter-spacing: 0px;
+  &:focus {
+    outline: 2px solid #3ea6ff;
+  }
 `;
 
 export const StrengthInput = styled(CommentInput)`
@@ -131,7 +134,6 @@ export const WeaknessInput = styled(StrengthInput)`
 `;
 
 export const FooterContainer = styled.div`
-  border: 1px solid #dedede;
   padding: 20px 40px 40px 40px;
 `;
 

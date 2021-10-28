@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   width: 1170px;
   margin: 0 auto;
+  padding-bottom: 100px;
 `;
 
 export const BannerContainer = styled.div`
@@ -93,4 +94,5 @@ export const RecommendCardContainer = styled(ReviewCardContainer)`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 10px;
+  margin-bottom: 0;
 `;
