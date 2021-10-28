@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const RvContainer = styled.div`
   display: inline-block;
   width: 260px;
-  height: 295px;
+  height: 288px;
   cursor: pointer;
 `;
 
@@ -16,11 +16,8 @@ export const RcmdContainer = styled.div`
   align-items: center;
   cursor: pointer;
 `;
-export const Img = styled.img.attrs((props) => ({
-  src: props.src,
-  alt: props.alt,
-  title: props.title,
-}))`
+
+export const Img = styled.img`
   border: 1px solid #dedede;
   border-radius: 50%;
 `;
@@ -50,6 +47,7 @@ export const Group = styled.div`
 export const Category = styled.div`
   font-family: 'SHSN-M';
   font-size: 11px;
+  line-height: 14px;
   color: #808084;
   background: #f2f2f2 0% 0% no-repeat padding-box;
   border-radius: 5px;
@@ -63,6 +61,7 @@ export const RvCategory = styled(Category)`
 export const RvChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 18px;
+  line-height: 22px;
   padding: 0 5px 8px 0;
 
   max-width: 130px;
@@ -74,12 +73,14 @@ export const RvChannelName = styled.div`
 export const RcmdChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 16px;
+  line-height: 21px;
   padding-bottom: 3px;
 `;
 
 export const SubscriberCount = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
+  line-height: 18px;
   color: #94969b;
   padding-bottom: 8px;
 `;
@@ -94,11 +95,17 @@ export const RcmdStarRatings = styled(StarRatings)`
 `;
 
 export const StarBase = styled.div`
+  font-family: 'SHSN-M';
+  font-size: 16px;
+  line-height: 18px;
   color: #d8d8d8;
   z-index: 0;
 `;
 
 export const StarFill = styled.div`
+  font-family: 'SHSN-M';
+  font-size: 16px;
+  line-height: 18px;
   color: #f8d26a;
   z-index: 1;
   position: absolute;
@@ -111,6 +118,7 @@ export const StarFill = styled.div`
 export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
+  line-height: 18px;
   padding: 0px 5px 15px 0;
 `;
 
@@ -121,6 +129,7 @@ export const RcmdRatings = styled(Ratings)`
 export const ReviewCount = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
+  line-height: 18px;
   color: #94969b;
   padding-bottom: 15px;
 `;
@@ -132,6 +141,7 @@ export const RcmdReviewCount = styled(ReviewCount)`
 export const BestReviewTitle = styled.div`
   font-family: 'SHSN-B';
   font-size: 12px;
+  line-height: 15px;
   padding-bottom: 5px;
 `;
 
