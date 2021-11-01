@@ -2,7 +2,7 @@ import * as style from './style';
 
 export default function Login() {
   return (
-    <style.loginContainer>
+    <style.LoginContainer>
       <style.Title>유튜버를 추천받고<br /> 유튜버 리뷰를 남겨보세요!</style.Title>
       <style.LoginBtn>
         <style.GoogleLogo />
@@ -12,6 +12,6 @@ export default function Login() {
       <style.CreateLetter href='https://accounts.google.com/signin/v2/identifier?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%2F%3Fhl%3Dko&hl=ko&ec=GAlAwAE&flowName=GlifWebSignIn&flowEntry=AddSession'>
         계정 만들기
       </style.CreateLetter>
-    </style.loginContainer>
+    </style.LoginContainer>
   );
 }

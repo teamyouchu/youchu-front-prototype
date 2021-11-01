@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const loginContainer = styled.div`
+export const LoginContainer = styled.div`
   width: 500px;
   height: 400px;
   margin: 0 auto;
