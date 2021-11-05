@@ -2,6 +2,7 @@ import React from 'react';
 import * as style from './style';
 import { useLocation } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import DetailReviewInfo from 'components/DetailReviewInfo';
 
 function YoutuberHeader({ data }) {
   return (
@@ -93,15 +94,7 @@ function YoutuberReviewDetail({ data }) {
           </style.YoutuberSummartRankReviewCount>
         </style.ReviewDetailInfo>
       </style.ReviewContainerHeader>
-      <style.BestReviewContainer>
-        <style.FlexContainerColumn style={{ marginTop: '30px' }}>
-          <style.BoldSpan>3.5</style.BoldSpan>
-          <style.StarRatings style={{ margin: '0px' }}>
-            <style.StarBase>★★★★★</style.StarBase>
-            <style.StarFill ratings={per}>★★★★★</style.StarFill>
-          </style.StarRatings>
-        </style.FlexContainerColumn>
-      </style.BestReviewContainer>
+      <DetailReviewInfo IsBest={true} />
       <style.ReviewContainerFooter>
         <style.ReviewButton>
           <style.BoldSpan>{data.channelName}</style.BoldSpan> &nbsp;리뷰 모두 보기
@@ -148,6 +141,8 @@ export default function Review() {
           </style.YoutuberCardContainer>
         </style.FlexContainer>
       </style.Contatiner>
+      {/* 임시로 배치함 삭제해야함 */}
+      <div style={{ height: '400px', width: '200px' }}></div>
     </>
   );
 }
