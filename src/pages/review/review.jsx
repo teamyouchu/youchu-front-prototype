@@ -1,27 +1,28 @@
 import React from 'react';
 import * as style from './style';
 import { useLocation } from 'react-router';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import DetailReviewInfo from 'components/DetailReviewInfo';
 
 function YoutuberHeader({ data }) {
   return (
-    <style.YoutuberContainer>
+    <style.FlexContainer>
       <style.RcImg src={data.img} alt={data.channelName} title={data.channelName} />
       <style.YoutudberInfo>
         <style.YoutuberHeaderTitle>{data.channelName}</style.YoutuberHeaderTitle>
         <style.YoutuberSummaryContainer>
           <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-          <style.YoutuberSummaryRankScore>{data.ratings}</style.YoutuberSummaryRankScore>
+          <style.Score>{data.ratings}</style.Score>
           <style.YoutuberSummartRankReviewCount>
             ({data.reviewCount})개 리뷰
           </style.YoutuberSummartRankReviewCount>
         </style.YoutuberSummaryContainer>
       </style.YoutudberInfo>
-    </style.YoutuberContainer>
+    </style.FlexContainer>
   );
 }
 
 function YoutuberDetail({ data }) {
-  console.log(data);
   return (
     <style.YoutuberDetailContainer>
       <style.YoutuberDetailTitle>{data.channelName} 소개</style.YoutuberDetailTitle>
@@ -48,7 +49,10 @@ function YoutuberDetail({ data }) {
   );
 }
 
-function CategoryYoutuberCard() {
+function YoutuberCard() {
+  // const per = data.ratings * 20;
+  // TODO: 백에서 별점 정보 가져와야 함
+  const per = '4.0' * 20;
   return (
     <style.CategoryCardContainer>
       <style.CategoryImg
@@ -57,10 +61,47 @@ function CategoryYoutuberCard() {
         title="딩고 뮤직 / dingo music"
       />
       <style.CategoryCardDetail>
-        <span>딩고 뮤직</span>
-        <style.CategoryTag>음악</style.CategoryTag>
+        <style.CategoryCardDetailTitle>딩고 뮤직</style.CategoryCardDetailTitle>
+        <style.FlexContainer>
+          <style.StarRatings>
+            <style.StarBase>★★★★★</style.StarBase>
+            <style.StarFill ratings={per}>★★★★★</style.StarFill>
+          </style.StarRatings>
+          <style.Score>4.0</style.Score>
+        </style.FlexContainer>
+        <style.CategoryTagContainer>
+          <style.CategoryTag>음악</style.CategoryTag>
+        </style.CategoryTagContainer>
       </style.CategoryCardDetail>
     </style.CategoryCardContainer>
+  );
+}
+
+function YoutuberReviewDetail({ data }) {
+  const per = data.ratings * 20;
+  return (
+    <style.ReviewContainer>
+      <style.ReviewContainerHeader>
+        <style.YoutuberDetailTitle>{data.channelName} 리뷰</style.YoutuberDetailTitle>
+        <style.ReviewDetailInfo>
+          <style.TotalScore>{data.ratings}</style.TotalScore>
+          <style.StarRatings style={{ margin: '0px 10px 0px 10px' }}>
+            <style.StarBase>★★★★★</style.StarBase>
+            <style.StarFill ratings={per}>★★★★★</style.StarFill>
+          </style.StarRatings>
+          <style.YoutuberSummartRankReviewCount>
+            ({data.reviewCount})개 리뷰
+          </style.YoutuberSummartRankReviewCount>
+        </style.ReviewDetailInfo>
+      </style.ReviewContainerHeader>
+      <DetailReviewInfo IsBest={true} />
+      <style.ReviewContainerFooter>
+        <style.ReviewButton>
+          <style.BoldSpan>{data.channelName}</style.BoldSpan> &nbsp;리뷰 모두 보기
+          <style.RightButton icon={faChevronRight} />
+        </style.ReviewButton>
+      </style.ReviewContainerFooter>
+    </style.ReviewContainer>
   );
 }
 
@@ -71,6 +112,7 @@ const temp2 =
 
 export default function Review() {
   const location = useLocation();
+
   return (
     <>
       <style.GrayBar />
@@ -78,17 +120,29 @@ export default function Review() {
         <style.YoutuberHeaderContainer>
           <YoutuberHeader data={location.state} />
         </style.YoutuberHeaderContainer>
-        <style.YoutuberContainer>
+        <style.FlexContainer>
           <YoutuberDetail data={location.state} />
-          <style.CategoryLikeContainer>
+          <style.YoutuberCardContainer>
             <style.CategoryTitle>{location.state.category} 유튜버</style.CategoryTitle>
-            <CategoryYoutuberCard />
-            <CategoryYoutuberCard />
-            <CategoryYoutuberCard />
-            <CategoryYoutuberCard />
-          </style.CategoryLikeContainer>
-        </style.YoutuberContainer>
+            <YoutuberCard />
+            <YoutuberCard />
+            <YoutuberCard />
+            <YoutuberCard />
+          </style.YoutuberCardContainer>
+        </style.FlexContainer>
+        <style.FlexContainer>
+          <YoutuberReviewDetail data={location.state} />
+          <style.YoutuberCardContainer>
+            <style.CategoryTitle>인기 유튜버</style.CategoryTitle>
+            <YoutuberCard />
+            <YoutuberCard />
+            <YoutuberCard />
+            <YoutuberCard />
+          </style.YoutuberCardContainer>
+        </style.FlexContainer>
       </style.Contatiner>
+      {/* 임시로 배치함 삭제해야함 */}
+      <div style={{ height: '400px', width: '200px' }}></div>
     </>
   );
 }
