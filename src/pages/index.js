@@ -5,4 +5,5 @@ export { default as Review } from 'pages/review/review';
 export { default as List } from 'pages/list/list';
 export { default as Login } from 'pages/login/login';
 export { default as EmptyPage } from 'pages/emptyPage/emptyPage';
+export { default as Signup } from 'pages/signup/signup';
 export { default as TopBar } from 'components/header/TopBar';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { TopBar, Home, List, Review, ReviewWrite, Login, EmptyPage } from 'pages/index';
+import { TopBar, Home, List, Review, ReviewWrite, Login, EmptyPage, Signup } from 'pages/index';
 import * as style from './styles/RouterStyle';
 
 export default function AppRouter() {
@@ -15,6 +15,7 @@ export default function AppRouter() {
             <Route path="/review" component={Review} />
             <Route path="/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
           </style.Container>
           <Route component={EmptyPage} />
         </Switch>
