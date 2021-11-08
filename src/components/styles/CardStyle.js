@@ -85,45 +85,15 @@ export const SubscriberCount = styled.div`
   padding-bottom: 8px;
 `;
 
-export const StarRatings = styled.div`
-  position: relative;
-  padding: 0px 5px 15px 0;
-`;
-
-export const RcmdStarRatings = styled(StarRatings)`
-  padding: 0px 6px 6px 0;
-`;
-
-export const StarBase = styled.div`
-  font-family: 'SHSN-M';
-  font-size: 16px;
-  line-height: 18px;
-  color: #d8d8d8;
-  z-index: 0;
-`;
-
-export const StarFill = styled.div`
-  font-family: 'SHSN-M';
-  font-size: 16px;
-  line-height: 18px;
-  color: #f8d26a;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: ${(props) => props.ratings + '%'};
-`;
-
 export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  padding: 0px 5px 15px 0;
+  padding: 0px 5px 15px 5px;
 `;
 
 export const RcmdRatings = styled(Ratings)`
-  padding: 0px 2px 5px 0;
+  padding: 0px 2px 5px 5px;
 `;
 
 export const ReviewCount = styled.div`
