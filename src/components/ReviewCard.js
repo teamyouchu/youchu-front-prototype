@@ -1,5 +1,6 @@
 import * as style from './styles/CardStyle';
 import { useHistory } from 'react-router-dom';
+import StarRating from './StarRating';
 
 export default function ReviewCard({
   img,
@@ -10,7 +11,6 @@ export default function ReviewCard({
   ratings,
   bestReview,
 }) {
-  const per = ratings * 20;
   const imgUrl = '/images/' + img + '.jpg';
   let history = useHistory();
 
@@ -39,10 +39,7 @@ export default function ReviewCard({
           <style.SubscriberCount>구독자 {subscriberCount}명</style.SubscriberCount>
         </style.Group>
         <style.Group>
-          <style.StarRatings>
-            <style.StarBase>★★★★★</style.StarBase>
-            <style.StarFill ratings={per}>★★★★★</style.StarFill>
-          </style.StarRatings>
+          <StarRating ratings={ratings} paddingB={'15px'} />
           <style.Ratings>{ratings}</style.Ratings>
           <style.ReviewCount>({reviewCount}개 리뷰)</style.ReviewCount>
         </style.Group>
