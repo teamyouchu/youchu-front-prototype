@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StarRatings = styled.div`
   position: relative;
   padding-bottom: ${(props) => props.paddingB};
+  margin: ${(props) => props.margins};
 `;
 
 export const StarBase = styled.div`
