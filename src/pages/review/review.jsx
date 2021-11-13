@@ -5,6 +5,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
 import VideoDisplay from 'components/VideoDisplay';
+import ReviewOverview from 'components/ReviewOverview';
 
 function YoutuberHeader({ data }) {
   return (
@@ -16,9 +17,9 @@ function YoutuberHeader({ data }) {
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
             <style.Score>{data.ratings}</style.Score>
-            <style.YoutuberSummartRankReviewCount>
+            <style.Span size="14px" color="#94969b" margins="0px 2px">
               ({data.reviewCount})개 리뷰
-            </style.YoutuberSummartRankReviewCount>
+            </style.Span>
           </style.YoutuberSummaryContainer>
         </style.YoutudberInfo>
       </style.DivColumn>
@@ -90,7 +91,7 @@ function YoutuberCard() {
 function YoutuberReviewDetail({ data }) {
   return (
     <style.ReviewContainer>
-      <style.ReviewContainerHeader>
+      {/* <style.ReviewContainerHeader>
         <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
           {data.channelName} 리뷰
         </style.Span>
@@ -101,7 +102,8 @@ function YoutuberReviewDetail({ data }) {
             ({data.reviewCount})개 리뷰
           </style.YoutuberSummartRankReviewCount>
         </style.ReviewDetailInfo>
-      </style.ReviewContainerHeader>
+      </style.ReviewContainerHeader> */}
+      <ReviewOverview data={data} />
       <DetailReviewInfo IsBest={true} />
       <style.ReviewContainerFooter>
         <style.AllDetailButton>

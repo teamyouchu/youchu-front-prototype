@@ -68,12 +68,6 @@ export const Score = styled.span`
   font-family: 'SHSN-M';
 `;
 
-export const YoutuberSummartRankReviewCount = styled.span`
-  margin-left: 2px;
-  font-size: 14px;
-  color: #94969b;
-`;
-
 export const Contatiner = styled.div`
   display: flex;
   width: 1120px;
@@ -180,15 +174,6 @@ export const ReviewContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ReviewContainerHeader = styled.div`
-  width: 100%;
-  height: 130px;
-  display: flex;
-  flex-direction: column;
-  padding: 0px 40px;
-  border-bottom: 1px solid #dedede;
-`;
-
 export const ReviewContainerFooter = styled.div`
   width: 100%;
   height: 50px;
@@ -205,19 +190,6 @@ export const AllDetailButton = styled.div`
 export const RightButton = styled(FontAwesomeIcon)`
   margin-left: 7px;
   font-family: 'SHSN-R';
-`;
-
-export const BoldSpan = styled.span`
-  font-family: 'SHSN-B';
-  font-size: 14px;
-`;
-
-export const TotalScore = styled(BoldSpan)`
-  font-size: 25px;
-`;
-
-export const ReviewDetailInfo = styled(FlexContainer)`
-  margin: 30px 0px 0px 0px;
 `;
 
 export const BestReviewContainer = styled(FlexContainer)`
