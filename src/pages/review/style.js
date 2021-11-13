@@ -7,6 +7,8 @@ export const GrayBar = styled.div`
 
 export const FlexContainer = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: ${(props) => props.justify};
 `;
 export const FlexContainerColumn = styled(FlexContainer)`
   flex-direction: column;
@@ -20,8 +22,35 @@ export const YoutudberInfo = styled.div`
   font-family: 'SHSN-B';
 `;
 
+export const Span = styled.span`
+  font-family: ${(props) => props.font};
+  font-size: ${(props) => props.size};
+  color: ${(props) => props.color};
+  margin: ${(props) => props.margins};
+`;
+
 export const YoutuberHeaderTitle = styled.span`
   font-size: 28px;
+`;
+
+export const DivColumn = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: ${(props) => props.align};
+  justify-content: ${(props) => props.justify};
+`;
+
+export const ReviewButton = styled.div`
+  width: 240px;
+  height: 38px;
+  border-radius: 5px;
+  background-color: #5c7fdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const YoutuberSummaryContainer = styled.div`
@@ -47,7 +76,7 @@ export const YoutuberSummartRankReviewCount = styled.span`
 
 export const Contatiner = styled.div`
   display: flex;
-  width: 1100px;
+  width: 1120px;
   flex-direction: column;
   margin: 0 auto;
 `;
@@ -93,7 +122,7 @@ export const YoutuberCardContainer = styled(YoutuberDetailContainer)`
   width: 298px;
   height: 485px;
   margin-left: 20px;
-  padding: 0;
+  padding: 0px;
 `;
 
 export const CategoryTitle = styled.span`
@@ -135,31 +164,6 @@ export const CategoryTagContainer = styled.div`
   margin-top: 5px;
 `;
 
-export const StarBase = styled.div`
-  font-family: 'SHSN-M';
-  font-size: 16px;
-  line-height: 18px;
-  color: #d8d8d8;
-  z-index: 0;
-`;
-
-export const StarRatings = styled.div`
-  position: relative;
-`;
-
-export const StarFill = styled.div`
-  font-family: 'SHSN-M';
-  font-size: 16px;
-  line-height: 18px;
-  color: #f8d26a;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: ${(props) => props.ratings + '%'};
-`;
-
 export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
@@ -181,7 +185,7 @@ export const ReviewContainerHeader = styled.div`
   height: 130px;
   display: flex;
   flex-direction: column;
-  padding: 30px 40px 0px 40px;
+  padding: 0px 40px;
   border-bottom: 1px solid #dedede;
 `;
 
@@ -190,11 +194,11 @@ export const ReviewContainerFooter = styled.div`
   height: 50px;
   display: flex;
   justify-content: center;
-  padding: 21px;
+  align-items: center;
   border-top: 1px solid #dedede;
 `;
 
-export const ReviewButton = styled.div`
+export const AllDetailButton = styled.div`
   cursor: pointer;
 `;
 
@@ -220,6 +224,31 @@ export const BestReviewContainer = styled(FlexContainer)`
   height: 300px;
   width: 100%;
   padding: 20px 0px 20px 40px;
+`;
+
+export const VideoContainer = styled.div`
+  width: 800px;
+  height: 382px;
+  border: 1px solid #dedede;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const VideoContentContainer = styled.div`
+  width: 100%;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 40px;
+  border-bottom: 1px solid #dedede;
+`;
+
+export const FiliterButton = styled(Span)`
+  font-family: 'SHSN-M';
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Img = styled.img.attrs((props) => ({

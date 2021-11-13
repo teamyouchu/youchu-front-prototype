@@ -10,7 +10,7 @@ export const FlexContainerColumn = styled(FlexContainer)`
 `;
 
 export const ReviewContainer = styled(FlexContainer)`
-  height: 400px;
+  height: 346px;
   width: 100%;
   padding: 20px 0px 20px 40px;
   position: relative;

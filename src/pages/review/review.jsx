@@ -3,21 +3,32 @@ import * as style from './style';
 import { useLocation } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import DetailReviewInfo from 'components/DetailReviewInfo';
+import StarRating from 'components/StarRating';
+import VideoDisplay from 'components/VideoDisplay';
 
 function YoutuberHeader({ data }) {
   return (
     <style.FlexContainer>
-      <style.RcImg src={data.img} alt={data.channelName} title={data.channelName} />
-      <style.YoutudberInfo>
-        <style.YoutuberHeaderTitle>{data.channelName}</style.YoutuberHeaderTitle>
-        <style.YoutuberSummaryContainer>
-          <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-          <style.Score>{data.ratings}</style.Score>
-          <style.YoutuberSummartRankReviewCount>
-            ({data.reviewCount})개 리뷰
-          </style.YoutuberSummartRankReviewCount>
-        </style.YoutuberSummaryContainer>
-      </style.YoutudberInfo>
+      <style.DivColumn>
+        <style.RcImg src={data.img} alt={data.channelName} title={data.channelName} />
+        <style.YoutudberInfo>
+          <style.YoutuberHeaderTitle>{data.channelName}</style.YoutuberHeaderTitle>
+          <style.YoutuberSummaryContainer>
+            <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
+            <style.Score>{data.ratings}</style.Score>
+            <style.YoutuberSummartRankReviewCount>
+              ({data.reviewCount})개 리뷰
+            </style.YoutuberSummartRankReviewCount>
+          </style.YoutuberSummaryContainer>
+        </style.YoutudberInfo>
+      </style.DivColumn>
+      <style.DivColumn align="center" justify="flex-end">
+        <style.ReviewButton>
+          <style.Span color="#fff" font="SHSN-B" size="14px">
+            이 유튜버 리뷰하기
+          </style.Span>
+        </style.ReviewButton>
+      </style.DivColumn>
     </style.FlexContainer>
   );
 }
@@ -25,7 +36,9 @@ function YoutuberHeader({ data }) {
 function YoutuberDetail({ data }) {
   return (
     <style.YoutuberDetailContainer>
-      <style.YoutuberDetailTitle>{data.channelName} 소개</style.YoutuberDetailTitle>
+      <style.Span font="SHSN-B" size="26px">
+        {data.channelName} 소개
+      </style.Span>
 
       <style.YoutuberDetailContent>
         <style.YoutuberDetailGray>홈페이지</style.YoutuberDetailGray>
@@ -52,7 +65,7 @@ function YoutuberDetail({ data }) {
 function YoutuberCard() {
   // const per = data.ratings * 20;
   // TODO: 백에서 별점 정보 가져와야 함
-  const per = '4.0' * 20;
+  const per = '4.0';
   return (
     <style.CategoryCardContainer>
       <style.CategoryImg
@@ -63,10 +76,7 @@ function YoutuberCard() {
       <style.CategoryCardDetail>
         <style.CategoryCardDetailTitle>딩고 뮤직</style.CategoryCardDetailTitle>
         <style.FlexContainer>
-          <style.StarRatings>
-            <style.StarBase>★★★★★</style.StarBase>
-            <style.StarFill ratings={per}>★★★★★</style.StarFill>
-          </style.StarRatings>
+          <StarRating ratings={per} />
           <style.Score>4.0</style.Score>
         </style.FlexContainer>
         <style.CategoryTagContainer>
@@ -78,17 +88,15 @@ function YoutuberCard() {
 }
 
 function YoutuberReviewDetail({ data }) {
-  const per = data.ratings * 20;
   return (
     <style.ReviewContainer>
       <style.ReviewContainerHeader>
-        <style.YoutuberDetailTitle>{data.channelName} 리뷰</style.YoutuberDetailTitle>
+        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
+          {data.channelName} 리뷰
+        </style.Span>
         <style.ReviewDetailInfo>
           <style.TotalScore>{data.ratings}</style.TotalScore>
-          <style.StarRatings style={{ margin: '0px 10px 0px 10px' }}>
-            <style.StarBase>★★★★★</style.StarBase>
-            <style.StarFill ratings={per}>★★★★★</style.StarFill>
-          </style.StarRatings>
+          <StarRating ratings={data.ratings} margins={'0px 10px 0px 10px'} />
           <style.YoutuberSummartRankReviewCount>
             ({data.reviewCount})개 리뷰
           </style.YoutuberSummartRankReviewCount>
@@ -96,12 +104,48 @@ function YoutuberReviewDetail({ data }) {
       </style.ReviewContainerHeader>
       <DetailReviewInfo IsBest={true} />
       <style.ReviewContainerFooter>
-        <style.ReviewButton>
-          <style.BoldSpan>{data.channelName}</style.BoldSpan> &nbsp;리뷰 모두 보기
+        <style.AllDetailButton>
+          <style.Span font="SHSN-B" size="14px">
+            {data.channelName}
+          </style.Span>{' '}
+          &nbsp;리뷰 모두 보기
           <style.RightButton icon={faChevronRight} />
-        </style.ReviewButton>
+        </style.AllDetailButton>
       </style.ReviewContainerFooter>
     </style.ReviewContainer>
+  );
+}
+
+function YoutuberVideo({ data }) {
+  return (
+    <style.VideoContainer>
+      <style.VideoContentContainer>
+        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
+          {data.channelName} 영상
+        </style.Span>
+        <style.FlexContainer justify="flex-end">
+          <style.FiliterButton color="#94969B" margins="0px 15px 0px">
+            조회수 순
+          </style.FiliterButton>
+          <style.FiliterButton color="#EB3323">업로드 날짜 순</style.FiliterButton>
+        </style.FlexContainer>
+        <style.FlexContainer justify="space-between">
+          <VideoDisplay />
+          <VideoDisplay />
+          <VideoDisplay />
+        </style.FlexContainer>
+      </style.VideoContentContainer>
+
+      <style.ReviewContainerFooter>
+        <style.AllDetailButton>
+          <style.Span font="SHSN-B" size="14px">
+            {data.channelName}
+          </style.Span>{' '}
+          &nbsp;영상 모두 보기
+          <style.RightButton icon={faChevronRight} />
+        </style.AllDetailButton>
+      </style.ReviewContainerFooter>
+    </style.VideoContainer>
   );
 }
 
@@ -121,24 +165,27 @@ export default function Review() {
           <YoutuberHeader data={location.state} />
         </style.YoutuberHeaderContainer>
         <style.FlexContainer>
-          <YoutuberDetail data={location.state} />
-          <style.YoutuberCardContainer>
-            <style.CategoryTitle>{location.state.category} 유튜버</style.CategoryTitle>
-            <YoutuberCard />
-            <YoutuberCard />
-            <YoutuberCard />
-            <YoutuberCard />
-          </style.YoutuberCardContainer>
-        </style.FlexContainer>
-        <style.FlexContainer>
-          <YoutuberReviewDetail data={location.state} />
-          <style.YoutuberCardContainer>
-            <style.CategoryTitle>인기 유튜버</style.CategoryTitle>
-            <YoutuberCard />
-            <YoutuberCard />
-            <YoutuberCard />
-            <YoutuberCard />
-          </style.YoutuberCardContainer>
+          <style.FlexContainerColumn>
+            <YoutuberDetail data={location.state} />
+            <YoutuberReviewDetail data={location.state} />
+            <YoutuberVideo data={location.state} />
+          </style.FlexContainerColumn>
+          <style.FlexContainerColumn>
+            <style.YoutuberCardContainer>
+              <style.CategoryTitle>{location.state.category} 유튜버</style.CategoryTitle>
+              <YoutuberCard />
+              <YoutuberCard />
+              <YoutuberCard />
+              <YoutuberCard />
+            </style.YoutuberCardContainer>
+            <style.YoutuberCardContainer>
+              <style.CategoryTitle>인기 유튜버</style.CategoryTitle>
+              <YoutuberCard />
+              <YoutuberCard />
+              <YoutuberCard />
+              <YoutuberCard />
+            </style.YoutuberCardContainer>
+          </style.FlexContainerColumn>
         </style.FlexContainer>
       </style.Contatiner>
       {/* 임시로 배치함 삭제해야함 */}
