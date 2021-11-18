@@ -18,6 +18,11 @@ export const Title = styled.div`
   margin-bottom: 20px;
 `;
 
+export const FilterDropdownContainer = styled.div`
+  display: flex;
+  margin-bottom: 60px;
+`;
+
 export const CardContainer = styled.div`
   display: grid;
   row-gap: 60px;

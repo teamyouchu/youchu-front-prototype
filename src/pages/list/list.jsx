@@ -19,6 +19,11 @@ export default function List() {
       text: '게임',
       value: '게임',
     },
+    {
+      key: '영화/애니메이션',
+      text: '영화/애니메이션',
+      value: '영화/애니메이션',
+    },
   ];
 
   const sortOptions = [
@@ -46,8 +51,11 @@ export default function List() {
   return (
     <style.ListContainer>
       <style.Title>전체 유튜버</style.Title>
-      <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
-      <FilterDropdown placeholder="정렬" options={sortOptions} />
+      <style.FilterDropdownContainer>
+        <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
+        <FilterDropdown placeholder="정렬" options={sortOptions} />
+      </style.FilterDropdownContainer>
+      
       <style.CardContainer>
         <ReviewCard
           img="월간 윤종신"
