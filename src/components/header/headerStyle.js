@@ -16,7 +16,7 @@ export const HeaderContainer = styled.div`
   transition: box-shadow 0.5s;
   &.scrolled {
     box-shadow: 0 0 15px #dedede;
-    /* border: 1px solid #dedede; */
+    border: 1px solid #dedede;
   }
 `;
 
