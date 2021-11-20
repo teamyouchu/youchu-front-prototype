@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   width: 1170px;
   margin: 0 auto;
+  padding-top: 80px;
   padding-bottom: 100px;
 `;
 
