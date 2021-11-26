@@ -37,8 +37,8 @@ function YoutuberHeader({ data }) {
 function YoutuberDetail({ data }) {
   return (
     <style.YoutuberDetailContainer>
-      <style.Span font="SHSN-M" size="26px">
-        {data.channelName} 유튜버 소개
+      <style.Span font="SHSN-B" size="26px">
+        {data.channelName} 소개
       </style.Span>
 
       <style.YoutuberDetailContent>
