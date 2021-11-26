@@ -180,7 +180,7 @@ export default function Review() {
               <YoutuberCard />
               <YoutuberCard />
             </style.YoutuberCardContainer>
-            <style.YoutuberCardContainer>
+            <style.YoutuberCardContainer style={{ marginTop: '30px' }}>
               <style.CategoryTitle>인기 유튜버</style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />

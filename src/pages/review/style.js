@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const GrayBar = styled.div`
   height: 120px;
   background-color: #75787a;
+  margin-top: 80px;
 `;
 
 export const FlexContainer = styled.div`
@@ -129,7 +130,7 @@ export const CategoryCardContainer = styled.div`
   display: flex;
   width: 100%;
   border-bottom: 1px solid #dedede;
-  margin-top: 15.3px;
+  margin-top: 15px;
 `;
 
 export const CategoryCardDetail = styled.div`
@@ -169,7 +170,7 @@ export const ReviewContainer = styled.div`
   width: 800px;
   height: 530px;
   border: 1px solid #dedede;
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
 `;
