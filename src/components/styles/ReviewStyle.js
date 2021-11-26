@@ -9,10 +9,16 @@ export const FlexContainerColumn = styled(FlexContainer)`
   margin-top: 30px;
 `;
 
+export const DetailContainer = styled(FlexContainerColumn)`
+  margin-top: 0px;
+  filter: ${(props) => props.Blur};
+`;
+
 export const ReviewContainer = styled(FlexContainer)`
   height: 346px;
   width: 100%;
   padding: 20px 0px 20px 40px;
+  border-top: 1px solid #dedede;
   position: relative;
 `;
 

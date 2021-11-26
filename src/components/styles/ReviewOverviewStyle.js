@@ -16,7 +16,6 @@ export const ReviewContainerHeader = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0px 40px;
-  border-bottom: 1px solid #dedede;
 `;
 
 export const Span = styled.span`
