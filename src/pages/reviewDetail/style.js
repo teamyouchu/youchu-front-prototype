@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export const GrayBar = styled.div`
   height: 120px;
   background-color: #75787a;
@@ -11,8 +12,16 @@ export const FlexContainer = styled.div`
   width: 100%;
   justify-content: ${(props) => props.justify};
 `;
+
 export const FlexContainerColumn = styled(FlexContainer)`
   flex-direction: column;
+  position: relative;
+`;
+
+export const ReviewOverviewContainer = styled.div`
+  margin-top: 50px;
+  border: 1px solid #dedede;
+  height: 148px;
 `;
 
 export const YoutudberInfo = styled.div`
@@ -87,7 +96,7 @@ export const YoutuberDetailContainer = styled.div`
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  padding: 30px 40px;
+  padding: 25px 40px;
 `;
 
 export const YoutuberDetailTitle = styled.div`
@@ -168,24 +177,12 @@ export const Ratings = styled.div`
 
 export const ReviewContainer = styled.div`
   width: 800px;
-  height: 530px;
+  height: 950px;
   border: 1px solid #dedede;
-  margin-top: 30px;
+  border-top: none;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-`;
-
-export const ReviewContainerFooter = styled.div`
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #dedede;
-`;
-
-export const AllDetailButton = styled.div`
-  cursor: pointer;
 `;
 
 export const RightButton = styled(FontAwesomeIcon)`
@@ -219,7 +216,6 @@ export const VideoContentContainer = styled.div`
 
 export const FiliterButton = styled(Span)`
   font-family: 'SHSN-M';
-  color: ${(props) => props.color};
   &:hover {
     cursor: pointer;
   }

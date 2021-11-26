@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as style from './style';
-import { useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
@@ -8,6 +8,12 @@ import VideoDisplay from 'components/VideoDisplay';
 import ReviewOverview from 'components/ReviewOverview';
 
 function YoutuberHeader({ data }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/reviewWrite');
+  };
+
   return (
     <style.FlexContainer>
       <style.DivColumn>
@@ -24,7 +30,7 @@ function YoutuberHeader({ data }) {
         </style.YoutudberInfo>
       </style.DivColumn>
       <style.DivColumn align="center" justify="flex-end">
-        <style.ReviewButton>
+        <style.ReviewButton onClick={handleClick}>
           <style.Span color="#fff" font="SHSN-B" size="14px">
             이 유튜버 리뷰하기
           </style.Span>
@@ -37,11 +43,11 @@ function YoutuberHeader({ data }) {
 function YoutuberDetail({ data }) {
   return (
     <style.YoutuberDetailContainer>
-      <style.Span font="SHSN-B" size="26px">
-        {data.channelName} 소개
+      <style.Span font="SHSN-M" size="26px">
+        {data.channelName} 유튜버 소개
       </style.Span>
 
-      <style.YoutuberDetailContent>
+      <style.YoutuberDetailContent style={{ marginTop: '25px' }}>
         <style.YoutuberDetailGray>홈페이지</style.YoutuberDetailGray>
         <a href="https://www.youtube.com/channel/UCRnoBo60_joBvIQCoAiNCqg">
           https://www.youtube.com/channel/UCRnoBo60_joBvIQCoAiNCqg
@@ -89,24 +95,28 @@ function YoutuberCard() {
 }
 
 function YoutuberReviewDetail({ data }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push({
+      pathname: '/reviewDetail',
+      state: {
+        img: data.img,
+        channelName: data.channelName,
+        ratings: data.ratings,
+        reviewCount: data.reviewCount,
+        subscriberCount: data.subscriberCount,
+        category: data.category,
+      },
+    });
+  };
+
   return (
     <style.ReviewContainer>
-      {/* <style.ReviewContainerHeader>
-        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
-          {data.channelName} 리뷰
-        </style.Span>
-        <style.ReviewDetailInfo>
-          <style.TotalScore>{data.ratings}</style.TotalScore>
-          <StarRating ratings={data.ratings} margins={'0px 10px 0px 10px'} />
-          <style.YoutuberSummartRankReviewCount>
-            ({data.reviewCount})개 리뷰
-          </style.YoutuberSummartRankReviewCount>
-        </style.ReviewDetailInfo>
-      </style.ReviewContainerHeader> */}
       <ReviewOverview data={data} />
       <DetailReviewInfo IsBest={true} />
       <style.ReviewContainerFooter>
-        <style.AllDetailButton>
+        <style.AllDetailButton onClick={handleClick}>
           <style.Span font="SHSN-B" size="14px">
             {data.channelName}
           </style.Span>{' '}
@@ -119,17 +129,42 @@ function YoutuberReviewDetail({ data }) {
 }
 
 function YoutuberVideo({ data }) {
+  const [currentClick, setCurrentClick] = useState(null);
+  const [viewsColor, setViewsColor] = useState('#94969B');
+  const [uploadColor, setuploadColor] = useState('#EB3323');
+
+  const onClick = (e) => {
+    setCurrentClick(e.target.id);
+  };
+
+  useEffect(() => {
+    if (currentClick === 'uploadOrder') {
+      setViewsColor('#94969B');
+      setuploadColor('#EB3323');
+    } else {
+      setViewsColor('#EB3323');
+      setuploadColor('#94969B');
+    }
+  }, [currentClick]);
+
   return (
     <style.VideoContainer>
       <style.VideoContentContainer>
-        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
+        <style.Span font="SHSN-M" size="26px" margins="30px 0px 10px 0px">
           {data.channelName} 영상
         </style.Span>
         <style.FlexContainer justify="flex-end">
-          <style.FiliterButton color="#94969B" margins="0px 15px 0px">
+          <style.FiliterButton
+            id="viewCountOrder"
+            onClick={onClick}
+            color={viewsColor}
+            margins="0px 15px 0px"
+          >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton color="#EB3323">업로드 날짜 순</style.FiliterButton>
+          <style.FiliterButton onClick={onClick} id="uploadOrder" color={uploadColor}>
+            업로드 날짜 순
+          </style.FiliterButton>
         </style.FlexContainer>
         <style.FlexContainer justify="space-between">
           <VideoDisplay />
@@ -180,7 +215,7 @@ export default function Review() {
               <YoutuberCard />
               <YoutuberCard />
             </style.YoutuberCardContainer>
-            <style.YoutuberCardContainer>
+            <style.YoutuberCardContainer style={{ marginTop: '30px' }}>
               <style.CategoryTitle>인기 유튜버</style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />
