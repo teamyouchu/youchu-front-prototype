@@ -21,6 +21,7 @@ export const FlexContainerColumn = styled(FlexContainer)`
 export const ReviewOverviewContainer = styled.div`
   margin-top: 50px;
   border: 1px solid #dedede;
+  border-bottom: none;
   height: 148px;
 `;
 

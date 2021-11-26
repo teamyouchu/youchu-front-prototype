@@ -17,7 +17,8 @@ export const DetailContainer = styled(FlexContainerColumn)`
 export const ReviewContainer = styled(FlexContainer)`
   height: 330px;
   width: 100%;
-  padding: 20px 0px 20px 40px;
+  padding: 0px 0px 20px 40px;
+  border-bottom: 1px solid #dedede;
   position: relative;
   &.BestReviewContainer {
     border-top: none;
