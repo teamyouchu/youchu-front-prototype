@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 import {
   TopBar,
   Home,
@@ -17,16 +18,18 @@ export default function AppRouter() {
     <>
       <Router>
         <TopBar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/list" component={List} />
-          <Route path="/review" component={Review} />
-          <Route path="/reviewWrite" component={ReviewWrite} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/reviewDetail" component={ReviewDetail} />
-          <Route component={EmptyPage} />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/list" component={List} />
+            <Route path="/review" component={Review} />
+            <Route path="/reviewWrite" component={ReviewWrite} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/reviewDetail" component={ReviewDetail} />
+            <Route component={EmptyPage} />
+          </Switch>
+        </ScrollToTop>
       </Router>
     </>
   );
