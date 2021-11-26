@@ -12,10 +12,11 @@ export const FlexContainerColumn = styled(FlexContainer)`
 
 export const ReviewContainerHeader = styled.div`
   width: 100%;
-  height: 130px;
+  height: 140px;
   display: flex;
   flex-direction: column;
   padding: 0px 40px;
+  border-bottom: 1px solid #dedede;
 `;
 
 export const Span = styled.span`

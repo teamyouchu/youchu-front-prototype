@@ -21,6 +21,7 @@ export const FlexContainerColumn = styled(FlexContainer)`
 export const ReviewOverviewContainer = styled.div`
   margin-top: 50px;
   border: 1px solid #dedede;
+  border-bottom: none;
   height: 148px;
 `;
 
@@ -177,9 +178,8 @@ export const Ratings = styled.div`
 
 export const ReviewContainer = styled.div`
   width: 800px;
-  height: 950px;
+  height: 3700px;
   border: 1px solid #dedede;
-  border-top: none;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
