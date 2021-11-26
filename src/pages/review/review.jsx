@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as style from './style';
 import { useLocation } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -41,7 +41,7 @@ function YoutuberDetail({ data }) {
         {data.channelName} 유튜버 소개
       </style.Span>
 
-      <style.YoutuberDetailContent>
+      <style.YoutuberDetailContent style={{ marginTop: '25px' }}>
         <style.YoutuberDetailGray>홈페이지</style.YoutuberDetailGray>
         <a href="https://www.youtube.com/channel/UCRnoBo60_joBvIQCoAiNCqg">
           https://www.youtube.com/channel/UCRnoBo60_joBvIQCoAiNCqg
@@ -119,17 +119,43 @@ function YoutuberReviewDetail({ data }) {
 }
 
 function YoutuberVideo({ data }) {
+  const [sortOrder, setSortOrder] = useState(false);
+  const [viewsColor, setViewsColor] = useState('#94969B');
+  const [uploadColor, setuploadColor] = useState('#EB3323');
+
+  const onClick = () => {
+    setSortOrder(!sortOrder);
+  };
+
+  useEffect(() => {
+    if (sortOrder === true) {
+      setViewsColor('#EB3323');
+      setuploadColor('#94969B');
+    } else {
+      setViewsColor('#94969B');
+      setuploadColor('#EB3323');
+    }
+  }, [sortOrder]);
+
   return (
     <style.VideoContainer>
       <style.VideoContentContainer>
-        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
+        <style.Span font="SHSN-M" size="26px" margins="30px 0px 10px 0px">
           {data.channelName} 영상
         </style.Span>
         <style.FlexContainer justify="flex-end">
-          <style.FiliterButton color="#94969B" margins="0px 15px 0px">
+          <style.FiliterButton
+            className="viewCountOrder"
+            onClick={onClick}
+            isClick={sortOrder}
+            color={viewsColor}
+            margins="0px 15px 0px"
+          >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton color="#EB3323">업로드 날짜 순</style.FiliterButton>
+          <style.FiliterButton onClick={onClick} className="uploadOrder" color={uploadColor}>
+            업로드 날짜 순
+          </style.FiliterButton>
         </style.FlexContainer>
         <style.FlexContainer justify="space-between">
           <VideoDisplay />

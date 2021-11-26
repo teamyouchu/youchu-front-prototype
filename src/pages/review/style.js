@@ -87,7 +87,7 @@ export const YoutuberDetailContainer = styled.div`
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  padding: 25px 40px;
+  padding: 30px 40px;
 `;
 
 export const YoutuberDetailTitle = styled.div`
@@ -219,6 +219,7 @@ export const VideoContentContainer = styled.div`
 
 export const FiliterButton = styled(Span)`
   font-family: 'SHSN-M';
+  color: ${(props) => props.color};
   &:hover {
     cursor: pointer;
   }
