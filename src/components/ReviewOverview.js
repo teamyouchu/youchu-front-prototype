@@ -6,7 +6,7 @@ import StarRating from './StarRating';
 export default function ReviewOverview({ data }) {
   return (
     <style.ReviewContainerHeader>
-      <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
+      <style.Span font="SHSN-M" size="26px" margins="30px 0px 10px 0px">
         {data.channelName} 리뷰
       </style.Span>
       <style.ReviewDetailInfo>

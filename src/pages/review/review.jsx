@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style';
-import { useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
@@ -8,6 +8,12 @@ import VideoDisplay from 'components/VideoDisplay';
 import ReviewOverview from 'components/ReviewOverview';
 
 function YoutuberHeader({ data }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/reviewWrite');
+  };
+
   return (
     <style.FlexContainer>
       <style.DivColumn>
@@ -24,7 +30,7 @@ function YoutuberHeader({ data }) {
         </style.YoutudberInfo>
       </style.DivColumn>
       <style.DivColumn align="center" justify="flex-end">
-        <style.ReviewButton>
+        <style.ReviewButton onClick={handleClick}>
           <style.Span color="#fff" font="SHSN-B" size="14px">
             이 유튜버 리뷰하기
           </style.Span>
@@ -119,23 +125,23 @@ function YoutuberReviewDetail({ data }) {
 }
 
 function YoutuberVideo({ data }) {
-  const [sortOrder, setSortOrder] = useState(false);
+  const [currentClick, setCurrentClick] = useState(null);
   const [viewsColor, setViewsColor] = useState('#94969B');
   const [uploadColor, setuploadColor] = useState('#EB3323');
 
-  const onClick = () => {
-    setSortOrder(!sortOrder);
+  const onClick = (e) => {
+    setCurrentClick(e.target.id);
   };
 
   useEffect(() => {
-    if (sortOrder === true) {
-      setViewsColor('#EB3323');
-      setuploadColor('#94969B');
-    } else {
+    if (currentClick === 'uploadOrder') {
       setViewsColor('#94969B');
       setuploadColor('#EB3323');
+    } else {
+      setViewsColor('#EB3323');
+      setuploadColor('#94969B');
     }
-  }, [sortOrder]);
+  }, [currentClick]);
 
   return (
     <style.VideoContainer>
@@ -145,15 +151,14 @@ function YoutuberVideo({ data }) {
         </style.Span>
         <style.FlexContainer justify="flex-end">
           <style.FiliterButton
-            className="viewCountOrder"
+            id="viewCountOrder"
             onClick={onClick}
-            isClick={sortOrder}
             color={viewsColor}
             margins="0px 15px 0px"
           >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton onClick={onClick} className="uploadOrder" color={uploadColor}>
+          <style.FiliterButton onClick={onClick} id="uploadOrder" color={uploadColor}>
             업로드 날짜 순
           </style.FiliterButton>
         </style.FlexContainer>
