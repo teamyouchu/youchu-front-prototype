@@ -168,7 +168,7 @@ export const Ratings = styled.div`
 
 export const ReviewContainer = styled.div`
   width: 800px;
-  height: 530px;
+  height: 500px;
   border: 1px solid #dedede;
   margin-top: 30px;
   display: flex;
