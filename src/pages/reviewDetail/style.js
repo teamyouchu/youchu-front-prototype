@@ -15,6 +15,7 @@ export const FlexContainer = styled.div`
 
 export const FlexContainerColumn = styled(FlexContainer)`
   flex-direction: column;
+  position: relative;
 `;
 
 export const ReviewOverviewContainer = styled.div`

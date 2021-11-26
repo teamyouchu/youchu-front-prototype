@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as style from './style';
 import { useHistory, useLocation } from 'react-router';
 import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
 import ReviewOverview from 'components/ReviewOverview';
+import BulrReview from 'components/BulrReview';
 
 function YoutuberHeader({ data }) {
   const history = useHistory();
@@ -63,12 +64,28 @@ function YoutuberCard() {
 }
 
 function YoutuberReviewDetail() {
+  //TODO 송경석: 일시적으로 로그인 상태값 변수 지정 나중에 바꿔야함
+  const [isLogin, setIsLogin] = useState(false);
+  const [IsBlur, setBlur] = useState('');
+
+  useEffect(() => {
+    if (isLogin === false) {
+      setBlur('blur(10px)');
+    }
+  }, [isLogin]);
+
   return (
     <>
       <style.ReviewContainer>
         <DetailReviewInfo IsBest={true} />
-        <DetailReviewInfo IsBest={false} Blur={'blur(10px)'} />
-        <DetailReviewInfo IsBest={false} Blur={'blur(10px)'} />
+        <style.FlexContainerColumn>
+          <DetailReviewInfo IsBest={false} Blur={IsBlur} />
+          {!isLogin && <BulrReview />}
+        </style.FlexContainerColumn>
+        <style.FlexContainerColumn>
+          <DetailReviewInfo IsBest={false} Blur={IsBlur} />
+          {!isLogin && <BulrReview />}
+        </style.FlexContainerColumn>
       </style.ReviewContainer>
     </>
   );
