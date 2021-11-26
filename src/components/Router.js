@@ -1,6 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { TopBar, Home, List, Review, ReviewWrite, Login, EmptyPage, Signup } from 'pages/index';
+import {
+  TopBar,
+  Home,
+  List,
+  Review,
+  ReviewWrite,
+  Login,
+  EmptyPage,
+  Signup,
+  ReviewDetail,
+} from 'pages/index';
 
 export default function AppRouter() {
   return (
@@ -14,6 +24,7 @@ export default function AppRouter() {
           <Route path="/reviewWrite" component={ReviewWrite} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/reviewDetail" component={ReviewDetail} />
           <Route component={EmptyPage} />
         </Switch>
       </Router>

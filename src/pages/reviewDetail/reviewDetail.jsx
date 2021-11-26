@@ -1,13 +1,16 @@
 import React from 'react';
 import * as style from './style';
-import { useLocation } from 'react-router';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { useHistory, useLocation } from 'react-router';
 import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
-import VideoDisplay from 'components/VideoDisplay';
 import ReviewOverview from 'components/ReviewOverview';
 
 function YoutuberHeader({ data }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/reviewWrite');
+  };
   return (
     <style.FlexContainer>
       <style.DivColumn>
@@ -24,7 +27,7 @@ function YoutuberHeader({ data }) {
         </style.YoutudberInfo>
       </style.DivColumn>
       <style.DivColumn align="center" justify="flex-end">
-        <style.ReviewButton>
+        <style.ReviewButton onClick={handleClick}>
           <style.Span color="#fff" font="SHSN-B" size="14px">
             이 유튜버 리뷰하기
           </style.Span>
@@ -34,38 +37,9 @@ function YoutuberHeader({ data }) {
   );
 }
 
-function YoutuberDetail({ data }) {
-  return (
-    <style.YoutuberDetailContainer>
-      <style.Span font="SHSN-B" size="26px">
-        {data.channelName} 소개
-      </style.Span>
-
-      <style.YoutuberDetailContent>
-        <style.YoutuberDetailGray>홈페이지</style.YoutuberDetailGray>
-        <a href="https://www.youtube.com/channel/UCRnoBo60_joBvIQCoAiNCqg">
-          https://www.youtube.com/channel/UCRnoBo60_joBvIQCoAiNCqg
-        </a>
-      </style.YoutuberDetailContent>
-
-      <style.YoutuberDetailContent>
-        <style.YoutuberDetailGray>구독자수</style.YoutuberDetailGray>
-        <style.YoutuberDetailSubcribe>{data.subscriberCount}</style.YoutuberDetailSubcribe>
-      </style.YoutuberDetailContent>
-
-      <style.YoutuberDetailContent>
-        {temp}
-        <br />
-        <br />
-        {temp2}
-      </style.YoutuberDetailContent>
-    </style.YoutuberDetailContainer>
-  );
-}
-
 function YoutuberCard() {
   // const per = data.ratings * 20;
-  // TODO: 백에서 별점 정보 가져와야 함
+  // TODO 송경석: 백에서 별점 정보 가져와야 함
   const per = '4.0';
   return (
     <style.CategoryCardContainer>
@@ -88,76 +62,21 @@ function YoutuberCard() {
   );
 }
 
-function YoutuberReviewDetail({ data }) {
+function YoutuberReviewDetail() {
   return (
-    <style.ReviewContainer>
-      {/* <style.ReviewContainerHeader>
-        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
-          {data.channelName} 리뷰
-        </style.Span>
-        <style.ReviewDetailInfo>
-          <style.TotalScore>{data.ratings}</style.TotalScore>
-          <StarRating ratings={data.ratings} margins={'0px 10px 0px 10px'} />
-          <style.YoutuberSummartRankReviewCount>
-            ({data.reviewCount})개 리뷰
-          </style.YoutuberSummartRankReviewCount>
-        </style.ReviewDetailInfo>
-      </style.ReviewContainerHeader> */}
-      <ReviewOverview data={data} />
-      <DetailReviewInfo IsBest={true} />
-      <style.ReviewContainerFooter>
-        <style.AllDetailButton>
-          <style.Span font="SHSN-B" size="14px">
-            {data.channelName}
-          </style.Span>{' '}
-          &nbsp;리뷰 모두 보기
-          <style.RightButton icon={faChevronRight} />
-        </style.AllDetailButton>
-      </style.ReviewContainerFooter>
-    </style.ReviewContainer>
+    <>
+      <style.ReviewContainer>
+        <DetailReviewInfo IsBest={true} />
+        <DetailReviewInfo IsBest={false} Blur={'blur(10px)'} />
+        <DetailReviewInfo IsBest={false} Blur={'blur(10px)'} />
+      </style.ReviewContainer>
+    </>
   );
 }
 
-function YoutuberVideo({ data }) {
-  return (
-    <style.VideoContainer>
-      <style.VideoContentContainer>
-        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
-          {data.channelName} 영상
-        </style.Span>
-        <style.FlexContainer justify="flex-end">
-          <style.FiliterButton color="#94969B" margins="0px 15px 0px">
-            조회수 순
-          </style.FiliterButton>
-          <style.FiliterButton color="#EB3323">업로드 날짜 순</style.FiliterButton>
-        </style.FlexContainer>
-        <style.FlexContainer justify="space-between">
-          <VideoDisplay />
-          <VideoDisplay />
-          <VideoDisplay />
-        </style.FlexContainer>
-      </style.VideoContentContainer>
-
-      <style.ReviewContainerFooter>
-        <style.AllDetailButton>
-          <style.Span font="SHSN-B" size="14px">
-            {data.channelName}
-          </style.Span>{' '}
-          &nbsp;영상 모두 보기
-          <style.RightButton icon={faChevronRight} />
-        </style.AllDetailButton>
-      </style.ReviewContainerFooter>
-    </style.VideoContainer>
-  );
-}
-
-const temp =
-  '月刊 尹鍾信 [월간 윤종신]은 프로듀서 윤종신을 주축으로 한 독자적인 매체이자 기획 전문 집단이다.2010년 3월 두 곡의 음원을 발표하는 것으로 시작된 [월간 윤종신]은 매월 음원과 뮤직비디오를 제작하는 것에서 한걸음 더 나아가 2012 년부터는 디지털 매거진을 발행하고 있으며, 2013 년부터는 음악 뿐만 아니라 문학, 영화, 사진, 미술, 게임 등 다양한 예술 분야와의 콜라보레이션을 진행하고 있다. 음원, 음반, 그림, 사진, 도서, 전시 등 콜라보레이션에 따른 다양한 형태의 결과물을 직접 기획 및 제작하고 있으며, 그것을 누구나 쉽게 즐길 수 있도록 온오프라인을 통해 홍보하고 있다. 2016 년 11 월부터는 서울 한남동에 새롭게 문을 연 스튜디오를 중심으로 보다 전방위적인 콜라보레이션 활동을 이어나갈 예정이다.';
-const temp2 =
-  '[MONTHLY YOONJONGSHIN] is an independent media and a project group, led by a producer Yoon Jongshin. Started by releasing two songs in March 2010, [MONTHLY YOONJONGSHIN] has been releasing the songs and music videos every month. Furthermore, [MONTHLY YOONJONGSHIN] has been publishing digital magazines since 2012, not only producing the music but also collaborating with a variety of parts of arts such as literature, movie, photograph, painting, game and so on. They do plan and produce all the songs, albums, arts, photographs, books, exhibitions by themselves, based on the collaboration';
-
-export default function Review() {
+export default function ReviewDetail() {
   const location = useLocation();
+  console.log(location);
 
   return (
     <>
@@ -168,9 +87,10 @@ export default function Review() {
         </style.YoutuberHeaderContainer>
         <style.FlexContainer>
           <style.FlexContainerColumn>
-            <YoutuberDetail data={location.state} />
+            <style.ReviewOverviewContainer>
+              <ReviewOverview data={location.state} style={{ marginTop: '50px' }} />
+            </style.ReviewOverviewContainer>
             <YoutuberReviewDetail data={location.state} />
-            <YoutuberVideo data={location.state} />
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>
             <style.YoutuberCardContainer>

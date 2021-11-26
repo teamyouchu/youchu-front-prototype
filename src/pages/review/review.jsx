@@ -95,24 +95,28 @@ function YoutuberCard() {
 }
 
 function YoutuberReviewDetail({ data }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push({
+      pathname: '/reviewDetail',
+      state: {
+        img: data.img,
+        channelName: data.channelName,
+        ratings: data.ratings,
+        reviewCount: data.reviewCount,
+        subscriberCount: data.subscriberCount,
+        category: data.category,
+      },
+    });
+  };
+
   return (
     <style.ReviewContainer>
-      {/* <style.ReviewContainerHeader>
-        <style.Span font="SHSN-B" size="26px" margins="25px 0px 10px 0px">
-          {data.channelName} 리뷰
-        </style.Span>
-        <style.ReviewDetailInfo>
-          <style.TotalScore>{data.ratings}</style.TotalScore>
-          <StarRating ratings={data.ratings} margins={'0px 10px 0px 10px'} />
-          <style.YoutuberSummartRankReviewCount>
-            ({data.reviewCount})개 리뷰
-          </style.YoutuberSummartRankReviewCount>
-        </style.ReviewDetailInfo>
-      </style.ReviewContainerHeader> */}
       <ReviewOverview data={data} />
       <DetailReviewInfo IsBest={true} />
       <style.ReviewContainerFooter>
-        <style.AllDetailButton>
+        <style.AllDetailButton onClick={handleClick}>
           <style.Span font="SHSN-B" size="14px">
             {data.channelName}
           </style.Span>{' '}
