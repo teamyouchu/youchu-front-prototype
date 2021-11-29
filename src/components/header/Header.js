@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import * as style from './headerStyle';
+import * as style from './Style';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-export default function TopBar() {
+export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const listener = () => {
