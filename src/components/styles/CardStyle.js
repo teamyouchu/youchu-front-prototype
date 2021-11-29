@@ -89,11 +89,11 @@ export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  padding: 0px 5px 15px 5px;
+  padding: 0 5px 15px 0;
 `;
 
 export const RcmdRatings = styled(Ratings)`
-  padding: 0px 2px 5px 5px;
+  padding: 0 2px 5px 0;
 `;
 
 export const ReviewCount = styled.div`

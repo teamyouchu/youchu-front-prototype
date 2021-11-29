@@ -17,7 +17,7 @@ export default function RecommendCard({ img, channelName, ratings, reviewCount, 
           <style.RcmdChannelName>{channelName}</style.RcmdChannelName>
         </style.Group>
         <style.Group>
-          <StarRating ratings={ratings} paddingB={'6px'} />
+          <StarRating ratings={ratings} margins={'0 5px 6px 0'} />
           <style.RcmdRatings>{ratings}</style.RcmdRatings>
           <style.RcmdReviewCount>({reviewCount}개 리뷰)</style.RcmdReviewCount>
         </style.Group>
