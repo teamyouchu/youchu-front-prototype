@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -20,7 +21,7 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const Background = styled.div`
+export const HeaderBox = styled.div`
   width: 1100px;
   height: 80px;
   margin: 0px auto;
@@ -28,20 +29,26 @@ export const Background = styled.div`
   padding: 28px 0 14px 0;
 `;
 
-export const Logo = styled.button`
+export const LogoLink = styled(Link)`
   font-family: 'SCD-9';
+  text-align: left;
   font-size: 29px;
+  line-height: 34px;
+  letter-spacing: 0px;
+  color: #000000;
   margin-right: 51px;
-  background-color: white;
-  border: none;
-  cursor: pointer;
+  &:hover {
+    color: #000000;
+  }
 `;
 
 export const HeaderButton = styled(Button)`
   font-family: 'SHSN-M';
   &&& {
-    font-size: 14px;
     text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0px;
     border-radius: 0px;
     width: 80px;
     height: 38px;
@@ -61,7 +68,7 @@ export const BarIcon = styled(FontAwesomeIcon)`
   margin-right: 7px;
 `;
 
-export const SearchContainer = styled.div`
+export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   width: 350px;
@@ -69,7 +76,8 @@ export const SearchContainer = styled.div`
   margin-left: 240px;
   border: 1px solid #707070;
   border-radius: 30px;
-  &:hover {
+  padding: 9px 30px;
+  &:focus-within {
     border: 1px solid #3ea6ff;
   }
 `;
@@ -77,12 +85,11 @@ export const SearchContainer = styled.div`
 export const SearchImg = styled.img`
   width: 20px;
   height: 20px;
-  margin-left: 30px;
 `;
 
-export const InputYoutuber = styled.input`
+export const SearchInput = styled.input`
   border: none;
-  width: 270px;
+  width: 248px;
   height: 18px;
   margin-left: 20px;
 
@@ -90,6 +97,9 @@ export const InputYoutuber = styled.input`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
+  &::placeholder {
+    color: #94969b;
+  }
   &:focus {
     outline: none;
   }
@@ -105,7 +115,8 @@ export const RegisterButton = styled(HeaderButton)`
 export const LoginButton = styled(HeaderButton)`
   &&& {
     margin-left: 20px;
-    background-color: white;
+    background-color: #ffffff;
     border: 1px solid #dedede;
+    color: #000000;
   }
 `;
