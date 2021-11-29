@@ -31,7 +31,7 @@ export default function Home() {
         <style.RowDescription left='35px'>리뷰 보러 가보실까요?</style.RowDescription>
         <style.ReviewContainer>
           <style.HandleBtn onClick={slide_L}>
-            <i class="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left"></i>
           </style.HandleBtn>
           <style.ReviewCardContainer id="slider">
             <ReviewCard
@@ -126,7 +126,7 @@ export default function Home() {
             />
           </style.ReviewCardContainer>
           <style.HandleBtn onClick={slide_R}>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
           </style.HandleBtn>
         </style.ReviewContainer>
       </style.RowContainer>
