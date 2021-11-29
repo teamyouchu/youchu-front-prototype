@@ -11,9 +11,11 @@ export default function ReviewCard({
   ratings,
   bestReview,
 }) {
+  /* TODO 서지수 삭제하기 */
   const imgUrl = '/images/' + img + '.jpg';
   let history = useHistory();
 
+  /* TODO 서지수 삭제하기 */
   function handleClick() {
     history.push({
       pathname: '/review',

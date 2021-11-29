@@ -34,6 +34,7 @@ export default function Home() {
             <i className="fas fa-chevron-left"></i>
           </style.HandleBtn>
           <style.ReviewCardContainer id="slider">
+          {/* TODO 서지수 데이터 받아서 map으로 */}
             <ReviewCard
               img="월간 윤종신"
               category="음악"
@@ -134,6 +135,7 @@ export default function Home() {
         <style.RowTitle>맞춤 추천 💁</style.RowTitle>
         <style.RowDescription>여러분이 관심 있을 유튜버를 모아봤어요!</style.RowDescription>
         <style.RecommendCardContainer>
+          {/* TODO 서지수 데이터 받아서 map으로 */}
           <RecommendCard
             img="월간 윤종신"
             channelName="월간 윤종신"

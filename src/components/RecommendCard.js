@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import StarRating from './StarRating';
 
 export default function RecommendCard({ img, channelName, ratings, reviewCount, category }) {
+  /* TODO 서지수 삭제하기 */
   const imgUrl = '/images/' + img + '.jpg';
   const history = useHistory();
 
