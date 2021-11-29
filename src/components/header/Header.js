@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import * as style from './Style';
+import * as style from './HeaderStyle';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
