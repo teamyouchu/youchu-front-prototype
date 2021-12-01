@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
+import Header from './header/Header';
 import {
-  TopBar,
   Home,
   List,
   Review,
@@ -17,7 +17,7 @@ export default function AppRouter() {
   return (
     <>
       <Router>
-        <TopBar />
+        <Header />
         <ScrollToTop>
           <Switch>
             <Route exact path="/" component={Home} />

@@ -11,9 +11,11 @@ export default function ReviewCard({
   ratings,
   bestReview,
 }) {
+  /* TODO 서지수 삭제하기 */
   const imgUrl = '/images/' + img + '.jpg';
   let history = useHistory();
 
+  /* TODO 서지수 삭제하기 */
   function handleClick() {
     history.push({
       pathname: '/review',
@@ -39,7 +41,7 @@ export default function ReviewCard({
           <style.SubscriberCount>구독자 {subscriberCount}명</style.SubscriberCount>
         </style.Group>
         <style.Group>
-          <StarRating ratings={ratings} paddingB={'15px'} />
+          <StarRating ratings={ratings} margins={'0 5px 15px 0'} />
           <style.Ratings>{ratings}</style.Ratings>
           <style.ReviewCount>({reviewCount}개 리뷰)</style.ReviewCount>
         </style.Group>

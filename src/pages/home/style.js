@@ -8,25 +8,27 @@ export const HomeContainer = styled.div`
 `;
 
 export const BannerContainer = styled.div`
-  display: flex;
   width: 1100px;
   height: 350px;
   margin: 0 auto;
   margin-bottom: 50px;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
-export const TextField = styled.p`
+export const TextField = styled.span`
+  text-align: left;
   font-size: 45px;
+  line-height: 57px;
+  letter-spacing: 0px;
+  color: #000000;
   font-family: 'SHSN-B';
-  height: auto;
-  &&& {
-    margin: 130px 0px;
-  }
+  margin: 0;
 `;
 
-export const RedSpan = styled.span`
-  color: red;
+export const RedSpan = styled(TextField)`
+  color: #eb3323;
 `;
 
 export const BannerImg = styled.img`
@@ -41,43 +43,41 @@ export const RowContainer = styled.div`
 `;
 
 export const RowTitle = styled.div`
-  font-family: 'SHSN-B';
+  text-align: left;
   font-size: 20px;
   line-height: 25px;
+  letter-spacing: 0px;
+  color: #000000;
+  font-family: 'SHSN-B';
   margin-bottom: 5px;
   margin-left: ${(props) => props.left || '0px'};
 `;
 
 export const RowDescription = styled.div`
-  font-family: 'SHSN-L';
+  text-align: left;
   font-size: 14px;
   line-height: 18px;
+  letter-spacing: 0px;
   color: #94969b;
+  font-family: 'SHSN-L';
   margin-bottom: 20px;
   margin-left: ${(props) => props.left || '0px'};
 `;
 
 export const ReviewContainer = styled.div`
-  margin: 0 auto;
-  width: 1170px;
+  max-width: 1170px;
   display: flex;
 `;
 
-export const ArrowImg = styled.img.attrs((props) => ({
-  src: props.src,
-}))`
-  width: 15px;
-  height: 15px;
-`;
-
-export const HandleBtn = styled.button`
-  background: #ffffff;
-  border: 0;
+export const HandleBtn = styled.div`
   cursor: pointer;
   position: relative;
-  top: 49px;
+  top: 50px;
   width: 35px;
   height: 30px;
+  text-align: center;
+  font-size: 23px;
+  line-height: 30px;
 `;
 
 export const ReviewCardContainer = styled.div`
@@ -91,7 +91,9 @@ export const ReviewCardContainer = styled.div`
   margin-bottom: 60px;
 `;
 
-export const RecommendCardContainer = styled(ReviewCardContainer)`
+export const RecommendCardContainer = styled.div`
+  display: grid;
+  width: 1100px;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 10px;
