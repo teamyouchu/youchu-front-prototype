@@ -4,7 +4,7 @@ import * as style from './styles/RegistrarionStyle';
 export default function Registration({ registClose }) {
   return (
     <style.ModalContainer>
-      <style.Modal>
+      <style.Modal width="500px" height="386px" padding="70px 60px">
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
           유튜버 등록
         </style.Span>
