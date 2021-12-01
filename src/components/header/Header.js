@@ -10,7 +10,6 @@ export default function Header() {
 
   const registClose = () => {
     setRistOpen(!registOpen);
-    console.log('ss');
   };
 
   const listener = () => {
