@@ -22,11 +22,11 @@ export default function AppRouter() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
-            <Route path="/review" component={Review} />
+            <Route exact path="/review" component={Review} />
+            <Route path="/review/detail" component={ReviewDetail} />
             <Route path="/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/reviewDetail" component={ReviewDetail} />
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>

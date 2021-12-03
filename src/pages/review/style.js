@@ -85,7 +85,6 @@ export const YoutuberDetailContainer = styled.div`
   height: auto;
   min-height: 530px;
   border: 1px solid #dedede;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   padding: 30px 40px;

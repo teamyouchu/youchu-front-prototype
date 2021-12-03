@@ -99,7 +99,7 @@ function YoutuberReviewDetail({ data }) {
 
   const handleClick = () => {
     history.push({
-      pathname: '/reviewDetail',
+      pathname: '/review/detail',
       state: {
         img: data.img,
         channelName: data.channelName,
