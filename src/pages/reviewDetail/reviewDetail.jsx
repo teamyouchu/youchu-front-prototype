@@ -5,6 +5,7 @@ import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
 import ReviewOverview from 'components/ReviewOverview';
 import BulrReview from 'components/BulrReview';
+import PageNumber from 'components/PageNumber';
 
 function YoutuberHeader({ data }) {
   const history = useHistory();
@@ -93,6 +94,7 @@ function YoutuberReviewDetail() {
       <style.ReviewContainer>
         <DetailReviewInfo IsBest={true} IsDetail={true} />
         {mapToComponent(temp)}
+        <PageNumber />
       </style.ReviewContainer>
     </>
   );
