@@ -82,9 +82,9 @@ export const YoutuberHeaderContainer = styled.div`
 
 export const YoutuberDetailContainer = styled.div`
   width: 800px;
-  height: 530px;
+  height: auto;
+  min-height: 530px;
   border: 1px solid #dedede;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   padding: 30px 40px;
@@ -116,6 +116,7 @@ export const YoutuberDetailSubcribe = styled.span`
 export const YoutuberCardContainer = styled(YoutuberDetailContainer)`
   width: 298px;
   height: 485px;
+  min-height: 485px;
   margin-left: 20px;
   padding: 0px;
 `;
@@ -168,7 +169,8 @@ export const Ratings = styled.div`
 
 export const ReviewContainer = styled.div`
   width: 800px;
-  height: 550px;
+  height: auto;
+  min-height: 550px;
   border: 1px solid #dedede;
   margin-top: 30px;
   display: flex;
@@ -177,7 +179,7 @@ export const ReviewContainer = styled.div`
 
 export const ReviewContainerFooter = styled.div`
   width: 100%;
-  height: 50px;
+  height: 61px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,7 +203,8 @@ export const BestReviewContainer = styled(FlexContainer)`
 
 export const VideoContainer = styled.div`
   width: 800px;
-  height: 382px;
+  height: auto;
+  min-height: 382px;
   border: 1px solid #dedede;
   margin-top: 30px;
   display: flex;

@@ -23,10 +23,10 @@ export default function AppRouter() {
             <Route exact path="/" component={Home} />
             <Route exact path="/youtubers" component={List} />
             <Route path="/youtubers/review" component={Review} />
+            <Route path="/youtubers/reviewDetail" component={ReviewDetail} />
             <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/youtubers/reviewDetail" component={ReviewDetail} />
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>
