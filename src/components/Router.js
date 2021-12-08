@@ -21,12 +21,12 @@ export default function AppRouter() {
         <ScrollToTop>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/list" component={List} />
-            <Route path="/review" component={Review} />
-            <Route path="/reviewWrite" component={ReviewWrite} />
+            <Route exact path="/youtubers" component={List} />
+            <Route path="/youtubers/review" component={Review} />
+            <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/reviewDetail" component={ReviewDetail} />
+            <Route path="/youtubers/reviewDetail" component={ReviewDetail} />
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>

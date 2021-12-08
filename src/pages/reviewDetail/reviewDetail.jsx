@@ -10,7 +10,7 @@ function YoutuberHeader({ data }) {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push('/reviewWrite');
+    history.push('/youtubers/reviewWrite');
   };
   return (
     <style.FlexContainer>

@@ -18,7 +18,7 @@ export default function ReviewCard({
   /* TODO 서지수 삭제하기 */
   function handleClick() {
     history.push({
-      pathname: '/review',
+      pathname: '/youtubers/review',
       state: {
         img: imgUrl,
         channelName: channelName,

@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
   width: 100%;
   justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0px;
   z-index: 2;
@@ -27,6 +24,13 @@ export const HeaderBox = styled.div`
   margin: 0px auto;
   display: flex;
   padding: 28px 0 14px 0;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const HeaderFlex = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const LogoLink = styled(Link)`
@@ -36,36 +40,26 @@ export const LogoLink = styled(Link)`
   line-height: 34px;
   letter-spacing: 0px;
   color: #000000;
-  margin-right: 51px;
+  margin-right: 30px;
   &:hover {
     color: #000000;
   }
 `;
 
-export const HeaderButton = styled(Button)`
-  font-family: 'SHSN-M';
-  &&& {
-    text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0px;
-    border-radius: 0px;
-    width: 80px;
-    height: 38px;
-    padding: 0;
-    margin: 0;
+export const HeaderNav = styled(NavLink)`
+  font-family: 'SHSN-R';
+  text-align: center;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  color: #000000;
+  margin-left: 40px;
+  &:hover {
+    color: #000000;
   }
-`;
-
-export const ReviewButton = styled(HeaderButton)`
-  &&& {
-    width: 140px;
+  &.active {
+    font-family: 'SHSN-B';
   }
-`;
-
-export const BarIcon = styled(FontAwesomeIcon)`
-  color: white;
-  margin-right: 7px;
 `;
 
 export const SearchForm = styled.form`
@@ -73,7 +67,6 @@ export const SearchForm = styled.form`
   align-items: center;
   width: 350px;
   height: 38px;
-  margin-left: 240px;
   border: 1px solid #707070;
   border-radius: 30px;
   padding: 9px 30px;
@@ -102,6 +95,21 @@ export const SearchInput = styled.input`
   }
   &:focus {
     outline: none;
+  }
+`;
+
+export const HeaderButton = styled(Button)`
+  font-family: 'SHSN-M';
+  &&& {
+    text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0px;
+    border-radius: 0px;
+    width: 80px;
+    height: 38px;
+    padding: 0;
+    margin: 0;
   }
 `;
 
