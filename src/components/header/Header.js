@@ -35,8 +35,9 @@ export default function Header() {
             <style.SearchImg src="/images/searchIcon.svg" />
             <style.SearchInput placeholder="유튜버 이름으로 검색하세요"></style.SearchInput>
           </style.SearchForm>
-          {/* TODO 서지수 클릭 시 등록 모달 창 나오게 수정 */}
-          <style.RegisterButton color="red">유튜버 등록</style.RegisterButton>
+          <style.RegisterButton color="red" onClick={registClose}>
+            유튜버 등록
+          </style.RegisterButton>
           <Link to="/login">
             <style.LoginButton>로그인</style.LoginButton>
           </Link>
