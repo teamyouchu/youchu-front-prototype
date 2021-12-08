@@ -3,8 +3,7 @@ import { Rating } from 'semantic-ui-react';
 
 export const reviewWriteContainer = styled.div`
   background-color: #f6f7fa;
-  padding-top: 30px;
-  padding-top: 80px;
+  padding-top: 120px;
   padding-bottom: 100px;
 `;
 
@@ -108,12 +107,12 @@ export const StarRating = styled(Rating)`
   }
 `;
 
-export const CommentInput = styled.input`
+export const CommentInput = styled.textarea`
   width: 680px;
-  height: 41px;
+  height: 300px;
   border: 1px solid #dedede;
-  margin-bottom: 20px;
   padding: 15px;
+  resize: none;
 
   text-align: left;
   font-family: 'SHSN-M';
@@ -121,17 +120,12 @@ export const CommentInput = styled.input`
   line-height: 18px;
   color: #000000;
   letter-spacing: 0px;
+  &::placeholder {
+    color: #94969b;
+  }
   &:focus {
     outline: 2px solid #3ea6ff;
   }
-`;
-
-export const StrengthInput = styled(CommentInput)`
-  height: 150px;
-  resize: none;
-`;
-export const WeaknessInput = styled(StrengthInput)`
-  margin-bottom: 0;
 `;
 
 export const FooterContainer = styled.div`
