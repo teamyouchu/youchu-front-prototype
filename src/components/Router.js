@@ -11,6 +11,7 @@ import {
   EmptyPage,
   Signup,
   ReviewDetail,
+  Profile,
 } from 'pages/index';
 
 export default function AppRouter() {
@@ -27,6 +28,7 @@ export default function AppRouter() {
             <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/profile" component={Profile} />
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>
