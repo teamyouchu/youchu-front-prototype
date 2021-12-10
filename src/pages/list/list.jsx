@@ -51,10 +51,14 @@ export default function List() {
   return (
     <style.ListContainer>
       <style.Title>전체 유튜버</style.Title>
-      <style.FilterDropdownContainer>
+      <style.FilterContainer>
         <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
         <FilterDropdown placeholder="정렬" options={sortOptions} />
-      </style.FilterDropdownContainer>
+        <style.SearchForm>
+          <style.SearchImg src="/images/searchIcon.svg"/>
+          <style.SearchInput placeholder="유튜버 이름으로 검색하세요" />
+        </style.SearchForm>
+      </style.FilterContainer>
       
       <style.CardContainer>
         <ReviewCard
