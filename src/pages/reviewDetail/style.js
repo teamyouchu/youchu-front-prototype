@@ -18,6 +18,11 @@ export const FlexContainerColumn = styled(FlexContainer)`
   position: relative;
 `;
 
+export const FilterDropdownContainer = styled.div`
+  display: flex;
+  margin: 20px 0px 5px 40px;
+`;
+
 export const ReviewOverviewContainer = styled.div`
   margin-top: 50px;
   border: 1px solid #dedede;
