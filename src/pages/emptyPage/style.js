@@ -14,6 +14,7 @@ export const EmptyPageContainer = styled.div`
 export const Message = styled.span`
   font-family: 'SHSN-B';
   font-size: 24px;
+  color: black;
 `;
 
 export const Img = styled.img`
