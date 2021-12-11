@@ -6,6 +6,8 @@ import SpoqaHanSansNeoLightWoff from './SpoqaHanSansNeo-Light.woff';
 import SpoqaHanSansNeoMediumWoff from './SpoqaHanSansNeo-Medium.woff';
 import SpoqaHanSansNeoRegularWoff from './SpoqaHanSansNeo-Regular.woff';
 import SpoqaHanSansNeoThinWoff from './SpoqaHanSansNeo-Thin.woff';
+import NotoSansKRBoldWoff from './NotoSansKR-Bold.otf';
+import NotoSansKRRegularWoff from './NotoSansKR-Regular.otf';
 
 export default createGlobalStyle`
     @font-face {
@@ -37,5 +39,15 @@ export default createGlobalStyle`
         font-family: 'SHSN-T';
         src: local('SHSN-T'),
         url(${SpoqaHanSansNeoThinWoff}) format('woff');
+    }
+    @font-face {
+        font-family: 'NSKR-B';
+        src: local('NSKR-B'),
+        url(${NotoSansKRBoldWoff}) format('woff');
+    }
+    @font-face {
+        font-family: 'NSKR-R';
+        src: local('NSKR-R'),
+        url(${NotoSansKRRegularWoff}) format('woff');
     }
 `;

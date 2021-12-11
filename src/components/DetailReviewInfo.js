@@ -1,61 +1,69 @@
-import React from 'react';
-import FilterDropdown from './FilterDropdown';
+import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import * as style from './styles/ReviewStyle';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-export default function DetailReviewInfo({ IsBest, Blur, IsDetail }) {
+export default function DetailReviewInfo({ isBest, blur, page }) {
   const per = '3.5';
-  const sortOptions = [
-    {
-      key: '최근에 등록된',
-      text: '최근에 등록된',
-      value: '최근에 등록된',
-    },
-    {
-      key: '좋아요가 많이 달린',
-      text: '좋아요가 많이 달린',
-      value: '좋아요가 많이 달린',
-    },
-  ];
+  const [isReview, setIsReview] = useState(true);
+
+  useEffect(() => {
+    if (page === 'mypage') {
+      setIsReview(!isReview);
+    }
+  }, []);
+
   return (
     <style.FlexContainerColumn>
-      {IsDetail && (
-        <style.FilterDropdownContainer>
-          <FilterDropdown placeholder="정렬" options={sortOptions} />
-        </style.FilterDropdownContainer>
+      {isBest && (
+        <style.BestSpan size="12px" color="#5C7FDF" font="SHSN-B">
+          Best Review
+        </style.BestSpan>
       )}
-      <style.ReviewContainer className={IsBest ? 'BestReviewContainer' : ''}>
-        {IsBest && (
-          <style.BestSpan size="14px" color="#5C7FDF" font="SHSN-B">
-            Best Review
-          </style.BestSpan>
+      <style.ReviewContainer
+        className={`${isBest ? 'BestReviewContainer ' : ''} ${isReview ? '' : 'MypageContainer'}`}
+      >
+        {!isReview && (
+          <style.FlexContainer>
+            <style.Span font="SHSN-B" size="14px">
+              월간 윤종신
+            </style.Span>
+            <style.RightButton icon={faChevronRight} />
+          </style.FlexContainer>
         )}
-        <style.FlexContainerColumn>
-          <style.Span font="SHSN-B" size="14px">
-            3.5
-          </style.Span>
-          <StarRating ratings={per} margins="7px 0px 0px 0px" />
-        </style.FlexContainerColumn>
-        <style.FlexContainerColumn style={{ padding: '0px 40px 0px 15px' }}>
-          <style.Span font="SHSN-B" size="18px">
-            “제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는
-            잔잔하지만 지금은 좋습니다.”
-          </style.Span>
-          <style.DetailContainer Blur={Blur}>
+
+        <style.DetailContainer Blur={blur}>
+          <style.FlexContainer>
+            {isReview && <style.ProfileImg src="/images/profile.png" />}
+            <style.FlexContainerColumn>
+              <style.FlexContainer>
+                <StarRating ratings={per} margins="7px 0px 0px 0px" />
+                {!isReview ? (
+                  //TODO 송경석 며칠전인지 계산 하는 로직 필요
+                  <style.Span font="SHSN-R" size="10px" color="#94969B" margins="5px 0px 0px 5px">
+                    2일전
+                  </style.Span>
+                ) : (
+                  <style.Span font="SHSN-B" size="14px" margins="5px 0px 0px 5px">
+                    3.5
+                  </style.Span>
+                )}
+              </style.FlexContainer>
+              {isReview && (
+                <style.Span font="SHSN-R" size="13px" color="#94969B">
+                  병팔이
+                </style.Span>
+              )}
+            </style.FlexContainerColumn>
+          </style.FlexContainer>
+          <style.MainContainer className={!isReview ? 'Mypage' : ''}>
+            <style.Span font="SHSN-R" size="15px">
+              제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는
+              잔잔하지만 지금은 좋습니다.
+            </style.Span>
+
             <style.Span color="#94969b" size="12px" font="SHSN-M" margins="5px 0px 20px">
               2021.09.22
-            </style.Span>
-            <style.Span font="SHSN-B" size="14px">
-              장점
-            </style.Span>
-            <style.Span font="SHSN-R" size="14px" margins="0px 0px 20px">
-              좋은 음악이 많아서 참 좋아요.
-            </style.Span>
-            <style.Span font="SHSN-B" size="14px">
-              단점
-            </style.Span>
-            <style.Span font="SHSN-R" size="14px" margins="0px 0px 20px">
-              가오를 너무 잡아요.
             </style.Span>
             <style.UtilContainer>
               <style.LikeButton>
@@ -66,8 +74,8 @@ export default function DetailReviewInfo({ IsBest, Blur, IsDetail }) {
               </style.LikeButton>
               <style.ReportButton>신고하기</style.ReportButton>
             </style.UtilContainer>
-          </style.DetailContainer>
-        </style.FlexContainerColumn>
+          </style.MainContainer>
+        </style.DetailContainer>
       </style.ReviewContainer>
     </style.FlexContainerColumn>
   );

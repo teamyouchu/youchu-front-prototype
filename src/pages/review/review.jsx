@@ -114,7 +114,7 @@ function YoutuberReviewDetail({ data }) {
   return (
     <style.ReviewContainer>
       <ReviewOverview data={data} />
-      <DetailReviewInfo IsBest={true} />
+      <DetailReviewInfo isBest={true} />
       <style.ReviewContainerFooter>
         <style.AllDetailButton onClick={handleClick}>
           <style.Span font="SHSN-B" size="14px">

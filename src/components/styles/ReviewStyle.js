@@ -1,12 +1,23 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const FlexContainer = styled.div`
   display: flex;
 `;
 
+export const RankContainer = styled(FlexContainer)`
+  align-items: center;
+`;
+
 export const FlexContainerColumn = styled(FlexContainer)`
   flex-direction: column;
-  margin-top: 30px;
+`;
+
+export const MainContainer = styled(FlexContainerColumn)`
+  padding: 20px 40px 0px 0px;
+  &.Mypage {
+    padding: 0px 40px 0px 0px;
+  }
 `;
 
 export const DetailContainer = styled(FlexContainerColumn)`
@@ -14,14 +25,24 @@ export const DetailContainer = styled(FlexContainerColumn)`
   filter: ${(props) => props.Blur};
 `;
 
-export const ReviewContainer = styled(FlexContainer)`
-  height: 330px;
+export const RightButton = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  margin: 4px 0px 0px 5px;
+  font-size: 10px;
+`;
+
+export const ReviewContainer = styled(FlexContainerColumn)`
+  height: auto;
   width: 100%;
-  padding: 0px 0px 20px 40px;
+  padding: 30px 0px 30px 40px;
   border-bottom: 1px solid #dedede;
-  position: relative;
   &.BestReviewContainer {
     border-top: none;
+    padding: 10px 0px 30px 40px;
+  }
+  &.MypageContainer {
+    border: none;
+    padding: 10px 0px 30px 0px;
   }
 `;
 
@@ -38,8 +59,7 @@ export const Span = styled.span`
 `;
 
 export const BestSpan = styled(Span)`
-  position: absolute;
-  left: 135px;
+  padding: 20px 0px 0px 40px;
 `;
 
 export const UtilContainer = styled(FlexContainer)`
@@ -65,6 +85,12 @@ export const LikeImg = styled.img`
   width: 14px;
   height: 13px;
   margin-right: 11px;
+`;
+
+export const ProfileImg = styled.img`
+  width: 38px;
+  height: 38px;
+  margin-right: 8px;
 `;
 
 export const ReportButton = styled.span`

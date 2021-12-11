@@ -6,9 +6,9 @@ export const ConfirmReviewContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 720px;
-  height: 177px;
+  height: auto;
   position: absolute;
-  top: 110px;
+  top: 50px;
   left: 45px;
 `;
 

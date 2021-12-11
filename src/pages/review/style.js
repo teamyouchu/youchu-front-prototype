@@ -100,6 +100,7 @@ export const YoutuberDetailContent = styled.div`
   margin-top: 20px;
   font-family: 'SHSN-R';
   font-size: 16px;
+  line-height: 23px;
   display: flex;
 `;
 
@@ -170,7 +171,6 @@ export const Ratings = styled.div`
 export const ReviewContainer = styled.div`
   width: 800px;
   height: auto;
-  min-height: 550px;
   border: 1px solid #dedede;
   margin-top: 30px;
   display: flex;
