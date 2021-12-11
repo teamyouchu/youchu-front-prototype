@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const FlexContainer = styled.div`
   display: flex;
@@ -24,6 +25,12 @@ export const DetailContainer = styled(FlexContainerColumn)`
   filter: ${(props) => props.Blur};
 `;
 
+export const RightButton = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  margin: 4px 0px 0px 5px;
+  font-size: 10px;
+`;
+
 export const ReviewContainer = styled(FlexContainerColumn)`
   height: auto;
   width: 100%;
@@ -32,6 +39,10 @@ export const ReviewContainer = styled(FlexContainerColumn)`
   &.BestReviewContainer {
     border-top: none;
     padding: 10px 0px 30px 40px;
+  }
+  &.MypageContainer {
+    border: none;
+    padding: 10px 0px 30px 0px;
   }
 `;
 
