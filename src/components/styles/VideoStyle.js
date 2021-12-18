@@ -26,3 +26,12 @@ export const Span = styled.span`
   color: ${(props) => props.color};
   margin: ${(props) => props.margins};
 `;
+
+export const PlayImg = styled.img`
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  &:hover {
+    cursor: pointer;
+  }
+`;

@@ -90,7 +90,7 @@ export const profileTitle = styled.div`
   color: #000000;
   padding-bottom: 10px;
   border-bottom: 1px solid #dedede;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 `;
 
 export const profileSub = styled.div`

@@ -57,10 +57,10 @@ export default function DetailReviewInfo({ isBest, blur, page }) {
             </style.FlexContainerColumn>
           </style.FlexContainer>
           <style.MainContainer className={!isReview ? 'Mypage' : ''}>
-            <style.Span font="SHSN-R" size="15px">
+            <style.ReviewSpan font="SHSN-R" size="15px">
               제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는
               잔잔하지만 지금은 좋습니다.
-            </style.Span>
+            </style.ReviewSpan>
 
             <style.Span color="#94969b" size="12px" font="SHSN-M" margins="5px 0px 20px">
               2021.09.22
@@ -72,7 +72,12 @@ export default function DetailReviewInfo({ isBest, blur, page }) {
                   32
                 </style.Span>
               </style.LikeButton>
-              <style.ReportButton>신고하기</style.ReportButton>
+              {isReview && <style.ReportButton>신고하기</style.ReportButton>}
+              {!isReview && (
+                <style.DeleteContColumn>
+                  <style.DeleteButton>삭제하기</style.DeleteButton>
+                </style.DeleteContColumn>
+              )}
             </style.UtilContainer>
           </style.MainContainer>
         </style.DetailContainer>

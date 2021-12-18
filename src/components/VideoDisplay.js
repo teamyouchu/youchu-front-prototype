@@ -9,6 +9,7 @@ export default function VideoDisplay() {
         [MV] 2021 월간 윤종신 Repair...
       </style.Span>
       <style.FlexContainer>
+        <style.PlayImg src="/images/play.png" />
         <style.Span font="SHSN-M" size="12px" color="#94969B" margins="0px 10px 0px 5px">
           32,590
         </style.Span>

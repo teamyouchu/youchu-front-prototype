@@ -21,4 +21,6 @@ export const LeftButton = styled(FontAwesomeIcon)`
 export const NumberSpan = styled.span`
   cursor: pointer;
   margin: 0px 20px 0px 5px;
+  font-size: 13px;
+  font-family: 'NSKR-R';
 `;

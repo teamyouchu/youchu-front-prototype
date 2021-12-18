@@ -42,7 +42,7 @@ export const ReviewContainer = styled(FlexContainerColumn)`
   }
   &.MypageContainer {
     border: none;
-    padding: 10px 0px 30px 0px;
+    padding: 10px 0px 40px 0px;
   }
 `;
 
@@ -56,6 +56,10 @@ export const Span = styled.span`
   font-size: ${(props) => props.size};
   color: ${(props) => props.color};
   margin: ${(props) => props.margins};
+`;
+
+export const ReviewSpan = styled(Span)`
+  line-height: 23px;
 `;
 
 export const BestSpan = styled(Span)`
@@ -96,6 +100,22 @@ export const ProfileImg = styled.img`
 export const ReportButton = styled.span`
   font-family: 'SHSN-R';
   color: #94969b;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const DeleteContColumn = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+`;
+
+export const DeleteButton = styled.button`
+  background: white;
+  color: #94969b;
+  border: none;
+  border-bottom: 1px solid #94969b;
   &:hover {
     cursor: pointer;
   }
