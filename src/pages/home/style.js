@@ -5,12 +5,14 @@ export const HomeContainer = styled.div`
   margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const BannerContainer = styled.div`
   width: 1100px;
   height: 350px;
-  margin: 0 auto;
   margin-bottom: 50px;
   display: flex;
   align-items: center;
@@ -18,28 +20,26 @@ export const BannerContainer = styled.div`
 `;
 
 export const TextField = styled.span`
+  font-family: 'SHSN-R';
   text-align: left;
   font-size: 45px;
   line-height: 57px;
   letter-spacing: 0px;
   color: #000000;
-  font-family: 'SHSN-B';
-  margin: 0;
 `;
 
-export const RedSpan = styled(TextField)`
-  color: #eb3323;
+export const BoldSpan = styled(TextField)`
+  font-family: 'SHSN-B';
+  color: ${(props) => props.color || '#000000'};
 `;
 
 export const BannerImg = styled.img`
   width: 422px;
   height: 276px;
-  margin: 49px;
 `;
 
 export const RowContainer = styled.div`
   width: ${(props) => props.width || '1170px'};
-  margin: 0 auto;
 `;
 
 export const RowTitle = styled.div`

@@ -22,7 +22,8 @@ export default function Home() {
       <style.BannerContainer>
         <style.TextField>
           여러분들만 아는 <br />
-          <style.RedSpan>유튜버</style.RedSpan>들을 리뷰해봐요 👍
+          <style.BoldSpan color="#eb3323">유튜버</style.BoldSpan>
+          <style.BoldSpan>들을 리뷰해봐요 👍</style.BoldSpan>
         </style.TextField>
         <style.BannerImg src='/images/banner.png' />
       </style.BannerContainer>
