@@ -23,7 +23,9 @@ export default function Header() {
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
       <style.HeaderBox>
         <style.HeaderFlex>
-          <style.LogoLink to="/">YouChu</style.LogoLink>
+          <style.LogoLink to="/">
+            <style.LogoImg src="/images/YouChu_logo.png" />
+          </style.LogoLink>
           <style.HeaderNav to="/" exact={true}>
             홈
           </style.HeaderNav>
