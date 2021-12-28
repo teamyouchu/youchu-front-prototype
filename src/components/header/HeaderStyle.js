@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  justify-content: center;
   position: fixed;
   top: 0px;
   z-index: 2;
@@ -23,7 +22,7 @@ export const HeaderBox = styled.div`
   height: 80px;
   margin: 0px auto;
   display: flex;
-  padding: 28px 0 14px 0;
+  padding: 27px 0 13px 0;
   align-items: center;
   justify-content: space-between;
 `;
@@ -34,16 +33,22 @@ export const HeaderFlex = styled.div`
 `;
 
 export const LogoLink = styled(Link)`
-  font-family: 'SCD-9';
+  height: 40px;
+  margin-right: 80px;
+  /* font-family: 'SCD-9';
   text-align: left;
   font-size: 29px;
   line-height: 34px;
   letter-spacing: 0px;
   color: #000000;
-  margin-right: 30px;
   &:hover {
     color: #000000;
-  }
+  } */
+`;
+
+export const LogoImg = styled.img`
+  width: 62px;
+  height: 40px;
 `;
 
 export const HeaderNav = styled(NavLink)`
@@ -67,9 +72,8 @@ export const SearchForm = styled.form`
   align-items: center;
   width: 350px;
   height: 38px;
-  border: 1px solid #707070;
-  border-radius: 30px;
-  padding: 9px 30px;
+  border: 1px solid #dedede;
+  padding: 9px 20px;
   &:focus-within {
     border: 1px solid #3ea6ff;
   }
@@ -84,7 +88,7 @@ export const SearchInput = styled.input`
   border: none;
   width: 248px;
   height: 18px;
-  margin-left: 20px;
+  margin: 0 20px;
 
   font-family: 'SHSN-M';
   font-size: 14px;
