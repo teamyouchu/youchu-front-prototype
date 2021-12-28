@@ -3,20 +3,6 @@ import ReviewCard from 'components/ReviewCard';
 import * as style from './style';
 
 export default function Home() {
-  const slide_L = () =>
-    document.getElementById('slider').scrollBy({
-      top: 0,
-      left: -280,
-      behavior: 'smooth',
-    });
-
-  const slide_R = () =>
-    document.getElementById('slider').scrollBy({
-      top: 0,
-      left: 280,
-      behavior: 'smooth',
-    });
-
   return (
     <style.HomeContainer>
       <style.BannerContainer>
@@ -74,6 +60,20 @@ export default function Home() {
     </style.HomeContainer>
   );
 }
+
+const slide_L = () =>
+    document.getElementById('slider').scrollBy({
+      top: 0,
+      left: -280,
+      behavior: 'smooth',
+    });
+
+  const slide_R = () =>
+    document.getElementById('slider').scrollBy({
+      top: 0,
+      left: 280,
+      behavior: 'smooth',
+    });
 
 const reviewCardData = {
   "data": [
