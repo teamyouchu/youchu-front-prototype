@@ -3,19 +3,18 @@ import { useHistory } from 'react-router-dom';
 import StarRating from './StarRating';
 
 export default function ReviewCard({
-  img,
+  id,
+  imgUrl,
   category,
   channelName,
   subscriberCount,
-  reviewCount,
   ratings,
+  reviewCount,
   bestReview,
 }) {
   /* TODO 서지수 삭제하기 */
-  const imgUrl = '/images/' + img + '.jpg';
   let history = useHistory();
 
-  /* TODO 서지수 삭제하기 */
   function handleClick() {
     history.push({
       pathname: '/youtubers/review',
@@ -31,7 +30,7 @@ export default function ReviewCard({
   }
   return (
     <style.RvContainer onClick={handleClick}>
-      <style.RvImg src={imgUrl} alt={channelName} title={channelName} />
+      <style.RvImg src={imgUrl} alt={channelName} />
       <style.Info>
         <style.Group>
           <style.RvCategory>{category}</style.RvCategory>
