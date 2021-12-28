@@ -43,23 +43,23 @@ export const RowContainer = styled.div`
 `;
 
 export const RowTitle = styled.div`
+  font-family: 'SHSN-B';
   text-align: left;
   font-size: 20px;
   line-height: 25px;
   letter-spacing: 0px;
   color: #000000;
-  font-family: 'SHSN-B';
   margin-bottom: 5px;
   margin-left: ${(props) => props.left || '0px'};
 `;
 
 export const RowDescription = styled.div`
+  font-family: 'SHSN-L';
   text-align: left;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
   color: #94969b;
-  font-family: 'SHSN-L';
   margin-bottom: 20px;
   margin-left: ${(props) => props.left || '0px'};
 `;
