@@ -30,8 +30,8 @@ export default function ReviewCard({
   }
   return (
     <style.RvContainer onClick={handleClick}>
-      <style.RvImg src={imgUrl} alt={channelName} />
-      <style.Info>
+      <style.Img src={imgUrl} alt={channelName} />
+      <div>
         <style.Group>
           <style.RvCategory>{category}</style.RvCategory>
         </style.Group>
@@ -48,7 +48,7 @@ export default function ReviewCard({
           <style.BestReviewTitle>Best Review</style.BestReviewTitle>
           <style.BestReview>{bestReview}</style.BestReview>
         </style.Group>
-      </style.Info>
+      </div>
     </style.RvContainer>
   );
 }
