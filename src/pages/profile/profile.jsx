@@ -1,4 +1,4 @@
-import DetailReviewInfo from 'components/DetailReviewInfo';
+import MyReviewInfo from 'components/MyReviewInfo';
 import * as style from './style';
 
 export default function Profile() {
@@ -29,13 +29,60 @@ export default function Profile() {
             <style.userNickBtn>변경하기</style.userNickBtn>
           </style.nickNameForm>
         </style.userInfo>
-        <style.profileTitle>
+        <style.profileTitle marginBottom="10px">
           내가 쓴 총 리뷰 {rv}개
           <style.profileSub>리뷰 수정은 불가능하고, 삭제만 가능합니다.</style.profileSub>
         </style.profileTitle>
-        <DetailReviewInfo page="mypage" />
-        <DetailReviewInfo page="mypage" />
+        {myReview.data.map(data => (
+              <MyReviewInfo 
+                key={data.id}
+                data={data}
+              />
+            ))}
       </style.profileContents>
     </style.profileContainer>
   );
+}
+
+const myReview = {
+  "data": [
+    {
+      "id": 10,
+      "youtuber": {
+        "id": "FDSFWEVSD",
+        "name": "월간 윤종신"
+      },
+      "author": "병팔이",
+      "content": "힘들 때 많은 힘이 되어주었습니다.",
+      "rating": 4.5,
+      "likes": 10,
+      "createdDatetime": "2021-09-15T10:00:00+09:00"
+    },
+    {
+      "id": 20,
+      "youtuber": {
+        "id": "FDSFWEVSD",
+        "name": "월간 윤종신"
+      },
+      "author": "병팔이",
+      "content": "힘들 때 많은 힘이 되어주었습니다.",
+      "rating": 4.5,
+      "likes": 10,
+      "createdDatetime": "2021-09-15T10:00:00+09:00"
+    },
+    {
+      "id": 220,
+      "youtuber": {
+        "id": "FDSFWEVSD",
+        "name": "월간 윤종신"
+      },
+      "author": "병팔이",
+      "content": "힘들 때 많은 힘이 되어주었습니다.",
+      "rating": 4.5,
+      "likes": 10,
+      "createdDatetime": "2021-09-15T10:00:00+09:00"
+    }
+  ],
+  "size": 30,
+  "maxPage": 20
 }
