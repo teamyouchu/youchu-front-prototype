@@ -5,19 +5,22 @@ import Registration from 'components/Registration';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [registOpen, setRistOpen] = useState(false);
+  const listener = () => {
+    setIsScrolled(window.pageYOffset > 0);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', listener);
+  }, []);
 
+  const [registOpen, setRistOpen] = useState(false);
   const registClose = () => {
     setRistOpen(!registOpen);
   };
 
-  const listener = () => {
-    setIsScrolled(window.pageYOffset > 0);
+  const [searchValue, setSearchValue] = useState('');
+  const onSearchValueChange = (e) => {
+    setSearchValue(e.target.value);
   };
-
-  useEffect(() => {
-    window.addEventListener('scroll', listener);
-  }, []);
 
   return (
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
@@ -35,8 +38,20 @@ export default function Header() {
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}
           <style.SearchForm>
             <style.SearchImg src="/images/searchIcon.svg" />
-            <style.SearchInput placeholder="유튜버 이름으로 검색하세요"></style.SearchInput>
+            <style.SearchInput
+              placeholder="유튜버 이름으로 검색하세요"
+              value={searchValue}
+              onChange={onSearchValueChange}
+            />
           </style.SearchForm>
+          {searchValue && (
+            <style.SearchDropdownContainer>
+              <style.RelatedSearch>연관 검색어</style.RelatedSearch>
+              {searchResults.data.map((data) => (
+                <style.SearchResult key={data.id}>{data.name}</style.SearchResult>
+              ))}
+            </style.SearchDropdownContainer>
+          )}
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
@@ -49,3 +64,28 @@ export default function Header() {
     </style.HeaderContainer>
   );
 }
+
+const searchResults = {
+  data: [
+    {
+      id: 'FASKFQWNQWQEQW1',
+      name: '지식 한입',
+    },
+    {
+      id: 'FASKFQWNQWQEQW2',
+      name: '지식 한잔',
+    },
+    {
+      id: 'FASKFQWNQWQEQW3',
+      name: '지식 세잔',
+    },
+    {
+      id: 'FASKFQWNQWQEQW4',
+      name: '지식 두잔',
+    },
+    {
+      id: 'FASKFQWNQWQEQW5',
+      name: '지식 세입',
+    },
+  ],
+};
