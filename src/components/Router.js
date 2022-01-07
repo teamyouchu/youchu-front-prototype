@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import Header from './header/Header';
+import Footer from './footer/Footer';
 import {
   Home,
   List,
@@ -32,6 +33,7 @@ export default function AppRouter() {
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>
+        <Footer />
       </Router>
     </>
   );
