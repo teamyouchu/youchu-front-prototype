@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SignupContainer = styled.div`
   padding-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 `;
 
 export const SignupBox = styled.div`

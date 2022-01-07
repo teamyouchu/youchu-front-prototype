@@ -36,22 +36,24 @@ export default function Header() {
         </style.HeaderFlex>
         <style.HeaderFlex>
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}
-          <style.SearchForm>
-            <style.SearchImg src="/images/searchIcon.svg" />
-            <style.SearchInput
-              placeholder="유튜버 이름으로 검색하세요"
-              value={searchValue}
-              onChange={onSearchValueChange}
-            />
-          </style.SearchForm>
-          {searchValue && (
-            <style.SearchDropdownContainer>
-              <style.RelatedSearch>연관 검색어</style.RelatedSearch>
-              {searchResults.data.map((data) => (
-                <style.SearchResult key={data.id}>{data.name}</style.SearchResult>
-              ))}
-            </style.SearchDropdownContainer>
-          )}
+          <style.SearcNav exact to="/youtubers" onClick={(e) => e.preventDefault()}>
+            <style.SearchForm>
+              <style.SearchImg src="/images/searchIcon.svg" />
+              <style.SearchInput
+                placeholder="유튜버 이름으로 검색하세요"
+                value={searchValue}
+                onChange={onSearchValueChange}
+              />
+            </style.SearchForm>
+            {searchValue && (
+              <style.SearchDropdownContainer>
+                <style.RelatedSearch>연관 검색어</style.RelatedSearch>
+                {searchResults.data.map((data) => (
+                  <style.SearchResult key={data.id}>{data.name}</style.SearchResult>
+                ))}
+              </style.SearchDropdownContainer>
+            )}
+          </style.SearcNav>
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>

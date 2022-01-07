@@ -4,7 +4,7 @@ export const profileContainer = styled.div`
   width: 1100px;
   margin: 0 auto;
   padding-top: 138px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
   display: flex;
 `;
 

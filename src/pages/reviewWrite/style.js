@@ -4,7 +4,7 @@ import { Rating } from 'semantic-ui-react';
 export const reviewWriteContainer = styled.div`
   background-color: #f6f7fa;
   padding-top: 120px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 `;
 
 export const ContentsContainer = styled.div`

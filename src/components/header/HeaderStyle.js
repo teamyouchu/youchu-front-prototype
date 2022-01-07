@@ -67,6 +67,12 @@ export const HeaderNav = styled(NavLink)`
   }
 `;
 
+export const SearcNav = styled(NavLink)`
+  &.active {
+    display: none;
+  }
+`;
+
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;

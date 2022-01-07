@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ListContainer = styled.div`
   width: 1100px;
   margin: 0 auto;
-  padding: 80px 0 100px 0;
+  padding: 80px 0 60px 0;
 `;
 
 export const Title = styled.div`
