@@ -57,10 +57,10 @@ export default function Header() {
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
-          {/* <Link to="/login">
+          <Link to="/login">
             <style.LoginButton>로그인</style.LoginButton>
-          </Link> */}
-          <style.GoogleAvatar src="/images/주키니TV.jpg" />
+          </Link>
+          {/* <style.GoogleAvatar src="/images/주키니TV.jpg" /> */}
         </style.HeaderFlex>
       </style.HeaderBox>
       {registOpen && <Registration registClose={registClose} />}
