@@ -162,9 +162,17 @@ export const RegisterButton = styled(HeaderButton)`
 
 export const LoginButton = styled(HeaderButton)`
   &&& {
-    margin-left: 20px;
+    margin-left: 10px;
     background-color: #ffffff;
     border: 1px solid #dedede;
     color: #000000;
   }
+`;
+
+export const GoogleAvatar = styled.img`
+  margin-left: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #dedede;
 `;
