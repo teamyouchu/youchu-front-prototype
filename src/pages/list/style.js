@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const ListContainer = styled.div`
   width: 1100px;
   margin: 0 auto;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 0 60px 0;
 `;
 
 export const Title = styled.div`
@@ -15,8 +14,7 @@ export const Title = styled.div`
   letter-spacing: 0px;
   color: #000000;
   opacity: 1;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin: 60px 0 20px 0;
 `;
 
 export const FilterContainer = styled.div`
@@ -44,7 +42,7 @@ export const SearchImg = styled.img`
 
 export const SearchInput = styled.input`
   border: none;
-  width: 248px;
+  width: 100%;
   height: 18px;
   margin-left: 20px;
 

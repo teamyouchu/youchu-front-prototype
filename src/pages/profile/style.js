@@ -4,7 +4,7 @@ export const profileContainer = styled.div`
   width: 1100px;
   margin: 0 auto;
   padding-top: 138px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
   display: flex;
 `;
 
@@ -90,7 +90,7 @@ export const profileTitle = styled.div`
   color: #000000;
   padding-bottom: 10px;
   border-bottom: 1px solid #dedede;
-  margin-bottom: 30px;
+  margin-bottom: ${(props) => props.marginBottom || '5px'};
 `;
 
 export const profileSub = styled.div`

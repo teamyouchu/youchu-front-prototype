@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SignupContainer = styled.div`
   padding-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 `;
 
 export const SignupBox = styled.div`
@@ -73,8 +73,8 @@ export const CategoryContainer = styled.div`
 
 export const CategoryBox = styled.button`
   height: 30px;
-  background: #ffffff;
-  border: 1px solid #dedede;
+  background: ${({ active }) => (active ? '#000000' : '#FFFFFF')};
+  border: 1px solid ${({ active }) => (active ? '#000000' : '#DEDEDE')};
   border-radius: 5px;
   padding: 8px 10px;
   margin-right: 10px;
@@ -86,7 +86,11 @@ export const CategoryBox = styled.button`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0px;
-  color: #000000;
+  color: ${({ active }) => (active ? '#FFFFFF' : '#94969B')};
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
 `;
 
 export const SetBtn = styled.button`
