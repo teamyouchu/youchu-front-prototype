@@ -120,6 +120,7 @@ export const YoutuberCardContainer = styled(YoutuberDetailContainer)`
   min-height: 485px;
   margin-left: 20px;
   padding: 0px;
+  border-bottom: none;
 `;
 
 export const CategoryTitle = styled.span`
@@ -183,7 +184,6 @@ export const ReviewContainerFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #dedede;
 `;
 
 export const AllDetailButton = styled.div`
