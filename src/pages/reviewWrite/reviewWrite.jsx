@@ -21,14 +21,10 @@ export default function ReviewWrite() {
           <style.BodyContainer>
             <style.SubTitle>유튜버 리뷰 작성하기</style.SubTitle>
             <style.WriteContainer>
-                <style.Label>별점</style.Label>
-                <style.StarRating icon='star' maxRating={5} clearable size='huge' />
-                <style.Label>한줄평</style.Label>
-                <style.CommentInput required minLength='10' maxLength='60' placeholder='예 : 힘들 때 큰도움이 되었어요.' />
-                <style.Label>장점</style.Label>
-                <style.StrengthInput as="textarea" required placeholder='이 유튜버가 가장 좋았던 점은 무엇인가요?'/>
-                <style.Label>단점</style.Label>
-                <style.WeaknessInput as="textarea" required placeholder='이 유튜버에게 아쉬웠던 점은 무엇인가요?'/>
+              <style.Label>별점</style.Label>
+              <style.StarRating icon='star' maxRating={5} clearable size='huge' />
+              <style.Label>리뷰쓰기</style.Label>
+              <style.CommentInput required minLength='3' maxLength='5000' placeholder='이 유튜버에 대한 생각을 자유롭게 작성해주세요.' />
             </style.WriteContainer>
           </style.BodyContainer>
           <style.FooterContainer>

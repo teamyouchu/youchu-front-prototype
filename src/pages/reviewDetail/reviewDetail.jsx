@@ -6,12 +6,13 @@ import StarRating from 'components/StarRating';
 import ReviewOverview from 'components/ReviewOverview';
 import BulrReview from 'components/BulrReview';
 import PageNumber from 'components/PageNumber';
+import FilterDropdown from 'components/FilterDropdown';
 
 function YoutuberHeader({ data }) {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push('/reviewWrite');
+    history.push('/youtubers/reviewWrite');
   };
   return (
     <style.FlexContainer>
@@ -66,7 +67,7 @@ function YoutuberCard() {
 
 function YoutuberReviewDetail() {
   //TODO 송경석: 일시적으로 로그인 상태값 변수 지정 나중에 바꿔야함
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [IsBlur, setBlur] = useState('');
 
   useEffect(() => {
@@ -75,6 +76,19 @@ function YoutuberReviewDetail() {
     }
   }, [isLogin]);
 
+  const sortOptions = [
+    {
+      key: '최근에 등록된',
+      text: '최근에 등록된',
+      value: '최근에 등록된',
+    },
+    {
+      key: '좋아요가 많이 달린',
+      text: '좋아요가 많이 달린',
+      value: '좋아요가 많이 달린',
+    },
+  ];
+
   //TODO 송경석: 렌더링 반복되는거 임시로 map 사용해서 했는데 추후에는 백에서 json 형태
   //나 가공된 데이터 혹은 가공한 데이터를 기준으로 mapping 필요
   const temp = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -82,7 +96,7 @@ function YoutuberReviewDetail() {
     return temp.map((order, i) => {
       return (
         <style.FlexContainerColumn key={i}>
-          <DetailReviewInfo IsBest={false} Blur={IsBlur} />
+          <DetailReviewInfo isBest={false} blur={IsBlur} page="review" />
           {!isLogin && <BulrReview />}
         </style.FlexContainerColumn>
       );
@@ -92,7 +106,10 @@ function YoutuberReviewDetail() {
   return (
     <>
       <style.ReviewContainer>
-        <DetailReviewInfo IsBest={true} IsDetail={true} />
+        <style.FilterDropdownContainer>
+          <FilterDropdown placeholder="정렬" options={sortOptions} />
+        </style.FilterDropdownContainer>
+        <DetailReviewInfo isBest={true} page="review" />
         {mapToComponent(temp)}
         <PageNumber />
       </style.ReviewContainer>
@@ -116,7 +133,6 @@ export default function ReviewDetail() {
             <style.ReviewOverviewContainer>
               <ReviewOverview data={location.state} style={{ marginTop: '50px' }} />
             </style.ReviewOverviewContainer>
-
             <YoutuberReviewDetail data={location.state} />
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>

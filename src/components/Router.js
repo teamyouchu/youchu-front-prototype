@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import Header from './header/Header';
+import Footer from './footer/Footer';
 import {
   Home,
   List,
@@ -11,6 +12,7 @@ import {
   EmptyPage,
   Signup,
   ReviewDetail,
+  Profile,
 } from 'pages/index';
 
 export default function AppRouter() {
@@ -21,15 +23,17 @@ export default function AppRouter() {
         <ScrollToTop>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/list" component={List} />
-            <Route exact path="/review" component={Review} />
-            <Route path="/review/detail" component={ReviewDetail} />
-            <Route path="/reviewWrite" component={ReviewWrite} />
+            <Route exact path="/youtubers" component={List} />
+            <Route exact path="/youtubers/review" component={Review} />
+            <Route path="/youtubers/review/detail" component={ReviewDetail} />
+            <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/profile" component={Profile} />
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>
+        <Footer />
       </Router>
     </>
   );

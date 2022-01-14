@@ -5,7 +5,7 @@ import * as style from './styles/BulrReviewStyle';
 export default function BulrReview() {
   const history = useHistory();
   const handleClick = () => {
-    history.push('/reviewWrite');
+    history.push('/youtubers/reviewWrite');
   };
   return (
     <style.ConfirmReviewContainer>

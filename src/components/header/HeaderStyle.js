@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0px;
   z-index: 2;
@@ -26,19 +22,119 @@ export const HeaderBox = styled.div`
   height: 80px;
   margin: 0px auto;
   display: flex;
-  padding: 28px 0 14px 0;
+  padding: 27px 0 13px 0;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const HeaderFlex = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const LogoLink = styled(Link)`
-  font-family: 'SCD-9';
+  height: 40px;
+  margin-right: 80px;
+  /* font-family: 'SCD-9';
   text-align: left;
   font-size: 29px;
   line-height: 34px;
   letter-spacing: 0px;
   color: #000000;
-  margin-right: 51px;
   &:hover {
     color: #000000;
+  } */
+`;
+
+export const LogoImg = styled.img`
+  width: 62px;
+  height: 40px;
+`;
+
+export const HeaderNav = styled(NavLink)`
+  font-family: 'SHSN-R';
+  text-align: center;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  color: #000000;
+  margin-left: 40px;
+  &:hover {
+    color: #000000;
+  }
+  &.active {
+    font-family: 'SHSN-B';
+  }
+`;
+
+export const SearcNav = styled(NavLink)`
+  &.active {
+    display: none;
+  }
+`;
+
+export const SearchForm = styled.form`
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 38px;
+  border: 1px solid #dedede;
+  padding: 9px 20px;
+  &:focus-within {
+    border: 1px solid #3ea6ff;
+  }
+`;
+
+export const SearchImg = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+export const SearchInput = styled.input`
+  border: none;
+  width: 248px;
+  height: 18px;
+  margin: 0 20px;
+
+  font-family: 'SHSN-M';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  &::placeholder {
+    color: #94969b;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+// 검색 드랍 다운
+export const SearchDropdownContainer = styled.div`
+  position: absolute;
+  top: 69px;
+  width: 350px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #00000029;
+  opacity: 1;
+  padding: 10px 0;
+`;
+
+export const RelatedSearch = styled.div`
+  font-family: 'SHSN-M';
+  text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  padding: 5px 20px;
+  color: #eb3323;
+`;
+
+export const SearchResult = styled(RelatedSearch)`
+  font-family: 'SHSN-R';
+  color: #000000;
+  &:hover {
+    background-color: #f9fafc;
+    cursor: pointer;
   }
 `;
 
@@ -54,54 +150,6 @@ export const HeaderButton = styled(Button)`
     height: 38px;
     padding: 0;
     margin: 0;
-  }
-`;
-
-export const ReviewButton = styled(HeaderButton)`
-  &&& {
-    width: 140px;
-  }
-`;
-
-export const BarIcon = styled(FontAwesomeIcon)`
-  color: white;
-  margin-right: 7px;
-`;
-
-export const SearchForm = styled.form`
-  display: flex;
-  align-items: center;
-  width: 350px;
-  height: 38px;
-  margin-left: 240px;
-  border: 1px solid #707070;
-  border-radius: 30px;
-  padding: 9px 30px;
-  &:focus-within {
-    border: 1px solid #3ea6ff;
-  }
-`;
-
-export const SearchImg = styled.img`
-  width: 20px;
-  height: 20px;
-`;
-
-export const SearchInput = styled.input`
-  border: none;
-  width: 248px;
-  height: 18px;
-  margin-left: 20px;
-
-  font-family: 'SHSN-M';
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  &::placeholder {
-    color: #94969b;
-  }
-  &:focus {
-    outline: none;
   }
 `;
 
