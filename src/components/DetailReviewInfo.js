@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import * as style from './styles/ReviewStyle';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import reviewAPI from 'api/reviewAPI';
 
 export default function DetailReviewInfo({ isBest, blur, page }) {
   const per = '3.5';
@@ -12,6 +13,19 @@ export default function DetailReviewInfo({ isBest, blur, page }) {
       setIsReview(!isReview);
     }
   }, []);
+
+  useEffect(() => {
+    getReviewDetail();
+  }, []);
+
+  const getReviewDetail = async () => {
+    await reviewAPI
+      .getReview()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <style.FlexContainerColumn>
