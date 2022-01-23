@@ -91,7 +91,7 @@ function YoutuberReviewDetail() {
 
   //TODO 송경석: 렌더링 반복되는거 임시로 map 사용해서 했는데 추후에는 백에서 json 형태
   //나 가공된 데이터 혹은 가공한 데이터를 기준으로 mapping 필요
-  const temp = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const temp = [];
   const mapToComponent = (temp) => {
     return temp.map((order, i) => {
       return (

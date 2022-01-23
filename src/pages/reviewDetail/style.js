@@ -27,7 +27,7 @@ export const ReviewOverviewContainer = styled.div`
   margin-top: 50px;
   border: 1px solid #dedede;
   border-bottom: none;
-  height: 148px;
+  height: auto;
 `;
 
 export const YoutudberInfo = styled.div`
