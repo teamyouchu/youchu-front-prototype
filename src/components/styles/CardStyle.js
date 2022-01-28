@@ -6,7 +6,10 @@ export const RvContainer = styled.div`
   align-items: center;
   width: 260px;
   height: 288px;
-  cursor: pointer;
+  // color: #000000;
+  // &:hover{
+  //   color: #000000; 
+  // }
 `;
 
 export const RcmdContainer = styled(RvContainer)`
