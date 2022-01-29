@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import * as style from './styles/ReviewStyle';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import reviewAPI from 'api/reviewAPI';
 
-export default function DetailReviewInfo({ isBest, blur, page }) {
+export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
   const per = '3.5';
   const [isReview, setIsReview] = useState(true);
-
+  const [review, setReview] = useState({
+    id: 0,
+    author: '',
+    rating: 0,
+    likes: 0,
+    createdDatetime: '',
+    content: '',
+  });
   useEffect(() => {
     if (page === 'mypage') {
       setIsReview(!isReview);
@@ -15,17 +21,12 @@ export default function DetailReviewInfo({ isBest, blur, page }) {
   }, []);
 
   useEffect(() => {
-    getReviewDetail();
+    setReview(reviewInfo);
   }, []);
 
-  const getReviewDetail = async () => {
-    await reviewAPI
-      .getReview()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
+  // useEffect(() => {
+  //   console.log(review['author']);
+  // }, [review]);
 
   return (
     <style.FlexContainerColumn>
@@ -66,6 +67,7 @@ export default function DetailReviewInfo({ isBest, blur, page }) {
               {isReview && (
                 <style.Span font="SHSN-R" size="13px" color="#94969B">
                   병팔이
+                  {/* {review.author} */}
                 </style.Span>
               )}
             </style.FlexContainerColumn>
@@ -74,10 +76,12 @@ export default function DetailReviewInfo({ isBest, blur, page }) {
             <style.ReviewSpan font="SHSN-R" size="15px">
               제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는
               잔잔하지만 지금은 좋습니다.
+              {/* {reviewInfo.content} */}
             </style.ReviewSpan>
 
             <style.Span color="#94969b" size="12px" font="SHSN-M" margins="5px 0px 20px">
               2021.09.22
+              {/* {reviewInfo.createdDatetime} */}
             </style.Span>
             <style.UtilContainer>
               <style.LikeButton>
