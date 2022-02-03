@@ -67,10 +67,11 @@ export const HeaderNav = styled(NavLink)`
   }
 `;
 
-export const SearcNav = styled(NavLink)`
+export const SearchNav = styled(NavLink)`
   &.active {
     display: none;
   }
+  cursor: default;
 `;
 
 export const SearchForm = styled.form`
@@ -88,6 +89,7 @@ export const SearchForm = styled.form`
 export const SearchImg = styled.img`
   width: 20px;
   height: 20px;
+  cursor: pointer;
 `;
 
 export const SearchInput = styled.input`

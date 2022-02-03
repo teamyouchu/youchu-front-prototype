@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as style from './HeaderStyle';
 import Registration from 'components/Registration';
+import listAPI from 'api/listAPI';
+import { useHistory } from 'react-router-dom';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,11 +18,61 @@ export default function Header() {
   const registClose = () => {
     setRistOpen(!registOpen);
   };
-
+  
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
+    if (e.target.value) {
+      setIsSearch(true)
+    }
+    else {
+      setIsSearch(false)
+    }
   };
+
+  const el  = useRef();
+  const [isSearch, setIsSearch] = useState(false);
+  useEffect(() => {
+    const handleCloseSearch = e => {
+      if (isSearch && (!el.current || !el.current.contains(e.target))) {
+        setIsSearch(false)
+      };
+    }
+    window.addEventListener('click', handleCloseSearch);
+    return () => {
+      window.removeEventListener('click', handleCloseSearch);
+    }
+  }, [isSearch]);
+  
+
+  const [searchResults, setSearchResults] = useState([])
+  useEffect(() => {
+    const getSearchResult = async () => {
+      await listAPI
+        .getYoutuber(searchValue, 90, 5)
+        .then((res) => {
+          setSearchResults(res.data.data);
+        })
+        .catch((err) => console.log(err));
+    }; 
+
+    getSearchResult();
+  }, [searchValue]);
+
+  let history = useHistory();
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (searchValue) {
+      history.push({
+        pathname: '/youtubers',
+        state: {
+          searchValue: searchValue,
+        },
+      });
+      setSearchValue("")
+    }
+  }
 
   return (
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
@@ -36,24 +88,25 @@ export default function Header() {
         </style.HeaderFlex>
         <style.HeaderFlex>
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}
-          <style.SearcNav exact to="/youtubers" onClick={(e) => e.preventDefault()}>
-            <style.SearchForm>
-              <style.SearchImg src="/images/searchIcon.svg" />
+          <style.SearchNav exact to="/youtubers" ref={el} onClick={(e) => e.preventDefault()}>
+            <style.SearchForm onSubmit={onSearch}>
+              <style.SearchImg src="/images/searchIcon.svg" onClick={onSearch}/>
               <style.SearchInput
                 placeholder="유튜버 이름으로 검색하세요"
                 value={searchValue}
                 onChange={onSearchValueChange}
+                onClick={e => {if (searchValue) setIsSearch(!isSearch)}}
               />
             </style.SearchForm>
-            {searchValue && (
+            {isSearch && (
               <style.SearchDropdownContainer>
                 <style.RelatedSearch>연관 검색어</style.RelatedSearch>
-                {searchResults.data.map((data) => (
-                  <style.SearchResult key={data.id}>{data.name}</style.SearchResult>
+                {searchResults.map((data) => (
+                    <style.SearchResult key={data.id}>{data.name}</style.SearchResult>
                 ))}
               </style.SearchDropdownContainer>
             )}
-          </style.SearcNav>
+          </style.SearchNav>
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
@@ -67,28 +120,3 @@ export default function Header() {
     </style.HeaderContainer>
   );
 }
-
-const searchResults = {
-  data: [
-    {
-      id: 'FASKFQWNQWQEQW1',
-      name: '지식 한입',
-    },
-    {
-      id: 'FASKFQWNQWQEQW2',
-      name: '지식 한잔',
-    },
-    {
-      id: 'FASKFQWNQWQEQW3',
-      name: '지식 세잔',
-    },
-    {
-      id: 'FASKFQWNQWQEQW4',
-      name: '지식 두잔',
-    },
-    {
-      id: 'FASKFQWNQWQEQW5',
-      name: '지식 세입',
-    },
-  ],
-};

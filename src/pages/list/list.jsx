@@ -4,20 +4,33 @@ import ReviewCard from 'components/ReviewCard';
 import { useEffect, useState } from 'react';
 import * as style from './style';
 
-export default function List() {
+export default function List(props) {
+  const [searchValue, setSearchValue] = useState("")
+  useEffect(() => {
+    if (props.location.state) {
+      setSearchValue(props.location.state.searchValue)
+    }
+  },[props.location.state])
+  const onSearchValueChange = (e) => {
+    setSearchValue(e.target.value);
+  }; 
+
+
   const [allYoutubers, setAllYoutubers] = useState([])
   useEffect(() => {
-    getAllYoutubers();
-  }, []);
+    const getAllYoutubers = async () => {
+      await listAPI
+        .getYoutuber(searchValue, 90, 5)
+        .then((res) => {
+          setAllYoutubers(res.data.data);
+        })
+        .catch((err) => console.log(err));
+    };
 
-  const getAllYoutubers = async () => {
-    await listAPI
-      .getYoutuber("검색결과", 90, 5)
-      .then((res) => {
-        setAllYoutubers(res.data.data);
-      })
-      .catch((err) => console.log(err));
-  };   
+    getAllYoutubers();
+  }, [searchValue]);
+
+  
 
   return (
     <style.ListContainer>
@@ -27,7 +40,11 @@ export default function List() {
         <FilterDropdown placeholder="정렬" options={sortOptions} />
         <style.SearchForm>
           <style.SearchImg src="/images/searchIcon.svg"/>
-          <style.SearchInput placeholder="유튜버 이름으로 검색하세요" />
+          <style.SearchInput 
+            placeholder="유튜버 이름으로 검색하세요"
+            value={searchValue}
+            onChange={onSearchValueChange}
+          />
         </style.SearchForm>
       </style.FilterContainer>
       <style.CardContainer>
