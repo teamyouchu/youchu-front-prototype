@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default {
+const mainAPI =  {
   getBest() {
     return axios.get('http://api.youchu.io/v1/youtuber/most');
   },
@@ -9,3 +9,5 @@ export default {
     return axios.get('http://api.youchu.io/v1/youtuber/favorite');
   },
 };
+
+export default mainAPI
