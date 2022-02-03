@@ -2,15 +2,16 @@ import * as style from './styles/CardStyle';
 import { useHistory } from 'react-router-dom';
 import StarRating from './StarRating';
 
-export default function ReviewCard({ data: {
-  imageUrl,
-  category,
-  name,
-  subscribes,
-  rating, 
-  reviews, 
-  bestReview
-}
+export default function ReviewCard({ 
+  data: {
+    imageUrl,
+    category,
+    name,
+    subscribes,
+    rating, 
+    reviews, 
+    bestReview
+  }
 }) {
   /* TODO 서지수 삭제하기 */
   let history = useHistory();
