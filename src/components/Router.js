@@ -20,20 +20,24 @@ export default function AppRouter() {
     <>
       <Router>
         <Header />
-        <ScrollToTop>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/youtubers" component={List} />
-            <Route exact path="/youtubers/review" component={Review} />
-            <Route path="/youtubers/review/detail" component={ReviewDetail} />
-            <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/profile" component={Profile} />
-            <Route component={EmptyPage} />
-          </Switch>
-        </ScrollToTop>
-        <Footer />
+        <div id="wrap">
+          <ScrollToTop>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/youtubers" component={List} />
+                <Route exact path="/youtubers/review" component={Review} />
+                <Route path="/youtubers/review/detail" component={ReviewDetail} />
+                <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/profile" component={Profile} />
+                <Route component={EmptyPage} />
+            </Switch>
+          </ScrollToTop>
+          <div id="footer">
+            <Footer />
+          </div>
+        </div>
       </Router>
     </>
   );
