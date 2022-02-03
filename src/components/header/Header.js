@@ -102,7 +102,7 @@ export default function Header() {
               <style.SearchDropdownContainer>
                 <style.RelatedSearch>연관 검색어</style.RelatedSearch>
                 {searchResults.map((data) => (
-                    <style.SearchResult key={data.id}>{data.name}</style.SearchResult>
+                    <style.SearchResult to={`/youtubers/review/${data.id}`} key={data.id}>{data.name}</style.SearchResult>
                 ))}
               </style.SearchDropdownContainer>
             )}
