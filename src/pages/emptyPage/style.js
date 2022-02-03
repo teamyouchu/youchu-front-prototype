@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const EmptyPageContainer = styled.div`
-  padding-top: 80px;
-  width: 1100px;
-  height: 100vh;
-  margin: 0 auto;
+  padding-top: 315px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +12,9 @@ export const EmptyPageContainer = styled.div`
 export const Message = styled.span`
   font-family: 'SHSN-B';
   font-size: 24px;
-  color: black;
+  line-height: 30px;
+  letter-spacing: 0px;
+  color: #000000;
 `;
 
 export const Img = styled.img`
