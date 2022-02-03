@@ -1,7 +1,41 @@
+import signupAPI from 'api/signupAPI';
 import { useState } from 'react';
 import * as style from './style';
 
 export default function Signup() {
+  const [nickName, setNickName] = useState('');
+  const [isNickNameNull, setIsNickNameNull] = useState(false);
+  const [isNickNameLen, setIsNickNameLen] = useState(false);
+  const [isNickNameDup, setIsNickNameDup] = useState(false);
+  const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
+  const onNickNameChange = (e) => {
+    setNickName(e.target.value);
+  };
+
+  const onNickNameBlur = () => {
+    setIsNickNameNull(nickName === "");
+    setIsNickNameLen(nickName.length !== 0 && nickName.length < 2);
+    if (nickName.length >= 2) {
+      nickNameDuplicate(nickName);
+    } else {
+      setIsNickNameDup(false);
+      setIsNotNickNameDup(false);
+    }
+  };
+
+  const nickNameDuplicate = async (nickName) => {
+    await signupAPI
+      .postNickNameDup({
+          "nickName": nickName,
+        })
+      .then((res) => {
+        console.log(res);
+        setIsNickNameDup(!res.data.data);
+        setIsNotNickNameDup(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const [categoryList, setCategoryList] = useState([]);
 
   const onClick = (e) => {
@@ -12,13 +46,26 @@ export default function Signup() {
       setCategoryList(preList => [...preList, e.target.value]);
     }
   }
-  console.log(categoryList);
   return (
     <style.SignupContainer>
       <style.SignupBox>
         <style.Title>기본 프로필을 작성해봐요!</style.Title>
         <style.Label>닉네임</style.Label>
         <style.NicknameInput />
+        <style.NickNameContainer>
+          <style.Label>닉네임</style.Label>
+          <style.NicknameInput 
+            type="text"
+            placeholder='유추에서 사용 할 닉네임을 입력해주세요'
+            required
+            autoFocus
+            value={nickName}
+            minLength="2"
+            maxLength="15"
+            onChange={onNickNameChange}
+            onBlur={onNickNameBlur}
+          />
+        </style.NickNameContainer>
         <style.SubTitle>유튜버 관심 카테고리 선택 (1개 이상)</style.SubTitle>
         <style.CategoryContainer>
           {categoryArray.map(category => (
