@@ -1,4 +1,5 @@
 import listAPI from 'api/listAPI';
+import EmptyResult from 'components/EmptyResult';
 import FilterDropdown from 'components/FilterDropdown';
 import ReviewCard from 'components/ReviewCard';
 import { useEffect, useState } from 'react';
@@ -55,6 +56,8 @@ export default function List(props) {
         />
         ))}
       </style.CardContainer>
+      {/* TODO 서지수 api요청 해결되면 검색결과 없는 상황 만들기 */}
+      <EmptyResult />
     </style.ListContainer>
   );
 }

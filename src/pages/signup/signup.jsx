@@ -26,7 +26,7 @@ export default function Signup() {
   const nickNameDuplicate = async (nickName) => {
     await signupAPI
       .postNickNameDup({
-          "nickName": nickName,
+          nickName: nickName,
         })
       .then((res) => {
         console.log(res);
