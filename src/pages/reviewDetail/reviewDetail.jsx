@@ -100,9 +100,9 @@ function YoutuberReviewDetail() {
   //   console.log(reviewList);
   // }, [reviewList]);
 
-  const getReviewDetail = async () => {
+  const getReviewDetail = async (id, num, sortBy) => {
     await reviewAPI
-      .getReview('tempId')
+      .getReviews('tempId', 1, 'last')
       .then((res) => {
         // console.log(res.data.data);
         setReviewList(res.data.data);

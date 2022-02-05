@@ -6,8 +6,9 @@ import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
 import VideoDisplay from 'components/VideoDisplay';
 import ReviewOverview from 'components/ReviewOverview';
+import reviewAPI from 'api/reviewAPI';
 
-function YoutuberHeader({ data }) {
+function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
 
   const handleClick = () => {
@@ -17,14 +18,18 @@ function YoutuberHeader({ data }) {
   return (
     <style.FlexContainer>
       <style.DivColumn>
-        <style.RcImg src={data.img} alt={data.channelName} title={data.channelName} />
+        <style.RcImg
+          src={reviewOverView.imageUrl}
+          alt={reviewOverView.name}
+          title={reviewOverView.name}
+        />
         <style.YoutudberInfo>
-          <style.YoutuberHeaderTitle>{data.channelName}</style.YoutuberHeaderTitle>
+          <style.YoutuberHeaderTitle>{reviewOverView.name}</style.YoutuberHeaderTitle>
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-            <style.Score>{data.ratings}</style.Score>
+            <style.Score>{reviewOverView.rating}</style.Score>
             <style.Span size="14px" color="#94969b" margins="0px 2px">
-              ({data.reviewCount})개 리뷰
+              ({reviewOverView.reviews})개 리뷰
             </style.Span>
           </style.YoutuberSummaryContainer>
         </style.YoutudberInfo>
@@ -40,11 +45,11 @@ function YoutuberHeader({ data }) {
   );
 }
 
-function YoutuberDetail({ data }) {
+function YoutuberDetail({ reviewOverView }) {
   return (
     <style.YoutuberDetailContainer>
       <style.Span font="SHSN-M" size="26px">
-        {data.channelName} 유튜버 소개
+        {reviewOverView.name} 유튜버 소개
       </style.Span>
 
       <style.YoutuberDetailContent style={{ marginTop: '25px' }}>
@@ -56,7 +61,7 @@ function YoutuberDetail({ data }) {
 
       <style.YoutuberDetailContent>
         <style.YoutuberDetailGray>구독자수</style.YoutuberDetailGray>
-        <style.YoutuberDetailSubcribe>{data.subscriberCount}</style.YoutuberDetailSubcribe>
+        <style.YoutuberDetailSubcribe>{reviewOverView.subscribes}</style.YoutuberDetailSubcribe>
       </style.YoutuberDetailContent>
 
       <style.YoutuberDetailContent>
@@ -94,31 +99,31 @@ function YoutuberCard() {
   );
 }
 
-function YoutuberReviewDetail({ data }) {
+function YoutuberReviewDetail({ reviewOverView }) {
   const history = useHistory();
 
   const handleClick = () => {
     history.push({
       pathname: '/youtubers/review/detail',
       state: {
-        img: data.img,
-        channelName: data.channelName,
-        ratings: data.ratings,
-        reviewCount: data.reviewCount,
-        subscriberCount: data.subscriberCount,
-        category: data.category,
+        img: reviewOverView.imageUrl,
+        channelName: reviewOverView.name,
+        ratings: reviewOverView.rating,
+        reviewCount: reviewOverView.reviews,
+        subscriberCount: reviewOverView.subscribes,
+        category: reviewOverView.category,
       },
     });
   };
 
   return (
     <style.ReviewContainer>
-      <ReviewOverview data={data} />
+      <ReviewOverview reviewOverView={reviewOverView} />
       <DetailReviewInfo isBest={true} />
       <style.ReviewContainerFooter>
         <style.AllDetailButton onClick={handleClick}>
           <style.Span font="SHSN-B" size="14px">
-            {data.channelName}
+            {reviewOverView && reviewOverView.name}
           </style.Span>{' '}
           &nbsp;리뷰 모두 보기
           <style.RightButton icon={faChevronRight} />
@@ -128,7 +133,7 @@ function YoutuberReviewDetail({ data }) {
   );
 }
 
-function YoutuberVideo({ data }) {
+function YoutuberVideo({ reviewOverView }) {
   const [currentClick, setCurrentClick] = useState(null);
   const [viewsColor, setViewsColor] = useState('#94969B');
   const [uploadColor, setuploadColor] = useState('#EB3323');
@@ -151,7 +156,7 @@ function YoutuberVideo({ data }) {
     <style.VideoContainer>
       <style.VideoContentContainer>
         <style.Span font="SHSN-M" size="26px" margins="30px 0px 10px 0px">
-          {data.channelName} 영상
+          {reviewOverView.name} 영상
         </style.Span>
         <style.FlexContainer justify="flex-end">
           <style.FiliterButton
@@ -176,7 +181,7 @@ function YoutuberVideo({ data }) {
       <style.ReviewContainerFooter>
         <style.AllDetailButton>
           <style.Span font="SHSN-B" size="14px">
-            {data.channelName}
+            {reviewOverView.name}
           </style.Span>{' '}
           &nbsp;영상 모두 보기
           <style.RightButton icon={faChevronRight} />
@@ -194,22 +199,56 @@ const temp2 =
 export default function Review() {
   const location = useLocation();
 
+  const [reviewOverView, setReviewOverView] = useState({
+    id: 0,
+    name: '',
+    channelDescription: '',
+    imageUrl: '',
+    backgroundImageUrl: '',
+    subscribes: 0,
+    category: '',
+    rating: 0,
+    reviews: 0,
+    bestReview: {
+      id: 0,
+      author: '',
+      rating: 0,
+      likes: 0,
+      createdDatetime: '',
+      content: '',
+    },
+  });
+
+  useEffect(() => {
+    getReviewOverView('tempId');
+  }, []);
+
+  const getReviewOverView = async (id) => {
+    await reviewAPI
+      .getReview(id)
+      .then((res) => {
+        // console.log(res.data.data);
+        setReviewOverView(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <style.GrayBar />
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
-          <YoutuberHeader data={location.state} />
+          <YoutuberHeader reviewOverView={reviewOverView} />
         </style.YoutuberHeaderContainer>
         <style.FlexContainer>
           <style.FlexContainerColumn>
-            <YoutuberDetail data={location.state} />
-            <YoutuberReviewDetail data={location.state} />
-            <YoutuberVideo data={location.state} />
+            <YoutuberDetail reviewOverView={reviewOverView} />
+            <YoutuberReviewDetail reviewOverView={reviewOverView} />
+            <YoutuberVideo reviewOverView={reviewOverView} />
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>
             <style.YoutuberCardContainer>
-              <style.CategoryTitle>{location.state.category} 유튜버</style.CategoryTitle>
+              <style.CategoryTitle>{reviewOverView.category} 유튜버</style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />
               <YoutuberCard />
