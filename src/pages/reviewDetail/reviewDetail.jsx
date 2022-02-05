@@ -7,8 +7,9 @@ import ReviewOverview from 'components/ReviewOverview';
 import BulrReview from 'components/BulrReview';
 import PageNumber from 'components/PageNumber';
 import FilterDropdown from 'components/FilterDropdown';
+import reviewAPI from 'api/reviewAPI';
 
-function YoutuberHeader({ data }) {
+function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
 
   const handleClick = () => {
@@ -17,14 +18,18 @@ function YoutuberHeader({ data }) {
   return (
     <style.FlexContainer>
       <style.DivColumn>
-        <style.RcImg src={data.img} alt={data.channelName} title={data.channelName} />
+        <style.RcImg
+          src={reviewOverView.imageUrl}
+          alt={reviewOverView.name}
+          title={reviewOverView.name}
+        />
         <style.YoutudberInfo>
-          <style.YoutuberHeaderTitle>{data.channelName}</style.YoutuberHeaderTitle>
+          <style.YoutuberHeaderTitle>{reviewOverView.name}</style.YoutuberHeaderTitle>
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-            <style.Score>{data.ratings}</style.Score>
+            <style.Score>{reviewOverView.rating}</style.Score>
             <style.Span size="14px" color="#94969b" margins="0px 2px">
-              ({data.reviewCount})개 리뷰
+              ({reviewOverView.reviews})개 리뷰
             </style.Span>
           </style.YoutuberSummaryContainer>
         </style.YoutudberInfo>
@@ -89,18 +94,41 @@ function YoutuberReviewDetail() {
     },
   ];
 
+  const [reviewList, setReviewList] = useState([]);
+
+  useEffect(() => {
+    getReviewDetail();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(reviewList);
+  // }, [reviewList]);
+
+  const getReviewDetail = async (id, num, sortBy) => {
+    await reviewAPI
+      .getReviews('tempId', 1, 'last')
+      .then((res) => {
+        // console.log(res.data.data);
+        setReviewList(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   //TODO 송경석: 렌더링 반복되는거 임시로 map 사용해서 했는데 추후에는 백에서 json 형태
   //나 가공된 데이터 혹은 가공한 데이터를 기준으로 mapping 필요
-  const temp = [];
-  const mapToComponent = (temp) => {
-    return temp.map((order, i) => {
-      return (
-        <style.FlexContainerColumn key={i}>
-          <DetailReviewInfo isBest={false} blur={IsBlur} page="review" />
-          {!isLogin && <BulrReview />}
-        </style.FlexContainerColumn>
-      );
-    });
+  const mapToComponent = (reviewList) => {
+    return (
+      <>
+        {reviewList.map((review, i) => {
+          return (
+            <style.FlexContainerColumn key={i}>
+              <DetailReviewInfo isBest={false} blur={IsBlur} page="review" reviewInfo={review} />
+              {!isLogin && <BulrReview />}
+            </style.FlexContainerColumn>
+          );
+        })}
+      </>
+    );
   };
 
   return (
@@ -110,7 +138,7 @@ function YoutuberReviewDetail() {
           <FilterDropdown placeholder="정렬" options={sortOptions} />
         </style.FilterDropdownContainer>
         <DetailReviewInfo isBest={true} page="review" />
-        {mapToComponent(temp)}
+        {mapToComponent(reviewList)}
         <PageNumber />
       </style.ReviewContainer>
     </>
@@ -121,17 +149,21 @@ export default function ReviewDetail() {
   const location = useLocation();
   console.log(location);
 
+  useEffect(() => {
+    console.log(location.state);
+  }, []);
+
   return (
     <>
       <style.GrayBar />
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
-          <YoutuberHeader data={location.state} />
+          <YoutuberHeader reviewOverView={location.state} />
         </style.YoutuberHeaderContainer>
         <style.FlexContainer>
           <style.FlexContainerColumn>
             <style.ReviewOverviewContainer>
-              <ReviewOverview data={location.state} style={{ marginTop: '50px' }} />
+              <ReviewOverview reviewOverView={location.state} style={{ marginTop: '50px' }} />
             </style.ReviewOverviewContainer>
             <YoutuberReviewDetail data={location.state} />
           </style.FlexContainerColumn>
