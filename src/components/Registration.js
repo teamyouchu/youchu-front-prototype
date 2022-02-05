@@ -2,12 +2,15 @@ import React from 'react';
 import * as style from './styles/RegistrarionStyle';
 
 export default function Registration({ registClose }) {
-  const closeModal = () => {
-    const close = document.querySelector('#registClose-btn');
-    close.click();
+  const closeModal = ({ target }) => {
+    const className = target.getAttribute('class');
+    if (className.includes('out-modal__container')) {
+      const close = document.querySelector('#registClose-btn');
+      close.click();
+    }
   };
   return (
-    <style.ModalContainer onClick={closeModal}>
+    <style.ModalContainer className="out-modal__container" onClick={closeModal}>
       <style.Modal width="500px" height="386px" padding="70px 60px">
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
           유튜버 등록
