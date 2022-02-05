@@ -67,10 +67,11 @@ export const HeaderNav = styled(NavLink)`
   }
 `;
 
-export const SearcNav = styled(NavLink)`
+export const SearchNav = styled(NavLink)`
   &.active {
     display: none;
   }
+  cursor: default;
 `;
 
 export const SearchForm = styled.form`
@@ -88,6 +89,7 @@ export const SearchForm = styled.form`
 export const SearchImg = styled.img`
   width: 20px;
   height: 20px;
+  cursor: pointer;
 `;
 
 export const SearchInput = styled.input`
@@ -129,12 +131,19 @@ export const RelatedSearch = styled.div`
   color: #eb3323;
 `;
 
-export const SearchResult = styled(RelatedSearch)`
+export const SearchResult = styled(Link)`
   font-family: 'SHSN-R';
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  padding: 5px 20px;
   color: #000000;
   &:hover {
     background-color: #f9fafc;
     cursor: pointer;
+    color: #000000;
   }
 `;
 

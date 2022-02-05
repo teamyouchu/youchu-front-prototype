@@ -11,6 +11,19 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
   }
+
+  #wrap{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 88px;
+  }
+
+  #footer{
+    width: 100%;
+    height: 88px;
+    bottom: 0px;
+    position: absolute;
+  }
 `;
 
 export default GlobalStyle;
