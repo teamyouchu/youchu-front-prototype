@@ -15,6 +15,7 @@ export default function Registration({ registClose }) {
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
           유튜버 등록
         </style.Span>
+
         <style.Span font="SHSN-R" size="14px">
           등록하시려는 유튜버 메인 페이지의 도메인을 입력해주세요!
         </style.Span>
@@ -24,6 +25,7 @@ export default function Registration({ registClose }) {
         <style.LinkInput placeholder="www.youtube.com"></style.LinkInput>
         <style.CompleteButton id="registClose-btn" onClick={registClose}>
           완료
+          <style.Img src="/images/close-icon.png" alt="empty image" />
         </style.CompleteButton>
       </style.Modal>
     </style.ModalContainer>

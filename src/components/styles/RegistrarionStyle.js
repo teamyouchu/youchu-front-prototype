@@ -63,4 +63,15 @@ export const CompleteButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
+`;
+
+export const Img = styled.img`
+  width: 24px;
+  height: 24px;
+  border: 1px solid #000;
+  top: 85px;
+  right: 180px;
+  position: absolute;
+  color: gray;
 `;
