@@ -106,11 +106,11 @@ function YoutuberReviewDetail({ reviewOverView }) {
     history.push({
       pathname: '/youtubers/review/detail',
       state: {
-        img: reviewOverView.imageUrl,
-        channelName: reviewOverView.name,
-        ratings: reviewOverView.rating,
-        reviewCount: reviewOverView.reviews,
-        subscriberCount: reviewOverView.subscribes,
+        imageUrl: reviewOverView.imageUrl,
+        name: reviewOverView.name,
+        rating: reviewOverView.rating,
+        reviews: reviewOverView.reviews,
+        subscribes: reviewOverView.subscribes,
         category: reviewOverView.category,
       },
     });

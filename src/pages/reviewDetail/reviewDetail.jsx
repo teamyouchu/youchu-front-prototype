@@ -9,7 +9,7 @@ import PageNumber from 'components/PageNumber';
 import FilterDropdown from 'components/FilterDropdown';
 import reviewAPI from 'api/reviewAPI';
 
-function YoutuberHeader({ data }) {
+function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
 
   const handleClick = () => {
@@ -18,14 +18,18 @@ function YoutuberHeader({ data }) {
   return (
     <style.FlexContainer>
       <style.DivColumn>
-        <style.RcImg src={data.img} alt={data.channelName} title={data.channelName} />
+        <style.RcImg
+          src={reviewOverView.imageUrl}
+          alt={reviewOverView.name}
+          title={reviewOverView.name}
+        />
         <style.YoutudberInfo>
-          <style.YoutuberHeaderTitle>{data.channelName}</style.YoutuberHeaderTitle>
+          <style.YoutuberHeaderTitle>{reviewOverView.name}</style.YoutuberHeaderTitle>
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-            <style.Score>{data.ratings}</style.Score>
+            <style.Score>{reviewOverView.rating}</style.Score>
             <style.Span size="14px" color="#94969b" margins="0px 2px">
-              ({data.reviewCount})개 리뷰
+              ({reviewOverView.reviews})개 리뷰
             </style.Span>
           </style.YoutuberSummaryContainer>
         </style.YoutudberInfo>
@@ -145,17 +149,21 @@ export default function ReviewDetail() {
   const location = useLocation();
   console.log(location);
 
+  useEffect(() => {
+    console.log(location.state);
+  }, []);
+
   return (
     <>
       <style.GrayBar />
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
-          <YoutuberHeader data={location.state} />
+          <YoutuberHeader reviewOverView={location.state} />
         </style.YoutuberHeaderContainer>
         <style.FlexContainer>
           <style.FlexContainerColumn>
             <style.ReviewOverviewContainer>
-              <ReviewOverview data={location.state} style={{ marginTop: '50px' }} />
+              <ReviewOverview reviewOverView={location.state} style={{ marginTop: '50px' }} />
             </style.ReviewOverviewContainer>
             <YoutuberReviewDetail data={location.state} />
           </style.FlexContainerColumn>
