@@ -10,6 +10,9 @@ export default function Signup() {
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
   const onNickNameChange = (e) => {
     setNickName(e.target.value);
+    setIsNickNameNull(false)
+    setIsNickNameLen(false)
+    setIsNickNameDup(false)
   };
 
   const onNickNameBlur = () => {
