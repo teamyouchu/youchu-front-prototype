@@ -1,30 +1,37 @@
 import * as style from './style';
 import { GoogleLogin } from 'react-google-login';
 import loginAPI from 'api/loginAPI';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
+  const history = useHistory();
+
   //로그인 성공했을 떄 처리 함수 
   const successGoogle = (res) => {
-    console.log(res)
-    loginFunc(res.accessToken)
+    loginFunc(res.code)
   }
 
-  const loginFunc = async (accessToken) => {
+  const loginFunc = async (code) => {
     await loginAPI
       .postLogin({
-        code: accessToken
+        code: code
       })
       .then((res) => {
         console.log(res);
+        if (res.data.registered) {
+          history.goBack();
+        } else {
+          history.push("/signup")
+        }
       })
       .catch((err) => console.error(err));
   };
 
   //로그인 실패했을 때 처리 함수 
   const failGoogle = (res) => {
+    alert("구글 로그인에 실패하였습니다");
     console.log(res);
   }
-
   return (
     <style.LoginContainer>
       <style.LoginBox>
@@ -41,6 +48,7 @@ export default function Login() {
             onSuccess={successGoogle}
             onFailure={failGoogle}
             cookiePolicy={'single_host_origin'}
+            responseType="code"
           />
       </style.LoginBox>
     </style.LoginContainer>
