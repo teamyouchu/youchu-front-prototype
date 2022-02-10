@@ -1,6 +1,7 @@
 import signupAPI from 'api/signupAPI';
 import { useState } from 'react';
 import * as style from './style';
+import { useHistory } from 'react-router-dom';
 
 export default function Signup() {
   const [nickName, setNickName] = useState('');
@@ -49,6 +50,24 @@ export default function Signup() {
       setCategoryList(preList => [...preList, e.target.value]);
     }
   }
+
+  const history = useHistory();
+  const onSignupClick = async () => {
+    setIsNickNameNull(nickName === "");
+    if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
+      await signupAPI
+      .postSignup({
+        nickname: nickName,
+        favoriteCategories: categoryList,
+      })
+      .then((res) => {
+        console.log(res)
+        history.go(-2);
+      })
+      .catch((err) => console.error(err));
+    }
+  };
+
   return (
     <style.SignupContainer>
       <style.SignupBox>
@@ -80,7 +99,7 @@ export default function Signup() {
             </style.CategoryBox>
           ))}
         </style.CategoryContainer>
-        <style.SetBtn type="submit">완료</style.SetBtn>
+        <style.SetBtn onClick={onSignupClick}>완료</style.SetBtn>
       </style.SignupBox>
     </style.SignupContainer>
   );
