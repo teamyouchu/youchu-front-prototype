@@ -4,13 +4,12 @@ import * as style from './styles/ReviewStyle';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
-  const per = '3.5';
   const [isReview, setIsReview] = useState(true);
   useEffect(() => {
     if (page === 'mypage') {
       setIsReview(!isReview);
     }
-  }, []);
+  }, [isReview, page]);
 
   return (
     <style.FlexContainerColumn>
