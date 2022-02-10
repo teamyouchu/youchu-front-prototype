@@ -85,7 +85,11 @@ export const ReviewCardContainer = styled.div`
   width: 1100px;
   white-space: nowrap;
   overflow-x: scroll;
-  overflow: hidden;
+  overflow: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   grid-template-columns: repeat(10, 1fr);
   column-gap: 20px;
   margin-bottom: 60px;

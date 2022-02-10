@@ -10,6 +10,9 @@ export default function Signup() {
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
   const onNickNameChange = (e) => {
     setNickName(e.target.value);
+    setIsNickNameNull(false)
+    setIsNickNameLen(false)
+    setIsNickNameDup(false)
   };
 
   const onNickNameBlur = () => {
@@ -26,7 +29,7 @@ export default function Signup() {
   const nickNameDuplicate = async (nickName) => {
     await signupAPI
       .postNickNameDup({
-          "nickName": nickName,
+          nickName: nickName,
         })
       .then((res) => {
         console.log(res);
