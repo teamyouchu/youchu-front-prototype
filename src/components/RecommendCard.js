@@ -1,9 +1,9 @@
 import * as style from './styles/CardStyle';
-import { useHistory } from 'react-router-dom';
 import StarRating from './StarRating';
 
 export default function RecommendCard({
   data: {
+    id,
     imageUrl,
     name,
     rating, 
@@ -11,14 +11,8 @@ export default function RecommendCard({
     category,
   }
  }) {
-  /* TODO 서지수 삭제하기 */
-  const history = useHistory();
-
-  function handleClick() {
-    history.push('/');
-  }
   return (
-    <style.RcmdContainer onClick={handleClick}>
+    <style.RcmdContainer to={`/youtubers/review/id=${id}`}>
       <style.Img src={imageUrl} alt={name} width="72px" height="72px" margin="0 20px" />
       <div>
         <style.Group>

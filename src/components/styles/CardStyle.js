@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const RvContainer = styled.div`
+export const RvContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 260px;
   height: 288px;
-  // color: #000000;
-  // &:hover{
-  //   color: #000000; 
-  // }
+  color: #000000;
+  &:hover{
+    color: #000000; 
+  }
 `;
 
 export const RcmdContainer = styled(RvContainer)`
