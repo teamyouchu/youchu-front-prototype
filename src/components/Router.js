@@ -25,7 +25,7 @@ export default function AppRouter() {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/youtubers" component={List} />
-                <Route exact path="/youtubers/review" component={Review} />
+                <Route exact path="/youtubers/review/id=:id" component={Review} />
                 <Route path="/youtubers/review/detail" component={ReviewDetail} />
                 <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
                 <Route path="/login" component={Login} />

@@ -103,7 +103,7 @@ export default function Header() {
                 <style.RelatedSearch>연관 검색어</style.RelatedSearch>
                 {searchResults.map((data) => (
                     <style.SearchResult 
-                      to={`/youtubers/review/${data.id}`} 
+                      to={`/youtubers/review/id=${data.id}`} 
                       key={data.id}
                       onClick={() => {setIsSearch(false)}}
                     >
