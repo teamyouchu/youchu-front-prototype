@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import DetailReviewInfo from 'components/DetailReviewInfo';
 import StarRating from 'components/StarRating';
@@ -197,7 +197,7 @@ const temp2 =
   '[MONTHLY YOONJONGSHIN] is an independent media and a project group, led by a producer Yoon Jongshin. Started by releasing two songs in March 2010, [MONTHLY YOONJONGSHIN] has been releasing the songs and music videos every month. Furthermore, [MONTHLY YOONJONGSHIN] has been publishing digital magazines since 2012, not only producing the music but also collaborating with a variety of parts of arts such as literature, movie, photograph, painting, game and so on. They do plan and produce all the songs, albums, arts, photographs, books, exhibitions by themselves, based on the collaboration';
 
 export default function Review() {
-  const location = useLocation();
+  // const location = useLocation();
 
   const [reviewOverView, setReviewOverView] = useState({
     id: 0,
