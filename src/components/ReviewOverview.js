@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as style from './styles/ReviewOverviewStyle';
 import StarRating from './StarRating';
 
