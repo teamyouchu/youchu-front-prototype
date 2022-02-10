@@ -235,7 +235,9 @@ export default function Review() {
 
   return (
     <>
-      <style.GrayBar />
+      <style.YoutuberBackImg>
+        <img src={reviewOverView.backgroundImageUrl} alt="background" />
+      </style.YoutuberBackImg>
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
           <YoutuberHeader reviewOverView={reviewOverView} />
