@@ -1,6 +1,7 @@
 import React from 'react';
 import * as style from './styles/RegistrarionStyle';
 
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 export default function Registration({ registClose }) {
   const closeModal = ({ target }) => {
     const className = target.getAttribute('class');
@@ -25,7 +26,7 @@ export default function Registration({ registClose }) {
         <style.LinkInput placeholder="www.youtube.com"></style.LinkInput>
         <style.CompleteButton id="registClose-btn" onClick={registClose}>
           완료
-          <style.Img src="/images/close-icon.png" alt="empty image" />
+          <style.Img icon={faCircleXmark} />
         </style.CompleteButton>
       </style.Modal>
     </style.ModalContainer>
