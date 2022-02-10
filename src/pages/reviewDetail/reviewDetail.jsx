@@ -72,7 +72,7 @@ function YoutuberCard() {
 
 function YoutuberReviewDetail() {
   //TODO 송경석: 일시적으로 로그인 상태값 변수 지정 나중에 바꿔야함
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin] = useState(true);
   const [IsBlur, setBlur] = useState('');
 
   useEffect(() => {
@@ -147,11 +147,6 @@ function YoutuberReviewDetail() {
 
 export default function ReviewDetail() {
   const location = useLocation();
-  console.log(location);
-
-  useEffect(() => {
-    console.log(location.state);
-  }, []);
 
   return (
     <>
