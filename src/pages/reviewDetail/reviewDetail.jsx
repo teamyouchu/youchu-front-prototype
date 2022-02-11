@@ -100,10 +100,6 @@ function YoutuberReviewDetail() {
     getReviewDetail();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(reviewList);
-  // }, [reviewList]);
-
   const getReviewDetail = async (id, num, sortBy) => {
     await reviewAPI
       .getReviews('tempId', 1, 'last')
@@ -148,9 +144,44 @@ function YoutuberReviewDetail() {
 export default function ReviewDetail() {
   const location = useLocation();
 
+  const [reviewOverView, setReviewOverView] = useState({
+    id: 0,
+    name: '',
+    channelDescription: '',
+    imageUrl: '',
+    backgroundImageUrl: '',
+    subscribes: 0,
+    category: '',
+    rating: 0,
+    reviews: 0,
+    bestReview: {
+      id: 0,
+      author: '',
+      rating: 0,
+      likes: 0,
+      createdDatetime: '',
+      content: '',
+    },
+  });
+
+  useEffect(() => {
+    getReviewOverView('tempId');
+  }, []);
+
+  const getReviewOverView = async (id) => {
+    await reviewAPI
+      .getReview(id)
+      .then((res) => {
+        setReviewOverView(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
-      <style.GrayBar />
+      <style.YoutuberBackImg>
+        <img src={reviewOverView.backgroundImageUrl} alt="background" />
+      </style.YoutuberBackImg>
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
           <YoutuberHeader reviewOverView={location.state} />

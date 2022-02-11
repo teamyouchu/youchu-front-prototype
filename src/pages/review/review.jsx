@@ -101,10 +101,9 @@ function YoutuberCard() {
 
 function YoutuberReviewDetail({ reviewOverView }) {
   const history = useHistory();
-
   const handleClick = () => {
     history.push({
-      pathname: '/youtubers/review/detail',
+      pathname: `/youtubers/review/detail/${reviewOverView.id}`,
       state: {
         imageUrl: reviewOverView.imageUrl,
         name: reviewOverView.name,
@@ -227,7 +226,6 @@ export default function Review() {
     await reviewAPI
       .getReview(id)
       .then((res) => {
-        // console.log(res.data.data);
         setReviewOverView(res.data);
       })
       .catch((err) => console.log(err));
