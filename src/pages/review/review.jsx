@@ -234,7 +234,11 @@ export default function Review() {
   return (
     <>
       <style.YoutuberBackImg>
-        <img src={reviewOverView.backgroundImageUrl} alt="background" />
+        {reviewOverView.backgroundImageUrl ? (
+          <img src={reviewOverView.backgroundImageUrl} alt="background" />
+        ) : (
+          <style.GrayBar />
+        )}
       </style.YoutuberBackImg>
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
