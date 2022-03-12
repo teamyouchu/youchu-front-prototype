@@ -23,10 +23,10 @@ export const Modal = styled.div`
   transform: translate(-50%, -50%);
   z-index: 100;
   img {
-    width: 30px;
-    height: 30px;
-    top: 20px;
-    right: 20px;
+    width: 24px;
+    height: 24px;
+    top: 70px;
+    right: 60px;
     position: absolute;
   }
 `;
