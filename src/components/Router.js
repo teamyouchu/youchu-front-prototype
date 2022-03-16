@@ -27,7 +27,8 @@ export default function AppRouter() {
               <Route exact path="/youtubers" component={List} />
               <Route exact path="/youtubers/review/:id" component={Review} />
               <Route path="/youtubers/review/detail/:id" component={ReviewDetail} />
-              <Route path="/youtubers/reviewWrite" component={ReviewWrite} />
+              {/* 리뷰하기 버튼 눌렀을 때 id값 넘어가게 수정 */}
+              <Route path="/youtubers/reviewWrite/:id" component={ReviewWrite} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/profile" component={Profile} />

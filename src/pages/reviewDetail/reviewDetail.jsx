@@ -13,8 +13,11 @@ function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push('/youtubers/reviewWrite');
+    history.push({
+      pathname: `/youtubers/reviewWrite/${reviewOverView.id}`,
+    });
   };
+
   return (
     <style.FlexContainer>
       <style.DivColumn>
