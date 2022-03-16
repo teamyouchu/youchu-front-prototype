@@ -11,25 +11,25 @@ import reviewAPI from 'api/reviewAPI';
 
 function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
+  const [imageUrl, name, reviews, rating, id] = reviewOverView;
 
   const handleClick = () => {
-    history.push('/youtubers/reviewWrite');
+    history.push({
+      pathname: `/youtubers/reviewWrite/${id}`,
+    });
   };
+
   return (
     <style.FlexContainer>
       <style.DivColumn>
-        <style.RcImg
-          src={reviewOverView.imageUrl}
-          alt={reviewOverView.name}
-          title={reviewOverView.name}
-        />
+        <style.RcImg src={imageUrl} alt={name} title={name} />
         <style.YoutudberInfo>
-          <style.YoutuberHeaderTitle>{reviewOverView.name}</style.YoutuberHeaderTitle>
+          <style.YoutuberHeaderTitle>{name}</style.YoutuberHeaderTitle>
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-            <style.Score>{reviewOverView.rating}</style.Score>
+            <style.Score>{rating}</style.Score>
             <style.Span size="14px" color="#94969b" margins="0px 2px">
-              ({reviewOverView.reviews})개 리뷰
+              ({reviews})개 리뷰
             </style.Span>
           </style.YoutuberSummaryContainer>
         </style.YoutudberInfo>
@@ -100,10 +100,6 @@ function YoutuberReviewDetail() {
     getReviewDetail();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(reviewList);
-  // }, [reviewList]);
-
   const getReviewDetail = async (id, num, sortBy) => {
     await reviewAPI
       .getReviews('tempId', 1, 'last')
@@ -148,9 +144,44 @@ function YoutuberReviewDetail() {
 export default function ReviewDetail() {
   const location = useLocation();
 
+  const [reviewOverView, setReviewOverView] = useState({
+    id: 0,
+    name: '',
+    channelDescription: '',
+    imageUrl: '',
+    backgroundImageUrl: '',
+    subscribes: 0,
+    category: '',
+    rating: 0,
+    reviews: 0,
+    bestReview: {
+      id: 0,
+      author: '',
+      rating: 0,
+      likes: 0,
+      createdDatetime: '',
+      content: '',
+    },
+  });
+
+  useEffect(() => {
+    getReviewOverView('tempId');
+  }, []);
+
+  const getReviewOverView = async (id) => {
+    await reviewAPI
+      .getReview(id)
+      .then((res) => {
+        setReviewOverView(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
-      <style.GrayBar />
+      <style.YoutuberBackImg>
+        <img src={reviewOverView.backgroundImageUrl} alt="background" />
+      </style.YoutuberBackImg>
       <style.Contatiner>
         <style.YoutuberHeaderContainer>
           <YoutuberHeader reviewOverView={location.state} />

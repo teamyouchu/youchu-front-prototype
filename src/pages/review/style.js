@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export const YoutuberBackImg = styled.div`
   height: auto;
   margin-top: 80px;
@@ -7,7 +8,10 @@ export const YoutuberBackImg = styled.div`
     width: 100%;
   }
 `;
-
+export const GrayBar = styled.div`
+  height: 120px;
+  background-color: #75787a;
+`;
 export const FlexContainer = styled.div`
   display: flex;
   width: 100%;
