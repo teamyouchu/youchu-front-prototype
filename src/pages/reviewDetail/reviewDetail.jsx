@@ -11,28 +11,25 @@ import reviewAPI from 'api/reviewAPI';
 
 function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
+  const [imageUrl, name, reviews, rating, id] = reviewOverView;
 
   const handleClick = () => {
     history.push({
-      pathname: `/youtubers/reviewWrite/${reviewOverView.id}`,
+      pathname: `/youtubers/reviewWrite/${id}`,
     });
   };
 
   return (
     <style.FlexContainer>
       <style.DivColumn>
-        <style.RcImg
-          src={reviewOverView.imageUrl}
-          alt={reviewOverView.name}
-          title={reviewOverView.name}
-        />
+        <style.RcImg src={imageUrl} alt={name} title={name} />
         <style.YoutudberInfo>
-          <style.YoutuberHeaderTitle>{reviewOverView.name}</style.YoutuberHeaderTitle>
+          <style.YoutuberHeaderTitle>{name}</style.YoutuberHeaderTitle>
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
-            <style.Score>{reviewOverView.rating}</style.Score>
+            <style.Score>{rating}</style.Score>
             <style.Span size="14px" color="#94969b" margins="0px 2px">
-              ({reviewOverView.reviews})개 리뷰
+              ({reviews})개 리뷰
             </style.Span>
           </style.YoutuberSummaryContainer>
         </style.YoutudberInfo>
