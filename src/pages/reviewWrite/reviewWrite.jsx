@@ -73,7 +73,7 @@ export default function ReviewWrite() {
             </style.WriteContainer>
           </style.BodyContainer>
           <style.FooterContainer>
-            <style.Warning>솔직하게 작성하신 리뷰는 수정이 불가능하고 삭제만 가능합니다. 허위 리뷰나, 명예훼손, 욕설, 타인비방글 등 유튜버나 제3자의 권리를 침해하는 리뷰는 제재를 받을 수 있습니다. 게시에 따른 책임은 작성자에게 있으며, 유츄들은 이에 대한 법적 책임을 지지 않습니다.</style.Warning>
+            <style.Warning>솔직하게 작성하신 리뷰는 수정이 불가능하고 삭제만 가능합니다. 허위 리뷰나, 명예훼손, 욕설, 타인비방글 등 유튜버나 제3자의 권리를 침해하는 리뷰는 제재를 받을 수 있습니다. 게시에 따른 책임은 작성자에게 있으며, 유츄는 이에 대한 법적 책임을 지지 않습니다.</style.Warning>
             <style.SubmitBtn type="submit">완료</style.SubmitBtn>
           </style.FooterContainer>
         </form>

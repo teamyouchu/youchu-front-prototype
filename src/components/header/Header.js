@@ -77,14 +77,14 @@ export default function Header() {
   return (
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
       <style.HeaderBox>
-        <style.HeaderFlex>
+        <style.HeaderFlex direction='column'>
           <style.LogoLink to="/">
             <style.LogoImg src="/images/YouChu_logo.png" />
           </style.LogoLink>
-          <style.HeaderNav to="/" exact={true}>
-            홈
-          </style.HeaderNav>
-          <style.HeaderNav to="/youtubers">유튜버 리뷰</style.HeaderNav>
+          <div>
+            <style.HeaderNav to="/" exact={true}>홈</style.HeaderNav>
+            <style.HeaderNav to="/youtubers">유튜버 리뷰</style.HeaderNav>
+          </div>
         </style.HeaderFlex>
         <style.HeaderFlex>
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}

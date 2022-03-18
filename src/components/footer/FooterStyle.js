@@ -15,6 +15,12 @@ export const FooterBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    padding: 0 24px;
+
+  }
 `;
 
 export const FooterFlex = styled.div`
