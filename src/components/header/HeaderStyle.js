@@ -25,16 +25,29 @@ export const HeaderBox = styled.div`
   padding: 27px 0 13px 0;
   align-items: center;
   justify-content: space-between;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    height: 100%;
+    padding: 24px 24px 0 24px;
+    align-items: flex-start;
+  }
 `;
 
 export const HeaderFlex = styled.div`
   display: flex;
   align-items: center;
+
+  @media ${(props) => props.theme.tablet} {
+    align-items: flex-start;
+    flex-direction: ${(props) => props.direction || 'row'};
+  }
 `;
 
 export const LogoLink = styled(Link)`
   height: 40px;
   margin-right: 80px;
+  /* 로고 폰트로 하게되면 적용 */
   /* font-family: 'SCD-9';
   text-align: left;
   font-size: 29px;
@@ -44,6 +57,9 @@ export const LogoLink = styled(Link)`
   &:hover {
     color: #000000;
   } */
+  @media ${(props) => props.theme.tablet} {
+    margin: 0 0 20px 0;
+  }
 `;
 
 export const LogoImg = styled.img`
@@ -64,6 +80,12 @@ export const HeaderNav = styled(NavLink)`
   }
   &.active {
     font-family: 'SHSN-B';
+  }
+
+  @media ${(props) => props.theme.tablet} {
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 20px 0 0;
   }
 `;
 
@@ -167,6 +189,15 @@ export const RegisterButton = styled(HeaderButton)`
     margin-left: 10px;
     width: 100px;
   }
+
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 80px;
+      height: 30px;
+      font-size: 13px;
+      line-height: 17px;
+    }
+  }
 `;
 
 export const LoginButton = styled(HeaderButton)`
@@ -175,6 +206,15 @@ export const LoginButton = styled(HeaderButton)`
     background-color: #ffffff;
     border: 1px solid #dedede;
     color: #000000;
+  }
+
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 80px;
+      height: 30px;
+      font-size: 13px;
+      line-height: 17px;
+    }
   }
 `;
 
