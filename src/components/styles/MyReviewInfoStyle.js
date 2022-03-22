@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const MyReviewContainer = styled.div`
-  width: 722px;
+  width: 760px;
   display: flex;
   flex-direction: column;
-  margin: 20px 0px;
+  padding: 30px 40px;
+  border-bottom: 1px solid #dedede;
 `;
 
 export const YoutuberName = styled(Link)`
@@ -26,6 +27,18 @@ export const YoutuberName = styled(Link)`
 export const RightIcon = styled(FontAwesomeIcon)`
   margin-left: 5px;
   font-size: 10px;
+`;
+
+export const RatingBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Ratings = styled.div`
+  font-family: 'SHSN-B';
+  font-size: 14px;
+  line-height: 18px;
+  padding-left: 5px;
 `;
 
 export const ReviewContent = styled.div`
