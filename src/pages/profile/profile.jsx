@@ -2,45 +2,53 @@ import MyReviewInfo from 'components/MyReviewInfo';
 import * as style from './style';
 
 export default function Profile() {
-  const rv = 4;
+  const rv = 12;
   return (
-    <style.profileContainer>
-      <style.picBox>
-        <style.userPic src="/images/딩고 뮤직.jpg" />
-        <style.userName>병팔이</style.userName>
-        <style.userEmail>qudvkfzoqtyd1@gmail.com</style.userEmail>
-        <style.categoryBtn>
-          나의 유튜버 관심 카테고리
-          <style.chevronIcon>
-            <i className="fas fa-chevron-right"></i>
-          </style.chevronIcon>
-        </style.categoryBtn>
-      </style.picBox>
-      <style.profileContents>
-        <style.profileTitle>회원 정보</style.profileTitle>
-        <style.userInfo>
+    <style.ProfileContainer>
+      <style.Title>내 정보</style.Title>
+      <style.ProfileBox>
+        <style.PicBox>
+          <style.UserPic src="/images/딩고 뮤직.jpg" />
+          <style.UserName>병팔이</style.UserName>
+          <style.UserEmail>qudvkfzoqtyd1@gmail.com</style.UserEmail>
+          <style.ModifyBtn>프로필 수정</style.ModifyBtn>
+          <style.CategoryBtn>
+            <style.CategoryTitle>관심사</style.CategoryTitle>
+            <style.Categorycontents>
+              영화/애니메이션, 음악, 등등등등등
+            </style.Categorycontents>
+            <style.ChevronIcon>
+              <i className="fas fa-chevron-right"></i>
+            </style.ChevronIcon>
+          </style.CategoryBtn>
+        </style.PicBox>
+      <style.ProfileContents>
+        {/* <style.ProfileTitle>회원 정보</style.ProfileTitle>
+        <style.UserInfo>
           <style.Label>이메일</style.Label>
-          <style.userEmailInput value="qudvkfzoqtyd1@gmail.com" disabled />
-        </style.userInfo>
-        <style.userInfo marginBottom="49px">
+          <style.UserEmailInput value="qudvkfzoqtyd1@gmail.com" disabled />
+        </style.UserInfo>
+        <style.UserInfo marginBottom="49px">
           <style.Label>닉네임</style.Label>
-          <style.nickNameForm>
-            <style.nickNameInput value="병팔이" disabled />
-            <style.userNickBtn>변경하기</style.userNickBtn>
-          </style.nickNameForm>
-        </style.userInfo>
-        <style.profileTitle marginBottom="10px">
-          내가 쓴 총 리뷰 {rv}개
-          <style.profileSub>리뷰 수정은 불가능하고, 삭제만 가능합니다.</style.profileSub>
-        </style.profileTitle>
-        {myReview.data.map(data => (
-              <MyReviewInfo 
-                key={data.id}
-                data={data}
-              />
-            ))}
-      </style.profileContents>
-    </style.profileContainer>
+          <style.NickNameForm>
+            <style.NickNameInput value="병팔이" disabled />
+            <style.UserNickBtn>변경하기</style.UserNickBtn>
+          </style.NickNameForm>
+        </style.UserInfo> */}
+        <style.ProfileTitle>
+          최근 내가 쓴 리뷰
+          <style.ProfileSub>리뷰 수정은 불가능하고, 삭제만 가능합니다.</style.ProfileSub>
+          <style.MoreBtn to='#'>총 {rv}개 모두 보기 &gt;</style.MoreBtn>
+        </style.ProfileTitle>
+          {myReview.data.map(data => (
+                <MyReviewInfo 
+                  key={data.id}
+                  data={data}
+                />
+              ))}
+      </style.ProfileContents>
+      </style.ProfileBox>
+    </style.ProfileContainer>
   );
 }
 
