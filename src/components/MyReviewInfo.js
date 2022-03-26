@@ -21,8 +21,10 @@ export default function MyReviewInfo({
         {name}
         <style.RightIcon icon={faChevronRight} />
       </style.YoutuberName>
-      <StarRating ratings={rating} margins="5px 0px 5px 0px" />
-      {/* TODO 서지수 ~일전 만드는거 맞는지 확인 */}
+      <style.RatingBox>
+        <StarRating ratings={rating} margins="5px 0px 5px 0px" />
+        <style.Ratings>{rating}</style.Ratings>
+      </style.RatingBox>
       <style.ReviewContent>{content}</style.ReviewContent>
       {/* TODO 서지수 시간 표시 형식 수정 */}
       <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>

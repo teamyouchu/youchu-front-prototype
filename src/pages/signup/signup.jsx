@@ -30,7 +30,7 @@ export default function Signup() {
   const nickNameDuplicate = async (nickName) => {
     await signupAPI
       .postNickNameDup({
-          nickName: nickName,
+          nickname: nickName,
         })
       .then((res) => {
         console.log(res);
@@ -88,7 +88,7 @@ export default function Signup() {
           />
           {isNickNameNull && <style.Warning>닉네임을 작성해주세요!</style.Warning>}
           {isNickNameLen && <style.Warning>2~15자만 가능합니다.</style.Warning>}
-          {isNickNameDup && <style.Warning>이미 존재하는 닉네임입니다! 다른 닉네임을 적어주세요!</style.Warning>}
+          {isNickNameDup && <style.Warning>이미 존재하는 닉네임입니다! 다른 닉네임을 적어주세요.</style.Warning>}
           {isNotNickNameDup && <style.Success>사용 가능한 닉네임입니다!</style.Success>}
         </style.NickNameContainer>
         <style.SubTitle>유튜버 관심 카테고리 선택 (1개 이상)</style.SubTitle>
