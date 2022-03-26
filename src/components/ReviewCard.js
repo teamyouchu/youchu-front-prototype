@@ -1,20 +1,11 @@
 import * as style from './styles/CardStyle';
 import StarRating from './StarRating';
 
-export default function ReviewCard({ 
-  data: {
-    id,
-    imageUrl,
-    category,
-    name,
-    subscribes,
-    rating, 
-    reviews, 
-    bestReview
-  }
+export default function ReviewCard({
+  data: { id, imageUrl, category, name, subscribes, rating, reviews, bestReview },
 }) {
   return (
-    <style.RvContainer to={`/youtubers/review/id=${id}`}>
+    <style.RvContainer to={`/youtubers/review/${id}`}>
       <style.Img src={imageUrl} alt={name} />
       <div>
         <style.Group>

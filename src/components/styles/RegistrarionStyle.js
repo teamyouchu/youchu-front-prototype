@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const ModalContainer = styled.div`
   width: 100%;
@@ -23,6 +22,13 @@ export const Modal = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
+  img {
+    width: 24px;
+    height: 24px;
+    top: 70px;
+    right: 60px;
+    position: absolute;
+  }
 `;
 
 export const Span = styled.span`
@@ -65,14 +71,4 @@ export const CompleteButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   position: relative;
-`;
-
-export const Img = styled(FontAwesomeIcon)`
-  width: 24px;
-  height: 24px;
-  top: 75px;
-  right: 180px;
-  position: absolute;
-  color: #e5e5e5;
-  opacity: 0.8;
 `;
