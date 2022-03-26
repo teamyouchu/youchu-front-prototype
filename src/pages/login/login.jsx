@@ -2,6 +2,7 @@ import * as style from './style';
 import { GoogleLogin } from 'react-google-login';
 import loginAPI from 'api/loginAPI';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
   const history = useHistory();
@@ -17,14 +18,18 @@ export default function Login() {
         code: code
       })
       .then((res) => {
-        console.log(res);
+        localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
+        axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.authToken.accessToken}`;
         if (res.data.registered) {
           history.goBack();
         } else {
           history.push("/signup")
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      })
+      
   };
 
   //로그인 실패했을 때 처리 함수 
