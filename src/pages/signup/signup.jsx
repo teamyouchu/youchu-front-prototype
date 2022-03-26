@@ -30,7 +30,7 @@ export default function Signup() {
   const nickNameDuplicate = async (nickName) => {
     await signupAPI
       .postNickNameDup({
-          nickName: nickName,
+          nickname: nickName,
         })
       .then((res) => {
         console.log(res);
