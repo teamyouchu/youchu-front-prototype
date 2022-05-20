@@ -20,7 +20,7 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.authToken.accessToken}`;
-        if (res.data.registered) {
+        if (res.data.isRegistered) {
           history.goBack();
         } else {
           history.push("/signup")
@@ -34,7 +34,6 @@ export default function Login() {
   //로그인 실패했을 때 처리 함수 
   const failGoogle = (res) => {
     alert("구글 로그인에 실패하였습니다");
-    console.log(res);
   }
   return (
     <style.LoginContainer>
