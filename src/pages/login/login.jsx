@@ -9,7 +9,7 @@ export default function Login() {
 
   //로그인 성공했을 떄 처리 함수 
   const successGoogle = (res) => {
-    loginFunc(res.code)
+    loginFunc(res.code);
   }
 
   const loginFunc = async (code) => {
@@ -29,7 +29,6 @@ export default function Login() {
       .catch((err) => {
         console.error(err);
       })
-      
   };
 
   //로그인 실패했을 때 처리 함수 
@@ -49,7 +48,6 @@ export default function Login() {
                 <style.LoginLetter>구글로 로그인</style.LoginLetter>
               </style.LoginBtn>
             )}
-            buttonText="구글로 로그인"
             onSuccess={successGoogle}
             onFailure={failGoogle}
             cookiePolicy={'single_host_origin'}
