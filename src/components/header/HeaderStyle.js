@@ -106,6 +106,14 @@ export const SearchForm = styled.form`
   &:focus-within {
     border: 1px solid #3ea6ff;
   }
+
+  @media ${(props) => props.theme.tablet} {
+    border: none;
+    width: 20px;
+    height: 30px;
+    padding: 0px;
+    margin-right: 4px;
+  }
 `;
 
 export const SearchImg = styled.img`
@@ -129,6 +137,10 @@ export const SearchInput = styled.input`
   }
   &:focus {
     outline: none;
+  }
+
+  @media ${(props) => props.theme.tablet} {
+    display: none;
   }
 `;
 

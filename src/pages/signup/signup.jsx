@@ -33,9 +33,8 @@ export default function Signup() {
           nickname: nickName,
         })
       .then((res) => {
-        console.log(res);
-        setIsNickNameDup(!res.data.data);
-        setIsNotNickNameDup(res.data.data);
+        setIsNickNameDup(res.data.isExist);
+        setIsNotNickNameDup(!res.data.isExist);
       })
       .catch((err) => console.log(err));
   };
@@ -61,7 +60,6 @@ export default function Signup() {
         favoriteCategories: categoryList,
       })
       .then((res) => {
-        console.log(res)
         history.go(-2);
       })
       .catch((err) => console.error(err));

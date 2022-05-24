@@ -9,7 +9,7 @@ export default function Login() {
 
   //로그인 성공했을 떄 처리 함수 
   const successGoogle = (res) => {
-    loginFunc(res.code)
+    loginFunc(res.code);
   }
 
   const loginFunc = async (code) => {
@@ -20,7 +20,7 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.authToken.accessToken}`;
-        if (res.data.registered) {
+        if (res.data.isRegistered) {
           history.goBack();
         } else {
           history.push("/signup")
@@ -29,13 +29,11 @@ export default function Login() {
       .catch((err) => {
         console.error(err);
       })
-      
   };
 
   //로그인 실패했을 때 처리 함수 
   const failGoogle = (res) => {
     alert("구글 로그인에 실패하였습니다");
-    console.log(res);
   }
   return (
     <style.LoginContainer>
@@ -49,7 +47,6 @@ export default function Login() {
                 <style.LoginLetter>구글로 로그인</style.LoginLetter>
               </style.LoginBtn>
             )}
-            buttonText="구글로 로그인"
             onSuccess={successGoogle}
             onFailure={failGoogle}
             cookiePolicy={'single_host_origin'}
