@@ -89,10 +89,10 @@ export default function Header() {
           <style.LogoLink to="/">
             <style.LogoImg src="/images/YouChu_logo.png" />
           </style.LogoLink>
-          <div>
+          <style.HeaderNavBox>
             <style.HeaderNav to="/" exact={true}>홈</style.HeaderNav>
             <style.HeaderNav to="/youtubers">유튜버 리뷰</style.HeaderNav>
-          </div>
+          </style.HeaderNavBox>
         </style.HeaderFlex>
         <style.HeaderFlex>
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}

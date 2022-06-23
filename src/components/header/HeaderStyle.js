@@ -58,13 +58,20 @@ export const LogoLink = styled(Link)`
     color: #000000;
   } */
   @media ${(props) => props.theme.tablet} {
-    margin: 0 0 20px 0;
+    margin: 0 0 40px 0;
   }
 `;
 
 export const LogoImg = styled.img`
   width: 62px;
   height: 40px;
+`;
+
+export const HeaderNavBox = styled.div`
+ @media ${(props) => props.theme.tablet} {
+    position: absolute;
+    top: 80px;
+  }
 `;
 
 export const HeaderNav = styled(NavLink)`
