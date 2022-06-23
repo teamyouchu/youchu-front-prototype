@@ -23,6 +23,9 @@ const GlobalStyle = createGlobalStyle`
     height: 88px;
     bottom: 0px;
     position: absolute;
+    @media ${(props) => props.theme.tablet} {
+      height: 106px;
+    }
   }
 `;
 
