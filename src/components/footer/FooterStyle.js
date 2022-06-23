@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const FooterContainer = styled.div`
   width: 100%;
   height: 88px;
-  border: 1px solid #dedede;
+  border-top: 1px solid #dedede;
   opacity: 1;
 `;
 
@@ -19,7 +19,6 @@ export const FooterBox = styled.div`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     padding: 0 24px;
-
   }
 `;
 
@@ -35,10 +34,18 @@ export const FooterSpan = styled(Link)`
   line-height: 18px;
   letter-spacing: 0px;
   color: #94969b;
-  margin: 0 31px 10px 0;
+  padding: 0 15px 0 15px;
+  margin-bottom: 10px;
+  border-right: 1px solid #DEDEDE;
   &:hover {
     color: #94969b;
     text-decoration: underline;
+  }
+  &:first-child {
+    padding: 0 15px 0 0;
+  }
+  &:last-child{
+    border-right: 0;
   }
 `;
 
