@@ -59,11 +59,9 @@ export default function Header() {
     getSearchResult();
   }, [searchValue]);
 
-  let history = useHistory();
-
+  const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    console.log(window.innerWidth);
     if (window.innerWidth > 1100) {
       history.push({
         pathname: '/youtubers',
