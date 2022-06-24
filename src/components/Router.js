@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import Header from './header/Header';
@@ -13,17 +13,26 @@ import {
   Signup,
   ReviewDetail,
   Profile,
+  Search,
 } from 'pages/index';
 
 export default function AppRouter() {
+  const [isShow, setIsShow] = useState(true);
   return (
     <>
       <Router>
-        <Header />
+        {isShow ? (
+          <Header/>
+        ) : (
+          null
+        )}
         <div id="wrap">
           <ScrollToTop>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/search">
+                <Search setIsShow={setIsShow} />
+              </Route>
               <Route exact path="/youtubers" component={List} />
               <Route exact path="/youtubers/review/:id" component={Review} />
               <Route path="/youtubers/review/detail/:id" component={ReviewDetail} />
@@ -36,7 +45,11 @@ export default function AppRouter() {
             </Switch>
           </ScrollToTop>
           <div id="footer">
-            <Footer />
+            {isShow ? (
+              <Footer />
+            ) : (
+              null
+            )}
           </div>
         </div>
       </Router>
