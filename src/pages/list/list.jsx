@@ -37,16 +37,20 @@ export default function List(props) {
     <style.ListContainer>
       <style.Title>전체 유튜버</style.Title>
       <style.FilterContainer>
-        <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
-        <FilterDropdown placeholder="정렬" options={sortOptions} />
-        <style.SearchForm>
-          <style.SearchImg src="/images/searchIcon.svg"/>
-          <style.SearchInput 
-            placeholder="유튜버 이름으로 검색하세요"
-            value={searchValue}
-            onChange={onSearchValueChange}
-          />
-        </style.SearchForm>
+        <style.FilterBox>
+          <FilterDropdown placeholder="세부 카테고리" options={categoryOptions} />
+          <FilterDropdown placeholder="정렬" options={sortOptions} />
+        </style.FilterBox>
+        <style.FilterBox>
+          <style.SearchForm>
+            <style.SearchImg src="/images/searchIcon.svg"/>
+            <style.SearchInput 
+              placeholder="유튜버 이름으로 검색하세요"
+              value={searchValue}
+              onChange={onSearchValueChange}
+            />
+          </style.SearchForm>
+        </style.FilterBox>
       </style.FilterContainer>
       <style.CardContainer>
         {allYoutubers.map(data => (

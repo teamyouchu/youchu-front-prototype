@@ -4,6 +4,11 @@ export const ListContainer = styled.div`
   width: 1100px;
   margin: 0 auto;
   padding: 80px 0 60px 0;
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    height: 100%;
+    padding: 132px 24px 60px 24px;
+  }
 `;
 
 export const Title = styled.div`
@@ -15,11 +20,23 @@ export const Title = styled.div`
   color: #000000;
   opacity: 1;
   margin: 60px 0 20px 0;
+  @media ${(props) => props.theme.tablet} {
+    margin-top: 0;
+  }
 `;
 
 export const FilterContainer = styled.div`
   display: flex;
   margin-bottom: 60px;
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    flex-direction: column-reverse;
+    margin-bottom: 30px; 
+  }
+`;
+
+export const FilterBox = styled.div`
+  display: flex;
 `;
 
 export const SearchForm = styled.form`
@@ -32,6 +49,11 @@ export const SearchForm = styled.form`
   padding: 10px 30px;
   &:focus-within {
     border: 1px solid #3ea6ff;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 16px;
   }
 `;
 
