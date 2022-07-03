@@ -237,8 +237,14 @@ export const LoginButton = styled(HeaderButton)`
   }
 `;
 
-export const GoogleAvatar = styled.img`
+export const AvatarLink = styled(Link)`
   margin-left: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+`;
+
+export const GoogleAvatar = styled.img`
   width: 38px;
   height: 38px;
   border-radius: 50%;
