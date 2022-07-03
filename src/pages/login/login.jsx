@@ -9,13 +9,14 @@ export default function Login() {
 
   //로그인 성공했을 떄 처리 함수 
   const successGoogle = (res) => {
-    loginFunc(res.code);
+    loginFunc(res.code, window.location.origin);
   }
 
-  const loginFunc = async (code) => {
+  const loginFunc = async (code, url) => {
     await loginAPI
       .postLogin({
-        code: code
+        "code": code,
+        "redirectUri": url
       })
       .then((res) => {
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
