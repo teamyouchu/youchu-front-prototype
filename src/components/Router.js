@@ -47,9 +47,12 @@ export default function AppRouter() {
             console.error(err);
           })
       })
-      .catch((err) => {
-        console.error(err);
-      })
+      .catch(err => {
+        if (err.response.status === 401) {
+          window.localStorage.removeItem('refreshToken');
+        }
+        // alert("인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.");
+      });
   };
   // 처음 화면 로드 시 토크 재요청 함수 호출
   useEffect(() => {
