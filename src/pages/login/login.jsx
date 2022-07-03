@@ -1,10 +1,11 @@
 import * as style from './style';
 import { GoogleLogin } from 'react-google-login';
 import loginAPI from 'api/loginAPI';
+import userAPI from 'api/userAPI';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-export default function Login() {
+export default function Login({setUserObj}) {
   const history = useHistory();
 
   //로그인 성공했을 떄 처리 함수 
@@ -21,6 +22,23 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.authToken.accessToken}`;
+        // 로그인 시 사용자 상태값 수정
+        userAPI
+          .getMe()
+          .then((res) => {
+            const obj = res.data;
+            console.log(res.data);
+            setUserObj({
+              email: obj.email,
+              favoriteCategory: obj.favoriteCategory,
+              hasReview: obj.hasReview,
+              imageUrl: obj.imageUrl,
+              nickname: obj.nickname
+            });
+          })
+          .catch((err) => {
+            console.error(err);
+          })
         if (res.data.isRegistered) {
           history.goBack();
         } else {
