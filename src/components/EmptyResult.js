@@ -3,7 +3,9 @@ import * as style from './styles/EmptyResultStyle';
 export default function EmptyResult() {
   return (
     <style.EmptyResultContainer>
-        <style.Img src="/images/empty_page.png" alt="empty image" />
+        <style.EmojiBox>
+          <style.Emoji role="img" aria-label="writing hand">😭</style.Emoji>
+        </style.EmojiBox>
         <style.Message>앗! 아직 등록이 안된 유튜버 인가봐요!</style.Message>
         <style.Message>
             <style.RegisterButton>

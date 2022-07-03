@@ -7,6 +7,34 @@ export const EmptyResultContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      margin-top: 15px;
+    }
+  }
+`;
+
+export const EmojiBox = styled.div`
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content : center;
+  align-items: center;
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 96px;
+      height: 96px;
+    }
+  }
+`;
+
+export const Emoji = styled.div`
+  font-size: 120px;
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      font-size: 72px;
+    }
+  }
 `;
 
 export const Message = styled.span`
@@ -17,14 +45,17 @@ export const Message = styled.span`
     letter-spacing: 0px;
     color: #000000;
     margin-top: 10px;
+
+    @media ${(props) => props.theme.tablet} {
+    &&& {
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 5px;
+    }
+  }
 `;
 
 export const RegisterButton = styled(Message)`
     color: #EB3323;
     text-decoration: underline;
-`;
-
-export const Img = styled.img`
-  width: 160px;
-  height: 160px;
 `;
