@@ -47,12 +47,12 @@ export const Message = styled.span`
     margin-top: 10px;
 
     @media ${(props) => props.theme.tablet} {
-    &&& {
-      font-size: 18px;
-      line-height: 22px;
-      margin-top: 5px;
+      &&& {
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 5px;
+      }
     }
-  }
 `;
 
 export const RegisterButton = styled(Message)`
