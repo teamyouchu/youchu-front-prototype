@@ -34,15 +34,13 @@ export default function AppRouter() {
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.accessToken}`;
         userAPI
           .getMe()
-          .then((res) => {
-            const obj = res.data;
-            console.log(res.data);
+          .then(({data}) => {
             setUserObj({
-              email: obj.email,
-              favoriteCategory: obj.favoriteCategory,
-              hasReview: obj.hasReview,
-              imageUrl: obj.imageUrl,
-              nickname: obj.nickname
+              email: data.email,
+              favoriteCategory: data.favoriteCategory,
+              hasReview: data.hasReview,
+              imageUrl: data.imageUrl,
+              nickname: data.nickname
             });
           })
           .catch((err) => {
