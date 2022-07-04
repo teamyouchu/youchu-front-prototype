@@ -50,6 +50,7 @@ export default function AppRouter() {
       .catch(err => {
         if (err.response.status === 401) {
           window.localStorage.removeItem('refreshToken');
+          setUserObj(null);
         }
         // alert("인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.");
       });
