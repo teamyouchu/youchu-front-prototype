@@ -64,7 +64,7 @@ export const UserEmail = styled.div`
   margin-bottom: 20px;
 `;
 
-export const ModifyBtn = styled.div`
+export const ModifyBtn = styled(Link)`
   text-align: center;
   text-decoration: underline;
   font-family: 'SHSN-R';
@@ -73,10 +73,13 @@ export const ModifyBtn = styled.div`
   letter-spacing: 0px;
   color: #94969B;
   margin-bottom: 20px;
-  cursor: pointer;
+  &:hover {
+    color: #94969B;
+    text-decoration: underline;
+  }
 `;
 
-export const CategoryBtn = styled.button`
+export const CategoryBtn = styled(Link)`
   width: 250px;
   height: 40px;
   background: #F2F2F2 0% 0% no-repeat padding-box;
@@ -102,6 +105,13 @@ export const CategoryTitle = styled.span`
   margin-right: 10px;
 `;
 
+export const CategorysBox = styled.span`
+  max-width: 155px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
 export const Categorycontents = styled.span`
   text-align: left;
   font-family: 'SHSN-L';
@@ -109,11 +119,6 @@ export const Categorycontents = styled.span`
   line-height: 19px;
   letter-spacing: 0px;
   color: #000000;
-
-  max-width: 155px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 export const ChevronIcon = styled.span`
