@@ -14,6 +14,8 @@ import {
   ReviewDetail,
   Profile,
   Search,
+  ModifyNickName,
+  ModifyCategory
 } from 'pages/index';
 import loginAPI from 'api/loginAPI';
 import userAPI from 'api/userAPI';
@@ -84,6 +86,8 @@ export default function AppRouter() {
               </Route>
               <Route path="/signup" component={Signup} />
               <Route path="/profile" component={Profile} />
+              <Route path="/modifyNickName" component={ModifyNickName} />
+              <Route path="/modifyCategory" component={ModifyCategory} />
               <Route component={EmptyPage} />
             </Switch>
           </ScrollToTop>
