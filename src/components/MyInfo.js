@@ -6,7 +6,7 @@ import userAPI from 'api/userAPI';
 import MyNickname from './MyNickname';
 import MyCategory from './MyCategory';
 
-export default function MyInfo({title, titleFont, nowNickname, showNickname, showCategory, buttonMsg}) {
+export default function MyInfo({title, titleFont, showNickname, showCategory, buttonMsg}) {   
     const [nickName, setNickName] = useState('');
     const [isNickNameNull, setIsNickNameNull] = useState(false);
     const [isNickNameLen, setIsNickNameLen] = useState(false);
@@ -24,7 +24,7 @@ export default function MyInfo({title, titleFont, nowNickname, showNickname, sho
         })
         .catch((err) => {
           console.error(err);
-        })
+        });
     },[]);
 
     //회원가입 함수
