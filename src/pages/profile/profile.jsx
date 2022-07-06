@@ -1,22 +1,52 @@
 import MyReviewInfo from 'components/MyReviewInfo';
 import * as style from './style';
+import { useState, useEffect } from 'react';
+import userAPI from 'api/userAPI';
 
 export default function Profile() {
+  const [userObj, setUserObj] = useState({
+    email: "",
+    favoriteCategory: [],
+    hasReview: "",
+    imageUrl: "",
+    nickname: ""
+  });
+  useEffect(()=> {
+    userAPI
+      .getMe()
+      .then(({data}) => {
+          setUserObj({
+            email: data.email,
+            favoriteCategory: data.favoriteCategory,
+            hasReview: data.hasReview,
+            imageUrl: data.imageUrl,
+            nickname: data.nickname
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    return () => setUserObj(null);
+  },[]);
   const rv = 12;
   return (
     <style.ProfileContainer>
       <style.Title>내 정보</style.Title>
       <style.ProfileBox>
         <style.PicBox>
-          <style.UserPic src="/images/딩고 뮤직.jpg" />
-          <style.UserName>병팔이</style.UserName>
-          <style.UserEmail>qudvkfzoqtyd1@gmail.com</style.UserEmail>
-          <style.ModifyBtn>프로필 수정</style.ModifyBtn>
-          <style.CategoryBtn>
+          <style.UserPic src={userObj.imageUrl} />
+          <style.UserName>{userObj.nickname}</style.UserName>
+          <style.UserEmail>{userObj.email}</style.UserEmail>
+          <style.ModifyBtn to="/modifyNickName">프로필 수정</style.ModifyBtn>
+          <style.CategoryBtn to="/modifyCategory">
             <style.CategoryTitle>관심사</style.CategoryTitle>
-            <style.Categorycontents>
-              영화/애니메이션, 음악, 등등등등등
-            </style.Categorycontents>
+            <style.CategorysBox>
+              {userObj.favoriteCategory.map(data => (
+                <style.Categorycontents key={data.id}>
+                  {data},&nbsp;
+                </style.Categorycontents>
+              ))}
+            </style.CategorysBox>
             <style.ChevronIcon>
               <i className="fas fa-chevron-right"></i>
             </style.ChevronIcon>

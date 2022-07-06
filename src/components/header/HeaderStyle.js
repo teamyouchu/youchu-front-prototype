@@ -242,6 +242,13 @@ export const AvatarLink = styled(Link)`
   width: 38px;
   height: 38px;
   border-radius: 50%;
+
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `;
 
 export const GoogleAvatar = styled.img`
@@ -249,4 +256,11 @@ export const GoogleAvatar = styled.img`
   height: 38px;
   border-radius: 50%;
   border: 1px solid #dedede;
+  
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `;
