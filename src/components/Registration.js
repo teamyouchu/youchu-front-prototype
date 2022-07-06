@@ -4,15 +4,19 @@ import * as style from './styles/RegistrarionStyle';
 export default function Registration({ registClose }) {
   const closeRef = useRef();
   const closeModal = ({ target }) => {
-    const className = target.getAttribute('class');
-    if (className.includes('out-modal__container')) {
+    let className = target.getAttribute('class');
+
+    if (className == null) {
+      className = [];
+    }
+    if (className.includes('close-modal__container')) {
       closeRef.current.click();
     }
   };
   return (
-    <style.ModalContainer className="out-modal__container" onClick={closeModal}>
+    <style.ModalContainer className="close-modal__container" onClick={closeModal}>
       <style.Modal width="500px" height="386px" padding="70px 60px">
-        <img src="/images/close-icon.png" alt="close-btn" />
+        <img className="close-modal__container" src="/images/close-icon.png" alt="close-btn" />
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
           유튜버 등록
         </style.Span>
