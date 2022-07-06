@@ -3,80 +3,112 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   width: 1170px;
   margin: 0 auto;
-  padding-bottom: 100px;
-`;
-
-export const BannerContainer = styled.div`
+  padding-top: 80px;
+  padding-bottom: 60px;
   display: flex;
-  width: 1100px;
-  height: 350px;
-  margin: 0 auto;
-  margin-bottom: 50px;
-  justify-content: space-between;
-`;
+  flex-direction: column;
+  align-items: center;
 
-export const TextField = styled.p`
-  font-size: 45px;
-  font-family: 'SHSN-B';
-  height: auto;
-  &&& {
-    margin: 130px 0px;
+  @media ${(props) => props.theme.tablet} {
+    padding: 0 24px;
+    padding-top: 125px;
+    width: 100%;
   }
 `;
 
-export const RedSpan = styled.span`
-  color: red;
+export const BannerContainer = styled.div`
+  width: 1100px;
+  height: 350px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+`;
+
+export const TextField = styled.span`
+  font-family: 'SHSN-R';
+  text-align: left;
+  font-size: 45px;
+  line-height: 57px;
+  letter-spacing: 0px;
+  color: #000000;
+`;
+
+export const BoldSpan = styled(TextField)`
+  font-family: 'SHSN-B';
+  color: ${(props) => props.color || '#000000'};
 `;
 
 export const BannerImg = styled.img`
   width: 422px;
   height: 276px;
-  margin: 49px;
 `;
 
 export const RowContainer = styled.div`
   width: ${(props) => props.width || '1170px'};
-  margin: 0 auto;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+  }
 `;
 
 export const RowTitle = styled.div`
   font-family: 'SHSN-B';
+  text-align: left;
   font-size: 20px;
   line-height: 25px;
+  letter-spacing: 0px;
+  color: #000000;
   margin-bottom: 5px;
   margin-left: ${(props) => props.left || '0px'};
+
+  @media ${(props) => props.theme.tablet} {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 0;
+    margin-left: 0;
+  }
 `;
 
 export const RowDescription = styled.div`
   font-family: 'SHSN-L';
+  text-align: left;
   font-size: 14px;
   line-height: 18px;
+  letter-spacing: 0px;
   color: #94969b;
   margin-bottom: 20px;
   margin-left: ${(props) => props.left || '0px'};
+
+  @media ${(props) => props.theme.tablet} {
+    font-size: 12px;
+    line-height: 15px;
+    margin-left: 0;
+  }
 `;
 
 export const ReviewContainer = styled.div`
-  margin: 0 auto;
-  width: 1170px;
+  max-width: 1170px;
   display: flex;
 `;
 
-export const ArrowImg = styled.img.attrs((props) => ({
-  src: props.src,
-}))`
-  width: 15px;
-  height: 15px;
-`;
-
-export const HandleBtn = styled.button`
-  background: #ffffff;
-  border: 0;
+export const HandleBtn = styled.div`
   cursor: pointer;
   position: relative;
-  top: 49px;
+  top: 50px;
   width: 35px;
   height: 30px;
+  text-align: center;
+  font-size: 23px;
+  line-height: 30px;
+
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
 `;
 
 export const ReviewCardContainer = styled.div`
@@ -84,13 +116,19 @@ export const ReviewCardContainer = styled.div`
   width: 1100px;
   white-space: nowrap;
   overflow-x: scroll;
-  overflow: hidden;
+  overflow: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   grid-template-columns: repeat(10, 1fr);
   column-gap: 20px;
   margin-bottom: 60px;
 `;
 
-export const RecommendCardContainer = styled(ReviewCardContainer)`
+export const RecommendCardContainer = styled.div`
+  display: grid;
+  width: 1100px;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 10px;

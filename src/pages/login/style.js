@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const loginContainer = styled.div`
+export const LoginContainer = styled.div`
+  padding-top: 80px;
+  padding-bottom: 100px;
+`;
+
+export const LoginBox = styled.div`
   width: 500px;
   height: 400px;
   margin: 0 auto;
@@ -50,17 +55,4 @@ export const LoginLetter = styled.span`
   font-size: 15px;
   line-height: 19px;
   color: #000000;
-`;
-
-export const NewLetter = styled(LoginLetter)`
-  text-align: left;
-  padding-right: 5px;
-`;
-
-export const CreateLetter = styled.a`
-  text-align: left;
-  font-family: 'SHSN-M';
-  font-size: 15px;
-  line-height: 19px;
-  cursor: pointer;
 `;

@@ -1,42 +1,33 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const RvContainer = styled.div`
-  display: inline-block;
+export const RvContainer = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 260px;
   height: 288px;
-  cursor: pointer;
+  color: #000000;
+  &:hover{
+    color: #000000; 
+  }
 `;
 
-export const RcmdContainer = styled.div`
-  width: 350px;
-  height: 108px;
+export const RcmdContainer = styled(RvContainer)`
+  flex-direction: row;
   border: 1px solid #dedede;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  width: 350px;
+  height: 108px;
 `;
 
 export const Img = styled.img`
   border: 1px solid #dedede;
   border-radius: 50%;
+  width: ${(props) => props.width || '130px'};
+  height: ${(props) => props.height || '130px'};
+  margin: ${(props) => props.margin || '0 0 10px 0'};
 `;
-
-export const RvImg = styled(Img)`
-  display: block;
-  width: 130px;
-  height: 130px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-`;
-
-export const RcmdImg = styled(Img)`
-  width: 72px;
-  height: 72px;
-  margin: 0 20px;
-`;
-
-export const Info = styled.div``;
 
 export const Group = styled.div`
   display: flex;
@@ -70,11 +61,12 @@ export const RvChannelName = styled.div`
   text-overflow: ellipsis;
 `;
 
-export const RcmdChannelName = styled.div`
-  font-family: 'SHSN-M';
+export const RcmdChannelName = styled(RvChannelName)`
   font-size: 16px;
   line-height: 21px;
-  padding-bottom: 3px;
+  padding: 0 0 3px 0;
+
+  max-width: 184px;
 `;
 
 export const SubscriberCount = styled.div`
@@ -85,45 +77,11 @@ export const SubscriberCount = styled.div`
   padding-bottom: 8px;
 `;
 
-export const StarRatings = styled.div`
-  position: relative;
-  padding: 0px 5px 15px 0;
-`;
-
-export const RcmdStarRatings = styled(StarRatings)`
-  padding: 0px 6px 6px 0;
-`;
-
-export const StarBase = styled.div`
-  font-family: 'SHSN-M';
-  font-size: 16px;
-  line-height: 18px;
-  color: #d8d8d8;
-  z-index: 0;
-`;
-
-export const StarFill = styled.div`
-  font-family: 'SHSN-M';
-  font-size: 16px;
-  line-height: 18px;
-  color: #f8d26a;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: ${(props) => props.ratings + '%'};
-`;
-
 export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  padding: 0px 5px 15px 0;
-`;
-
-export const RcmdRatings = styled(Ratings)`
-  padding: 0px 2px 5px 0;
+  padding: ${(props) => props.padding || '0 5px 15px 0'};
 `;
 
 export const ReviewCount = styled.div`
@@ -132,10 +90,7 @@ export const ReviewCount = styled.div`
   line-height: 18px;
   color: #94969b;
   padding-bottom: 15px;
-`;
-
-export const RcmdReviewCount = styled(ReviewCount)`
-  padding-bottom: 5px;
+  padding-bottom: ${(props) => props.padding_B || '15px'};
 `;
 
 export const BestReviewTitle = styled.div`

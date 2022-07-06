@@ -1,33 +1,32 @@
 import * as style from './styles/CardStyle';
-import { useHistory } from 'react-router-dom';
+import StarRating from './StarRating';
 
-export default function RecommendCard({ img, channelName, ratings, reviewCount, category }) {
-  const perRatings = ratings * 20;
-  const imgUrl = '/images/' + img + '.jpg';
-  const history = useHistory();
-
-  function handleClick() {
-    history.push('/');
+export default function RecommendCard({
+  data: {
+    id,
+    imageUrl,
+    name,
+    rating, 
+    reviews, 
+    category,
   }
+ }) {
   return (
-    <style.RcmdContainer onClick={handleClick}>
-      <style.RcmdImg src={imgUrl} alt={channelName} title={channelName} />
-      <style.Info>
+    <style.RcmdContainer to={`/youtubers/review/id=${id}`}>
+      <style.Img src={imageUrl} alt={name} width="72px" height="72px" margin="0 20px" />
+      <div>
         <style.Group>
-          <style.RcmdChannelName>{channelName}</style.RcmdChannelName>
+          <style.RcmdChannelName>{name}</style.RcmdChannelName>
         </style.Group>
         <style.Group>
-          <style.RcmdStarRatings>
-            <style.StarBase>★★★★★</style.StarBase>
-            <style.StarFill ratings={perRatings}>★★★★★</style.StarFill>
-          </style.RcmdStarRatings>
-          <style.RcmdRatings>{ratings}</style.RcmdRatings>
-          <style.RcmdReviewCount>({reviewCount}개 리뷰)</style.RcmdReviewCount>
+          <StarRating ratings={rating} margins={'0 5px 6px 0'} />
+          <style.Ratings padding="0 2px 5px 0">{rating}</style.Ratings>
+          <style.ReviewCount padding_B="5px">({reviews}개 리뷰)</style.ReviewCount>
         </style.Group>
         <style.Group>
           <style.Category>{category}</style.Category>
         </style.Group>
-      </style.Info>
+      </div>
     </style.RcmdContainer>
   );
 }

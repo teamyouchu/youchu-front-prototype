@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import * as style from './style';
 
 export default function EmptyPage() {
   return (
     <style.EmptyPageContainer>
-      <h2>잘못된 접근입니다.</h2>
-      <Link to="/">돌아가기</Link>
+      <style.EmojiBox>
+        <style.Emoji role="img" aria-label="writing hand">😭</style.Emoji>
+      </style.EmojiBox>
+      <style.Message>잘못된 접근입니다! <Link to="/">홈</Link>으로 가볼까요?</style.Message>
     </style.EmptyPageContainer>
   );
 }

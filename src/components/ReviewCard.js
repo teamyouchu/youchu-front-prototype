@@ -1,56 +1,30 @@
 import * as style from './styles/CardStyle';
-import { useHistory } from 'react-router-dom';
+import StarRating from './StarRating';
 
 export default function ReviewCard({
-  img,
-  category,
-  channelName,
-  subscriberCount,
-  reviewCount,
-  ratings,
-  bestReview,
+  data: { id, imageUrl, category, name, subscribes, rating, reviews, bestReview },
 }) {
-  const per = ratings * 20;
-  const imgUrl = '/images/' + img + '.jpg';
-  let history = useHistory();
-
-  function handleClick() {
-    history.push({
-      pathname: '/review',
-      state: {
-        img: imgUrl,
-        channelName: channelName,
-        ratings: ratings,
-        reviewCount: reviewCount,
-        subscriberCount: subscriberCount,
-        category: category,
-      },
-    });
-  }
   return (
-    <style.RvContainer onClick={handleClick}>
-      <style.RvImg src={imgUrl} alt={channelName} title={channelName} />
-      <style.Info>
+    <style.RvContainer to={`/youtubers/review/${id}`}>
+      <style.Img src={imageUrl} alt={name} />
+      <div>
         <style.Group>
           <style.RvCategory>{category}</style.RvCategory>
         </style.Group>
         <style.Group>
-          <style.RvChannelName>{channelName}</style.RvChannelName>
-          <style.SubscriberCount>구독자 {subscriberCount}명</style.SubscriberCount>
+          <style.RvChannelName>{name}</style.RvChannelName>
+          <style.SubscriberCount>구독자 {subscribes}명</style.SubscriberCount>
         </style.Group>
         <style.Group>
-          <style.StarRatings>
-            <style.StarBase>★★★★★</style.StarBase>
-            <style.StarFill ratings={per}>★★★★★</style.StarFill>
-          </style.StarRatings>
-          <style.Ratings>{ratings}</style.Ratings>
-          <style.ReviewCount>({reviewCount}개 리뷰)</style.ReviewCount>
+          <StarRating ratings={rating} margins={'0 5px 15px 0'} />
+          <style.Ratings>{rating}</style.Ratings>
+          <style.ReviewCount>({reviews}개 리뷰)</style.ReviewCount>
         </style.Group>
         <style.Group>
           <style.BestReviewTitle>Best Review</style.BestReviewTitle>
           <style.BestReview>{bestReview}</style.BestReview>
         </style.Group>
-      </style.Info>
+      </div>
     </style.RvContainer>
   );
 }
