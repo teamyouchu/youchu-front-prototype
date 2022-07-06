@@ -21,6 +21,7 @@ export const Title = styled.div`
   opacity: 1;
   margin: 60px 0 20px 0;
   @media ${(props) => props.theme.tablet} {
+    font-size: 18px;
     margin-top: 0;
   }
 `;

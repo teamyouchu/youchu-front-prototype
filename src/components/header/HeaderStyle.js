@@ -237,10 +237,30 @@ export const LoginButton = styled(HeaderButton)`
   }
 `;
 
-export const GoogleAvatar = styled.img`
+export const AvatarLink = styled(Link)`
   margin-left: 10px;
   width: 38px;
   height: 38px;
   border-radius: 50%;
+
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 30px;
+      height: 30px;
+    }
+  }
+`;
+
+export const GoogleAvatar = styled.img`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   border: 1px solid #dedede;
+  
+  @media ${(props) => props.theme.tablet} {
+    &&& {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `;

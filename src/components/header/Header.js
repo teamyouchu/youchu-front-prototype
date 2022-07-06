@@ -5,7 +5,7 @@ import Registration from 'components/Registration';
 import listAPI from 'api/listAPI';
 import { useHistory } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({userObj}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);
@@ -122,10 +122,15 @@ export default function Header() {
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
-          <Link to="/login">
-            <style.LoginButton>로그인</style.LoginButton>
-          </Link>
-          {/* <style.GoogleAvatar src="/images/주키니TV.jpg" /> */}
+          {userObj ? (
+            <style.AvatarLink to="/profile">
+              <style.GoogleAvatar src={userObj.imageUrl} />
+            </style.AvatarLink>
+          ) : (
+            <Link to="/login">
+              <style.LoginButton>로그인</style.LoginButton>
+            </Link>
+          )}
         </style.HeaderFlex>
       </style.HeaderBox>
       {registOpen && <Registration registClose={registClose} />}

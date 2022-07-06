@@ -14,15 +14,17 @@ import {
   ReviewDetail,
   Profile,
   Search,
+  ModifyNickName,
+  ModifyCategory
 } from 'pages/index';
 
-export default function AppRouter() {
+export default function AppRouter({userObj, setUserObj}) {
   const [isShow, setIsShow] = useState(true);
   return (
     <>
       <Router>
         {isShow ? (
-          <Header/>
+          <Header userObj={userObj}/>
         ) : (
           null
         )}
@@ -38,9 +40,13 @@ export default function AppRouter() {
               <Route path="/youtubers/review/detail/:id" component={ReviewDetail} />
               {/* 리뷰하기 버튼 눌렀을 때 id값 넘어가게 수정 */}
               <Route path="/youtubers/reviewWrite/:id" component={ReviewWrite} />
-              <Route path="/login" component={Login} />
+              <Route path="/login">
+                <Login setUserObj={setUserObj}/>
+              </Route>
               <Route path="/signup" component={Signup} />
               <Route path="/profile" component={Profile} />
+              <Route path="/modifyNickName" component={ModifyNickName} />
+              <Route path="/modifyCategory" component={ModifyCategory} />
               <Route component={EmptyPage} />
             </Switch>
           </ScrollToTop>
