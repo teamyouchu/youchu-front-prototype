@@ -88,7 +88,7 @@ export default function Header({userObj}) {
             <style.LogoImg src="/images/YouChu_logo.png" />
           </style.LogoLink>
           <style.HeaderNavBox>
-            <style.HeaderNav to="/" exact={true}>홈..</style.HeaderNav>
+            <style.HeaderNav to="/" exact={true}>홈.</style.HeaderNav>
             <style.HeaderNav to="/youtubers">유튜버 리뷰</style.HeaderNav>
           </style.HeaderNavBox>
         </style.HeaderFlex>
