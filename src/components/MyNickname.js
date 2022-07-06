@@ -15,9 +15,10 @@ export default function MyNickname({
 }) {
     const onNickNameChange = (e) => {
       setNickName(e.target.value);
-      setIsNickNameNull(false)
-      setIsNickNameLen(false)
-      setIsNickNameDup(false)
+      setIsNickNameNull(false);
+      setIsNickNameLen(false);
+      setIsNickNameDup(false);
+      setIsNotNickNameDup(false);
     };
   
     const onNickNameBlur = () => {
