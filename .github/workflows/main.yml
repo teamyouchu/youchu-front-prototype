@@ -11,19 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install Dependencies
-        run: yarn
+      - name: Checkout source code
+        uses: actions/cache@v3
+        
+      - name: npm install
+        run: npm install 
 
       - name: Build
         run: npm run build
-      
+        
       - name: Transfer to S3 for serving static
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -33,7 +29,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_IAM_ACCESS_KEY_ID }} 
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_IAM_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: './build' 
+          SOURCE_DIR: 'build' 
       
       - name: CloudFront 캐시 무효화
         env:
