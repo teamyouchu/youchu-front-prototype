@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState }  from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import Header from './header/Header';
@@ -17,48 +17,9 @@ import {
   ModifyNickName,
   ModifyCategory
 } from 'pages/index';
-import loginAPI from 'api/loginAPI';
-import userAPI from 'api/userAPI';
-import axios from 'axios';
 
-export default function AppRouter() {
+export default function AppRouter({userObj, setUserObj}) {
   const [isShow, setIsShow] = useState(true);
-  // 로그인 유저 객체 상태값
-  const [userObj, setUserObj] = useState(null);
-  // 토큰 재요청 함수, 로그인 유저 변경 코드
-  const newRefreshToken = async () => {
-    await loginAPI
-      .postRefresh()
-      .then((res) => {
-        localStorage.setItem('refreshToken', res.data.refreshToken);
-        axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.accessToken}`;
-        userAPI
-          .getMe()
-          .then(({data}) => {
-            setUserObj({
-              email: data.email,
-              favoriteCategory: data.favoriteCategory,
-              hasReview: data.hasReview,
-              imageUrl: data.imageUrl,
-              nickname: data.nickname
-            });
-          })
-          .catch((err) => {
-            console.error(err);
-          })
-      })
-      .catch(err => {
-        if (err.response.status === 401) {
-          window.localStorage.removeItem('refreshToken');
-          setUserObj(null);
-        }
-        // alert("인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.");
-      });
-  };
-  // 처음 화면 로드 시 토크 재요청 함수 호출
-  useEffect(() => {
-    newRefreshToken();
-  },[]);
   return (
     <>
       <Router>
