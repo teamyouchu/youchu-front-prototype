@@ -90,7 +90,6 @@ export default function MyInfo({title, titleFont, nowNickname, showNickname, sho
               setIsNotNickNameDup={setIsNotNickNameDup}
             />
           )}
-          {showNickname && showCategory && <style.SubTitle>유튜버 관심 카테고리 선택 (1개 이상)</style.SubTitle>}
           {showCategory && (
             <MyCategory 
               categoryList={categoryList}

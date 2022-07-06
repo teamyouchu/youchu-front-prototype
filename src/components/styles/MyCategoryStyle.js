@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const SubTitle = styled.div`
+  text-align: left;
+  font-family: 'SHSN-R';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: #000000;
+  margin-bottom: 5px;
+`;
+
 export const CategoryContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

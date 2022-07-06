@@ -11,18 +11,21 @@ export default function MyCategory({categoryList, setCategoryList}) {
     };
   
     return (
-      <style.CategoryContainer>
-        {categoryArray.map(category => (
-          <style.CategoryBox 
-            key={category.id} 
-            value={category.value} 
-            onClick={onClick} 
-            active={categoryList.find((el) => el === category.value)}
-          >
-            {category.value}
-          </style.CategoryBox>
-        ))}
-      </style.CategoryContainer>
+      <>
+        <style.SubTitle>유튜버 관심 카테고리 선택 (1개 이상)</style.SubTitle>
+        <style.CategoryContainer>
+          {categoryArray.map(category => (
+            <style.CategoryBox 
+              key={category.id} 
+              value={category.value} 
+              onClick={onClick} 
+              active={categoryList.find((el) => el === category.value)}
+            >
+              {category.value}
+            </style.CategoryBox>
+          ))}
+        </style.CategoryContainer>
+      </>
     );
 }
 

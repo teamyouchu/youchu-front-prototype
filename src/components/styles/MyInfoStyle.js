@@ -25,16 +25,6 @@ export const Title = styled.div`
   margin-bottom: 30px;
 `;
 
-export const SubTitle = styled.div`
-  text-align: left;
-  font-family: 'SHSN-R';
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  color: #000000;
-  margin-bottom: 5px;
-`;
-
 export const SetBtn = styled.button`
   width: 380px;
   height: 55px;
