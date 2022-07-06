@@ -22,25 +22,23 @@ export default function Login({setUserObj}) {
       .then((res) => {
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.authToken.accessToken}`;
-        // 로그인 시 사용자 상태값 수정
-        userAPI
+        if (res.data.isRegistered) {
+          history.goBack();
+          // 로그인 시 사용자 상태값 수정
+          userAPI
           .getMe()
-          .then((res) => {
-            const obj = res.data;
-            console.log(res.data);
+          .then(({data}) => {
             setUserObj({
-              email: obj.email,
-              favoriteCategory: obj.favoriteCategory,
-              hasReview: obj.hasReview,
-              imageUrl: obj.imageUrl,
-              nickname: obj.nickname
+              email: data.email,
+              favoriteCategory: data.favoriteCategory,
+              hasReview: data.hasReview,
+              imageUrl: data.imageUrl,
+              nickname: data.nickname
             });
           })
           .catch((err) => {
             console.error(err);
           })
-        if (res.data.isRegistered) {
-          history.goBack();
         } else {
           history.push("/signup")
         }
