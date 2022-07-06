@@ -14,6 +14,8 @@ import {
   ReviewDetail,
   Profile,
   Search,
+  ModifyNickName,
+  ModifyCategory
 } from 'pages/index';
 import loginAPI from 'api/loginAPI';
 import userAPI from 'api/userAPI';
@@ -32,15 +34,13 @@ export default function AppRouter() {
         axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.accessToken}`;
         userAPI
           .getMe()
-          .then((res) => {
-            const obj = res.data;
-            console.log(res.data);
+          .then(({data}) => {
             setUserObj({
-              email: obj.email,
-              favoriteCategory: obj.favoriteCategory,
-              hasReview: obj.hasReview,
-              imageUrl: obj.imageUrl,
-              nickname: obj.nickname
+              email: data.email,
+              favoriteCategory: data.favoriteCategory,
+              hasReview: data.hasReview,
+              imageUrl: data.imageUrl,
+              nickname: data.nickname
             });
           })
           .catch((err) => {
@@ -84,6 +84,8 @@ export default function AppRouter() {
               </Route>
               <Route path="/signup" component={Signup} />
               <Route path="/profile" component={Profile} />
+              <Route path="/modifyNickName" component={ModifyNickName} />
+              <Route path="/modifyCategory" component={ModifyCategory} />
               <Route component={EmptyPage} />
             </Switch>
           </ScrollToTop>
