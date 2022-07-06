@@ -13,7 +13,8 @@ export default function MyInfo({title, titleFont, nowNickname, showNickname, sho
     const [isNickNameDup, setIsNickNameDup] = useState(false);
     const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
     const [categoryList, setCategoryList] = useState([]);
-    
+    const history = useHistory();
+
     useEffect(()=> {
       userAPI
         .getMe()
@@ -26,7 +27,7 @@ export default function MyInfo({title, titleFont, nowNickname, showNickname, sho
         })
     },[]);
 
-    const history = useHistory();
+    //회원가입 함수
     const onSignupClick = async () => {
       setIsNickNameNull(nickName === "");
       if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
@@ -42,6 +43,7 @@ export default function MyInfo({title, titleFont, nowNickname, showNickname, sho
       }
     };
 
+    // 닉네임 변경 함수
     const onNicknameClick = async() => {
       setIsNickNameNull(nickName === "");
       if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
@@ -55,9 +57,9 @@ export default function MyInfo({title, titleFont, nowNickname, showNickname, sho
         .catch((err) => console.error(err));
       }
     };
-
+    
+    // 선호 카테고리 변경 함수
     const onCategoryClick = async() => {
-      console.log(categoryList);
       await userAPI
       .putCategory({
         favoriteCategory: categoryList,

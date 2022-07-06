@@ -2,13 +2,6 @@ import * as style from './styles/MyCategoryStyle';
 
 export default function MyCategory({categoryList, setCategoryList}) {  
     const onClick = (e) => {
-      console.log("target",e.target.value);
-      categoryList.find((el) => {
-        console.log("el",el);
-        console.log(el === e.target.value);
-        return(null);
-      }
-      );
       const isIncludes = categoryList.find((el) => el === e.target.value);
       if (isIncludes) {
         setCategoryList(categoryList.filter((el) => el !== e.target.value));
