@@ -16,10 +16,7 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
-        
-      - name: Npm install
-        run: npm install
-    
+
       - name: Build
         run: npm run build
 
