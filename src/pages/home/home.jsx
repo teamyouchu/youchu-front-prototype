@@ -37,7 +37,7 @@ export default function Home() {
         <style.TextField>
           여러분들만 아는 <br />
           <style.BoldSpan color="#eb3323">유튜버</style.BoldSpan>
-          <style.BoldSpan>들을 리뷰해봐요 👍</style.BoldSpan>
+          <style.BoldSpan>들을 추천해봐요 👍</style.BoldSpan>
         </style.TextField>
         <style.BannerImg src='/images/banner.png' />
       </style.BannerContainer>
