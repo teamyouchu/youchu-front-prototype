@@ -42,7 +42,7 @@ export default function Home() {
         <style.BannerImg src='/images/banner.png' />
       </style.BannerContainer>
       <style.RowContainer>
-        <style.RowTitle left='35px'>이번주 리뷰가가 많은 유튜버 ✌</style.RowTitle>
+        <style.RowTitle left='35px'>이번주 리뷰가 많은 유튜버 ✌</style.RowTitle>
         <style.RowDescription left='35px'>리뷰 보러 가보실까요?</style.RowDescription>
         <style.ReviewContainer>
           <style.HandleBtn onClick={slide_L}>
