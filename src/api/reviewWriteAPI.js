@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from './config';
 
 const reviewWriteAPI = {
   postreview(id) {
-    return axios.get(`http://api.youchu.io/v1/youtuber/${id}/review`);
+    return axios.get(`/youtuber/${id}/review`);
   },
 };
 
-export default reviewWriteAPI
+export default reviewWriteAPI;
