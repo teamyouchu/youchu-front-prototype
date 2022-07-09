@@ -1,15 +1,15 @@
-import axios from 'axios';
+import axios from './config';
 
-const userAPI =  {
+const userAPI = {
   getMe() {
-    return axios.get('https://api.youchu.io/v1/me');
+    return axios.get('/me');
   },
   putNickname(data) {
-    return axios.put('https://api.youchu.io/v1/nickname', data);
+    return axios.put('/nickname', data);
   },
   putCategory(data) {
-    return axios.put('https://api.youchu.io/v1/favorite-categories', data);
+    return axios.put('/favorite-categories', data);
   },
 };
 
-export default userAPI
+export default userAPI;

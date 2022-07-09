@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from './config';
 
-const mainAPI =  {
+const mainAPI = {
   getBest() {
-    return axios.get('https://api.youchu.io/v1/youtuber/most');
+    return axios.get('/youtuber/most');
   },
 
   getRecommend() {
-    return axios.get('https://api.youchu.io/v1/youtuber/favorite');
+    return axios.get('/youtuber/favorite');
   },
 };
 
-export default mainAPI
+export default mainAPI;
