@@ -2,11 +2,13 @@ import * as style from './styles/MyCategoryStyle';
 
 export default function MyCategory({categoryList, setCategoryList}) {  
     const onClick = (e) => {
-      const isIncludes = categoryList.find((el) => el === e.target.value);
+      const isIncludes = categoryList.find((el) => el === parseInt(e.target.value));
       if (isIncludes) {
-        setCategoryList(categoryList.filter((el) => el !== e.target.value));
+        // 삭제
+        setCategoryList(categoryList.filter((el) => el !== parseInt(e.target.value)));
       } else {
-        setCategoryList(preList => [...preList, e.target.value]);
+        // 추가
+        setCategoryList(preList => [...preList, parseInt(e.target.value)]);
       }
     };
   
@@ -17,9 +19,9 @@ export default function MyCategory({categoryList, setCategoryList}) {
           {categoryArray.map(category => (
             <style.CategoryBox 
               key={category.id} 
-              value={category.value} 
+              value={category.id} 
               onClick={onClick} 
-              active={categoryList.find((el) => el === category.value)}
+              active={categoryList.find((el) => el === category.id)}
             >
               {category.value}
             </style.CategoryBox>
@@ -39,55 +41,55 @@ const categoryArray = [
       "value": "자동차/교통",
     },
     {
-      "id": 3,
+      "id": 10,
       "value": "음악",
     },
     {
-      "id": 4,
+      "id": 15,
       "value": "애완동물/동물",
     },
     {
-      "id": 5,
+      "id": 17,
       "value": "스포츠",
     },
     {
-      "id": 6,
+      "id": 19,
       "value": "여행/이벤트",
     },
     {
-      "id": 7,
+      "id": 20,
       "value": "게임",
     },
     {
-      "id": 8,
+      "id": 22,
       "value": "인물/블로그",
     },
     {
-      "id": 9,
+      "id": 23,
       "value": "코미디",
     },
     {
-      "id": 10,
+      "id": 24,
       "value": "엔터테인먼트",
     },
     {
-      "id": 11,
+      "id": 25,
       "value": "뉴스/정치",
     },
     {
-      "id": 12,
+      "id": 26,
       "value": "노하우/스타일",
     },
     {
-      "id": 13,
+      "id": 27,
       "value": "교육",
     },
     {
-      "id": 14,
+      "id": 28,
       "value": "과학기술",
     },
     {
-      "id": 15,
+      "id": 29,
       "value": "비영리/사회운동",
     },
   ]

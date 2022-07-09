@@ -6,6 +6,7 @@ export const YoutuberBackImg = styled.div`
   margin-top: 80px;
   img {
     width: 100%;
+    height: auto;
   }
 `;
 export const GrayBar = styled.div`
