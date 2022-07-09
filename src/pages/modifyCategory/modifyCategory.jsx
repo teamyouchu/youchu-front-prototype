@@ -1,8 +1,8 @@
-import MyInfo from 'components/MyInfo';
+import MyInfo from 'components/myInfo/MyInfo';
 
 export default function ModifyCategory() {
   return (
-    <MyInfo 
+    <MyInfo
       title="내 관심 카테고리"
       showNickname={false}
       showCategory={true}

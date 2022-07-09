@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import StarRating from './StarRating';
-import * as style from './styles/ReviewStyle';
+import StarRating from 'components/starRating/StarRating';
+import * as style from './ReviewStyle';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
@@ -19,7 +19,9 @@ export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
         </style.BestSpan>
       )}
       <style.ReviewContainer
-        className={`${isBest ? 'BestReviewContainer ' : ''} ${isReview ? '' : 'MypageContainer'}`}
+        className={`${isBest ? 'BestReviewContainer ' : ''} ${
+          isReview ? '' : 'MypageContainer'
+        }`}
       >
         {!isReview && (
           <style.FlexContainer>
@@ -32,7 +34,11 @@ export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
 
         <style.DetailContainer Blur={blur}>
           <style.FlexContainer>
-            {isReview && <style.ProfileImg src="/images/profile.png" />}
+            {isReview && (
+              <style.ProfileImg
+                src={require('assets/images/profile.png').default}
+              />
+            )}
             <style.FlexContainerColumn>
               <style.FlexContainer>
                 <StarRating
@@ -41,11 +47,20 @@ export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
                 />
                 {!isReview ? (
                   //TODO 송경석 며칠전인지 계산 하는 로직 필요
-                  <style.Span font="SHSN-R" size="10px" color="#94969B" margins="5px 0px 0px 5px">
+                  <style.Span
+                    font="SHSN-R"
+                    size="10px"
+                    color="#94969B"
+                    margins="5px 0px 0px 5px"
+                  >
                     2일전
                   </style.Span>
                 ) : (
-                  <style.Span font="SHSN-B" size="14px" margins="5px 0px 0px 5px">
+                  <style.Span
+                    font="SHSN-B"
+                    size="14px"
+                    margins="5px 0px 0px 5px"
+                  >
                     {reviewInfo ? reviewInfo.rating : 3.5}
                   </style.Span>
                 )}
@@ -64,13 +79,21 @@ export default function DetailReviewInfo({ isBest, blur, page, reviewInfo }) {
                 : '제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다.'}
             </style.ReviewSpan>
 
-            <style.Span color="#94969b" size="12px" font="SHSN-M" margins="5px 0px 20px">
+            <style.Span
+              color="#94969b"
+              size="12px"
+              font="SHSN-M"
+              margins="5px 0px 20px"
+            >
               {/* {reviewInfo.createdDatetime} */}
               {reviewInfo ? reviewInfo.createdDatetime : '2021.09.22'}
             </style.Span>
             <style.UtilContainer>
               <style.LikeButton>
-                <style.LikeImg alt="like" src="/images/heart.svg" />
+                <style.LikeImg
+                  alt="like"
+                  src={require('assets/images/heart.svg').default}
+                />
                 <style.Span font="SHSN-B" size="14px">
                   {reviewInfo ? reviewInfo.likes : '32'}
                 </style.Span>

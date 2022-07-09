@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import * as style from './styles/RegistrarionStyle';
+import * as style from './RegistrarionStyle';
 
 export default function Registration({ registClose }) {
   const closeRef = useRef();
@@ -14,9 +14,16 @@ export default function Registration({ registClose }) {
     }
   };
   return (
-    <style.ModalContainer className="close-modal__container" onClick={closeModal}>
+    <style.ModalContainer
+      className="close-modal__container"
+      onClick={closeModal}
+    >
       <style.Modal width="500px" height="386px" padding="70px 60px">
-        <img className="close-modal__container" src="/images/close-icon.png" alt="close-btn" />
+        <img
+          className="close-modal__container"
+          src={require('assets/images/close-icon.png').default}
+          alt="close-btn"
+        />
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
           유튜버 등록
         </style.Span>

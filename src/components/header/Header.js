@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as style from './HeaderStyle';
-import Registration from 'components/Registration';
-import listAPI from 'api/listAPI';
-import { useHistory } from 'react-router-dom';
+import listAPI from 'lib/api/listAPI';
+import Registration from 'components/registration/Registration';
 
-export default function Header({userObj}) {
+export default function Header({ userObj }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);
@@ -18,34 +17,32 @@ export default function Header({userObj}) {
   const registClose = () => {
     setRistOpen(!registOpen);
   };
-  
+
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
     if (e.target.value) {
-      setIsSearch(true)
-    }
-    else {
-      setIsSearch(false)
+      setIsSearch(true);
+    } else {
+      setIsSearch(false);
     }
   };
 
-  const el  = useRef();
+  const el = useRef();
   const [isSearch, setIsSearch] = useState(false);
   useEffect(() => {
-    const handleCloseSearch = e => {
+    const handleCloseSearch = (e) => {
       if (isSearch && (!el.current || !el.current.contains(e.target))) {
-        setIsSearch(false)
-      };
-    }
+        setIsSearch(false);
+      }
+    };
     window.addEventListener('click', handleCloseSearch);
     return () => {
       window.removeEventListener('click', handleCloseSearch);
-    }
+    };
   }, [isSearch]);
-  
 
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
     const getSearchResult = async () => {
       await listAPI
@@ -54,7 +51,7 @@ export default function Header({userObj}) {
           setSearchResults(res.data.data);
         })
         .catch((err) => console.log(err));
-    }; 
+    };
 
     getSearchResult();
   }, [searchValue]);
@@ -69,7 +66,7 @@ export default function Header({userObj}) {
           searchValue: searchValue,
         },
       });
-      setSearchValue("")
+      setSearchValue('');
     } else {
       history.push({
         pathname: '/search',
@@ -78,43 +75,59 @@ export default function Header({userObj}) {
         },
       });
     }
-  }
+  };
 
   return (
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
       <style.HeaderBox>
-        <style.HeaderFlex direction='column'>
+        <style.HeaderFlex direction="column">
           <style.LogoLink to="/">
-            <style.LogoImg src="/images/YouChu_logo.png" />
+            <style.LogoImg
+              src={require('assets/images/YouChu_logo.png').default}
+            />
           </style.LogoLink>
           <style.HeaderNavBox>
-            <style.HeaderNav to="/" exact={true}>홈</style.HeaderNav>
+            <style.HeaderNav to="/" exact={true}>
+              홈
+            </style.HeaderNav>
             <style.HeaderNav to="/youtubers">유튜버 리뷰</style.HeaderNav>
           </style.HeaderNavBox>
         </style.HeaderFlex>
         <style.HeaderFlex>
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}
-          <style.SearchNav exact to="/youtubers" ref={el} onClick={(e) => e.preventDefault()}>
+          <style.SearchNav
+            exact
+            to="/youtubers"
+            ref={el}
+            onClick={(e) => e.preventDefault()}
+          >
             <style.SearchForm onSubmit={onSearch}>
-              <style.SearchImg src="/images/searchIcon.svg" onClick={onSearch}/>
+              <style.SearchImg
+                src={require('assets/images/searchIcon.svg').default}
+                onClick={onSearch}
+              />
               <style.SearchInput
                 placeholder="유튜버 이름으로 검색하세요"
                 value={searchValue}
                 onChange={onSearchValueChange}
-                onClick={e => {if (searchValue) setIsSearch(!isSearch)}}
+                onClick={(e) => {
+                  if (searchValue) setIsSearch(!isSearch);
+                }}
               />
             </style.SearchForm>
             {isSearch && (
               <style.SearchDropdownContainer>
                 <style.RelatedSearch>연관 검색어</style.RelatedSearch>
                 {searchResults.map((data) => (
-                    <style.SearchResult 
-                      to={`/youtubers/review/id=${data.id}`} 
-                      key={data.id}
-                      onClick={() => {setIsSearch(false)}}
-                    >
-                      {data.name}
-                    </style.SearchResult>
+                  <style.SearchResult
+                    to={`/youtubers/review/id=${data.id}`}
+                    key={data.id}
+                    onClick={() => {
+                      setIsSearch(false);
+                    }}
+                  >
+                    {data.name}
+                  </style.SearchResult>
                 ))}
               </style.SearchDropdownContainer>
             )}

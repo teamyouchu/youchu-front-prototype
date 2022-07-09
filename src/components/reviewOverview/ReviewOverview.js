@@ -1,6 +1,6 @@
 import React from 'react';
-import * as style from './styles/ReviewOverviewStyle';
-import StarRating from './StarRating';
+import * as style from './ReviewOverviewStyle';
+import StarRating from 'components/starRating/StarRating';
 
 // TODO 송경석 하드 코딩 된 부분 고쳐야 함
 export default function ReviewOverview({ reviewOverView }) {
@@ -13,7 +13,10 @@ export default function ReviewOverview({ reviewOverView }) {
         <style.Span size="25px" font="SHSN-B">
           {reviewOverView.rating}
         </style.Span>
-        <StarRating ratings={reviewOverView.rating} margins={'0px 5px 0px 10px'} />
+        <StarRating
+          ratings={reviewOverView.rating}
+          margins={'0px 5px 0px 10px'}
+        />
         <style.Span size="14px" color="#94969b">
           {reviewOverView.reviews}개 리뷰
         </style.Span>

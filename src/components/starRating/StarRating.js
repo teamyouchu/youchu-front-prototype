@@ -1,4 +1,4 @@
-import * as style from './styles/StarRatingStyle';
+import * as style from './StarRatingStyle';
 
 export default function StarRating({ ratings, paddingB, margins }) {
   const perRatings = ratings * 20;

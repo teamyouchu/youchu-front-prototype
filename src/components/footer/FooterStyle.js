@@ -36,7 +36,7 @@ export const FooterFlex = styled.div`
   &:first-child {
     margin-bottom: 10px;
   }
-  &:last-child{
+  &:last-child {
     margin-top: 10px;
     margin-bottom: 30px;
   }
@@ -51,7 +51,7 @@ export const FooterSpan = styled(Link)`
   color: #94969b;
   padding: 0 15px 0 15px;
   margin-bottom: 10px;
-  border-right: 1px solid #DEDEDE;
+  border-right: 1px solid #dedede;
   &:hover {
     color: #94969b;
     text-decoration: underline;
@@ -62,7 +62,7 @@ export const FooterSpan = styled(Link)`
   &:first-child {
     padding: 0 15px 0 0;
   }
-  &:last-child{
+  &:last-child {
     border-right: 0;
   }
 `;

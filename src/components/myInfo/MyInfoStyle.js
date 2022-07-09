@@ -16,7 +16,7 @@ export const MyInfoBox = styled.div`
 
 export const Title = styled.div`
   text-align: left;
-  font-family: ${({titleFont}) => titleFont || 'SHSN-B'};
+  font-family: ${({ titleFont }) => titleFont || 'SHSN-B'};
   font-size: 25px;
   line-height: 31px;
   color: #000000;

@@ -1,6 +1,9 @@
 import React from 'react';
-import * as style from './styles/PageNumberStyle';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import * as style from './PageNumberStyle';
+import {
+  faChevronRight,
+  faChevronLeft,
+} from '@fortawesome/free-solid-svg-icons';
 export default function PageNumber() {
   const temp = [1, 2, 3, 4, 5];
   const mapToComponent = (temp) => {
