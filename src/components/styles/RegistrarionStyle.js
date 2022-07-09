@@ -28,6 +28,7 @@ export const Modal = styled.div`
     top: 70px;
     right: 60px;
     position: absolute;
+    cursor: pointer;
   }
 `;
 
