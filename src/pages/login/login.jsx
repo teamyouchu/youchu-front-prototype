@@ -60,8 +60,10 @@ export default function Login({setUserObj}) {
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             render={renderProps => (
               <style.LoginBtn onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                <style.GoogleLogo />
-                <style.LoginLetter>구글로 로그인</style.LoginLetter>
+                <style.LoginLetter>
+                  <style.GoogleLogo />
+                  구글로 로그인
+                </style.LoginLetter>
               </style.LoginBtn>
             )}
             onSuccess={successGoogle}
