@@ -22,6 +22,11 @@ jobs:
 
       - name: Build                   # React Build
         run: yarn build
+        
+      - name: Setting .env
+        run: |
+          echo "REACT_APP_GOOGLE_CLIENTID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}" >> .env
+          cat .env
           
       - name: Deploy
         env:
@@ -30,7 +35,6 @@ jobs:
         run: |
           aws s3 cp --recursive --region ${{ secrets.AWS_REGION }} build s3://${{ secrets.AWS_BUCKET_NAME }}
 
-      
       - name: CloudFront 캐시 무효화
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
