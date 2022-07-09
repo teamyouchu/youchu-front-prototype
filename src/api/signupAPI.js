@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from './config';
 
-const signupAPI =  {
+const signupAPI = {
   postNickNameDup(data) {
-    return axios.post('https://api.youchu.io/v1/nickname', data);
+    return axios.post('/nickname', data);
   },
 
   postSignup(data) {
-    return axios.put('https://api.youchu.io/v1/register', data);
+    return axios.put('/register', data);
   },
 };
 
-export default signupAPI
+export default signupAPI;

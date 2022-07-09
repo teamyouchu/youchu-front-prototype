@@ -7,10 +7,11 @@ import StarRating from 'components/StarRating';
 import VideoDisplay from 'components/VideoDisplay';
 import ReviewOverview from 'components/ReviewOverview';
 import reviewAPI from 'api/reviewAPI';
+import { useParams } from 'react-router-dom';
 
 function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
-  const [imageUrl, name, reviews, rating, id] = reviewOverView;
+  const { thumbnail, title, reviews, rating, id } = reviewOverView;
 
   const handleClick = () => {
     history.push({
@@ -21,9 +22,9 @@ function YoutuberHeader({ reviewOverView }) {
   return (
     <style.FlexContainer>
       <style.DivColumn>
-        <style.RcImg src={imageUrl} alt={name} title={name} />
+        <style.RcImg src={thumbnail} alt={title} title={title} />
         <style.YoutudberInfo>
-          <style.YoutuberHeaderTitle>{name}</style.YoutuberHeaderTitle>
+          <style.YoutuberHeaderTitle>{title}</style.YoutuberHeaderTitle>
           <style.YoutuberSummaryContainer>
             <style.YoutuberSummaryRank>★</style.YoutuberSummaryRank>
             <style.Score>{rating}</style.Score>
@@ -45,11 +46,11 @@ function YoutuberHeader({ reviewOverView }) {
 }
 
 function YoutuberDetail({ reviewOverView }) {
-  const [name, subscribes] = reviewOverView;
+  const { title, subscribes, description } = reviewOverView;
   return (
     <style.YoutuberDetailContainer>
       <style.Span font="SHSN-M" size="26px">
-        {name} 유튜버 소개
+        {title} 유튜버 소개
       </style.Span>
 
       <style.YoutuberDetailContent style={{ marginTop: '25px' }}>
@@ -64,12 +65,7 @@ function YoutuberDetail({ reviewOverView }) {
         <style.YoutuberDetailSubcribe>{subscribes}</style.YoutuberDetailSubcribe>
       </style.YoutuberDetailContent>
 
-      <style.YoutuberDetailContent>
-        {temp}
-        <br />
-        <br />
-        {temp2}
-      </style.YoutuberDetailContent>
+      <style.YoutuberDetailContent>{description}</style.YoutuberDetailContent>
     </style.YoutuberDetailContainer>
   );
 }
@@ -106,7 +102,7 @@ function YoutuberReviewDetail({ reviewOverView }) {
       pathname: `/youtubers/review/detail/${reviewOverView.id}`,
       state: {
         imageUrl: reviewOverView.imageUrl,
-        name: reviewOverView.name,
+        title: reviewOverView.title,
         rating: reviewOverView.rating,
         reviews: reviewOverView.reviews,
         subscribes: reviewOverView.subscribes,
@@ -190,37 +186,36 @@ function YoutuberVideo({ reviewOverView }) {
   );
 }
 
-const temp =
-  '月刊 尹鍾信 [월간 윤종신]은 프로듀서 윤종신을 주축으로 한 독자적인 매체이자 기획 전문 집단이다.2010년 3월 두 곡의 음원을 발표하는 것으로 시작된 [월간 윤종신]은 매월 음원과 뮤직비디오를 제작하는 것에서 한걸음 더 나아가 2012 년부터는 디지털 매거진을 발행하고 있으며, 2013 년부터는 음악 뿐만 아니라 문학, 영화, 사진, 미술, 게임 등 다양한 예술 분야와의 콜라보레이션을 진행하고 있다. 음원, 음반, 그림, 사진, 도서, 전시 등 콜라보레이션에 따른 다양한 형태의 결과물을 직접 기획 및 제작하고 있으며, 그것을 누구나 쉽게 즐길 수 있도록 온오프라인을 통해 홍보하고 있다. 2016 년 11 월부터는 서울 한남동에 새롭게 문을 연 스튜디오를 중심으로 보다 전방위적인 콜라보레이션 활동을 이어나갈 예정이다.';
-const temp2 =
-  '[MONTHLY YOONJONGSHIN] is an independent media and a project group, led by a producer Yoon Jongshin. Started by releasing two songs in March 2010, [MONTHLY YOONJONGSHIN] has been releasing the songs and music videos every month. Furthermore, [MONTHLY YOONJONGSHIN] has been publishing digital magazines since 2012, not only producing the music but also collaborating with a variety of parts of arts such as literature, movie, photograph, painting, game and so on. They do plan and produce all the songs, albums, arts, photographs, books, exhibitions by themselves, based on the collaboration';
-
 export default function Review() {
-  // const location = useLocation();
+  const { id } = useParams();
 
   const [reviewOverView, setReviewOverView] = useState({
-    id: 0,
-    name: '',
-    channelDescription: '',
-    imageUrl: '',
-    backgroundImageUrl: '',
+    id: '',
+    title: '',
+    description: '',
+    thumbnail: '',
+    backgroundImage: '',
     subscribes: 0,
     category: '',
     rating: 0,
     reviews: 0,
-    bestReview: {
-      id: 0,
-      author: '',
-      rating: 0,
-      likes: 0,
-      createdDatetime: '',
-      content: '',
-    },
+    // bestReview: {
+    //   id: 0,
+    //   author: '',
+    //   rating: 0,
+    //   likes: 0,
+    //   createdDatetime: '',
+    //   content: '',
+    // },
   });
 
   useEffect(() => {
-    getReviewOverView('tempId');
-  }, []);
+    getReviewOverView(id);
+  }, [id]);
+
+  useEffect(() => {
+    console.log(reviewOverView);
+  }, [reviewOverView]);
 
   const getReviewOverView = async (id) => {
     await reviewAPI
@@ -234,8 +229,8 @@ export default function Review() {
   return (
     <>
       <style.YoutuberBackImg>
-        {reviewOverView.backgroundImageUrl ? (
-          <img src={reviewOverView.backgroundImageUrl} alt="background" />
+        {reviewOverView.backgroundImage ? (
+          <img src={reviewOverView.backgroundImage} alt="background" />
         ) : (
           <style.GrayBar />
         )}
