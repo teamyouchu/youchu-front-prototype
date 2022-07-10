@@ -1,8 +1,17 @@
-import * as style from './styles/CardStyle';
-import StarRating from './StarRating';
+import * as style from './CardStyle';
+import StarRating from 'components/starRating/StarRating';
 
 export default function ReviewCard({
-  data: { id, thumbnail, category, name, subscribes, rating, reviews, bestReview },
+  data: {
+    id,
+    thumbnail,
+    category,
+    name,
+    subscribes,
+    rating,
+    reviews,
+    bestReview,
+  },
 }) {
   return (
     <style.RvContainer to={`/youtubers/review/${id}`}>

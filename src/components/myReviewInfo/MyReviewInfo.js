@@ -1,5 +1,5 @@
-import * as style from './styles/MyReviewInfoStyle';
-import StarRating from './StarRating';
+import * as style from './MyReviewInfoStyle';
+import StarRating from 'components/starRating/StarRating';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function MyReviewInfo({
@@ -30,7 +30,10 @@ export default function MyReviewInfo({
       <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
       <style.UtilContainer>
         <style.LikeButton>
-          <style.LikeImg alt="좋아요" src="/images/heart.svg" />
+          <style.LikeImg
+            alt="좋아요"
+            src={require('assets/images/heart.svg').default}
+          />
           <style.likeCount>{likes}</style.likeCount>
         </style.LikeButton>
         <style.DeleteButton onClick={delReview}>삭제하기</style.DeleteButton>

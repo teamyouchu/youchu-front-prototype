@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import * as style from './style';
 import { useHistory } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import DetailReviewInfo from 'components/DetailReviewInfo';
-import StarRating from 'components/StarRating';
-import VideoDisplay from 'components/VideoDisplay';
-import ReviewOverview from 'components/ReviewOverview';
-import reviewAPI from 'api/reviewAPI';
+import DetailReviewInfo from 'components/detailReviewInfo/DetailReviewInfo';
+import StarRating from 'components/starRating/StarRating';
+import VideoDisplay from 'components/videoDisplay/VideoDisplay';
+import ReviewOverview from 'components/reviewOverview/ReviewOverview';
+import reviewAPI from 'lib/api/reviewAPI';
 import { useParams } from 'react-router-dom';
 
 function YoutuberHeader({ reviewOverView }) {
@@ -62,7 +62,9 @@ function YoutuberDetail({ reviewOverView }) {
 
       <style.YoutuberDetailContent>
         <style.YoutuberDetailGray>구독자수</style.YoutuberDetailGray>
-        <style.YoutuberDetailSubcribe>{subscribes}</style.YoutuberDetailSubcribe>
+        <style.YoutuberDetailSubcribe>
+          {subscribes}
+        </style.YoutuberDetailSubcribe>
       </style.YoutuberDetailContent>
 
       <style.YoutuberDetailContent>{description}</style.YoutuberDetailContent>
@@ -77,7 +79,7 @@ function YoutuberCard() {
   return (
     <style.CategoryCardContainer>
       <style.CategoryImg
-        src="/images/딩고 뮤직.jpg"
+        src={require('assets/images/딩고 뮤직.jpg').default}
         alt="딩고 뮤직 / dingo music"
         title="딩고 뮤직 / dingo music"
       />
@@ -162,7 +164,11 @@ function YoutuberVideo({ reviewOverView }) {
           >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton onClick={onClick} id="uploadOrder" color={uploadColor}>
+          <style.FiliterButton
+            onClick={onClick}
+            id="uploadOrder"
+            color={uploadColor}
+          >
             업로드 날짜 순
           </style.FiliterButton>
         </style.FlexContainer>
@@ -247,7 +253,9 @@ export default function Review() {
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>
             <style.YoutuberCardContainer>
-              <style.CategoryTitle>{reviewOverView.category} 유튜버</style.CategoryTitle>
+              <style.CategoryTitle>
+                {reviewOverView.category} 유튜버
+              </style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />
               <YoutuberCard />

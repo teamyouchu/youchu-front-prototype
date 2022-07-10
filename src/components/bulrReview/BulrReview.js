@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import * as style from './styles/BulrReviewStyle';
+import * as style from './BulrReviewStyle';
 
 export default function BulrReview() {
   const history = useHistory();
