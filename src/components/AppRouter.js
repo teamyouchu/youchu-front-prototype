@@ -18,12 +18,12 @@ import {
   ModifyCategory,
 } from 'pages/pageIndex';
 
-export default function AppRouter({ userObj, setUserObj }) {
+export default function AppRouter() {
   const [isShow, setIsShow] = useState(true);
   return (
     <>
       <Router>
-        {isShow ? <Header userObj={userObj} /> : null}
+        {isShow && <Header />}
         <div id="wrap">
           <ScrollToTop>
             <Switch>
@@ -42,9 +42,7 @@ export default function AppRouter({ userObj, setUserObj }) {
                 path="/youtubers/reviewWrite/:id"
                 component={ReviewWrite}
               />
-              <Route path="/login">
-                <Login setUserObj={setUserObj} />
-              </Route>
+              <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/profile" component={Profile} />
               <Route path="/modifyNickName" component={ModifyNickName} />
@@ -52,7 +50,7 @@ export default function AppRouter({ userObj, setUserObj }) {
               <Route component={EmptyPage} />
             </Switch>
           </ScrollToTop>
-          <div id="footer">{isShow ? <Footer /> : null}</div>
+          <div id="footer">{isShow && <Footer />}</div>
         </div>
       </Router>
     </>

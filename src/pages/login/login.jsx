@@ -1,11 +1,14 @@
 import * as style from './style';
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import loginAPI from 'lib/api/loginAPI';
 import userAPI from 'lib/api/userAPI';
 import axios from 'axios';
+import { UserContext } from 'lib/UserContext';
 
-export default function Login({ setUserObj }) {
+export default function Login() {
+  const { setUserObj } = useContext(UserContext);
   const history = useHistory();
 
   //로그인 성공했을 떄 처리 함수

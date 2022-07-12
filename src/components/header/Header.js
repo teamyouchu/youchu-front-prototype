@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import * as style from './HeaderStyle';
 import listAPI from 'lib/api/listAPI';
 import Registration from 'components/registration/Registration';
+import { UserContext } from 'lib/UserContext';
 
-export default function Header({ userObj }) {
+export default function Header() {
+  const { userObj } = useContext(UserContext);
+
   const [isScrolled, setIsScrolled] = useState(false);
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);

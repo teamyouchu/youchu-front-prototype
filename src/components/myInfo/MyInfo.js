@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as style from './MyInfoStyle';
 import signupAPI from 'lib/api/signupAPI';
 import userAPI from 'lib/api/userAPI';
 import MyNickname from 'components/myNickname/MyNickname';
 import MyCategory from 'components/myCategory/MyCategory';
+import { UserContext } from 'lib/UserContext';
 
 export default function MyInfo({
   title,
@@ -19,6 +20,7 @@ export default function MyInfo({
   const [isNickNameDup, setIsNickNameDup] = useState(false);
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
+  const { setUserObj } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {

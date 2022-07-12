@@ -3,6 +3,7 @@ import axios from 'axios';
 import loginAPI from 'lib/api/loginAPI';
 import userAPI from 'lib/api/userAPI';
 import AppRouter from 'components/AppRouter';
+import { UserContext } from 'lib/UserContext';
 
 function App() {
   // 로그인 유저 객체 상태값
@@ -51,9 +52,9 @@ function App() {
   }, []);
 
   return (
-    <>
-      <AppRouter userObj={userObj} setUserObj={setUserObj} />
-    </>
+    <UserContext.Provider value={{ userObj, setUserObj }}>
+      <AppRouter />
+    </UserContext.Provider>
   );
 }
 
