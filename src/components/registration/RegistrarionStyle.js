@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Label } from 'semantic-ui-react';
 
 export const ModalContainer = styled.div`
   width: 100%;
@@ -22,12 +23,13 @@ export const Modal = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  img {
+  & > img {
     width: 24px;
     height: 24px;
     top: 70px;
     right: 60px;
     position: absolute;
+    cursor: pointer;
   }
 `;
 
@@ -71,4 +73,27 @@ export const CompleteButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   position: relative;
+`;
+
+export const SearchResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+`;
+
+export const YoutuberContainer = styled.div`
+  display: flex;
+  align-items: center;
+  & > img {
+    border: 1px solid #dedede;
+    border-radius: 50%;
+    width: ${(props) => props.width || '50px'};
+    height: ${(props) => props.height || '50px'};
+    margin: ${(props) => props.margin || '0 0 10px 0'};
+  }
+`;
+
+export const Tag = styled(Label)`
+  border-radius: 2rem !important;
+  margin: 0.5rem !important;
 `;

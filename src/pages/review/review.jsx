@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import * as style from './style';
 import { useHistory } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import DetailReviewInfo from 'components/detailReviewInfo/DetailReviewInfo';
-import StarRating from 'components/starRating/StarRating';
-import VideoDisplay from 'components/videoDisplay/VideoDisplay';
-import ReviewOverview from 'components/reviewOverview/ReviewOverview';
-import reviewAPI from 'lib/api/reviewAPI';
+import DetailReviewInfo from 'components/DetailReviewInfo';
+import StarRating from 'components/StarRating';
+import VideoDisplay from 'components/VideoDisplay';
+import ReviewOverview from 'components/ReviewOverview';
+import reviewAPI from 'api/reviewAPI';
 import { useParams } from 'react-router-dom';
+import { MainReviewContainer, YoutuberFlex } from './style';
 
 function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
@@ -20,8 +21,8 @@ function YoutuberHeader({ reviewOverView }) {
   };
 
   return (
-    <style.FlexContainer>
-      <style.DivColumn>
+    <style.YoutuberFlex justify="center">
+      <style.DivColumn style={{ flexDirection: 'column', width: '100%' }} align="center">
         <style.RcImg src={thumbnail} alt={title} title={title} />
         <style.YoutudberInfo>
           <style.YoutuberHeaderTitle>{title}</style.YoutuberHeaderTitle>
@@ -41,7 +42,7 @@ function YoutuberHeader({ reviewOverView }) {
           </style.Span>
         </style.ReviewButton>
       </style.DivColumn>
-    </style.FlexContainer>
+    </style.YoutuberFlex>
   );
 }
 
@@ -62,9 +63,7 @@ function YoutuberDetail({ reviewOverView }) {
 
       <style.YoutuberDetailContent>
         <style.YoutuberDetailGray>구독자수</style.YoutuberDetailGray>
-        <style.YoutuberDetailSubcribe>
-          {subscribes}
-        </style.YoutuberDetailSubcribe>
+        <style.YoutuberDetailSubcribe>{subscribes}</style.YoutuberDetailSubcribe>
       </style.YoutuberDetailContent>
 
       <style.YoutuberDetailContent>{description}</style.YoutuberDetailContent>
@@ -164,11 +163,7 @@ function YoutuberVideo({ reviewOverView }) {
           >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton
-            onClick={onClick}
-            id="uploadOrder"
-            color={uploadColor}
-          >
+          <style.FiliterButton onClick={onClick} id="uploadOrder" color={uploadColor}>
             업로드 날짜 순
           </style.FiliterButton>
         </style.FlexContainer>
@@ -245,7 +240,7 @@ export default function Review() {
         <style.YoutuberHeaderContainer>
           <YoutuberHeader reviewOverView={reviewOverView} />
         </style.YoutuberHeaderContainer>
-        <style.FlexContainer>
+        <style.MainReviewContainer>
           <style.FlexContainerColumn>
             <YoutuberDetail reviewOverView={reviewOverView} />
             <YoutuberReviewDetail reviewOverView={reviewOverView} />
@@ -253,9 +248,7 @@ export default function Review() {
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>
             <style.YoutuberCardContainer>
-              <style.CategoryTitle>
-                {reviewOverView.category} 유튜버
-              </style.CategoryTitle>
+              <style.CategoryTitle>{reviewOverView.category} 유튜버</style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />
               <YoutuberCard />
@@ -269,7 +262,7 @@ export default function Review() {
               <YoutuberCard />
             </style.YoutuberCardContainer>
           </style.FlexContainerColumn>
-        </style.FlexContainer>
+        </style.MainReviewContainer>
       </style.Contatiner>
       {/* 임시로 배치함 삭제해야함 */}
       <div style={{ height: '400px', width: '200px' }}></div>
