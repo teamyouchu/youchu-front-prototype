@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import * as style from './style';
 import { useHistory } from 'react-router';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import DetailReviewInfo from 'components/DetailReviewInfo';
-import StarRating from 'components/StarRating';
-import VideoDisplay from 'components/VideoDisplay';
-import ReviewOverview from 'components/ReviewOverview';
+import DetailReviewInfo from 'components/detailReviewInfo/DetailReviewInfo';
+import StarRating from 'components/starRating/StarRating';
+import VideoDisplay from 'components/videoDisplay/VideoDisplay';
+import ReviewOverview from 'components/reviewOverview/ReviewOverview';
 import reviewAPI from 'api/reviewAPI';
 import { useParams } from 'react-router-dom';
 import { MainReviewContainer, YoutuberFlex } from './style';
@@ -22,7 +22,10 @@ function YoutuberHeader({ reviewOverView }) {
 
   return (
     <style.YoutuberFlex justify="center">
-      <style.DivColumn style={{ flexDirection: 'column', width: '100%' }} align="center">
+      <style.DivColumn
+        style={{ flexDirection: 'column', width: '100%' }}
+        align="center"
+      >
         <style.RcImg src={thumbnail} alt={title} title={title} />
         <style.YoutudberInfo>
           <style.YoutuberHeaderTitle>{title}</style.YoutuberHeaderTitle>
@@ -63,7 +66,9 @@ function YoutuberDetail({ reviewOverView }) {
 
       <style.YoutuberDetailContent>
         <style.YoutuberDetailGray>구독자수</style.YoutuberDetailGray>
-        <style.YoutuberDetailSubcribe>{subscribes}</style.YoutuberDetailSubcribe>
+        <style.YoutuberDetailSubcribe>
+          {subscribes}
+        </style.YoutuberDetailSubcribe>
       </style.YoutuberDetailContent>
 
       <style.YoutuberDetailContent>{description}</style.YoutuberDetailContent>
@@ -248,7 +253,9 @@ export default function Review() {
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>
             <style.YoutuberCardContainer>
-              <style.CategoryTitle>{reviewOverView.category} 유튜버</style.CategoryTitle>
+              <style.CategoryTitle>
+                {reviewOverView.category} 유튜버
+              </style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />
               <YoutuberCard />
