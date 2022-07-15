@@ -8,6 +8,7 @@ import VideoDisplay from 'components/VideoDisplay';
 import ReviewOverview from 'components/ReviewOverview';
 import reviewAPI from 'api/reviewAPI';
 import { useParams } from 'react-router-dom';
+import { MainReviewContainer, YoutuberFlex } from './style';
 
 function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
@@ -20,8 +21,8 @@ function YoutuberHeader({ reviewOverView }) {
   };
 
   return (
-    <style.FlexContainer>
-      <style.DivColumn>
+    <style.YoutuberFlex justify="center">
+      <style.DivColumn style={{ flexDirection: 'column', width: '100%' }} align="center">
         <style.RcImg src={thumbnail} alt={title} title={title} />
         <style.YoutudberInfo>
           <style.YoutuberHeaderTitle>{title}</style.YoutuberHeaderTitle>
@@ -41,7 +42,7 @@ function YoutuberHeader({ reviewOverView }) {
           </style.Span>
         </style.ReviewButton>
       </style.DivColumn>
-    </style.FlexContainer>
+    </style.YoutuberFlex>
   );
 }
 
@@ -239,7 +240,7 @@ export default function Review() {
         <style.YoutuberHeaderContainer>
           <YoutuberHeader reviewOverView={reviewOverView} />
         </style.YoutuberHeaderContainer>
-        <style.FlexContainer>
+        <style.MainReviewContainer>
           <style.FlexContainerColumn>
             <YoutuberDetail reviewOverView={reviewOverView} />
             <YoutuberReviewDetail reviewOverView={reviewOverView} />
@@ -261,7 +262,7 @@ export default function Review() {
               <YoutuberCard />
             </style.YoutuberCardContainer>
           </style.FlexContainerColumn>
-        </style.FlexContainer>
+        </style.MainReviewContainer>
       </style.Contatiner>
       {/* 임시로 배치함 삭제해야함 */}
       <div style={{ height: '400px', width: '200px' }}></div>
