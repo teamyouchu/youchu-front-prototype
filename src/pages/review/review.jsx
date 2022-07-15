@@ -6,7 +6,7 @@ import DetailReviewInfo from 'components/detailReviewInfo/DetailReviewInfo';
 import StarRating from 'components/starRating/StarRating';
 import VideoDisplay from 'components/videoDisplay/VideoDisplay';
 import ReviewOverview from 'components/reviewOverview/ReviewOverview';
-import reviewAPI from 'api/reviewAPI';
+import reviewAPI from 'lib/api/reviewAPI';
 import { useParams } from 'react-router-dom';
 import { MainReviewContainer, YoutuberFlex } from './style';
 
@@ -168,7 +168,11 @@ function YoutuberVideo({ reviewOverView }) {
           >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton onClick={onClick} id="uploadOrder" color={uploadColor}>
+          <style.FiliterButton
+            onClick={onClick}
+            id="uploadOrder"
+            color={uploadColor}
+          >
             업로드 날짜 순
           </style.FiliterButton>
         </style.FlexContainer>
