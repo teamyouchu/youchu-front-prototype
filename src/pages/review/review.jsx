@@ -168,11 +168,7 @@ function YoutuberVideo({ reviewOverView }) {
           >
             조회수 순
           </style.FiliterButton>
-          <style.FiliterButton
-            onClick={onClick}
-            id="uploadOrder"
-            color={uploadColor}
-          >
+          <style.FiliterButton onClick={onClick} id="uploadOrder" color={uploadColor}>
             업로드 날짜 순
           </style.FiliterButton>
         </style.FlexContainer>

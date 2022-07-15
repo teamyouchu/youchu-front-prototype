@@ -67,7 +67,7 @@ export default function Registration({ registClose }) {
       <style.Modal width="500px" height="386px" padding="70px 60px">
         <img
           className="close-modal__container"
-          src="/images/close-icon.png"
+          src={require('assets/images/close-icon.png').default}
           alt="close-btn"
         />
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
