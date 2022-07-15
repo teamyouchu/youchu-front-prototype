@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style';
 import { useHistory, useLocation } from 'react-router';
-import DetailReviewInfo from 'components/DetailReviewInfo';
-import StarRating from 'components/StarRating';
-import ReviewOverview from 'components/ReviewOverview';
-import BulrReview from 'components/BulrReview';
-import PageNumber from 'components/PageNumber';
-import FilterDropdown from 'components/FilterDropdown';
-import reviewAPI from 'api/reviewAPI';
+import DetailReviewInfo from 'components/detailReviewInfo/DetailReviewInfo';
+import StarRating from 'components/starRating/StarRating';
+import ReviewOverview from 'components/reviewOverview/ReviewOverview';
+import BulrReview from 'components/bulrReview/BulrReview';
+import PageNumber from 'components/pageNumber/PageNumber';
+import FilterDropdown from 'components/filterDropdown/FilterDropdown';
+import reviewAPI from 'lib/api/reviewAPI';
 
 function YoutuberHeader({ reviewOverView }) {
   const history = useHistory();
@@ -52,7 +52,7 @@ function YoutuberCard() {
   return (
     <style.CategoryCardContainer>
       <style.CategoryImg
-        src="/images/딩고 뮤직.jpg"
+        src={require('assets/images/딩고 뮤직.jpg').default}
         alt="딩고 뮤직 / dingo music"
         title="딩고 뮤직 / dingo music"
       />
@@ -118,7 +118,12 @@ function YoutuberReviewDetail() {
         {reviewList.map((review, i) => {
           return (
             <style.FlexContainerColumn key={i}>
-              <DetailReviewInfo isBest={false} blur={IsBlur} page="review" reviewInfo={review} />
+              <DetailReviewInfo
+                isBest={false}
+                blur={IsBlur}
+                page="review"
+                reviewInfo={review}
+              />
               {!isLogin && <BulrReview />}
             </style.FlexContainerColumn>
           );
@@ -189,13 +194,18 @@ export default function ReviewDetail() {
         <style.FlexContainer>
           <style.FlexContainerColumn>
             <style.ReviewOverviewContainer>
-              <ReviewOverview reviewOverView={location.state} style={{ marginTop: '50px' }} />
+              <ReviewOverview
+                reviewOverView={location.state}
+                style={{ marginTop: '50px' }}
+              />
             </style.ReviewOverviewContainer>
             <YoutuberReviewDetail data={location.state} />
           </style.FlexContainerColumn>
           <style.FlexContainerColumn>
             <style.YoutuberCardContainer>
-              <style.CategoryTitle>{location.state.category} 유튜버</style.CategoryTitle>
+              <style.CategoryTitle>
+                {location.state.category} 유튜버
+              </style.CategoryTitle>
               <YoutuberCard />
               <YoutuberCard />
               <YoutuberCard />

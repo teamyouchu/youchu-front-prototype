@@ -78,7 +78,7 @@ function YoutuberCard() {
   return (
     <style.CategoryCardContainer>
       <style.CategoryImg
-        src="/images/딩고 뮤직.jpg"
+        src={require('assets/images/딩고 뮤직.jpg').default}
         alt="딩고 뮤직 / dingo music"
         title="딩고 뮤직 / dingo music"
       />

@@ -7,21 +7,24 @@ export default function Search({ setIsShow }) {
     setIsShow(false);
     return () => {
       setIsShow(true);
-    }
+    };
   }, [setIsShow]);
 
   const history = useHistory();
   const goBack = () => {
     history.goBack();
-  }
+  };
 
   return (
     <style.SearchPageContainer>
       <style.HeaderBox>
-        <style.SearchInput placeholder="유튜버 이름으로 검색하세요"/>
-        <style.Xmark src="/images/xmark.svg" alt="empty image" onClick={goBack}/>
+        <style.SearchInput placeholder="유튜버 이름으로 검색하세요" />
+        <style.Xmark
+          src={require('assets/images/xmark.svg').default}
+          alt="empty image"
+          onClick={goBack}
+        />
       </style.HeaderBox>
     </style.SearchPageContainer>
   );
 }
-

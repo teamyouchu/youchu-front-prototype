@@ -68,7 +68,7 @@ export const LogoImg = styled.img`
 `;
 
 export const HeaderNavBox = styled.div`
- @media ${(props) => props.theme.tablet} {
+  @media ${(props) => props.theme.tablet} {
     position: absolute;
     top: 80px;
   }
@@ -256,7 +256,7 @@ export const GoogleAvatar = styled.img`
   height: 38px;
   border-radius: 50%;
   border: 1px solid #dedede;
-  
+
   @media ${(props) => props.theme.tablet} {
     &&& {
       width: 30px;
