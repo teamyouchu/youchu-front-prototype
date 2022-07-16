@@ -44,7 +44,10 @@ export const YoutudberInfo = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: -10px 0px 0px -10px;
+  margin-left: 10px;
+  @media ${(props) => props.theme.tablet} {
+    margin: -10px 0px 0px -10px;
+  }
   font-family: 'SHSN-B';
 `;
 
@@ -69,6 +72,8 @@ export const DivColumn = styled.div`
     width: 100%;
     bottom: 30px;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -85,12 +90,8 @@ export const ReviewButton = styled.div`
   }
 
   @media ${(props) => props.theme.tablet} {
-    width: 50%;
+    width: 92%;
     margin-top: 20px;
-  }
-
-  @media ${(props) => props.theme.mobile} {
-    width: 90%;
   }
 `;
 
