@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import searchAPI from 'api/searchAPI';
+import searchAPI from 'lib/api/searchAPI';
 import * as style from './RegistrarionStyle';
 import { throttle } from 'lodash';
 // import { YoutuberContainer } from './RegistrarionStyle';
