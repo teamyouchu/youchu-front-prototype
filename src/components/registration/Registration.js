@@ -1,14 +1,27 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import searchAPI from 'lib/api/searchAPI';
+import youtuberAPI from 'lib/api/youtuberAPI';
 import * as style from './RegistrarionStyle';
 import { throttle } from 'lodash';
-// import { YoutuberContainer } from './RegistrarionStyle';
+
+function Tag({ title, subscribe, imgUrl, selectYoutuber, channelId }) {
+  return (
+    <style.YoutuberContainer
+      className="select_btn"
+      key={title}
+      onClick={(e) => selectYoutuber(title, channelId, e)}
+    >
+      <img src={imgUrl} alt={title} />
+      <span style={{ marginRight: '10px', marginLeft: '10px' }}>{title}</span>
+      <span>구독자 {subscribe}명</span>
+    </style.YoutuberContainer>
+  );
+}
 
 export default function Registration({ registClose }) {
-  const closeRef = useRef();
+  const closeRef = useRef([]);
   const closeModal = ({ target }) => {
     let className = target.getAttribute('class');
-
     if (className == null) {
       className = [];
     }
@@ -18,20 +31,12 @@ export default function Registration({ registClose }) {
   };
 
   const [keyword, setKeyWord] = useState('');
-  // const [youtuberList, setYoutuberList] = useState([
-  //   {
-  //     title: '쯔양',
-  //     thumbnail:
-  //         'https://yt3.ggpht.com/_s3C7XpwVKVr_5gDrmYJh9AOkU3wFlY9FWyZBVGVP_v7B09P5O4bbEZaWGpiuyT78Dk-aElE=s88-c-k-c0xffffffff-no-rj-mo',
-  //   },
-  //   {
-  //     title: '월간 윤종신',
-  //     thumbnail:
-  //         'https://yt3.ggpht.com/ytc/AKedOLTiuOfbCXthi59y1-b1mnJywXGjUl8BfSfapzyM=s88-c-k-c0x00ffffff-no-rj-mo',
-  //   },
-  // ]);
+  const [isTyped, setIsTyped] = useState(false);
+  const [channel, setChannel] = useState();
 
   const [youtuberList, setYoutuberList] = useState([]);
+
+  const inputRef = useRef();
 
   const throttled = useCallback(
     throttle((keyword) => {
@@ -40,14 +45,22 @@ export default function Registration({ registClose }) {
     [],
   );
 
-  useEffect(() => throttled(keyword), [keyword]);
-  useEffect(() => {
-    console.log(youtuberList);
-  }, [youtuberList]);
+  useEffect(() => throttled(keyword), [keyword, throttled]);
+
+  const registYoutuber = async () => {
+    await youtuberAPI
+      .registYoutuber({
+        channel_id: channel,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const registerSubmit = (e) => {
-    e.preventDefault();
     //TODO: 송경석 처리 함수
+    registYoutuber();
   };
 
   const searchYoutuber = async (keyword) => {
@@ -57,6 +70,12 @@ export default function Registration({ registClose }) {
         setYoutuberList(res.data.channels);
       })
       .catch((err) => console.log(err));
+  };
+
+  const selectYoutuber = (title, channelId, event) => {
+    inputRef.current.value = title;
+    setIsTyped(false);
+    setChannel(channelId);
   };
 
   return (
@@ -69,6 +88,8 @@ export default function Registration({ registClose }) {
           className="close-modal__container"
           src={require('assets/images/close-icon.png').default}
           alt="close-btn"
+          onClick={registClose}
+          ref={closeRef}
         />
         <style.Span font="SHSN-L" size="25px" margins="0px 0px 30px 0px">
           유튜버 등록
@@ -83,31 +104,35 @@ export default function Registration({ registClose }) {
         <style.LinkInput
           placeholder="유튜버 이름 입력"
           onChange={(e) => setKeyWord(e.target.value)}
+          ref={inputRef}
+          onClick={() => {
+            if (!isTyped) {
+              setIsTyped(!isTyped);
+            }
+          }}
         />
+
         <style.SearchResultContainer>
-          {youtuberList.map((youtuber) => {
-            const url = youtuber['thumbnail'];
-            return (
-              // <style.Tag key={title}>
-              //   {title}
-              //   {/*<Icon name="delete" onClick={() => handleDeleteTag(index)} />*/}
-              // </style.Tag>
-              <>
-                <style.YoutuberContainer>
-                  <img src={url} />
-                  <span>{youtuber['title']}</span>
-                </style.YoutuberContainer>
-              </>
-            );
-          })}
+          {isTyped && (
+            <style.SearchDropdownContainer>
+              {youtuberList.map((youtuber, index) => {
+                const url = youtuber['thumbnail'];
+                return (
+                  <Tag
+                    imgUrl={url}
+                    title={youtuber['title']}
+                    subscribe={youtuber['subscribe']}
+                    selectYoutuber={selectYoutuber}
+                    index={index}
+                    channelId={youtuber['id']}
+                  />
+                );
+              })}
+            </style.SearchDropdownContainer>
+          )}
         </style.SearchResultContainer>
         <form onSubmit={registerSubmit}>
-          {/*<style.CompleteButton type="submit" ref={closeRef} onClick={registClose}>*/}
-          {/*  완료*/}
-          {/*</style.CompleteButton>*/}
-          <style.CompleteButton type="submit" ref={closeRef}>
-            완료
-          </style.CompleteButton>
+          <style.CompleteButton type="submit">완료</style.CompleteButton>
         </form>
       </style.Modal>
     </style.ModalContainer>
