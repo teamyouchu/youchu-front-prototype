@@ -21,10 +21,7 @@ function YoutuberHeader({ reviewOverView }) {
 
   return (
     <style.YoutuberFlex justify="center">
-      <style.DivColumn
-        style={{ flexDirection: 'column', width: '100%' }}
-        align="center"
-      >
+      <style.DivColumn>
         <style.RcImg src={thumbnail} alt={title} title={title} />
         <style.YoutudberInfo>
           <style.YoutuberHeaderTitle>{title}</style.YoutuberHeaderTitle>
