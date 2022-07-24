@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export const ModalContainer = styled.div`
   width: 100%;
@@ -22,12 +24,13 @@ export const Modal = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  img {
+  & > img {
     width: 24px;
     height: 24px;
     top: 70px;
     right: 60px;
     position: absolute;
+    cursor: pointer;
   }
 `;
 
@@ -70,5 +73,59 @@ export const CompleteButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+`;
+
+export const SearchResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   position: relative;
+`;
+
+export const YoutuberContainer = styled.div`
+  display: flex;
+  align-items: center;
+  & > img {
+    border: 1px solid #dedede;
+    border-radius: 50%;
+    width: ${(props) => props.width || '50px'};
+    height: ${(props) => props.height || '50px'};
+    margin: ${(props) => props.margin || '0 0 10px 0'};
+  }
+  &:hover {
+    background-color: #f9fafc;
+    cursor: pointer;
+    color: #000000;
+  }
+`;
+
+export const Tag = styled(Label)`
+  border-radius: 2rem !important;
+  margin: 0.5rem !important;
+`;
+
+export const SearchDropdownContainer = styled.div`
+  position: absolute;
+  top: -30px;
+  width: 380px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #00000029;
+  opacity: 1;
+  padding: 20px 0px 0px 10px;
+`;
+
+export const SearchResult = styled(Link)`
+  font-family: 'SHSN-R';
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  padding: 5px 20px;
+  color: #000000;
+  &:hover {
+    background-color: #f9fafc;
+    cursor: pointer;
+    color: #000000;
+  }
 `;

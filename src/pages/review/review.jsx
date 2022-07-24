@@ -20,7 +20,7 @@ function YoutuberHeader({ reviewOverView }) {
   };
 
   return (
-    <style.FlexContainer>
+    <style.YoutuberFlex justify="center">
       <style.DivColumn>
         <style.RcImg src={thumbnail} alt={title} title={title} />
         <style.YoutudberInfo>
@@ -41,7 +41,7 @@ function YoutuberHeader({ reviewOverView }) {
           </style.Span>
         </style.ReviewButton>
       </style.DivColumn>
-    </style.FlexContainer>
+    </style.YoutuberFlex>
   );
 }
 
@@ -245,7 +245,7 @@ export default function Review() {
         <style.YoutuberHeaderContainer>
           <YoutuberHeader reviewOverView={reviewOverView} />
         </style.YoutuberHeaderContainer>
-        <style.FlexContainer>
+        <style.MainReviewContainer>
           <style.FlexContainerColumn>
             <YoutuberDetail reviewOverView={reviewOverView} />
             <YoutuberReviewDetail reviewOverView={reviewOverView} />
@@ -269,7 +269,7 @@ export default function Review() {
               <YoutuberCard />
             </style.YoutuberCardContainer>
           </style.FlexContainerColumn>
-        </style.FlexContainer>
+        </style.MainReviewContainer>
       </style.Contatiner>
       {/* 임시로 배치함 삭제해야함 */}
       <div style={{ height: '400px', width: '200px' }}></div>
