@@ -143,7 +143,14 @@ export default function Header() {
               <style.GoogleAvatar src={userObj.imageUrl} />
             </style.AvatarLink>
           ) : (
-            <Link to="/login">
+            <Link
+              to={{
+                pathname: '/login',
+                state: {
+                  from: 'button',
+                },
+              }}
+            >
               <style.LoginButton>로그인</style.LoginButton>
             </Link>
           )}

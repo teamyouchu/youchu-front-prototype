@@ -1,6 +1,6 @@
 import * as style from './style';
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import loginAPI from 'lib/api/loginAPI';
 import userAPI from 'lib/api/userAPI';
@@ -10,25 +10,28 @@ import { UserContext } from 'lib/UserContext';
 export default function Login() {
   const { setUserObj } = useContext(UserContext);
   const history = useHistory();
+  const location = useLocation();
+  const from = location.state.from;
 
   //로그인 성공했을 떄 처리 함수
-  const successGoogle = (res) => {
-    loginFunc(res.code, window.location.origin);
-  };
-
-  const loginFunc = async (code, url) => {
+  const successGoogle = async (res) => {
     await loginAPI
       .postLogin({
-        code: code,
-        redirectUri: url,
+        code: res.code,
+        redirectUri: window.location.origin,
       })
       .then((res) => {
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
         axios.defaults.headers.common[
           'Authorization'
         ] = `Bearer ${res.data.authToken.accessToken}`;
+        // TODO 서지수 api 수정되면 회원가입 페이지로 넘어가는 코드 수정
         if (res.data.isRegistered) {
-          history.goBack();
+          if (from === 'button') {
+            history.goBack();
+          } else {
+            history.push(`${from.pathname}`);
+          }
           // 로그인 시 사용자 상태값 수정
           userAPI
             .getMe()
@@ -43,9 +46,13 @@ export default function Login() {
             })
             .catch((err) => {
               console.error(err);
+              // TODO 서지수 리프레시토큰 만료 시 토큰 재요청 코드 추가
             });
         } else {
-          history.push('/signup');
+          history.push({
+            pathname: '/signup',
+            state: { from: from },
+          });
         }
       })
       .catch((err) => {
@@ -55,8 +62,10 @@ export default function Login() {
 
   //로그인 실패했을 때 처리 함수
   const failGoogle = (res) => {
-    alert('구글 로그인에 실패하였습니다');
+    // TODO 서지수 로그인 실패 시 코드 추가
+    // alert('구글 로그인에 실패하였습니다');
   };
+
   return (
     <style.LoginContainer>
       <style.LoginBox>

@@ -13,6 +13,7 @@ export default function MyInfo({
   showNickname,
   showCategory,
   buttonMsg,
+  from,
 }) {
   const [nickName, setNickName] = useState('');
   const [isNickNameNull, setIsNickNameNull] = useState(false);
@@ -33,7 +34,23 @@ export default function MyInfo({
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+    return () => {
+      userAPI
+        .getMe()
+        .then(({ data }) => {
+          setUserObj({
+            email: data.email,
+            favoriteCategory: data.favoriteCategory,
+            hasReview: data.hasReview,
+            imageUrl: data.imageUrl,
+            nickname: data.nickname,
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+  }, [setUserObj]);
 
   //회원가입 함수
   const onSignupClick = async () => {
@@ -45,7 +62,11 @@ export default function MyInfo({
           favoriteCategories: categoryList,
         })
         .then(() => {
-          history.go(-2);
+          if (from === 'button') {
+            history.go(-2);
+          } else {
+            history.push(`/${from}`);
+          }
         })
         .catch((err) => console.error(err));
     }
