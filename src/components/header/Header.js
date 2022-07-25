@@ -48,12 +48,12 @@ export default function Header() {
   const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
     const getSearchResult = async () => {
-      await listAPI
-        .getYoutuber(searchValue, 90, 5)
-        .then((res) => {
-          setSearchResults(res.data.data);
-        })
-        .catch((err) => console.log(err));
+      // await listAPI
+      //   .getYoutuber(searchValue, 90, 5)
+      //   .then((res) => {
+      //     setSearchResults(res.data.data);
+      //   })
+      //   .catch((err) => console.log(err));
     };
 
     getSearchResult();
