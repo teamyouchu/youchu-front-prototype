@@ -1,17 +1,12 @@
 import * as style from './style';
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { UserContext } from 'lib/UserContext';
 import userAPI from 'lib/api/userAPI';
 import { categoryArray } from 'lib/modules';
 import MyReviewInfo from 'components/myReviewInfo/MyReviewInfo';
 
 export default function Profile() {
-  const [userObj, setUserObj] = useState({
-    email: '',
-    favoriteCategory: [],
-    hasReview: '',
-    imageUrl: '',
-    nickname: '',
-  });
+  const { userObj, setUserObj } = useContext(UserContext);
   useEffect(() => {
     userAPI
       .getMe()
@@ -27,8 +22,7 @@ export default function Profile() {
       .catch((err) => {
         console.error(err);
       });
-    return () => setUserObj(null);
-  }, []);
+  }, [setUserObj]);
   const rv = 12;
   return (
     <style.ProfileContainer>

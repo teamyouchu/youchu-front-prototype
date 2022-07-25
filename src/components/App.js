@@ -7,7 +7,13 @@ import { UserContext } from 'lib/UserContext';
 
 function App() {
   // 로그인 유저 객체 상태값
-  const [userObj, setUserObj] = useState(null);
+  const [userObj, setUserObj] = useState({
+    email: '',
+    favoriteCategory: [],
+    hasReview: '',
+    imageUrl: '',
+    nickname: '',
+  });
 
   // 처음 화면 로드 시 토큰 재요청, 로그인 유저 변경
   useEffect(() => {

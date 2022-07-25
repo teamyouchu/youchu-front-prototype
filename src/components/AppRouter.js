@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from 'components/ScrollToTop';
 import Header from 'components/header/Header';
 import Footer from 'components/footer/Footer';
+import PrivateRoute from 'components/PrivateRoute';
 import {
   Home,
   List,
@@ -40,7 +41,7 @@ export default function AppRouter() {
             <Route path="/youtubers/reviewWrite/:id" component={ReviewWrite} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/profile" component={Profile} />
+            <PrivateRoute path="/profile" component={Profile} />
             <Route path="/modifyNickName" component={ModifyNickName} />
             <Route path="/modifyCategory" component={ModifyCategory} />
             <Route component={EmptyPage} />
