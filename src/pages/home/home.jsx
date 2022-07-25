@@ -14,21 +14,21 @@ export default function Home() {
   }, []);
 
   const getBestYoutuber = async () => {
-    await mainAPI
-      .getBest()
-      .then((res) => {
-        setBestYoutuber(res.data.data);
-      })
-      .catch((err) => console.log(err));
+    // await mainAPI
+    //   .getBest()
+    //   .then((res) => {
+    //     setBestYoutuber(res.data.data);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const getRecommendYoutuber = async () => {
-    await mainAPI
-      .getRecommend()
-      .then((res) => {
-        setRecommendYoutuber(res.data.data);
-      })
-      .catch((err) => console.log(err));
+    // await mainAPI
+    //   .getRecommend()
+    //   .then((res) => {
+    //     setRecommendYoutuber(res.data.data);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   return (

@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import * as style from './HeaderStyle';
 import listAPI from 'lib/api/listAPI';
 import Registration from 'components/registration/Registration';
+import { UserContext } from 'lib/UserContext';
 
-export default function Header({ userObj }) {
+export default function Header() {
+  const { userObj } = useContext(UserContext);
+
   const [isScrolled, setIsScrolled] = useState(false);
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);
@@ -45,12 +48,12 @@ export default function Header({ userObj }) {
   const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
     const getSearchResult = async () => {
-      await listAPI
-        .getYoutuber(searchValue, 90, 5)
-        .then((res) => {
-          setSearchResults(res.data.data);
-        })
-        .catch((err) => console.log(err));
+      // await listAPI
+      //   .getYoutuber(searchValue, 90, 5)
+      //   .then((res) => {
+      //     setSearchResults(res.data.data);
+      //   })
+      //   .catch((err) => console.log(err));
     };
 
     getSearchResult();
@@ -135,12 +138,19 @@ export default function Header({ userObj }) {
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
-          {userObj ? (
+          {userObj.imageUrl !== '' ? (
             <style.AvatarLink to="/profile">
               <style.GoogleAvatar src={userObj.imageUrl} />
             </style.AvatarLink>
           ) : (
-            <Link to="/login">
+            <Link
+              to={{
+                pathname: '/login',
+                state: {
+                  from: 'button',
+                },
+              }}
+            >
               <style.LoginButton>로그인</style.LoginButton>
             </Link>
           )}
