@@ -65,7 +65,7 @@ export default function MyInfo({
           if (from === 'button') {
             history.go(-2);
           } else {
-            history.push(`/${from}`);
+            history.push(`${from.pathname}`);
           }
         })
         .catch((err) => console.error(err));
