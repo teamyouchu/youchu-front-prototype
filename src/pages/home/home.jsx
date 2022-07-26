@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { /* useState,*/ useEffect } from 'react';
 import * as style from './style';
-import mainAPI from 'lib/api/mainAPI';
-import RecommendCard from 'components/homeCard/RecommendCard';
-import ReviewCard from 'components/homeCard/ReviewCard';
+// import mainAPI from 'lib/api/mainAPI';
+// import RecommendCard from 'components/homeCard/RecommendCard';
+// import ReviewCard from 'components/homeCard/ReviewCard';
 
 export default function Home() {
-  const [bestYoutuber, setBestYoutuber] = useState([]);
-  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
+  // const [bestYoutuber, setBestYoutuber] = useState([]);
+  // const [recommendYoutuber, setRecommendYoutuber] = useState([]);
 
   useEffect(() => {
     getBestYoutuber();
@@ -53,9 +53,9 @@ export default function Home() {
             <i className="fas fa-chevron-left"></i>
           </style.HandleBtn>
           <style.ReviewCardContainer id="slider">
-            {bestYoutuber.map((data) => (
+            {/* {bestYoutuber.map((data) => (
               <ReviewCard key={data.id} data={data} />
-            ))}
+            ))} */}
           </style.ReviewCardContainer>
           <style.HandleBtn onClick={slide_R}>
             <i className="fas fa-chevron-right"></i>
@@ -68,9 +68,9 @@ export default function Home() {
           여러분이 관심 있을 유튜버를 모아봤어요!
         </style.RowDescription>
         <style.RecommendCardContainer>
-          {recommendYoutuber.map((data) => (
+          {/* {recommendYoutuber.map((data) => (
             <RecommendCard key={data.id} data={data} />
-          ))}
+          ))} */}
         </style.RecommendCardContainer>
       </style.RowContainer>
     </style.HomeContainer>
