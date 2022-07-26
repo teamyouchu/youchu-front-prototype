@@ -103,8 +103,21 @@ export const Label = styled.label`
 export const StarRating = styled(Rating)`
   &&& {
     display: block;
-    margin-bottom: 20px;
   }
+`;
+
+export const Warning = styled.div`
+  text-align: left;
+  font-family: 'SHSN-L';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: #ed706b;
+  margin-top: 5px;
+`;
+
+export const CommentLabel = styled(Label)`
+  margin-top: 20px;
 `;
 
 export const CommentInput = styled.textarea`
@@ -132,7 +145,7 @@ export const FooterContainer = styled.div`
   padding: 20px 40px 40px 40px;
 `;
 
-export const Warning = styled.div`
+export const Caution = styled.div`
   text-align: left;
   font-family: 'SHSN-M';
   font-size: 10px;

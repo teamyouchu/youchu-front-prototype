@@ -73,7 +73,7 @@ export const LoginLetter = styled.div`
 `;
 
 export const GoogleLogo = styled.img.attrs(() => ({
-  src: '/images/googleLogo.png',
+  src: require('assets/images/googleLogo.png').default,
 }))`
   width: 15px;
   height: 15px;
