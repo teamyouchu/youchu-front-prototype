@@ -38,7 +38,10 @@ export default function AppRouter() {
               component={ReviewDetail}
             />
             {/* 리뷰하기 버튼 눌렀을 때 id값 넘어가게 수정 */}
-            <Route path="/youtubers/reviewWrite/:id" component={ReviewWrite} />
+            <PrivateRoute
+              path="/youtubers/reviewWrite/:youtuber_id"
+              component={ReviewWrite}
+            />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <PrivateRoute path="/profile" component={Profile} />

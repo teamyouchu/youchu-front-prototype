@@ -132,7 +132,7 @@ export const FooterContainer = styled.div`
   padding: 20px 40px 40px 40px;
 `;
 
-export const Warning = styled.div`
+export const Caution = styled.div`
   text-align: left;
   font-family: 'SHSN-M';
   font-size: 10px;
@@ -158,4 +158,13 @@ export const SubmitBtn = styled.button`
   &:hover {
     background-color: #4c72dc;
   }
+`;
+
+export const Warning = styled.span`
+  text-align: left;
+  font-family: 'SHSN-L';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: #ed706b;
 `;
