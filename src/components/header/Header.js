@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import * as style from './HeaderStyle';
-import listAPI from 'lib/api/listAPI';
+// import listAPI from 'lib/api/listAPI';
 import Registration from 'components/registration/Registration';
 import { UserContext } from 'lib/UserContext';
 
@@ -45,7 +45,7 @@ export default function Header() {
     };
   }, [isSearch]);
 
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
     const getSearchResult = async () => {
       // await listAPI
@@ -121,7 +121,7 @@ export default function Header() {
             {isSearch && (
               <style.SearchDropdownContainer>
                 <style.RelatedSearch>연관 검색어</style.RelatedSearch>
-                {searchResults.map((data) => (
+                {/* {searchResults.map((data) => (
                   <style.SearchResult
                     to={`/youtubers/review/id=${data.id}`}
                     key={data.id}
@@ -131,7 +131,7 @@ export default function Header() {
                   >
                     {data.name}
                   </style.SearchResult>
-                ))}
+                ))} */}
               </style.SearchDropdownContainer>
             )}
           </style.SearchNav>
