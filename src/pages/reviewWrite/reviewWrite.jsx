@@ -30,6 +30,7 @@ export default function ReviewWrite() {
     if (rating === 0 || rating === undefined) {
       // 별점 미입력 시 경고 상태값 변경
       setIsRating(true);
+      alert('별점은 필수 입력 사항입니다.');
     } else {
       // 조건에 맞으면 리뷰 작성 함수 실행
       reviewWriteFunc();
@@ -84,10 +85,8 @@ export default function ReviewWrite() {
                   setIsRating(false);
                 }}
               />
-              {isRating && (
-                <style.Warning>별점은 필수 입력 사항입니다.</style.Warning>
-              )}
-              <style.Label>리뷰쓰기</style.Label>
+              {isRating && <style.Warning>별점을 입력해주세요</style.Warning>}
+              <style.CommentLabel>리뷰쓰기</style.CommentLabel>
               <style.CommentInput
                 required
                 minLength="3"
