@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const MyReviewContainer = styled.div`
+export const MyReviewInfoContainer = styled.div`
   width: 760px;
   display: flex;
   flex-direction: column;

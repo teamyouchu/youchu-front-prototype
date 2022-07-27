@@ -15,7 +15,7 @@ export default function MyReviewInfo({
     // TODO 서지수 리뷰 아이디로 삭제 요청 보내기
   };
   return (
-    <style.MyReviewContainer>
+    <style.MyReviewInfoContainer>
       {/* TODO 서지수 유튜버 클릭시 페이지 이동 */}
       <style.YoutuberName to="#">
         {name}
@@ -38,6 +38,6 @@ export default function MyReviewInfo({
         </style.LikeButton>
         <style.DeleteButton onClick={delReview}>삭제하기</style.DeleteButton>
       </style.UtilContainer>
-    </style.MyReviewContainer>
+    </style.MyReviewInfoContainer>
   );
 }
