@@ -75,6 +75,9 @@ export const LikeButton = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 6px 13px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const LikeImg = styled.img`
