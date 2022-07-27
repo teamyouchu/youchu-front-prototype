@@ -33,14 +33,14 @@ export default function MyReview({ all }) {
           </style.MoreBtn>
         )}
       </style.ReviewTitle>
-      <style.ReviewDropdown>
-        {all && (
+      {all && (
+        <style.ReviewDropdown>
           <FilterDropdown
             placeholder={sortOptions[0].text}
             options={sortOptions}
           />
-        )}
-      </style.ReviewDropdown>
+        </style.ReviewDropdown>
+      )}
       {myReview.data.map((data) => (
         <MyReviewInfo key={data.id} data={data} />
       ))}
