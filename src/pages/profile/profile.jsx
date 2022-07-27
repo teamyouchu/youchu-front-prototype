@@ -35,9 +35,9 @@ export default function Profile() {
           <style.CategoryBtn to="/modifyCategory">
             <style.CategoryTitle>관심사</style.CategoryTitle>
             <style.CategorysBox>
-              {userObj.favoriteCategory.map((data) => (
-                <style.Categorycontents key={data.id}>
-                  {categoryArray.find((x) => x.id === data).value},&nbsp;
+              {userObj.favoriteCategory.map((category) => (
+                <style.Categorycontents key={category}>
+                  {categoryArray.find((x) => x.id === category).value},&nbsp;
                 </style.Categorycontents>
               ))}
             </style.CategorysBox>
