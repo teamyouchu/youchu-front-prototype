@@ -6,7 +6,7 @@ import PageNumber from 'components/pageNumber/PageNumber';
 
 export default function MyReview({ all }) {
   const rv = 12;
-
+  // TODO 서지수 페이지 기능 구현
   return (
     <style.MyReviewContainer>
       {/* <style.ProfileTitle>회원 정보</style.ProfileTitle>

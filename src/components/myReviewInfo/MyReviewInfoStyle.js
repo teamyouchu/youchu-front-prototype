@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const MyReviewInfoContainer = styled.div`
-  width: 760px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   padding: 30px 40px;
@@ -32,6 +32,7 @@ export const RightIcon = styled(FontAwesomeIcon)`
 export const RatingBox = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 export const Ratings = styled.div`
