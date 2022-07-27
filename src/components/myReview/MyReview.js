@@ -2,6 +2,7 @@ import MyReviewInfo from 'components/myReviewInfo/MyReviewInfo';
 import * as style from './MyReviewStyle';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { sortOptions } from 'lib/modules';
+import PageNumber from 'components/pageNumber/PageNumber';
 
 export default function MyReview({ all }) {
   const rv = 12;
@@ -43,6 +44,7 @@ export default function MyReview({ all }) {
       {myReview.data.map((data) => (
         <MyReviewInfo key={data.id} data={data} />
       ))}
+      {all && <PageNumber />}
     </style.MyReviewContainer>
   );
 }
