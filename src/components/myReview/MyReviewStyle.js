@@ -47,6 +47,10 @@ export const MoreBtn = styled(Link)`
   }
 `;
 
+export const ReviewDropdown = styled.div`
+  padding: 30px 40px 0 40px;
+`;
+
 // export const UserInfo = styled.div`
 //   width: 722px;
 //   height: 40px;

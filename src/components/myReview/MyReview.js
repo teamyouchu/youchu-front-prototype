@@ -1,5 +1,7 @@
 import MyReviewInfo from 'components/myReviewInfo/MyReviewInfo';
 import * as style from './MyReviewStyle';
+import FilterDropdown from 'components/filterDropdown/FilterDropdown';
+import { sortOptions } from 'lib/modules';
 
 export default function MyReview({ all }) {
   const rv = 12;
@@ -30,6 +32,14 @@ export default function MyReview({ all }) {
           </style.MoreBtn>
         )}
       </style.ReviewTitle>
+      <style.ReviewDropdown>
+        {all && (
+          <FilterDropdown
+            placeholder={sortOptions[0].text}
+            options={sortOptions}
+          />
+        )}
+      </style.ReviewDropdown>
       {myReview.data.map((data) => (
         <MyReviewInfo key={data.id} data={data} />
       ))}
