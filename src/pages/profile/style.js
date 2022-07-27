@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ProfileContainer = styled.div`
-  width: 1100px;
+  width: 1140px;
   margin: 0 auto;
   padding-top: 140px;
   padding-bottom: 60px;
 `;
 
-export const Title = styled.div`
+export const ProfileTitle = styled.div`
   text-align: left;
   font-family: 'SHSN-B';
   font-size: 20px;
@@ -19,7 +19,7 @@ export const Title = styled.div`
 `;
 
 export const ProfileBox = styled.div`
-  width: 1100px;
+  width: 1140px;
   margin: 0 auto;
   display: flex;
 `;
@@ -54,13 +54,8 @@ export const UserName = styled.div`
   margin-bottom: 5px;
 `;
 
-export const UserEmail = styled.div`
-  text-align: center;
+export const UserEmail = styled(UserName)`
   font-family: 'SHSN-L';
-  font-size: 15px;
-  line-height: 19px;
-  letter-spacing: 0px;
-  color: #000000;
   margin-bottom: 20px;
 `;
 
@@ -71,10 +66,10 @@ export const ModifyBtn = styled(Link)`
   font-size: 15px;
   line-height: 19px;
   letter-spacing: 0px;
-  color: #94969B;
+  color: #94969b;
   margin-bottom: 20px;
   &:hover {
-    color: #94969B;
+    color: #94969b;
     text-decoration: underline;
   }
 `;
@@ -82,16 +77,16 @@ export const ModifyBtn = styled(Link)`
 export const CategoryBtn = styled(Link)`
   width: 250px;
   height: 40px;
-  background: #F2F2F2 0% 0% no-repeat padding-box;
+  background: #f2f2f2 0% 0% no-repeat padding-box;
   border-radius: 10px;
   border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
+  padding: 11px 16px;
   &:hover {
     cursor: pointer;
-    background: #DDDDDD;
+    background: #dddddd;
   }
 `;
 
@@ -110,6 +105,7 @@ export const CategorysBox = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: #000000;
 `;
 
 export const Categorycontents = styled.span`
@@ -118,7 +114,6 @@ export const Categorycontents = styled.span`
   font-size: 15px;
   line-height: 19px;
   letter-spacing: 0px;
-  color: #000000;
 `;
 
 export const ChevronIcon = styled.span`
