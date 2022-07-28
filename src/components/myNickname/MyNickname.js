@@ -1,5 +1,6 @@
 import * as style from './MyNickNameStyle';
 import signupAPI from 'lib/api/signupAPI';
+import Warning from 'components/warning/Warning';
 
 export default function MyNickname({
   nickName,
@@ -63,15 +64,13 @@ export default function MyNickname({
             : undefined
         }
       />
-      {isNickNameNull && <style.Warning>닉네임을 작성해주세요!</style.Warning>}
-      {isNickNameLen && <style.Warning>2~15자만 가능합니다.</style.Warning>}
+      {isNickNameNull && <Warning text="닉네임을 작성해주세요!" />}
+      {isNickNameLen && <Warning text="2~15자만 가능합니다." />}
       {isNickNameDup && (
-        <style.Warning>
-          이미 존재하는 닉네임입니다! 다른 닉네임을 적어주세요.
-        </style.Warning>
+        <Warning text="이미 존재하는 닉네임입니다! 다른 닉네임을 적어주세요." />
       )}
       {isNotNickNameDup && (
-        <style.Success>사용 가능한 닉네임입니다!</style.Success>
+        <Warning isSuccess={true} text="사용 가능한 닉네임입니다!" />
       )}
     </style.NickNameContainer>
   );

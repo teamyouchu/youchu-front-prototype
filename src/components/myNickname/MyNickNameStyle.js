@@ -38,16 +38,3 @@ export const NicknameInput = styled.input`
     width: 100%;
   }
 `;
-
-export const Warning = styled.span`
-  text-align: left;
-  font-family: 'SHSN-L';
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  color: #ed706b;
-`;
-
-export const Success = styled(Warning)`
-  color: #3ea6ff;
-`;
