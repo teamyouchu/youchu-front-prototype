@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const MyInfoContainer = styled.div`
   padding-top: 80px;
   padding-bottom: 60px;
+  @media ${(props) => props.theme.tablet} {
+    padding-top: 124px;
+  }
 `;
 
 export const MyInfoBox = styled.div`
@@ -12,6 +15,16 @@ export const MyInfoBox = styled.div`
   margin-top: 60px;
   border: 1px solid #dedede;
   border-radius: 5px;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 0;
+    border-radius: 0;
+    padding: 0 24px;
+  }
 `;
 
 export const Title = styled.div`
@@ -41,5 +54,8 @@ export const SetBtn = styled.button`
   color: #ffffff;
   &:hover {
     background-color: #1f1e1e;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
   }
 `;

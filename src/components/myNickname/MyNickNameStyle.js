@@ -31,8 +31,11 @@ export const NicknameInput = styled.input`
   &:focus {
     outline: 1px solid #3ea6ff;
   }
-  &.warnig{
-    outline: 1px solid #ED706B;
+  &.warnig {
+    outline: 1px solid #ed706b;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
   }
 `;
 
@@ -42,7 +45,7 @@ export const Warning = styled.span`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-  color: #ED706B;
+  color: #ed706b;
 `;
 
 export const Success = styled(Warning)`
