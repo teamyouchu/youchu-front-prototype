@@ -31,7 +31,7 @@ export const NicknameInput = styled.input`
   &:focus {
     outline: 1px solid #3ea6ff;
   }
-  &.warnig {
+  &.warning {
     outline: 1px solid #ed706b;
   }
   @media ${(props) => props.theme.tablet} {

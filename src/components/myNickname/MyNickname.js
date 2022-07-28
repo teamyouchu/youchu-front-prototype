@@ -60,7 +60,7 @@ export default function MyNickname({
         onBlur={onNickNameBlur}
         className={
           isNickNameNull || isNickNameLen || isNickNameDup
-            ? 'warnig'
+            ? 'warning'
             : undefined
         }
       />
