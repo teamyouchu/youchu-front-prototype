@@ -1,37 +1,56 @@
 import * as style from './style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import reviewWriteAPI from 'lib/api/reviewWriteAPI';
+import youtuberAPI from 'lib/api/youtuberAPI';
 
 export default function ReviewWrite() {
   const history = useHistory();
-  const { id } = useParams();
-  const [rating, setRating] = useState();
+  const { youtuber_id } = useParams();
+  const [youtuberTitle, setYoutuberTitle] = useState('');
+  const [youtuberThumbnail, setYoutuberThumbnail] = useState('');
   const [comment, setComment] = useState();
+  const [rating, setRating] = useState();
+  const [isRating, setIsRating] = useState(false);
 
-  // TODO 서지수 지우기
-  const ChannelName = '딩고 뮤직';
+  useEffect(() => {
+    // 페이지 렌더링 시 유튜버 id로 정보 가져오기
+    youtuberAPI
+      .getYoutuber(youtuber_id)
+      .then((res) => {
+        setYoutuberTitle(res.data.title);
+        setYoutuberThumbnail(res.data.thumbnail);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   const onDoneSubmit = (e) => {
     e.preventDefault();
-    reviewWriteFunc();
+    if (rating === 0 || rating === undefined) {
+      // 별점 미입력 시 경고 상태값 변경
+      setIsRating(true);
+      alert('별점은 필수 입력 사항입니다.');
+    } else {
+      // 조건에 맞으면 리뷰 작성 함수 실행
+      reviewWriteFunc();
+    }
   };
 
   const reviewWriteFunc = async () => {
-    await reviewWriteAPI
-      .postreview(id, {
+    await youtuberAPI
+      .postReview(youtuber_id, {
+        comment: comment,
         rating: rating,
-        content: comment,
       })
-      .then((res) => {
-        console.log(res);
-        // TODO 서지수 유튜버 페이지로 이동하게 수정
-        history.push(`/youtubers/review/id=${id}`);
+      .then(() => {
+        history.goBack();
       })
       .catch((err) => {
         console.error(err);
       });
   };
+
   return (
     <style.reviewWriteContainer>
       <style.ContentsContainer>
@@ -39,13 +58,13 @@ export default function ReviewWrite() {
           <style.Title>유튜버 리뷰 작성</style.Title>
           <style.ChannelContainer>
             <style.Img
-              src={require('assets/images/딩고 뮤직.jpg').default}
-              alt="딩고 뮤직"
-              title="딩고 뮤직"
+              src={youtuberThumbnail}
+              alt={youtuberTitle}
+              title={youtuberTitle}
             />
             <style.FlexContainer>
               <style.ChannelNameTitle>유튜버 이름</style.ChannelNameTitle>
-              <style.ChannelName>{ChannelName}</style.ChannelName>
+              <style.ChannelName>{youtuberTitle}</style.ChannelName>
             </style.FlexContainer>
           </style.ChannelContainer>
         </style.HeaderContainer>
@@ -62,8 +81,12 @@ export default function ReviewWrite() {
                 onRate={(e, { rating }) => {
                   setRating(rating);
                 }}
+                onClick={() => {
+                  setIsRating(false);
+                }}
               />
-              <style.Label>리뷰쓰기</style.Label>
+              {isRating && <style.Warning>별점을 입력해주세요</style.Warning>}
+              <style.CommentLabel>리뷰쓰기</style.CommentLabel>
               <style.CommentInput
                 required
                 minLength="3"
@@ -74,12 +97,12 @@ export default function ReviewWrite() {
             </style.WriteContainer>
           </style.BodyContainer>
           <style.FooterContainer>
-            <style.Warning>
+            <style.Caution>
               솔직하게 작성하신 리뷰는 수정이 불가능하고 삭제만 가능합니다. 허위
               리뷰나, 명예훼손, 욕설, 타인비방글 등 유튜버나 제3자의 권리를
               침해하는 리뷰는 제재를 받을 수 있습니다. 게시에 따른 책임은
               작성자에게 있으며, 유츄는 이에 대한 법적 책임을 지지 않습니다.
-            </style.Warning>
+            </style.Caution>
             <style.SubmitBtn type="submit">완료</style.SubmitBtn>
           </style.FooterContainer>
         </form>

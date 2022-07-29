@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GlobalStyle from './globalStyle';
-import GlobalFonts from './assets/font/font';
+import GlobalFonts from 'assets/font/font';
 import App from './components/App';
 import 'semantic-ui-css/semantic.min.css';
 import { ThemeProvider } from 'styled-components';

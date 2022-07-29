@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as style from './MyInfoStyle';
 import signupAPI from 'lib/api/signupAPI';
 import userAPI from 'lib/api/userAPI';
 import MyNickname from 'components/myNickname/MyNickname';
 import MyCategory from 'components/myCategory/MyCategory';
+import { UserContext } from 'lib/UserContext';
 
 export default function MyInfo({
   title,
@@ -12,6 +13,7 @@ export default function MyInfo({
   showNickname,
   showCategory,
   buttonMsg,
+  from,
 }) {
   const [nickName, setNickName] = useState('');
   const [isNickNameNull, setIsNickNameNull] = useState(false);
@@ -19,6 +21,7 @@ export default function MyInfo({
   const [isNickNameDup, setIsNickNameDup] = useState(false);
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
+  const { setUserObj } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -31,7 +34,23 @@ export default function MyInfo({
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+    return () => {
+      userAPI
+        .getMe()
+        .then(({ data }) => {
+          setUserObj({
+            email: data.email,
+            favoriteCategory: data.favoriteCategory,
+            hasReview: data.hasReview,
+            imageUrl: data.imageUrl,
+            nickname: data.nickname,
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+  }, [setUserObj]);
 
   //회원가입 함수
   const onSignupClick = async () => {
@@ -43,7 +62,11 @@ export default function MyInfo({
           favoriteCategories: categoryList,
         })
         .then(() => {
-          history.go(-2);
+          if (from === 'button') {
+            history.go(-2);
+          } else {
+            history.push(`${from.pathname}`);
+          }
         })
         .catch((err) => console.error(err));
     }
