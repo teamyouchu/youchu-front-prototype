@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import searchAPI from 'lib/api/searchAPI';
 import youtuberAPI from 'lib/api/youtuberAPI';
 import * as style from './RegistrarionStyle';
@@ -38,10 +38,11 @@ export default function Registration({ registClose }) {
 
   const inputRef = useRef();
 
-  const throttled = useCallback(
-    throttle((keyword) => {
-      searchYoutuber(keyword);
-    }, 5000),
+  const throttled = useMemo(
+    () =>
+      throttle((keyword) => {
+        searchYoutuber(keyword);
+      }, 5000),
     [],
   );
 
