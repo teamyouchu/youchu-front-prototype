@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const MyReviewContainer = styled.div`
-  width: 760px;
+export const MyReviewInfoContainer = styled.div`
+  width: 800px;
   display: flex;
   flex-direction: column;
   padding: 30px 40px;
@@ -32,6 +32,7 @@ export const RightIcon = styled(FontAwesomeIcon)`
 export const RatingBox = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 export const Ratings = styled.div`
@@ -74,6 +75,9 @@ export const LikeButton = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 6px 13px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const LikeImg = styled.img`

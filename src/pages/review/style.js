@@ -222,6 +222,10 @@ export const ReviewContainer = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100vw;
+  }
 `;
 
 export const ReviewContainerFooter = styled.div`
@@ -261,6 +265,10 @@ export const VideoContainer = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100vw;
+  }
 `;
 
 export const VideoContentContainer = styled.div`

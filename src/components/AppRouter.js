@@ -14,6 +14,7 @@ import {
   Signup,
   ReviewDetail,
   Profile,
+  MyAllReview,
   Search,
   ModifyNickName,
   ModifyCategory,
@@ -44,7 +45,8 @@ export default function AppRouter() {
             />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute exact path="/profile" component={Profile} />
+            <Route path="/profile/allReview" component={MyAllReview} />
             <Route path="/modifyNickName" component={ModifyNickName} />
             <Route path="/modifyCategory" component={ModifyCategory} />
             <Route component={EmptyPage} />

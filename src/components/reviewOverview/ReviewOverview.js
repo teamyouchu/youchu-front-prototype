@@ -7,7 +7,7 @@ export default function ReviewOverview({ reviewOverView }) {
   return (
     <style.ReviewContainerHeader>
       <style.Span font="SHSN-M" size="26px" margins="30px 0px 10px 0px">
-        {reviewOverView.name} 리뷰
+        {reviewOverView.title} 리뷰
       </style.Span>
       <style.ReviewDetailInfo>
         <style.Span size="25px" font="SHSN-B">
