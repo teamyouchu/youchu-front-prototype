@@ -43,7 +43,13 @@ function App() {
         .catch((err) => {
           if (err.response.status === 401) {
             window.localStorage.removeItem('refreshToken');
-            setUserObj(null);
+            setUserObj({
+              email: '',
+              favoriteCategory: [],
+              hasReview: '',
+              imageUrl: '',
+              nickname: '',
+            });
             alert('인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.');
           } else {
             console.log(err);

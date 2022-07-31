@@ -106,16 +106,6 @@ export const StarRating = styled(Rating)`
   }
 `;
 
-export const Warning = styled.div`
-  text-align: left;
-  font-family: 'SHSN-L';
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  color: #ed706b;
-  margin-top: 5px;
-`;
-
 export const CommentLabel = styled(Label)`
   margin-top: 20px;
 `;

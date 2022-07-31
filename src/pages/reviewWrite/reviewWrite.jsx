@@ -2,6 +2,7 @@ import * as style from './style';
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import youtuberAPI from 'lib/api/youtuberAPI';
+import Warning from 'components/warning/Warning';
 
 export default function ReviewWrite() {
   const history = useHistory();
@@ -85,7 +86,9 @@ export default function ReviewWrite() {
                   setIsRating(false);
                 }}
               />
-              {isRating && <style.Warning>별점을 입력해주세요</style.Warning>}
+              {isRating && (
+                <Warning text="별점을 입력해주세요" margin="5px 0 0 0" />
+              )}
               <style.CommentLabel>리뷰쓰기</style.CommentLabel>
               <style.CommentInput
                 required
