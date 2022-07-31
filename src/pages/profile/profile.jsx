@@ -4,6 +4,7 @@ import { UserContext } from 'lib/UserContext';
 import userAPI from 'lib/api/userAPI';
 import { categoryArray } from 'lib/modules';
 import MyReview from 'components/myReview/MyReview';
+import Logout from 'components/logout/Logout';
 
 export default function Profile() {
   const { userObj, setUserObj } = useContext(UserContext);
@@ -45,6 +46,7 @@ export default function Profile() {
               <i className="fas fa-chevron-right"></i>
             </style.ChevronIcon>
           </style.CategoryBtn>
+          <Logout />
         </style.PicBox>
         <MyReview />
       </style.ProfileBox>
