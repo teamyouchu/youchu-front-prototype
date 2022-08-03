@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     position: relative;
     padding-bottom: 88px;
+    @media ${(props) => props.theme.tablet} {
+      padding-bottom: 106px;
+    }
   }
 
   #footer{
