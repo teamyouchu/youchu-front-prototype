@@ -50,4 +50,7 @@ export const Message = styled.span`
 export const RegisterButton = styled(Message)`
   color: #eb3323;
   text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+  }
 `;
