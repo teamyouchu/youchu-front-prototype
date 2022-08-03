@@ -123,6 +123,10 @@ export const ReviewCardContainer = styled.div`
   grid-template-columns: repeat(10, 1fr);
   column-gap: 20px;
   margin-bottom: 60px;
+
+  @media ${(props) => props.theme.tablet} {
+    column-gap: 16px;
+  }
 `;
 
 export const RecommendCardContainer = styled.div`

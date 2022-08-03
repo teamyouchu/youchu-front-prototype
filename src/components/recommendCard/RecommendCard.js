@@ -6,7 +6,7 @@ export default function RecommendCard({
   data: { id, imageUrl, name, rating, reviews, category },
 }) {
   return (
-    <style.RcmdContainer to={`/youtubers/review/id=${id}`}>
+    <style.RcmdContainer to={`/youtubers/review/${id}`}>
       <style.Img src={imageUrl} alt={name} />
       <div>
         <style.Group>

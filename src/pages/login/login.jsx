@@ -30,7 +30,7 @@ export default function Login() {
           if (from === 'button') {
             history.goBack();
           } else {
-            history.push(`${from.pathname}`);
+            history.replace(`${from.pathname}`);
           }
           // 로그인 시 사용자 상태값 수정
           userAPI
