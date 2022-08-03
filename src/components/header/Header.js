@@ -138,6 +138,7 @@ export default function Header() {
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
+          {registOpen && <Registration registClose={registClose} />}
           {userObj.imageUrl !== '' ? (
             <style.AvatarLink to="/profile">
               <style.GoogleAvatar src={userObj.imageUrl} />
@@ -156,7 +157,6 @@ export default function Header() {
           )}
         </style.HeaderFlex>
       </style.HeaderBox>
-      {registOpen && <Registration registClose={registClose} />}
     </style.HeaderContainer>
   );
 }
