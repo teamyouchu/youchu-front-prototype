@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as style from './MyInfoStyle';
-import signupAPI from 'lib/api/signupAPI';
 import userAPI from 'lib/api/userAPI';
+import authAPI from 'lib/api/authAPI';
 import MyNickname from 'components/myNickname/MyNickname';
 import MyCategory from 'components/myCategory/MyCategory';
 import { UserContext } from 'lib/UserContext';
@@ -56,8 +56,8 @@ export default function MyInfo({
   const onSignupClick = async () => {
     setIsNickNameNull(nickName === '');
     if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
-      await signupAPI
-        .postSignup({
+      await authAPI
+        .putSignup({
           nickname: nickName,
           favoriteCategories: categoryList,
         })

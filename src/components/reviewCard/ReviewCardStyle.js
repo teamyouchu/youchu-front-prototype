@@ -8,25 +8,39 @@ export const RvContainer = styled(Link)`
   width: 260px;
   height: 288px;
   color: #000000;
-  &:hover{
-    color: #000000; 
+  &:hover {
+    color: #000000;
   }
-`;
 
-export const RcmdContainer = styled(RvContainer)`
-  flex-direction: row;
-  border: 1px solid #dedede;
-  border-radius: 10px;
-  width: 350px;
-  height: 108px;
+  @media ${(props) => props.theme.tablet} {
+    width: 340px;
+    height: 236px;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 168px;
+    height: 150px;
+  }
 `;
 
 export const Img = styled.img`
   border: 1px solid #dedede;
   border-radius: 50%;
-  width: ${(props) => props.width || '130px'};
-  height: ${(props) => props.height || '130px'};
-  margin: ${(props) => props.margin || '0 0 10px 0'};
+  width: 130px;
+  height: 130px;
+  margin-bottom: 10px;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 170px;
+    height: 170px;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 84px;
+    height: 84px;
+  }
+`;
+
+export const RvInfoContainer = styled.div`
+  width: 100%;
 `;
 
 export const Group = styled.div`
@@ -35,18 +49,24 @@ export const Group = styled.div`
   align-items: flex-end;
 `;
 
-export const Category = styled.div`
+export const RvCategory = styled.div`
+  background: #f2f2f2 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  padding: 6px 8px;
+  margin-bottom: 10px;
+
+  @media ${(props) => props.theme.tablet} {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    padding: 0;
+    margin-bottom: 5px;
+  }
+`;
+
+export const RvCategoryText = styled.div`
   font-family: 'SHSN-M';
   font-size: 11px;
   line-height: 14px;
   color: #808084;
-  background: #f2f2f2 0% 0% no-repeat padding-box;
-  border-radius: 5px;
-  padding: 6px 8px;
-`;
-
-export const RvCategory = styled(Category)`
-  margin-bottom: 10px;
 `;
 
 export const RvChannelName = styled.div`
@@ -59,14 +79,15 @@ export const RvChannelName = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-`;
 
-export const RcmdChannelName = styled(RvChannelName)`
-  font-size: 16px;
-  line-height: 21px;
-  padding: 0 0 3px 0;
-
-  max-width: 184px;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0 5px 5px 0;
+  }
+  @media ${(props) => props.theme.mobile} {
+    max-width: 100px;
+  }
 `;
 
 export const SubscriberCount = styled.div`
@@ -75,13 +96,24 @@ export const SubscriberCount = styled.div`
   line-height: 18px;
   color: #94969b;
   padding-bottom: 8px;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 11px;
+    line-height: 14px;
+    padding-bottom: 5px;
+  }
 `;
 
 export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  padding: ${(props) => props.padding || '0 5px 15px 0'};
+  padding: 0 5px 15px 0;
+
+  @media ${(props) => props.theme.tablet} {
+    font-size: 11px;
+    line-height: 14px;
+    padding: 0 5px 0 0;
+  }
 `;
 
 export const ReviewCount = styled.div`
@@ -90,7 +122,12 @@ export const ReviewCount = styled.div`
   line-height: 18px;
   color: #94969b;
   padding-bottom: 15px;
-  padding-bottom: ${(props) => props.padding_B || '15px'};
+
+  @media ${(props) => props.theme.tablet} {
+    font-size: 11px;
+    line-height: 14px;
+    padding-bottom: 0;
+  }
 `;
 
 export const BestReviewTitle = styled.div`
@@ -98,6 +135,10 @@ export const BestReviewTitle = styled.div`
   font-size: 12px;
   line-height: 15px;
   padding-bottom: 5px;
+
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
 `;
 
 export const BestReview = styled.div`
@@ -113,4 +154,8 @@ export const BestReview = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
+
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
 `;

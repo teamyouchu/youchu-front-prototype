@@ -4,7 +4,7 @@ import listAPI from 'lib/api/listAPI';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
-import ReviewCard from 'components/homeCard/ReviewCard';
+import ReviewCard from 'components/reviewCard/ReviewCard';
 
 export default function List(props) {
   const [searchValue, setSearchValue] = useState('');

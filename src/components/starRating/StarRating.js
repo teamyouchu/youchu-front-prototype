@@ -1,11 +1,13 @@
 import * as style from './StarRatingStyle';
 
-export default function StarRating({ ratings, paddingB, margins }) {
+export default function StarRating({ ratings, margins, from }) {
   const perRatings = ratings * 20;
   return (
-    <style.StarRatings paddingB={paddingB} margins={margins}>
-      <style.StarBase>★★★★★</style.StarBase>
-      <style.StarFill ratings={perRatings}>★★★★★</style.StarFill>
+    <style.StarRatings margins={margins} from={from}>
+      <style.StarBase from={from}>★★★★★</style.StarBase>
+      <style.StarFill ratings={perRatings} from={from}>
+        ★★★★★
+      </style.StarFill>
     </style.StarRatings>
   );
 }

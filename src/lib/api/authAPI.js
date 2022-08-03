@@ -1,6 +1,6 @@
 import axios from './config';
 
-const loginAPI = {
+const authAPI = {
   // 로그인 api
   postLogin(data) {
     return axios.post('/login', data);
@@ -18,6 +18,10 @@ const loginAPI = {
       },
     );
   },
+  // 회원가입 api
+  putSignup(data) {
+    return axios.put('/register', data);
+  },
 };
 
-export default loginAPI;
+export default authAPI;
