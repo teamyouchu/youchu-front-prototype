@@ -1,5 +1,5 @@
 import * as style from './MyNickNameStyle';
-import signupAPI from 'lib/api/signupAPI';
+import userAPI from 'lib/api/userAPI';
 import Warning from 'components/warning/Warning';
 
 export default function MyNickname({
@@ -34,8 +34,8 @@ export default function MyNickname({
   };
 
   const nickNameDuplicate = async (nickName) => {
-    await signupAPI
-      .postNickNameDup({
+    await userAPI
+      .getDupNickName({
         nickname: nickName,
       })
       .then((res) => {

@@ -2,7 +2,7 @@ import * as style from './style';
 import { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-import loginAPI from 'lib/api/loginAPI';
+import authAPI from 'lib/api/authAPI';
 import userAPI from 'lib/api/userAPI';
 import axios from 'axios';
 import { UserContext } from 'lib/UserContext';
@@ -15,7 +15,7 @@ export default function Login() {
 
   //로그인 성공했을 떄 처리 함수
   const successGoogle = async (res) => {
-    await loginAPI
+    await authAPI
       .postLogin({
         code: res.code,
         redirectUri: window.location.origin,
