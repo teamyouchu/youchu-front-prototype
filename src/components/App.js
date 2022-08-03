@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import loginAPI from 'lib/api/loginAPI';
+import authAPI from 'lib/api/authAPI';
 import userAPI from 'lib/api/userAPI';
 import AppRouter from 'components/AppRouter';
 import { UserContext } from 'lib/UserContext';
@@ -18,7 +18,7 @@ function App() {
   // 처음 화면 로드 시 토큰 재요청, 로그인 유저 변경
   useEffect(() => {
     if (localStorage.getItem('refreshToken')) {
-      loginAPI
+      authAPI
         .postRefresh()
         .then((res) => {
           localStorage.setItem('refreshToken', res.data.refreshToken);

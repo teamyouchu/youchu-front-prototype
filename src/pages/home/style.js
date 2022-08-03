@@ -10,8 +10,7 @@ export const HomeContainer = styled.div`
   align-items: center;
 
   @media ${(props) => props.theme.tablet} {
-    padding: 0 24px;
-    padding-top: 125px;
+    padding: 124px 24px 30px 24px;
     width: 100%;
   }
 `;
@@ -132,5 +131,10 @@ export const RecommendCardContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 25px;
   row-gap: 10px;
-  margin-bottom: 0;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 0;
+  }
 `;
