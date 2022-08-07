@@ -24,12 +24,14 @@ export default function MyNickname({
 
   const onNickNameBlur = () => {
     setIsNickNameNull(nickName === '');
-    setIsNickNameLen(nickName.length !== 0 && nickName.length < 2);
-    if (nickName.length >= 2) {
-      nickNameDuplicate();
-    } else {
-      setIsNickNameDup(false);
-      setIsNotNickNameDup(false);
+    if (nickName !== '' && nickName !== null) {
+      setIsNickNameLen(nickName.length < 2);
+      if (nickName.length >= 2) {
+        nickNameDuplicate();
+      } else {
+        setIsNickNameDup(false);
+        setIsNotNickNameDup(false);
+      }
     }
   };
 
