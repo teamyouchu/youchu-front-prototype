@@ -29,7 +29,7 @@ export const HeaderBox = styled.div`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
-    padding: 24px 24px 20px 24px;
+    padding: 24px 24px 10px 24px;
     align-items: flex-start;
   }
 `;

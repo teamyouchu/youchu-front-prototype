@@ -7,7 +7,7 @@ export const ListContainer = styled.div`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
-    padding: 132px 24px 60px 24px;
+    padding: 124px 24px 60px 24px;
   }
 `;
 
@@ -32,7 +32,7 @@ export const FilterContainer = styled.div`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     flex-direction: column-reverse;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
   }
 `;
 
