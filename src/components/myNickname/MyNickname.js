@@ -26,17 +26,19 @@ export default function MyNickname({
     setIsNickNameNull(nickName === '');
     setIsNickNameLen(nickName.length !== 0 && nickName.length < 2);
     if (nickName.length >= 2) {
-      nickNameDuplicate(nickName);
+      nickNameDuplicate();
     } else {
       setIsNickNameDup(false);
       setIsNotNickNameDup(false);
     }
   };
 
-  const nickNameDuplicate = async (nickName) => {
+  const nickNameDuplicate = async () => {
     await userAPI
       .getDupNickName({
-        nickname: nickName,
+        params: {
+          nickname: nickName,
+        },
       })
       .then((res) => {
         setIsNickNameDup(res.data.isExist);
