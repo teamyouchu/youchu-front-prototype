@@ -28,18 +28,22 @@ export default function MyCategory({
     <>
       <style.SubTitle>유튜버 관심 카테고리 선택 (1개 이상)</style.SubTitle>
       <style.CategoryContainer>
-        {categoryArray.map((category) => (
-          <style.CategoryBox
-            key={category.id}
-            value={category.id}
-            onClick={onClick}
-            active={categoryList.find((el) => el === category.id)}
-          >
-            {category.value}
-          </style.CategoryBox>
-        ))}
+        <div>
+          {categoryArray.map((category) => (
+            <style.CategoryBox
+              key={category.id}
+              value={category.id}
+              onClick={onClick}
+              active={categoryList.find((el) => el === category.id)}
+            >
+              {category.value}
+            </style.CategoryBox>
+          ))}
+        </div>
+        {isCategoryLen && (
+          <Warning text={'카테고리를 1개 이상 선택해 주세요.'} />
+        )}
       </style.CategoryContainer>
-      {isCategoryLen && <Warning text={'카테고리를 1개 이상 선택해 주세요.'} />}
     </>
   );
 }
