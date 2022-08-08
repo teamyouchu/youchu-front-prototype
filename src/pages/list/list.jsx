@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
-import ReviewCard from 'components/reviewCard/ReviewCard';
+// import ReviewCard from 'components/reviewCard/ReviewCard';
 
 export default function List(props) {
   const [searchValue, setSearchValue] = useState('');
