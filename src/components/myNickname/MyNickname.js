@@ -57,7 +57,7 @@ export default function MyNickname({
         placeholder="유추에서 사용 할 닉네임을 입력해주세요"
         required
         autoFocus
-        value={nickName}
+        value={nickName || ''}
         minLength="2"
         maxLength="15"
         onChange={onNickNameChange}
