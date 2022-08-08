@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import authAPI from 'lib/api/authAPI';
 import userAPI from 'lib/api/userAPI';
@@ -14,6 +15,7 @@ function App() {
     imageUrl: '',
     nickname: '',
   });
+  const history = useHistory();
 
   // 처음 화면 로드 시 토큰 재요청, 로그인 유저 변경
   useEffect(() => {
@@ -28,13 +30,20 @@ function App() {
           userAPI
             .getMe()
             .then(({ data }) => {
-              setUserObj({
-                email: data.email,
-                favoriteCategory: data.favoriteCategory,
-                hasReview: data.hasReview,
-                imageUrl: data.imageUrl,
-                nickname: data.nickname,
-              });
+              if (data.status === 1) {
+                setUserObj({
+                  email: data.email,
+                  favoriteCategory: data.favoriteCategory,
+                  hasReview: data.hasReview,
+                  imageUrl: data.imageUrl,
+                  nickname: data.nickname,
+                });
+              } else if (data.status === 2) {
+                history.push({
+                  pathname: '/signup',
+                  state: { from: 'button' },
+                });
+              }
             })
             .catch((err) => {
               console.log(err);
