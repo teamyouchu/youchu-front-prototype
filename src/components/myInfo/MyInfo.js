@@ -20,7 +20,10 @@ export default function MyInfo({
   const [isNickNameLen, setIsNickNameLen] = useState(false);
   const [isNickNameDup, setIsNickNameDup] = useState(false);
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
+
   const [categoryList, setCategoryList] = useState([]);
+  const [isCategoryLen, setIsCategoryLen] = useState(false);
+
   const { setUserObj } = useContext(UserContext);
   const history = useHistory();
 
@@ -55,7 +58,13 @@ export default function MyInfo({
   //회원가입 함수
   const onSignupClick = async () => {
     setIsNickNameNull(nickName === '');
-    if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
+    setIsCategoryLen(categoryList.length < 1);
+    if (
+      !isNickNameNull &&
+      !isNickNameLen &&
+      !isNickNameDup &&
+      categoryList.length >= 1
+    ) {
       await authAPI
         .putSignup({
           nickname: nickName,
@@ -89,16 +98,19 @@ export default function MyInfo({
 
   // 선호 카테고리 변경 함수
   const onCategoryClick = async () => {
-    await userAPI
-      .putCategory({
-        favoriteCategory: categoryList,
-      })
-      .then(() => {
-        history.go(-1);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    setIsCategoryLen(categoryList.length < 1);
+    if (categoryList.length >= 1) {
+      await userAPI
+        .putCategory({
+          favoriteCategory: categoryList,
+        })
+        .then(() => {
+          history.go(-1);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   return (
@@ -123,6 +135,8 @@ export default function MyInfo({
           <MyCategory
             categoryList={categoryList}
             setCategoryList={setCategoryList}
+            isCategoryLen={isCategoryLen}
+            setIsCategoryLen={setIsCategoryLen}
           />
         )}
         <style.SetBtn
