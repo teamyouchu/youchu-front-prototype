@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import youtuberAPI from 'lib/api/youtuberAPI';
 import Warning from 'components/warning/Warning';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 export default function ReviewWrite() {
   const history = useHistory();
@@ -10,7 +12,7 @@ export default function ReviewWrite() {
   const [youtuberThumbnail, setYoutuberThumbnail] = useState('');
   const { channel_id } = useParams();
   const [comment, setComment] = useState();
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(null);
   const [isRating, setIsRating] = useState(false);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function ReviewWrite() {
 
   const onDoneSubmit = (e) => {
     e.preventDefault();
-    if (rating === 0 || rating === undefined) {
+    if (rating === null) {
       // 별점 미입력 시 경고 상태값 변경
       setIsRating(true);
       alert('별점은 필수 입력 사항입니다.');
@@ -81,17 +83,18 @@ export default function ReviewWrite() {
             <style.SubTitle>유튜버 리뷰 작성하기</style.SubTitle>
             <style.WriteContainer>
               <style.Label>별점</style.Label>
-              <style.StarRating
-                icon="star"
-                maxRating={5}
-                clearable
-                size="huge"
-                onRate={(e, { rating }) => {
-                  setRating(rating);
+              <Rating
+                precision={0.5}
+                value={rating}
+                onChange={(event, newValue) => {
+                  setRating(newValue);
                 }}
                 onClick={() => {
                   setIsRating(false);
                 }}
+                emptyIcon={
+                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                }
               />
               {isRating && (
                 <Warning text="별점을 입력해주세요" margin="5px 0 0 0" />
