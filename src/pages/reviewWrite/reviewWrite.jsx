@@ -6,9 +6,9 @@ import Warning from 'components/warning/Warning';
 
 export default function ReviewWrite() {
   const history = useHistory();
-  const { youtuber_id } = useParams();
   const [youtuberTitle, setYoutuberTitle] = useState('');
   const [youtuberThumbnail, setYoutuberThumbnail] = useState('');
+  const { channel_id } = useParams();
   const [comment, setComment] = useState();
   const [rating, setRating] = useState();
   const [isRating, setIsRating] = useState(false);
@@ -16,15 +16,15 @@ export default function ReviewWrite() {
   useEffect(() => {
     // 페이지 렌더링 시 유튜버 id로 정보 가져오기
     youtuberAPI
-      .getYoutuber(youtuber_id)
       .then((res) => {
         setYoutuberTitle(res.data.title);
         setYoutuberThumbnail(res.data.thumbnail);
+      .getYoutuber(channel_id)
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [channel_id]);
 
   const onDoneSubmit = (e) => {
     e.preventDefault();
@@ -40,10 +40,17 @@ export default function ReviewWrite() {
 
   const reviewWriteFunc = async () => {
     await youtuberAPI
-      .postReview(youtuber_id, {
-        comment: comment,
-        rating: rating,
-      })
+      .postReview(
+        {
+          comment: comment,
+          rating: rating,
+        },
+        {
+          params: {
+            channel_id: channel_id,
+          },
+        },
+      )
       .then(() => {
         history.goBack();
       })

@@ -39,7 +39,7 @@ export default function AppRouter() {
               component={ReviewDetail}
             />
             <PrivateRoute
-              path="/youtubers/reviewWrite/:youtuber_id"
+              path="/youtubers/reviewWrite/:channel_id"
               component={ReviewWrite}
             />
             <Route path="/login" component={Login} />
