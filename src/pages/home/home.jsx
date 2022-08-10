@@ -93,7 +93,7 @@ const slide_R = () =>
 
 const bestYoutuber = [
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ1',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     category: 23,
