@@ -126,6 +126,7 @@ export const ReviewCardContainer = styled.div`
 
   @media ${(props) => props.theme.tablet} {
     column-gap: 16px;
+    width: 100%;
   }
 `;
 
