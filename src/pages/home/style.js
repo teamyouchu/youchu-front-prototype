@@ -120,12 +120,13 @@ export const ReviewCardContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   column-gap: 20px;
   margin-bottom: 60px;
 
   @media ${(props) => props.theme.tablet} {
     column-gap: 16px;
+    width: 100%;
   }
 `;
 

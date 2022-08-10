@@ -101,7 +101,7 @@ export const CategoryTitle = styled.span`
 `;
 
 export const CategorysBox = styled.span`
-  max-width: 155px;
+  width: 155px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -114,6 +114,12 @@ export const Categorycontents = styled.span`
   font-size: 15px;
   line-height: 19px;
   letter-spacing: 0px;
+  :after {
+    content: ', ';
+  }
+  :last-child:after {
+    content: '';
+  }
 `;
 
 export const ChevronIcon = styled.span`

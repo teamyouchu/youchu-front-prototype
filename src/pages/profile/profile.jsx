@@ -38,7 +38,7 @@ export default function Profile() {
             <style.CategorysBox>
               {userObj.favoriteCategory.map((category) => (
                 <style.Categorycontents key={category}>
-                  {categoryArray.find((x) => x.id === category).value},&nbsp;
+                  {categoryArray.find((x) => x.id === category).value}
                 </style.Categorycontents>
               ))}
             </style.CategorysBox>

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Rating } from 'semantic-ui-react';
 
 export const reviewWriteContainer = styled.div`
   background-color: #f6f7fa;
@@ -98,12 +97,6 @@ export const Label = styled.label`
   color: #000000;
   letter-spacing: 0px;
   margin-bottom: 10px;
-`;
-
-export const StarRating = styled(Rating)`
-  &&& {
-    display: block;
-  }
 `;
 
 export const CommentLabel = styled(Label)`

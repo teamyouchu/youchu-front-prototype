@@ -1,10 +1,10 @@
 import * as style from './style';
 import { useEffect, useState } from 'react';
-import listAPI from 'lib/api/listAPI';
+// import listAPI from 'lib/api/listAPI';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
-import ReviewCard from 'components/reviewCard/ReviewCard';
+// import ReviewCard from 'components/reviewCard/ReviewCard';
 
 export default function List(props) {
   const [searchValue, setSearchValue] = useState('');
@@ -17,18 +17,17 @@ export default function List(props) {
     setSearchValue(e.target.value);
   };
 
-  const [allYoutubers, setAllYoutubers] = useState([]);
+  // const [allYoutubers, setAllYoutubers] = useState([]);
   useEffect(() => {
-    const getAllYoutubers = async () => {
-      await listAPI
-        .getYoutuber(searchValue, 90, 5)
-        .then((res) => {
-          setAllYoutubers(res.data.data);
-        })
-        .catch((err) => console.log(err));
-    };
-
-    getAllYoutubers();
+    // const getAllYoutubers = async () => {
+    //   await listAPI
+    //     .getYoutuber(searchValue, 90, 5)
+    //     .then((res) => {
+    //       setAllYoutubers(res.data.data);
+    //     })
+    //     .catch((err) => console.log(err));
+    // };
+    // getAllYoutubers();
   }, [searchValue]);
 
   return (
@@ -55,11 +54,11 @@ export default function List(props) {
           </style.SearchForm>
         </style.FilterBox>
       </style.FilterContainer>
-      <style.CardContainer>
+      {/* <style.CardContainer>
         {allYoutubers.map((data) => (
           <ReviewCard key={data.id} data={data} />
         ))}
-      </style.CardContainer>
+      </style.CardContainer> */}
       {/* TODO 서지수 api요청 해결되면 검색결과 없는 상황 만들기 */}
       <EmptyResult />
     </style.ListContainer>

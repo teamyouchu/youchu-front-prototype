@@ -6,19 +6,16 @@ export const RvContainer = styled(Link)`
   flex-direction: column;
   align-items: center;
   width: 260px;
-  height: 288px;
   color: #000000;
   &:hover {
     color: #000000;
   }
 
   @media ${(props) => props.theme.tablet} {
-    width: 340px;
-    height: 236px;
+    width: 27vw;
   }
   @media ${(props) => props.theme.mobile} {
-    width: 168px;
-    height: 150px;
+    width: 35vw;
   }
 `;
 
@@ -30,12 +27,8 @@ export const Img = styled.img`
   margin-bottom: 10px;
 
   @media ${(props) => props.theme.tablet} {
-    width: 170px;
-    height: 170px;
-  }
-  @media ${(props) => props.theme.mobile} {
-    width: 84px;
-    height: 84px;
+    width: 50%;
+    height: auto;
   }
 `;
 
@@ -84,9 +77,7 @@ export const RvChannelName = styled.div`
     font-size: 14px;
     line-height: 18px;
     padding: 0 5px 5px 0;
-  }
-  @media ${(props) => props.theme.mobile} {
-    max-width: 100px;
+    max-width: 50%;
   }
 `;
 

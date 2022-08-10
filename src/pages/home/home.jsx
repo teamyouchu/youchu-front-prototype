@@ -102,10 +102,10 @@ const bestYoutuber = [
     rating: '5.0',
     reviews: 100,
     bestReview:
-      '존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게존나길게',
+      '매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게',
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     category: 23,
@@ -116,7 +116,7 @@ const bestYoutuber = [
     bestReview: '하하',
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     category: 23,
@@ -127,7 +127,7 @@ const bestYoutuber = [
     bestReview: '하하',
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     category: 23,
@@ -138,7 +138,7 @@ const bestYoutuber = [
     bestReview: '하하',
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     category: 23,
@@ -149,57 +149,13 @@ const bestYoutuber = [
     bestReview: '하하',
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ6',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     category: 23,
     name: '빠더너스 BDNS',
     subscribes: 0,
     rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 0,
-    rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 0,
-    rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 0,
-    rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 0,
-    rating: 5.0,
     reviews: 100,
     bestReview: '하하',
   },
@@ -207,7 +163,7 @@ const bestYoutuber = [
 
 const recommendYoutuber = [
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ1',
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNSaaaaaaaaaaaaaaaㅁㄴㅇㄹㅁㄴㅇaaaㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㄹㅁㄴㅇaaaasdasdfadsfasfds',
@@ -216,7 +172,7 @@ const recommendYoutuber = [
     category: 23,
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNS',
@@ -225,7 +181,7 @@ const recommendYoutuber = [
     category: 23,
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNS',
@@ -234,7 +190,7 @@ const recommendYoutuber = [
     category: 23,
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNS',
@@ -243,7 +199,7 @@ const recommendYoutuber = [
     category: 23,
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNS',
@@ -252,7 +208,7 @@ const recommendYoutuber = [
     category: 23,
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UC5xLohcPE65Y-U62X6snmRQ6',
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNS',
