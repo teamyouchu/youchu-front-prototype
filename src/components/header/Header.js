@@ -8,6 +8,7 @@ import { UserContext } from 'lib/UserContext';
 export default function Header() {
   const { userObj } = useContext(UserContext);
 
+  // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);
@@ -16,21 +17,26 @@ export default function Header() {
     window.addEventListener('scroll', listener);
   }, []);
 
+  // 유튜버 등록 모달 토글
   const [registOpen, setRistOpen] = useState(false);
   const registClose = () => {
     setRistOpen(!registOpen);
   };
 
+  // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
     if (e.target.value) {
+      // 검색어가 있으면 연관검색어 표시
       setIsSearch(true);
     } else {
+      // 검색어가 없으면 연관검색어 미표시
       setIsSearch(false);
     }
   };
 
+  // 검색어 외 영역 클릭에 따른 연관검색어 표시 여부
   const el = useRef();
   const [isSearch, setIsSearch] = useState(false);
   useEffect(() => {
