@@ -111,8 +111,13 @@ export default function Header() {
                 }}
               />
             </style.SearchForm>
-            {isSearch && <RelatedSearch setIsSearch={setIsSearch} />}
           </style.SearchNav>
+          {isSearch && (
+            <RelatedSearch
+              setSearchValue={setSearchValue}
+              setIsSearch={setIsSearch}
+            />
+          )}
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
