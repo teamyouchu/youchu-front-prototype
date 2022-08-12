@@ -1,6 +1,7 @@
 import * as style from './ReviewCardStyle';
 import { categoryArray } from 'lib/modules';
 import StarRating from 'components/starRating/StarRating';
+import { numToKorean } from 'lib/numberFomat';
 
 export default function ReviewCard({
   data: {
@@ -27,7 +28,9 @@ export default function ReviewCard({
         </style.Group>
         <style.Group>
           <style.RvChannelName>{name}</style.RvChannelName>
-          <style.SubscriberCount>구독자 {subscribes}명</style.SubscriberCount>
+          <style.SubscriberCount>
+            구독자 {numToKorean(subscribes)}명
+          </style.SubscriberCount>
         </style.Group>
         <style.Group>
           <StarRating ratings={rating} from={'RVCard'} />
