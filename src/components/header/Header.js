@@ -4,6 +4,7 @@ import * as style from './HeaderStyle';
 // import listAPI from 'lib/api/listAPI';
 import Registration from 'components/registration/Registration';
 import { UserContext } from 'lib/UserContext';
+import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 
 export default function Header() {
   const { userObj } = useContext(UserContext);
@@ -50,20 +51,6 @@ export default function Header() {
       window.removeEventListener('click', handleCloseSearch);
     };
   }, [isSearch]);
-
-  // const [searchResults, setSearchResults] = useState([]);
-  useEffect(() => {
-    const getSearchResult = async () => {
-      // await listAPI
-      //   .getYoutuber(searchValue, 90, 5)
-      //   .then((res) => {
-      //     setSearchResults(res.data.data);
-      //   })
-      //   .catch((err) => console.log(err));
-    };
-
-    getSearchResult();
-  }, [searchValue]);
 
   const history = useHistory();
   const onSearch = (e) => {
@@ -124,22 +111,7 @@ export default function Header() {
                 }}
               />
             </style.SearchForm>
-            {isSearch && (
-              <style.SearchDropdownContainer>
-                <style.RelatedSearch>연관 검색어</style.RelatedSearch>
-                {/* {searchResults.map((data) => (
-                  <style.SearchResult
-                    to={`/youtubers/review/id=${data.id}`}
-                    key={data.id}
-                    onClick={() => {
-                      setIsSearch(false);
-                    }}
-                  >
-                    {data.name}
-                  </style.SearchResult>
-                ))} */}
-              </style.SearchDropdownContainer>
-            )}
+            {isSearch && <RelatedSearch setIsSearch={setIsSearch} />}
           </style.SearchNav>
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
