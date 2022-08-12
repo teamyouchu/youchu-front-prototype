@@ -100,7 +100,7 @@ const bestYoutuber = [
     name: '빠더너스 BDNSaaaaaa',
     subscribes: 1234,
     rating: '5.0',
-    reviews: 100,
+    reviews: 111111,
     bestReview:
       '매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게',
   },
@@ -168,7 +168,7 @@ const recommendYoutuber = [
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNSaaaaaaaaaaaaaaaㅁㄴㅇㄹㅁㄴㅇaaaㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㄹㅁㄴㅇaaaasdasdfadsfasfds',
     rating: '5.0',
-    reviews: 100,
+    reviews: 1000,
     category: 23,
   },
   {
@@ -177,7 +177,7 @@ const recommendYoutuber = [
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNS',
     rating: 4.9,
-    reviews: 100,
+    reviews: 998,
     category: 23,
   },
   {

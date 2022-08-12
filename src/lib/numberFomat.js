@@ -3,6 +3,15 @@ export const numberComma = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+// 천 이상 숫자 줄일 때 사용
+export const overThousand = (num) => {
+  if (num >= 1000) {
+    return '999+';
+  } else {
+    return num;
+  }
+};
+
 // 구독자 수 한글로 줄여주는 코드
 export const numToKorean = (num) => {
   if (num < 1000) {
