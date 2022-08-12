@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import searchAPI from 'lib/api/searchAPI';
 import youtuberAPI from 'lib/api/youtuberAPI';
-import * as style from './RegistrarionStyle';
+import * as style from './RegistrationStyle';
 import { throttle } from 'lodash';
 
 function Tag({ title, subscribe, imgUrl, selectYoutuber, channelId }) {
