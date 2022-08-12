@@ -24,19 +24,23 @@ export default function MyNickname({
 
   const onNickNameBlur = () => {
     setIsNickNameNull(nickName === '');
-    setIsNickNameLen(nickName.length !== 0 && nickName.length < 2);
-    if (nickName.length >= 2) {
-      nickNameDuplicate(nickName);
-    } else {
-      setIsNickNameDup(false);
-      setIsNotNickNameDup(false);
+    if (nickName !== '' && nickName !== null) {
+      setIsNickNameLen(nickName.length < 2);
+      if (nickName.length >= 2) {
+        nickNameDuplicate();
+      } else {
+        setIsNickNameDup(false);
+        setIsNotNickNameDup(false);
+      }
     }
   };
 
-  const nickNameDuplicate = async (nickName) => {
+  const nickNameDuplicate = async () => {
     await userAPI
       .getDupNickName({
-        nickname: nickName,
+        params: {
+          nickname: nickName,
+        },
       })
       .then((res) => {
         setIsNickNameDup(res.data.isExist);
@@ -53,7 +57,7 @@ export default function MyNickname({
         placeholder="유추에서 사용 할 닉네임을 입력해주세요"
         required
         autoFocus
-        value={nickName}
+        value={nickName || ''}
         minLength="2"
         maxLength="15"
         onChange={onNickNameChange}
