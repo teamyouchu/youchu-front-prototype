@@ -4,10 +4,12 @@ import * as style from './HeaderStyle';
 // import listAPI from 'lib/api/listAPI';
 import Registration from 'components/registration/Registration';
 import { UserContext } from 'lib/UserContext';
+import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 
 export default function Header() {
   const { userObj } = useContext(UserContext);
 
+  // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);
@@ -16,21 +18,26 @@ export default function Header() {
     window.addEventListener('scroll', listener);
   }, []);
 
+  // 유튜버 등록 모달 토글
   const [registOpen, setRistOpen] = useState(false);
   const registClose = () => {
     setRistOpen(!registOpen);
   };
 
+  // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
     if (e.target.value) {
+      // 검색어가 있으면 연관검색어 표시
       setIsSearch(true);
     } else {
+      // 검색어가 없으면 연관검색어 미표시
       setIsSearch(false);
     }
   };
 
+  // 검색어 외 영역 클릭에 따른 연관검색어 표시 여부
   const el = useRef();
   const [isSearch, setIsSearch] = useState(false);
   useEffect(() => {
@@ -44,20 +51,6 @@ export default function Header() {
       window.removeEventListener('click', handleCloseSearch);
     };
   }, [isSearch]);
-
-  // const [searchResults, setSearchResults] = useState([]);
-  useEffect(() => {
-    const getSearchResult = async () => {
-      // await listAPI
-      //   .getYoutuber(searchValue, 90, 5)
-      //   .then((res) => {
-      //     setSearchResults(res.data.data);
-      //   })
-      //   .catch((err) => console.log(err));
-    };
-
-    getSearchResult();
-  }, [searchValue]);
 
   const history = useHistory();
   const onSearch = (e) => {
@@ -118,23 +111,13 @@ export default function Header() {
                 }}
               />
             </style.SearchForm>
-            {isSearch && (
-              <style.SearchDropdownContainer>
-                <style.RelatedSearch>연관 검색어</style.RelatedSearch>
-                {/* {searchResults.map((data) => (
-                  <style.SearchResult
-                    to={`/youtubers/review/id=${data.id}`}
-                    key={data.id}
-                    onClick={() => {
-                      setIsSearch(false);
-                    }}
-                  >
-                    {data.name}
-                  </style.SearchResult>
-                ))} */}
-              </style.SearchDropdownContainer>
-            )}
           </style.SearchNav>
+          {isSearch && (
+            <RelatedSearch
+              setSearchValue={setSearchValue}
+              setIsSearch={setIsSearch}
+            />
+          )}
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>

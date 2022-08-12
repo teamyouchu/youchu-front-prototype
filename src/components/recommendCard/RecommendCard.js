@@ -1,6 +1,7 @@
 import * as style from './RecommendCardStyle';
 import StarRating from 'components/starRating/StarRating';
 import { categoryArray } from 'lib/modules';
+import { overThousand } from 'lib/numberFomat';
 
 export default function RecommendCard({
   data: { id, imageUrl, name, rating, reviews, category },
@@ -15,7 +16,9 @@ export default function RecommendCard({
         <style.Group>
           <StarRating ratings={rating} from={'RcmdCard'} />
           <style.Ratings>{rating}</style.Ratings>
-          <style.ReviewCount>({reviews}개 리뷰)</style.ReviewCount>
+          <style.ReviewCount>
+            ({overThousand(reviews)}개 리뷰)
+          </style.ReviewCount>
         </style.Group>
         <style.Group>
           <style.Category>
