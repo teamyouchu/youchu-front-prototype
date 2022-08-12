@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const SearchPageContainer = styled.div`
-    margin: 16px 24px;
+  margin: 16px 24px;
 `;
 
 export const HeaderBox = styled.div`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 `;
 
 export const SearchInput = styled.input`
@@ -19,8 +19,8 @@ export const SearchInput = styled.input`
 
   width: 100%;
   height: 40px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #DEDEDE;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dedede;
   border-radius: 2px;
   padding: 11px 16px;
   &::placeholder {
@@ -35,5 +35,7 @@ export const Xmark = styled.img`
   width: 30px;
   height: 30px;
   margin-left: 5px;
+  :hover {
+    cursor: pointer;
+  }
 `;
-
