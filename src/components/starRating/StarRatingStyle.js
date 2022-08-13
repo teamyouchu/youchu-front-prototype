@@ -4,7 +4,7 @@ export const StarRatings = styled.div`
   position: relative;
   margin: ${({ from, margins }) =>
     from === 'RVCard'
-      ? '0 5.666px 15px 0'
+      ? '0 5.666px 0 0'
       : from === 'RcmdCard'
       ? '0 6px 5px 0'
       : margins};
