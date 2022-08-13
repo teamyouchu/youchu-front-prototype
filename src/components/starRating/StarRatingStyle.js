@@ -2,15 +2,11 @@ import styled from 'styled-components';
 
 export const StarRatings = styled.div`
   position: relative;
-  margin: ${({ from, margins }) =>
-    from === 'RVCard'
-      ? '0 5.666px 0 0'
-      : from === 'RcmdCard'
-      ? '0 6px 5px 0'
-      : margins};
+  margin-right: ${({ from, margins }) =>
+    from === 'RVCard' ? '5.666px' : from === 'RcmdCard' ? '6px' : margins};
 
   @media ${(props) => props.theme.tablet} {
-    margin: ${({ from }) => from === 'RVCard' && '0 5.75px 0 0'};
+    margin-right: ${({ from }) => from === 'RVCard' && '5.75px'};
   }
 `;
 
