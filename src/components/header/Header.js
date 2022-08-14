@@ -38,11 +38,14 @@ export default function Header() {
   };
 
   // 검색어 외 영역 클릭에 따른 연관검색어 표시 여부
-  const el = useRef();
+  const inputRef = useRef();
   const [isSearch, setIsSearch] = useState(false);
   useEffect(() => {
     const handleCloseSearch = (e) => {
-      if (isSearch && (!el.current || !el.current.contains(e.target))) {
+      if (
+        isSearch &&
+        (!inputRef.current || !inputRef.current.contains(e.target))
+      ) {
         setIsSearch(false);
       }
     };
@@ -91,33 +94,35 @@ export default function Header() {
         </style.HeaderFlex>
         <style.HeaderFlex>
           {/* TODO 서지수 백앤드 연결 시 드랍다운 떨어지고 엔터 누르면 검색 */}
-          <style.SearchNav
-            exact
-            to="/youtubers"
-            ref={el}
-            onClick={(e) => e.preventDefault()}
-          >
-            <style.SearchForm onSubmit={onSearch}>
-              <style.SearchImg
-                src={require('assets/images/searchIcon.svg').default}
-                onClick={onSearch}
+          <div ref={inputRef}>
+            <style.SearchNav
+              exact
+              to="/youtubers"
+              onClick={(e) => e.preventDefault()}
+            >
+              <style.SearchForm onSubmit={onSearch}>
+                <style.SearchImg
+                  src={require('assets/images/searchIcon.svg').default}
+                  onClick={onSearch}
+                />
+                <style.SearchInput
+                  placeholder="유튜버 이름으로 검색하세요"
+                  value={searchValue}
+                  onChange={onSearchValueChange}
+                  onClick={() => {
+                    if (searchValue) setIsSearch(!isSearch);
+                  }}
+                />
+              </style.SearchForm>
+            </style.SearchNav>
+            {isSearch && (
+              <RelatedSearch
+                setSearchValue={setSearchValue}
+                setIsSearch={setIsSearch}
               />
-              <style.SearchInput
-                placeholder="유튜버 이름으로 검색하세요"
-                value={searchValue}
-                onChange={onSearchValueChange}
-                onClick={(e) => {
-                  if (searchValue) setIsSearch(!isSearch);
-                }}
-              />
-            </style.SearchForm>
-          </style.SearchNav>
-          {isSearch && (
-            <RelatedSearch
-              setSearchValue={setSearchValue}
-              setIsSearch={setIsSearch}
-            />
-          )}
+            )}
+          </div>
+
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
           </style.RegisterButton>
