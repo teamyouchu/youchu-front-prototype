@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const SearchDropdownContainer = styled.div`
   position: absolute;
-  top: 69px;
-  width: 350px;
+  top: ${(props) => (props.youtuberList && '43px') || '69px'};
+  width: ${(props) => (props.youtuberList && '380px') || '350px'};
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 15px #00000029;
   opacity: 1;
@@ -21,7 +20,7 @@ export const RelatedSearch = styled.div`
   color: #eb3323;
 `;
 
-export const SearchResultBox = styled(Link)`
+export const SearchResultBox = styled.div`
   display: flex;
   align-items: center;
   padding: 5px 20px;
