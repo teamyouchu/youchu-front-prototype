@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  useCallback,
+} from 'react';
 import searchAPI from 'lib/api/searchAPI';
 import youtuberAPI from 'lib/api/youtuberAPI';
 import * as style from './RegistrationStyle';
@@ -17,6 +23,23 @@ export default function Registration({ registClose }) {
       closeRef.current.click();
     }
   };
+
+  // esc 키 누르면 모달 종료
+  const escFunction = useCallback(
+    (event) => {
+      if (event.keyCode === 27) {
+        registClose();
+      }
+    },
+    [registClose],
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', escFunction);
+    return () => {
+      document.removeEventListener('keydown', escFunction);
+    };
+  }, [escFunction]);
 
   // 유튜브에 유튜버 검색 api
   const [youtuberList, setYoutuberList] = useState([]);
