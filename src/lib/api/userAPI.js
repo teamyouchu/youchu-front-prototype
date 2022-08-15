@@ -13,6 +13,9 @@ const userAPI = {
   putCategory(data) {
     return axios.put('/favorite-categories', data);
   },
+  getMyReviews(page) {
+    return axios.put(`/review?page=${page}`);
+  },
 };
 
 export default userAPI;
