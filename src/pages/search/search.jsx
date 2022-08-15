@@ -62,6 +62,7 @@ export default function Search({ setIsShow }) {
             placeholder="유튜버 이름으로 검색하세요"
             value={searchValue}
             onChange={onSearchValueChange}
+            autoFocus
           />
           {isSearch && (
             <RelatedSearch
