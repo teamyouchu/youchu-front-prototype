@@ -5,6 +5,7 @@ import React, {
   useMemo,
   useCallback,
 } from 'react';
+import { useHistory } from 'react-router-dom';
 import searchAPI from 'lib/api/searchAPI';
 import youtuberAPI from 'lib/api/youtuberAPI';
 import * as style from './RegistrationStyle';
@@ -97,19 +98,25 @@ export default function Registration({ registClose }) {
 
   // 유튜버 등록 요청 코드
   const [channel, setChannel] = useState();
+  const history = useHistory();
   const onRegisterClick = async () => {
-    console.log(channel);
     if (channel.isExist) {
       //TODO 서지수 이미 등록된 유튜버 등록 안되고 페이지로 넘어가도록 처리
+      registClose();
+      alert('이미 등록된 유튜버입니다. 유튜버 페이지로 이동합니다.');
+      history.push(`/youtubers/review/${channel.channel_id}`);
     } else {
       await youtuberAPI
         .registYoutuber({
           channel_id: channel.channel_id,
         })
         .then((res) => {
-          console.log(res.data);
           // TODO 서지수 제대로 작동하는지 확인
-          setIsSearch(false);
+          registClose();
+          alert(
+            '유튜버가 유추에 등록되었습니다. 유튜버의 첫 리뷰를 작성해주세요.',
+          );
+          history.push(`/youtubers/reviewWrite/${channel.channel_id}`);
         })
         .catch((err) => console.log(err));
     }
