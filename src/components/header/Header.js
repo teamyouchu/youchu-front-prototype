@@ -58,7 +58,7 @@ export default function Header() {
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    if (window.innerWidth > 1100) {
+    if (window.innerWidth > 1170) {
       history.push({
         pathname: '/youtubers',
         state: {
@@ -66,6 +66,7 @@ export default function Header() {
         },
       });
       setSearchValue('');
+      setIsSearch(false);
     } else {
       history.push({
         pathname: '/search',
