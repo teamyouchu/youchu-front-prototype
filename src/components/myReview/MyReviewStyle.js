@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Pagination } from 'semantic-ui-react';
 
 export const MyReviewContainer = styled.div`
   width: 800px;
@@ -49,6 +50,23 @@ export const MoreBtn = styled(Link)`
 
 export const ReviewDropdown = styled.div`
   padding: 30px 40px 0 40px;
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 59px;
+`;
+
+export const PaginationItem = styled(Pagination)`
+  &.ui.secondary.pointing.menu {
+    border-bottom: 0;
+  }
+  &.ui.secondary.pointing.menu .active.item {
+    border-bottom-width: 2px;
+    border-color: transparent;
+  }
 `;
 
 // export const UserInfo = styled.div`

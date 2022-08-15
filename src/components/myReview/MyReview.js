@@ -2,11 +2,38 @@ import MyReviewInfo from 'components/myReviewInfo/MyReviewInfo';
 import * as style from './MyReviewStyle';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { sortOptions } from 'lib/modules';
-import PageNumber from 'components/pageNumber/PageNumber';
+// import { useState, useEffect } from 'react';
+// import userAPI from 'lib/api/userAPI';
 
 export default function MyReview({ all }) {
   const rv = 12;
-  // TODO 서지수 페이지 기능 구현
+  // TODO 서지수 api 나오면 수정하기
+
+  // const [myReviewList, setMyReviewList] = useState({});
+  // useEffect(() => {
+  //   // 페이지 로드 시 나의 리뷰 요청 api
+  //   userAPI
+  //     .getMyReviews(1)
+  //     .then((res) => {
+  //       setMyReviewList(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  const onPageChange = (e) => {
+    const nextPage = e.currentTarget.getAttribute('value');
+    console.log('페이지로 변경: ', nextPage);
+    // userAPI
+    //   .getMyReviews(nextPage)
+    //   .then((res) => {
+    //     setMyReviewList(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  };
   return (
     <style.MyReviewContainer>
       {/* <style.ProfileTitle>회원 정보</style.ProfileTitle>
@@ -41,15 +68,28 @@ export default function MyReview({ all }) {
           />
         </style.ReviewDropdown>
       )}
-      {myReview.data.map((data) => (
+      {myReviewList.data.map((data) => (
         <MyReviewInfo key={data.id} data={data} />
       ))}
-      {all && <PageNumber />}
+      <style.PaginationContainer>
+        {all && (
+          <style.PaginationItem
+            boundaryRange={0}
+            defaultActivePage={1}
+            ellipsisItem={null}
+            siblingRange={2}
+            totalPages={myReviewList.maxPage}
+            pointing
+            secondary
+            onPageChange={onPageChange}
+          />
+        )}
+      </style.PaginationContainer>
     </style.MyReviewContainer>
   );
 }
 
-const myReview = {
+const myReviewList = {
   data: [
     {
       id: 10,
