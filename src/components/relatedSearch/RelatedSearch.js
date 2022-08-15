@@ -3,31 +3,22 @@ import { numToKorean } from 'lib/numberFomat.js';
 import { Link } from 'react-router-dom';
 
 export default function RelatedSearch({
-  youtuberList,
-  setChannel,
+  page,
+  searchResults,
   setSearchValue,
   setIsSearch,
+  setChannel,
 }) {
-  // const [searchResults, setSearchResults] = useState([]);
-  // useEffect(() => {
-  //   const getSearchResult = async () => {
-  //     await listAPI
-  //       .getYoutuber(searchValue, 90, 5)
-  //       .then((res) => {
-  //         setSearchResults(res.data.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
-
-  //   getSearchResult();
-  // }, [searchValue]);
-
   return (
-    <style.SearchDropdownContainer youtuberList={youtuberList}>
-      {!youtuberList && <style.RelatedSearch>연관 검색어</style.RelatedSearch>}
-      {!youtuberList &&
-        searchResults.map((data) => (
+    <style.SearchDropdownContainer page={page}>
+      {page === 'header' && (
+        <style.RelatedSearch>연관 검색어</style.RelatedSearch>
+      )}
+      {!(page === 'registration') &&
+        // TODO 서지수 api 완성 시 Temp 제거
+        searchResults_Temp.map((data) => (
           <style.SearchResultBox
+            page={page}
             as={Link}
             to={`/youtubers/review/${data.id}`}
             key={data.id}
@@ -43,8 +34,8 @@ export default function RelatedSearch({
             </style.SearchResultSubscribers>
           </style.SearchResultBox>
         ))}
-      {youtuberList &&
-        youtuberList.map((data) => (
+      {page === 'registration' &&
+        searchResults.map((data) => (
           <style.SearchResultBox
             key={data.id}
             onClick={() => {
@@ -64,7 +55,7 @@ export default function RelatedSearch({
   );
 }
 
-const searchResults = [
+const searchResults_Temp = [
   {
     id: 'UC5xLohcPE65Y-U62X6snmRQ',
     thumbnail:

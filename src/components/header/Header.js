@@ -24,6 +24,18 @@ export default function Header() {
     setRistOpen(!registOpen);
   };
 
+  // 등록된 유튜버 검색 api
+  // TODO 서지수 api 완성 시 주석 제거
+  // const [searchResults, setSearchResults] = useState([]);
+  // const getSearchResult = async () => {
+  //   await listAPI
+  //     .getYoutuber(searchValue, 90, 5)
+  //     .then((res) => {
+  //       setSearchResults(res.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
   // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
@@ -31,6 +43,7 @@ export default function Header() {
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
       setIsSearch(true);
+      // getSearchResult(); TODO 서지수 api 완성 시 주석 제거
     } else {
       // 검색어가 없으면 연관검색어 미표시
       setIsSearch(false);
@@ -118,6 +131,8 @@ export default function Header() {
             </style.SearchNav>
             {isSearch && (
               <RelatedSearch
+                page={'header'}
+                // searchResults={searchResults} TODO 서지수 api 완성 시 주석 제거
                 setSearchValue={setSearchValue}
                 setIsSearch={setIsSearch}
               />
