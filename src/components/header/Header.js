@@ -14,8 +14,15 @@ export default function Header() {
   const listener = () => {
     setIsScrolled(window.pageYOffset > 0);
   };
+  // 화면 넓이 1170px 이하되면 연관검색어 종료
+  const handleWindowResize = () => {
+    if (window.innerWidth < 1170) {
+      setIsSearch(false);
+    }
+  };
   useEffect(() => {
     window.addEventListener('scroll', listener);
+    window.addEventListener('resize', handleWindowResize);
   }, []);
 
   // 유튜버 등록 모달 토글
@@ -68,6 +75,7 @@ export default function Header() {
     };
   }, [isSearch]);
 
+  // 유추에 등록된 유튜버 검색 api
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
