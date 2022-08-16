@@ -20,9 +20,16 @@ export default function Header() {
       setIsSearch(false);
     }
   };
+  // esc 키 누르면 연관검색어 종료
+  const escFunction = (event) => {
+    if (event.keyCode === 27) {
+      setIsSearch(false);
+    }
+  };
   useEffect(() => {
     window.addEventListener('scroll', listener);
     window.addEventListener('resize', handleWindowResize);
+    document.addEventListener('keydown', escFunction);
   }, []);
 
   // 유튜버 등록 모달 토글
