@@ -54,6 +54,22 @@ export default function Search({ setIsShow }) {
     setIsSearch(false);
   };
 
+  // esc 키 누르면 모달 종료
+  const escFunction = useCallback(
+    (event) => {
+      if (event.keyCode === 27) {
+        history.goBack();
+      }
+    },
+    [history],
+  );
+  useEffect(() => {
+    document.addEventListener('keydown', escFunction);
+    return () => {
+      document.removeEventListener('keydown', escFunction);
+    };
+  }, [escFunction]);
+
   return (
     <style.SearchPageContainer>
       <style.HeaderBox>
