@@ -8,16 +8,20 @@ export default function RelatedSearch({
   setSearchValue,
   setIsSearch,
   setChannel,
+  autoRef,
+  index,
+  setIndex,
 }) {
   return (
-    <style.SearchDropdownContainer page={page}>
+    <style.SearchDropdownContainer page={page} ref={autoRef}>
       {page === 'header' && (
         <style.RelatedSearch>연관 검색어</style.RelatedSearch>
       )}
       {!(page === 'registration') &&
         // TODO 서지수 api 완성 시 Temp 제거
-        searchResults_Temp.map((data) => (
+        searchResults_Temp.map((data, idx) => (
           <style.SearchResultBox
+            className={index === idx ? 'item_over' : null}
             page={page}
             as={Link}
             to={`/youtubers/review/${data.id}`}
@@ -26,6 +30,13 @@ export default function RelatedSearch({
               setSearchValue('');
               setIsSearch(false);
             }}
+            onMouseOver={() => {
+              setIndex(idx);
+            }}
+            onMouseLeave={() => {
+              setIndex(-1);
+            }}
+            value={data.title}
           >
             <style.SearchResultImg src={data.thumbnail} alt={data.name} />
             <style.SearchResultName>{data.title}</style.SearchResultName>

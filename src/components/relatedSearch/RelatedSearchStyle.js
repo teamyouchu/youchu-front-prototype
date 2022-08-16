@@ -26,8 +26,8 @@ export const RelatedSearch = styled.div`
 export const SearchResultBox = styled.div`
   display: flex;
   align-items: center;
-  &:hover {
   padding: ${({ page }) => (page === 'search' ? '5px 16px' : '5px 20px')};
+  &.item_over {
     background-color: #f9fafc;
     cursor: pointer;
     color: #000000;

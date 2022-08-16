@@ -1,5 +1,5 @@
 import * as style from './style';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 // import listAPI from 'lib/api/listAPI';
@@ -70,15 +70,51 @@ export default function Search({ setIsShow }) {
     };
   }, [escFunction]);
 
+  const [index, setIndex] = useState(-1);
+  const autoRef = useRef(null);
+  const handleKeyArrow = (e) => {
+    if (searchValue.length > 0) {
+      switch (e.key) {
+        case 'ArrowDown': //키보드 down 키
+          setIndex(index + 1);
+          if (autoRef.current?.childElementCount === index + 1) setIndex(0);
+          break;
+        case 'ArrowUp': //키보드 up 키
+          setIndex(index - 1);
+          if (index <= 0) {
+            setIndex(-1);
+          }
+          break;
+        // case 'Escape': // esc key를 눌렀을때,
+        //   setIsSearch(false);
+        //   setIndex(-1);
+        //   break;
+        default:
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (index >= 0) {
+      setSearchValue(autoRef.current?.children[index].children[1].innerText);
+    }
+    // if (index < 0) {
+    //   setIsSearch(false);
+    // } else {
+    //   setIsSearch(true);
+    // }
+  }, [index]);
+
   return (
     <style.SearchPageContainer>
       <style.HeaderBox>
-        <style.SearchInputBox onSubmit={onSearch}>
+        <style.SearchInputBox onSubmit={onSearch} onKeyDown={handleKeyArrow}>
           <style.SearchInput
             placeholder="유튜버 이름으로 검색하세요"
             value={searchValue}
             onChange={onSearchValueChange}
             autoFocus
+            spellcheck="false"
           />
           {isSearch && (
             <RelatedSearch
@@ -86,6 +122,9 @@ export default function Search({ setIsShow }) {
               // searchResults={searchResults} TODO 서지수 api 완성 시 주석 제거
               setSearchValue={setSearchValue}
               setIsSearch={setIsSearch}
+              autoRef={autoRef}
+              index={index}
+              setIndex={setIndex}
             />
           )}
         </style.SearchInputBox>
