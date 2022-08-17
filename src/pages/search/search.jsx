@@ -30,6 +30,7 @@ export default function Search({ setIsShow }) {
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
+    setAutoSearchValue(e.target.value);
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
       setIsSearch(true);
@@ -70,40 +71,45 @@ export default function Search({ setIsShow }) {
     };
   }, [escFunction]);
 
-  const [index, setIndex] = useState(-1);
+  // 위, 아래 키보드 입력 시 자동 완성
   const autoRef = useRef(null);
+  const [index, setIndex] = useState(-1);
+  const [keyIndex, setKeyIndex] = useState(-1);
+  const [autoSearchValue, setAutoSearchValue] = useState(null);
   const handleKeyArrow = (e) => {
     if (searchValue.length > 0) {
       switch (e.key) {
         case 'ArrowDown': //키보드 down 키
           setIndex(index + 1);
-          if (autoRef.current?.childElementCount === index + 1) setIndex(0);
+          setKeyIndex(index + 1);
+          if (autoRef.current?.childElementCount === index + 1) {
+            setIndex(0);
+            setKeyIndex(0);
+          }
           break;
         case 'ArrowUp': //키보드 up 키
           setIndex(index - 1);
+          setKeyIndex(index - 1);
           if (index <= 0) {
             setIndex(-1);
+            setKeyIndex(-1);
           }
           break;
-        // case 'Escape': // esc key를 눌렀을때,
-        //   setIsSearch(false);
-        //   setIndex(-1);
-        //   break;
         default:
       }
     }
   };
-
   useEffect(() => {
-    if (index >= 0) {
-      setSearchValue(autoRef.current?.children[index].children[1].innerText);
+    if (keyIndex >= 0) {
+      setIsSearch(true);
+      setAutoSearchValue(
+        autoRef.current?.children[keyIndex].children[1].innerText,
+      );
+    } else {
+      setIsSearch(false);
+      setAutoSearchValue(null);
     }
-    // if (index < 0) {
-    //   setIsSearch(false);
-    // } else {
-    //   setIsSearch(true);
-    // }
-  }, [index]);
+  }, [keyIndex]);
 
   return (
     <style.SearchPageContainer>
@@ -111,20 +117,24 @@ export default function Search({ setIsShow }) {
         <style.SearchInputBox onSubmit={onSearch} onKeyDown={handleKeyArrow}>
           <style.SearchInput
             placeholder="유튜버 이름으로 검색하세요"
-            value={searchValue}
+            value={autoSearchValue ? autoSearchValue : searchValue}
             onChange={onSearchValueChange}
+            onClick={() => {
+              if (searchValue) setIsSearch(!isSearch);
+            }}
             autoFocus
-            spellcheck="false"
           />
           {isSearch && (
             <RelatedSearch
               page={'search'}
               // searchResults={searchResults} TODO 서지수 api 완성 시 주석 제거
               setSearchValue={setSearchValue}
+              setAutoSearchValue={setAutoSearchValue}
               setIsSearch={setIsSearch}
               autoRef={autoRef}
               index={index}
               setIndex={setIndex}
+              setKeyIndex={setKeyIndex}
             />
           )}
         </style.SearchInputBox>

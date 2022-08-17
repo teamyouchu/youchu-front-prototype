@@ -48,6 +48,7 @@ export default function Registration({ registClose }) {
     await searchAPI
       .youtuberSearchFromGoogle(value, 5)
       .then((res) => {
+        console.log(res.data.channels);
         setSearchResults(res.data.channels);
       })
       .catch((err) => console.log(err));
@@ -66,6 +67,7 @@ export default function Registration({ registClose }) {
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
+    setAutoSearchValue(e.target.value);
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시, 유튜버 검색 api 요청
       setIsSearch(true);
@@ -122,6 +124,46 @@ export default function Registration({ registClose }) {
     }
   };
 
+  // 위, 아래 키보드 입력 시 자동 완성
+  const autoRef = useRef(null);
+  const [index, setIndex] = useState(-1);
+  const [keyIndex, setKeyIndex] = useState(-1);
+  const [autoSearchValue, setAutoSearchValue] = useState(null);
+  const handleKeyArrow = (e) => {
+    if (searchValue.length > 0) {
+      switch (e.key) {
+        case 'ArrowDown': //키보드 down 키
+          setIndex(index + 1);
+          setKeyIndex(index + 1);
+          if (autoRef.current?.childElementCount === index + 1) {
+            setIndex(0);
+            setKeyIndex(0);
+          }
+          break;
+        case 'ArrowUp': //키보드 up 키
+          setIndex(index - 1);
+          setKeyIndex(index - 1);
+          if (index <= 0) {
+            setIndex(-1);
+            setKeyIndex(-1);
+          }
+          break;
+        default:
+      }
+    }
+  };
+  useEffect(() => {
+    if (keyIndex >= 0) {
+      setIsSearch(true);
+      setAutoSearchValue(
+        autoRef.current?.children[keyIndex].children[1].innerText,
+      );
+    } else {
+      setIsSearch(false);
+      setAutoSearchValue(null);
+    }
+  }, [keyIndex]);
+
   return (
     <style.ModalContainer
       className="close-modal__container"
@@ -149,22 +191,29 @@ export default function Registration({ registClose }) {
         </style.RediretInfo>
         <style.InputContainer ref={inputRef}>
           <style.LinkInput
-            placeholder="유튜버 이름 입력"
-            value={searchValue}
+            placeholder="유튜버 이름으로 검색하세요!"
+            value={autoSearchValue ? autoSearchValue : searchValue}
             onChange={onSearchValueChange}
+            onKeyDown={handleKeyArrow}
             onClick={() => {
               if (searchValue) {
                 setIsSearch(!isSearch);
               }
             }}
+            autoFocus
           />
           {isSearch && (
             <RelatedSearch
               page={'registration'}
               searchResults={searchResults}
               setSearchValue={setSearchValue}
+              setAutoSearchValue={setAutoSearchValue}
               setIsSearch={setIsSearch}
               setChannel={setChannel}
+              autoRef={autoRef}
+              index={index}
+              setIndex={setIndex}
+              setKeyIndex={setKeyIndex}
             />
           )}
         </style.InputContainer>

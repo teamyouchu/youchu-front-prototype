@@ -53,7 +53,11 @@ export default function Header() {
   // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
-    setSearchValue(e.target.value);
+    if (autoSearchValue) {
+      setAutoSearchValue(e.target.value);
+    } else {
+      setSearchValue(e.target.value);
+    }
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
       setIsSearch(true);
@@ -94,6 +98,7 @@ export default function Header() {
         },
       });
       setSearchValue('');
+      setAutoSearchValue('');
       setIsSearch(false);
     } else {
       history.push({
@@ -104,6 +109,54 @@ export default function Header() {
       });
     }
   };
+
+  // 위, 아래 키보드 입력 시 자동 완성
+  const autoRef = useRef(null);
+  const [index, setIndex] = useState(-1);
+  const [keyIndex, setKeyIndex] = useState(-1);
+  const [autoSearchValue, setAutoSearchValue] = useState(null);
+  const handleKeyArrow = (e) => {
+    if (searchValue.length > 0) {
+      switch (e.key) {
+        case 'ArrowDown': //키보드 down 키
+          setIndex(index + 1);
+          setKeyIndex(index + 1);
+          if (autoRef.current?.childElementCount === index + 1) {
+            setIndex(0);
+            setKeyIndex(0);
+          }
+          break;
+        case 'ArrowUp': //키보드 up 키
+          setIndex(index - 1);
+          setKeyIndex(index - 1);
+          if (index <= 0) {
+            setIndex(-1);
+            setKeyIndex(-1);
+          }
+          break;
+        default:
+      }
+    }
+  };
+  useEffect(() => {
+    if (keyIndex >= 0) {
+      setIsSearch(true);
+      setAutoSearchValue(
+        autoRef.current?.children[keyIndex].children[1].innerText,
+      );
+    } else {
+      setIsSearch(false);
+      setAutoSearchValue(null);
+    }
+  }, [keyIndex]);
+
+  useEffect(() => {
+    console.log('searchValue: ', searchValue);
+    console.log('auto: ', autoSearchValue);
+    console.log('index: ', index);
+    console.log('keyIndex: ', keyIndex);
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+  }, [autoSearchValue, index, keyIndex, searchValue]);
 
   return (
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
@@ -128,6 +181,7 @@ export default function Header() {
               exact
               to="/youtubers"
               onClick={(e) => e.preventDefault()}
+              onKeyDown={handleKeyArrow}
             >
               <style.SearchForm onSubmit={onSearch}>
                 <style.SearchImg
@@ -135,8 +189,8 @@ export default function Header() {
                   onClick={onSearch}
                 />
                 <style.SearchInput
-                  placeholder="유튜버 이름으로 검색하세요"
-                  value={searchValue}
+                  placeholder="유튜버 이름으로 검색하세요!"
+                  value={autoSearchValue ? autoSearchValue : searchValue}
                   onChange={onSearchValueChange}
                   onClick={() => {
                     if (searchValue) setIsSearch(!isSearch);
@@ -149,7 +203,12 @@ export default function Header() {
                 page={'header'}
                 // searchResults={searchResults} TODO 서지수 api 완성 시 주석 제거
                 setSearchValue={setSearchValue}
+                setAutoSearchValue={setAutoSearchValue}
                 setIsSearch={setIsSearch}
+                autoRef={autoRef}
+                index={index}
+                setIndex={setIndex}
+                setKeyIndex={setKeyIndex}
               />
             )}
           </div>
