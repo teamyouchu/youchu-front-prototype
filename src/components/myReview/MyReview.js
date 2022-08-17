@@ -6,7 +6,6 @@ import { sortOptions } from 'lib/modules';
 // import userAPI from 'lib/api/userAPI';
 
 export default function MyReview({ all }) {
-  const rv = 12;
   // TODO 서지수 api 나오면 수정하기
 
   // const [myReviewList, setMyReviewList] = useState({});
@@ -36,29 +35,12 @@ export default function MyReview({ all }) {
   };
   return (
     <style.MyReviewContainer>
-      {/* <style.ProfileTitle>회원 정보</style.ProfileTitle>
-        <style.UserInfo>
-          <style.Label>이메일</style.Label>
-          <style.UserEmailInput value="qudvkfzoqtyd1@gmail.com" disabled />
-        </style.UserInfo>
-        <style.UserInfo marginBottom="49px">
-          <style.Label>닉네임</style.Label>
-          <style.NickNameForm>
-            <style.NickNameInput value="병팔이" disabled />
-            <style.UserNickBtn>변경하기</style.UserNickBtn>
-          </style.NickNameForm>
-        </style.UserInfo> */}
       <style.ReviewTitle>
         {!all && '최근 '}
         내가 쓴 리뷰
         <style.ProfileSub>
           리뷰 수정은 불가능하고, 삭제만 가능합니다.
         </style.ProfileSub>
-        {!all && (
-          <style.MoreBtn to="/profile/allReview">
-            총 {rv}개 모두 보기 &gt;
-          </style.MoreBtn>
-        )}
       </style.ReviewTitle>
       {all && (
         <style.ReviewDropdown>
@@ -72,6 +54,14 @@ export default function MyReview({ all }) {
         <MyReviewInfo key={data.id} data={data} />
       ))}
       <style.PaginationContainer>
+        {!all && (
+          <style.MoreBtn to="/profile/allReview">
+            <style.MoreBtnSpan font={'SHSN-B'}>
+              최근 내가 쓴 리뷰 &nbsp;
+            </style.MoreBtnSpan>
+            <style.MoreBtnSpan>모두 보기 &gt;</style.MoreBtnSpan>
+          </style.MoreBtn>
+        )}
         {all && (
           <style.PaginationItem
             boundaryRange={0}
