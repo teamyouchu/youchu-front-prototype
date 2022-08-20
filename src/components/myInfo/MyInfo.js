@@ -20,6 +20,7 @@ export default function MyInfo({
   const [isNickNameLen, setIsNickNameLen] = useState(false);
   const [isNickNameDup, setIsNickNameDup] = useState(false);
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
+  const [currentNickname, setCurrentNickname] = useState('');
 
   const [categoryList, setCategoryList] = useState([]);
   const [isCategoryLen, setIsCategoryLen] = useState(false);
@@ -32,6 +33,7 @@ export default function MyInfo({
       .getMe()
       .then((res) => {
         setNickName(res.data.nickname);
+        setCurrentNickname(res.data.nickname);
         setCategoryList(res.data.favoriteCategory);
       })
       .catch((err) => {
@@ -83,16 +85,20 @@ export default function MyInfo({
 
   // 닉네임 변경 함수
   const onNicknameClick = async () => {
-    setIsNickNameNull(nickName === '');
-    if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
-      await userAPI
-        .putNickname({
-          nickname: nickName,
-        })
-        .then(() => {
-          history.go(-1);
-        })
-        .catch((err) => console.error(err));
+    if (currentNickname === nickName) {
+      history.go(-1);
+    } else {
+      setIsNickNameNull(nickName === '');
+      if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
+        await userAPI
+          .putNickname({
+            nickname: nickName,
+          })
+          .then(() => {
+            history.go(-1);
+          })
+          .catch((err) => console.error(err));
+      }
     }
   };
 
@@ -129,6 +135,7 @@ export default function MyInfo({
             setIsNickNameDup={setIsNickNameDup}
             isNotNickNameDup={isNotNickNameDup}
             setIsNotNickNameDup={setIsNotNickNameDup}
+            currentNickname={currentNickname}
           />
         )}
         {showCategory && (

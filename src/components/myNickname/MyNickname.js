@@ -13,6 +13,7 @@ export default function MyNickname({
   setIsNickNameDup,
   isNotNickNameDup,
   setIsNotNickNameDup,
+  currentNickname,
 }) {
   const onNickNameChange = (e) => {
     setNickName(e.target.value);
@@ -23,14 +24,16 @@ export default function MyNickname({
   };
 
   const onNickNameBlur = () => {
-    setIsNickNameNull(nickName === '');
-    if (nickName !== '' && nickName !== null) {
-      setIsNickNameLen(nickName.length < 2);
-      if (nickName.length >= 2) {
-        nickNameDuplicate();
-      } else {
-        setIsNickNameDup(false);
-        setIsNotNickNameDup(false);
+    if (currentNickname !== nickName) {
+      setIsNickNameNull(nickName === '');
+      if (nickName !== '' && nickName !== null) {
+        setIsNickNameLen(nickName.length < 2);
+        if (nickName.length >= 2) {
+          nickNameDuplicate();
+        } else {
+          setIsNickNameDup(false);
+          setIsNotNickNameDup(false);
+        }
       }
     }
   };
