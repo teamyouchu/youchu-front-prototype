@@ -66,6 +66,8 @@ export default function MyReview({ all }) {
           <style.PaginationItem
             boundaryRange={0}
             defaultActivePage={1}
+            firstItem={null}
+            lastItem={null}
             ellipsisItem={null}
             siblingRange={2}
             totalPages={myReviewList.maxPage}
@@ -84,14 +86,15 @@ const myReviewList = {
     {
       id: 10,
       youtuber: {
-        id: 'FDSFWEVSD',
+        id: 'UCRnoBo60_joBvIQCoAiNCqg',
         name: '월간 윤종신',
       },
       author: '병팔이',
-      content: '힘들 때 많은 힘이 되어주었습니다.',
+      content:
+        '제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다.',
       rating: 4.5,
       likes: 10,
-      createdDatetime: '2021-09-15T10:00:00+09:00',
+      createdDatetime: '2021.09.22',
     },
     {
       id: 20,
@@ -103,7 +106,7 @@ const myReviewList = {
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
-      createdDatetime: '2021-09-15T10:00:00+09:00',
+      createdDatetime: '2021.09.22',
     },
     {
       id: 220,
@@ -115,7 +118,31 @@ const myReviewList = {
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
-      createdDatetime: '2021-09-15T10:00:00+09:00',
+      createdDatetime: '2021.09.22',
+    },
+    {
+      id: 222,
+      youtuber: {
+        id: 'FDSFWEVSD',
+        name: '월간 윤종신',
+      },
+      author: '병팔이',
+      content: '힘들 때 많은 힘이 되어주었습니다.',
+      rating: 4.5,
+      likes: 10,
+      createdDatetime: '2021.09.22',
+    },
+    {
+      id: 223,
+      youtuber: {
+        id: 'FDSFWEVSD',
+        name: '월간 윤종신',
+      },
+      author: '병팔이',
+      content: '힘들 때 많은 힘이 되어주었습니다.',
+      rating: 4.5,
+      likes: 10,
+      createdDatetime: '2021.09.22',
     },
   ],
   size: 30,

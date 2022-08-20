@@ -8,6 +8,11 @@ export const MyReviewContainer = styled.div`
   flex-direction: column;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dedede;
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #dedede;
+  }
 `;
 
 export const ReviewTitle = styled.div`
@@ -20,6 +25,12 @@ export const ReviewTitle = styled.div`
   padding: 30px 40px 20px 40px;
   border-bottom: 1px solid #dedede;
   position: relative;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 22px;
+    line-height: 27px;
+    padding: 20px 24px 15px 24px;
+    border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+  }
 `;
 
 export const ProfileSub = styled.div`
@@ -30,10 +41,17 @@ export const ProfileSub = styled.div`
   letter-spacing: 0px;
   color: #94969b;
   margin-top: 5px;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 13px;
+    line-height: 17px;
+  }
 `;
 
 export const ReviewDropdown = styled.div`
   padding: 30px 40px 0 40px;
+  @media ${(props) => props.theme.tablet} {
+    padding: 15px 24px 0 24px;
+  }
 `;
 
 export const PaginationContainer = styled.div`
@@ -41,15 +59,17 @@ export const PaginationContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 60px;
+  @media ${(props) => props.theme.tablet} {
+    height: 51px;
+  }
 `;
 
 export const PaginationItem = styled(Pagination)`
   &.ui.secondary.pointing.menu {
     border-bottom: 0;
   }
-  &.ui.secondary.pointing.menu .active.item {
-    border-bottom-width: 2px;
-    border-color: transparent;
+  &.ui.secondary.pointing.menu .item {
+    border-bottom-style: none;
   }
 `;
 
