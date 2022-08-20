@@ -20,6 +20,7 @@ export default function MyInfo({
   const [isNickNameLen, setIsNickNameLen] = useState(false);
   const [isNickNameDup, setIsNickNameDup] = useState(false);
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
+  const [isValidNickname, setIsValidNickname] = useState(false);
   const [currentNickname, setCurrentNickname] = useState('');
 
   const [categoryList, setCategoryList] = useState([]);
@@ -89,7 +90,12 @@ export default function MyInfo({
       history.go(-1);
     } else {
       setIsNickNameNull(nickName === '');
-      if (!isNickNameNull && !isNickNameLen && !isNickNameDup) {
+      if (
+        !isNickNameNull &&
+        !isNickNameLen &&
+        !isNickNameDup &&
+        !isValidNickname
+      ) {
         await userAPI
           .putNickname({
             nickname: nickName,
@@ -136,6 +142,8 @@ export default function MyInfo({
             isNotNickNameDup={isNotNickNameDup}
             setIsNotNickNameDup={setIsNotNickNameDup}
             currentNickname={currentNickname}
+            isValidNickname={isValidNickname}
+            setIsValidNickname={setIsValidNickname}
           />
         )}
         {showCategory && (

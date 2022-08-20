@@ -1,6 +1,7 @@
 import * as style from './MyNickNameStyle';
 import userAPI from 'lib/api/userAPI';
 import Warning from 'components/warning/Warning';
+import { stringTest } from 'lib/stringTest';
 
 export default function MyNickname({
   nickName,
@@ -13,6 +14,8 @@ export default function MyNickname({
   setIsNickNameDup,
   isNotNickNameDup,
   setIsNotNickNameDup,
+  isValidNickname,
+  setIsValidNickname,
   currentNickname,
 }) {
   const onNickNameChange = (e) => {
@@ -21,12 +24,14 @@ export default function MyNickname({
     setIsNickNameLen(false);
     setIsNickNameDup(false);
     setIsNotNickNameDup(false);
+    setIsValidNickname(false);
   };
 
   const onNickNameBlur = () => {
     if (currentNickname !== nickName) {
+      setIsValidNickname(stringTest(nickName));
       setIsNickNameNull(nickName === '');
-      if (nickName !== '' && nickName !== null) {
+      if (nickName !== '' && nickName !== null && !stringTest(nickName)) {
         setIsNickNameLen(nickName.length < 2);
         if (nickName.length >= 2) {
           nickNameDuplicate();
@@ -79,6 +84,7 @@ export default function MyNickname({
       {isNotNickNameDup && (
         <Warning isSuccess={true} text="사용 가능한 닉네임입니다!" />
       )}
+      {isValidNickname && <Warning text="유효하지 않은 닉네임입니다." />}
     </style.NickNameContainer>
   );
 }
