@@ -29,24 +29,27 @@ export default function Profile() {
       <style.ProfileTitle>내 정보</style.ProfileTitle>
       <style.ProfileBox>
         <style.PicBox>
-          <style.UserPic src={userObj.imageUrl} />
-          <style.UserName>{userObj.nickname}</style.UserName>
-          <style.UserEmail>{userObj.email}</style.UserEmail>
-          <style.ModifyBtn to="/modifyNickName">프로필 수정</style.ModifyBtn>
-          <style.CategoryBtn to="/modifyCategory">
-            <style.CategoryTitle>관심사</style.CategoryTitle>
-            <style.CategorysBox>
-              {userObj.favoriteCategory.map((category) => (
-                <style.Categorycontents key={category}>
-                  {categoryArray.find((x) => x.id === category).value}
-                </style.Categorycontents>
-              ))}
-            </style.CategorysBox>
-            <style.ChevronIcon>
-              <i className="fas fa-chevron-right"></i>
-            </style.ChevronIcon>
-          </style.CategoryBtn>
-          <Logout />
+          <style.flexBox>
+            <style.UserPic src={userObj.imageUrl} />
+            <style.ModifyBtn to="/modifyNickName">
+              <style.UserName>{userObj.nickname}</style.UserName>
+              <style.UserEmail>{userObj.email}</style.UserEmail>
+            </style.ModifyBtn>
+          </style.flexBox>
+          <style.flexBox>
+            <style.CategoryBtn to="/modifyCategory">
+              <style.CategoryTitle>관심사</style.CategoryTitle>
+              <style.CategorysBox>
+                {userObj.favoriteCategory.map((category) => (
+                  <style.Categorycontents key={category}>
+                    {categoryArray.find((x) => x.id === category).value}
+                  </style.Categorycontents>
+                ))}
+              </style.CategorysBox>
+              <style.ChevronIcon>&gt;</style.ChevronIcon>
+            </style.CategoryBtn>
+            <Logout />
+          </style.flexBox>
         </style.PicBox>
         <MyReview />
       </style.ProfileBox>

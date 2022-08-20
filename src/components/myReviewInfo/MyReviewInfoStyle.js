@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const MyReviewInfoContainer = styled.div`
   width: 800px;
@@ -8,6 +7,11 @@ export const MyReviewInfoContainer = styled.div`
   flex-direction: column;
   padding: 30px 40px;
   border-bottom: 1px solid #dedede;
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+  }
 `;
 
 export const YoutuberName = styled(Link)`
@@ -16,23 +20,20 @@ export const YoutuberName = styled(Link)`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
+  margin-bottom: 5px;
   color: #000000;
-  display: flex;
-  align-items: center;
   &:hover {
     color: #000000;
   }
-`;
-
-export const RightIcon = styled(FontAwesomeIcon)`
-  margin-left: 5px;
-  font-size: 10px;
 `;
 
 export const RatingBox = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.tablet} {
+    margin-bottom: 15px;
+  }
 `;
 
 export const Ratings = styled.div`
@@ -58,6 +59,9 @@ export const ReviewCreated = styled(ReviewContent)`
   line-height: 15px;
   color: #94969b;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.tablet} {
+    margin-bottom: 15px;
+  }
 `;
 
 export const UtilContainer = styled.div`

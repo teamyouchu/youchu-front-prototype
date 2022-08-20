@@ -6,7 +6,11 @@ export const SearchPageContainer = styled.div`
 
 export const HeaderBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+`;
+
+export const SearchInputBox = styled.form`
+  width: 100%;
 `;
 
 export const SearchInput = styled.input`
@@ -34,7 +38,7 @@ export const SearchInput = styled.input`
 export const Xmark = styled.img`
   width: 30px;
   height: 30px;
-  margin-left: 5px;
+  margin: 5px 0 0 5px;
   :hover {
     cursor: pointer;
   }

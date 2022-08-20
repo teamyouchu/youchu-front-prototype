@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const ModalContainer = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 10;
   position: fixed;
   top: 0;
@@ -16,7 +16,10 @@ export const Modal = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.hegiht};
   padding: ${(props) => props.padding};
-  background-color: #fff;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  opacity: 1;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -24,26 +27,35 @@ export const Modal = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  & > img {
-    width: 24px;
-    height: 24px;
-    top: 70px;
-    right: 60px;
-    position: absolute;
-    cursor: pointer;
-  }
+`;
+
+export const ModalTitleFlex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 `;
 
 export const Span = styled.span`
   font-family: ${(props) => props.font};
-  font-size: ${(props) => props.size};
+  font-size: ${(props) => props.size || '14px'};
+  line-height: ${(props) => props.lineHeight || '18px'};
   color: ${(props) => props.color};
   margin: ${(props) => props.margins};
+`;
+
+export const ModalXIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `;
 
 export const RediretInfo = styled(Span)`
   cursor: pointer;
   margin: 5px 0px;
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
 `;
 
 export const LinkInput = styled.input`
@@ -57,9 +69,8 @@ export const LinkInput = styled.input`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-
   &:focus {
-    outline: none;
+    outline: 1px solid #3ea6ff;
   }
 `;
 
@@ -70,6 +81,7 @@ export const CompleteButton = styled.button`
   color: #ffffff;
   font-family: 'SHSN-M';
   font-size: 19px;
+  line-height: 23px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
