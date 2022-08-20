@@ -115,9 +115,7 @@ export default function Registration({ registClose }) {
         .then((res) => {
           // TODO 서지수 제대로 작동하는지 확인
           registClose();
-          alert(
-            '유튜버가 유추에 등록되었습니다. 유튜버의 첫 리뷰를 작성해주세요.',
-          );
+          alert('유튜버의 첫 리뷰를 작성해주세요.');
           history.push(`/youtubers/reviewWrite/${channel.channel_id}`);
         })
         .catch((err) => console.log(err));
