@@ -12,10 +12,10 @@ export const RvContainer = styled(Link)`
   }
 
   @media ${(props) => props.theme.tablet} {
-    width: 27vw;
+    width: 28vw;
   }
   @media ${(props) => props.theme.mobile} {
-    width: 35vw;
+    width: 38vw;
   }
 `;
 
@@ -40,18 +40,21 @@ export const Group = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
+  margin-bottom: ${({ marginB }) => marginB};
+
+  @media ${(props) => props.theme.tablet} {
+    margin-bottom: ${({ marginB_M }) => marginB_M || '0px'};
+  }
 `;
 
 export const RvCategory = styled.div`
   background: #f2f2f2 0% 0% no-repeat padding-box;
   border-radius: 5px;
   padding: 6px 8px;
-  margin-bottom: 10px;
 
   @media ${(props) => props.theme.tablet} {
     background: #ffffff 0% 0% no-repeat padding-box;
     padding: 0;
-    margin-bottom: 5px;
   }
 `;
 
@@ -66,7 +69,7 @@ export const RvChannelName = styled.div`
   font-family: 'SHSN-M';
   font-size: 18px;
   line-height: 22px;
-  padding: 0 5px 8px 0;
+  margin-right: 5px;
 
   max-width: 130px;
   overflow: hidden;
@@ -76,8 +79,10 @@ export const RvChannelName = styled.div`
   @media ${(props) => props.theme.tablet} {
     font-size: 14px;
     line-height: 18px;
-    padding: 0 5px 5px 0;
-    max-width: 50%;
+    max-width: 55%;
+  }
+  @media ${(props) => props.theme.mobile} {
+    max-width: 35%;
   }
 `;
 
@@ -86,11 +91,9 @@ export const SubscriberCount = styled.div`
   font-size: 14px;
   line-height: 18px;
   color: #94969b;
-  padding-bottom: 8px;
   @media ${(props) => props.theme.tablet} {
     font-size: 11px;
     line-height: 14px;
-    padding-bottom: 5px;
   }
 `;
 
@@ -98,12 +101,11 @@ export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  padding: 0 5px 15px 0;
+  margin-right: 5px;
 
   @media ${(props) => props.theme.tablet} {
     font-size: 11px;
     line-height: 14px;
-    padding: 0 5px 0 0;
   }
 `;
 
@@ -112,12 +114,10 @@ export const ReviewCount = styled.div`
   font-size: 14px;
   line-height: 18px;
   color: #94969b;
-  padding-bottom: 15px;
 
   @media ${(props) => props.theme.tablet} {
     font-size: 11px;
     line-height: 14px;
-    padding-bottom: 0;
   }
 `;
 
@@ -125,7 +125,6 @@ export const BestReviewTitle = styled.div`
   font-family: 'SHSN-B';
   font-size: 12px;
   line-height: 15px;
-  padding-bottom: 5px;
 
   @media ${(props) => props.theme.tablet} {
     display: none;

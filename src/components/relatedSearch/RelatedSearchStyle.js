@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const SearchDropdownContainer = styled.div`
-  position: absolute;
-  top: 69px;
-  width: 350px;
+  position: ${({ page }) => (page === 'search' ? 'relative' : 'absolute')};
+  top: ${({ page }) =>
+    page === 'header' ? '69px' : page === 'search' ? '10px' : '43px'};
+  width: ${({ page }) =>
+    page === 'header' ? '350px' : page === 'search' ? '100%' : '380px'};
   background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 15px #00000029;
+  box-shadow: ${({ page }) =>
+    page === 'search' ? 0 : '0px 0px 15px #00000029'};
   opacity: 1;
   padding: 5px 0;
 `;
@@ -21,11 +23,11 @@ export const RelatedSearch = styled.div`
   color: #eb3323;
 `;
 
-export const SearchResultBox = styled(Link)`
+export const SearchResultBox = styled.div`
   display: flex;
   align-items: center;
-  padding: 5px 20px;
-  &:hover {
+  padding: ${({ page }) => (page === 'search' ? '5px 16px' : '5px 20px')};
+  &.item_over {
     background-color: #f9fafc;
     cursor: pointer;
     color: #000000;

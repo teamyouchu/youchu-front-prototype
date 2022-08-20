@@ -10,10 +10,10 @@ export default function RecommendCard({
     <style.RcmdContainer to={`/youtubers/review/${id}`}>
       <style.Img src={imageUrl} alt={name} />
       <div>
-        <style.Group>
+        <style.Group marginB="3px">
           <style.RcmdChannelName>{name}</style.RcmdChannelName>
         </style.Group>
-        <style.Group>
+        <style.Group marginB="5px">
           <StarRating ratings={rating} from={'RcmdCard'} />
           <style.Ratings>{rating}</style.Ratings>
           <style.ReviewCount>
