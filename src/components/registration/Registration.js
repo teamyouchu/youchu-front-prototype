@@ -43,12 +43,11 @@ export default function Registration({ registClose }) {
   }, [escFunction]);
 
   // 유튜브에 유튜버 검색 api
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState();
   const searchYoutuber = async (value) => {
     await searchAPI
       .youtuberSearchFromGoogle(value, 5)
       .then((res) => {
-        console.log(res.data.channels);
         setSearchResults(res.data.channels);
       })
       .catch((err) => console.log(err));
@@ -200,7 +199,7 @@ export default function Registration({ registClose }) {
             }}
             autoFocus
           />
-          {isSearch && (
+          {isSearch && searchResults && (
             <RelatedSearch
               page={'registration'}
               searchResults={searchResults}
