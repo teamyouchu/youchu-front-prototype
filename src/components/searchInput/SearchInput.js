@@ -1,11 +1,9 @@
 import * as style from './SearchInputStyle';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 // import listAPI from 'lib/api/listAPI';
-import RelatedSearch from 'components/relatedSearch/RelatedSearch';
-import { useCallback } from 'react';
-import { useMemo } from 'react';
 import searchAPI from 'lib/api/searchAPI';
+import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 import { throttle } from 'lodash';
 
 export default function SearchInput({ page, setChannel }) {
@@ -19,11 +17,11 @@ export default function SearchInput({ page, setChannel }) {
   };
 
   // esc 키 누르면 모달 종료
-  const escFunction = useCallback((event) => {
-    if (event.keyCode === 27) {
+  const escFunction = (e) => {
+    if (e.keyCode === 27) {
       setIsSearch(false);
     }
-  }, []);
+  };
 
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize);
@@ -32,7 +30,8 @@ export default function SearchInput({ page, setChannel }) {
       window.addEventListener('resize', handleWindowResize);
       document.removeEventListener('keydown', escFunction);
     };
-  }, [escFunction]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 유추에 등록된 유튜버 검색 api
   const history = useHistory();
