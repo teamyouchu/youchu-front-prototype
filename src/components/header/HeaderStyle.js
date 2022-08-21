@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from 'semantic-ui-react';
 import { Link, NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
@@ -7,9 +6,9 @@ export const HeaderContainer = styled.div`
   position: fixed;
   top: 0px;
   z-index: 2;
-  background-color: #ffffff;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
 
-  box-shadow: 0;
   transition: box-shadow 0.5s;
   &.scrolled {
     box-shadow: 0 0 15px #dedede;
@@ -25,7 +24,6 @@ export const HeaderBox = styled.div`
   padding: 27px 0 13px 0;
   align-items: center;
   justify-content: space-between;
-
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
@@ -37,26 +35,15 @@ export const HeaderBox = styled.div`
 export const HeaderFlex = styled.div`
   display: flex;
   align-items: center;
-
   @media ${(props) => props.theme.tablet} {
     align-items: flex-start;
-    flex-direction: ${(props) => props.direction || 'row'};
+    flex-direction: ${({ M_direction }) => M_direction || 'row'};
   }
 `;
 
 export const LogoLink = styled(Link)`
   height: 40px;
   margin-right: 80px;
-  /* 로고 폰트로 하게되면 적용 */
-  /* font-family: 'SCD-9';
-  text-align: left;
-  font-size: 29px;
-  line-height: 34px;
-  letter-spacing: 0px;
-  color: #000000;
-  &:hover {
-    color: #000000;
-  } */
   @media ${(props) => props.theme.tablet} {
     margin: 0 0 40px 0;
   }
@@ -82,148 +69,79 @@ export const HeaderNav = styled(NavLink)`
   letter-spacing: 0px;
   color: #000000;
   margin-left: 40px;
-  &:hover {
+  :hover {
     color: #000000;
   }
   &.active {
     font-family: 'SHSN-B';
   }
-
   @media ${(props) => props.theme.tablet} {
     font-size: 16px;
     line-height: 21px;
     margin: 0 20px 0 0;
+    :last-child {
+      margin: 0;
+    }
   }
 `;
 
-export const SearchNav = styled(NavLink)`
-  &.active {
-    display: none;
-  }
-  cursor: default;
-`;
-
-export const SearchForm = styled.form`
-  display: flex;
-  align-items: center;
-  width: 350px;
+export const RegisterBtn = styled.button`
+  width: 100px;
   height: 38px;
-  border: 1px solid #dedede;
-  padding: 9px 20px;
-  &:focus-within {
-    border: 1px solid #3ea6ff;
-  }
-
-  @media ${(props) => props.theme.tablet} {
-    border: none;
-    width: 20px;
-    height: 30px;
-    padding: 0px;
-    margin-right: 4px;
-  }
-`;
-
-export const SearchImg = styled.img`
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-export const SearchInput = styled.input`
-  border: none;
-  width: 248px;
-  height: 18px;
-  margin: 0 20px;
+  background: #eb3323 0% 0% no-repeat padding-box;
+  opacity: 1;
+  margin-left: 20px;
+  border: 0;
 
   font-family: 'SHSN-M';
+  text-align: center;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-  &::placeholder {
-    color: #94969b;
+  color: #ffffff;
+  :hover {
+    background-color: #e02514;
+    cursor: pointer;
   }
-  &:focus {
-    outline: none;
-  }
-
   @media ${(props) => props.theme.tablet} {
-    display: none;
-  }
-`;
-
-export const HeaderButton = styled(Button)`
-  font-family: 'SHSN-M';
-  &&& {
-    text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0px;
-    border-radius: 0px;
     width: 80px;
-    height: 38px;
-    padding: 0;
-    margin: 0;
+    height: 30px;
+    margin-left: 14px;
+    font-size: 13px;
+    line-height: 17px;
   }
 `;
 
-export const RegisterButton = styled(HeaderButton)`
-  &&& {
-    margin-left: 10px;
-    width: 100px;
-  }
-
-  @media ${(props) => props.theme.tablet} {
-    &&& {
-      width: 80px;
-      height: 30px;
-      font-size: 13px;
-      line-height: 17px;
-    }
-  }
-`;
-
-export const LoginButton = styled(HeaderButton)`
-  &&& {
-    margin-left: 10px;
-    background-color: #ffffff;
-    border: 1px solid #dedede;
-    color: #000000;
-  }
-
-  @media ${(props) => props.theme.tablet} {
-    &&& {
-      width: 80px;
-      height: 30px;
-      font-size: 13px;
-      line-height: 17px;
-    }
-  }
-`;
-
-export const AvatarLink = styled(Link)`
-  margin-left: 10px;
-  width: 38px;
+export const HeaderLink = styled(Link)`
   height: 38px;
-  border-radius: 50%;
-
   @media ${(props) => props.theme.tablet} {
-    &&& {
-      width: 30px;
-      height: 30px;
-    }
+    height: 30px;
+  }
+`;
+
+export const LoginButton = styled(RegisterBtn)`
+  width: 80px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dedede;
+  margin-left: 10px;
+  color: #000000;
+  :hover {
+    background-color: #ebebeb;
+  }
+  @media ${(props) => props.theme.tablet} {
+    margin-left: 8px;
+    width: 60px;
   }
 `;
 
 export const GoogleAvatar = styled.img`
   width: 38px;
   height: 38px;
+  margin-left: 10px;
   border-radius: 50%;
   border: 1px solid #dedede;
-
   @media ${(props) => props.theme.tablet} {
-    &&& {
-      width: 30px;
-      height: 30px;
-    }
+    width: 30px;
+    height: 30px;
   }
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SearchDropdownContainer = styled.div`
   position: ${({ page }) => (page === 'search' ? 'relative' : 'absolute')};
   top: ${({ page }) =>
-    page === 'header' ? '69px' : page === 'search' ? '10px' : '43px'};
+    page === 'header' ? '69px' : page === 'search' ? '10px' : '220px'};
   width: ${({ page }) =>
     page === 'header' ? '350px' : page === 'search' ? '100%' : '380px'};
   background: #ffffff 0% 0% no-repeat padding-box;

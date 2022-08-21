@@ -22,9 +22,10 @@ import {
 
 export default function AppRouter() {
   const [isShow, setIsShow] = useState(true);
+  const [isSearchShow, setIsSearchShow] = useState(true);
   return (
     <Router>
-      {isShow && <Header />}
+      {isShow && <Header isSearchShow={isSearchShow} />}
       <div id="wrap">
         <ScrollToTop>
           <Switch>
@@ -32,7 +33,9 @@ export default function AppRouter() {
             <Route path="/search">
               <Search setIsShow={setIsShow} />
             </Route>
-            <Route exact path="/youtubers" component={List} />
+            <Route exact path="/youtubers">
+              <List setIsSearchShow={setIsSearchShow} />
+            </Route>
             <Route exact path="/youtubers/review/:id" component={Review} />
             <Route
               path="/youtubers/review/detail/:id"
