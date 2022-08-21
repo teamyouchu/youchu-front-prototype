@@ -3,42 +3,62 @@ import { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 // import listAPI from 'lib/api/listAPI';
 import RelatedSearch from 'components/relatedSearch/RelatedSearch';
+import { useCallback } from 'react';
+import { useMemo } from 'react';
+import searchAPI from 'lib/api/searchAPI';
+import { throttle } from 'lodash';
 
-export default function SearchInput() {
+export default function SearchInput({ page, setChannel }) {
   // 화면 넓이 1170px 이하되면 연관검색어 종료
   const handleWindowResize = () => {
-    if (window.innerWidth < 1170) {
-      setIsSearch(false);
+    if (page === 'header') {
+      if (window.innerWidth < 1170) {
+        setIsSearch(false);
+      }
     }
   };
-  // esc 키 누르면 연관검색어 종료
-  const escFunction = (event) => {
+
+  // esc 키 누르면 모달 종료
+  const escFunction = useCallback((event) => {
     if (event.keyCode === 27) {
       setIsSearch(false);
     }
-  };
+  }, []);
+
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize);
     document.addEventListener('keydown', escFunction);
-  }, []);
-
-  // 등록된 유튜버 검색 api
-  // TODO 서지수 api 완성 시 주석 제거
-  // const [searchResults, setSearchResults] = useState([]);
-  // const getSearchResult = async () => {
-  //   await listAPI
-  //     .getYoutuber(searchValue, 90, 5)
-  //     .then((res) => {
-  //       setSearchResults(res.data.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+    return () => {
+      window.addEventListener('resize', handleWindowResize);
+      document.removeEventListener('keydown', escFunction);
+    };
+  }, [escFunction]);
 
   // 유추에 등록된 유튜버 검색 api
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    if (window.innerWidth > 1170) {
+    if (page === 'header') {
+      if (window.innerWidth > 1170) {
+        history.push({
+          pathname: '/youtubers',
+          state: {
+            searchValue: searchValue,
+          },
+        });
+        setSearchValue('');
+        setAutoSearchValue('');
+        setIsSearch(false);
+      } else {
+        history.push({
+          pathname: '/search',
+          state: {
+            searchValue: searchValue,
+          },
+        });
+      }
+    }
+    if (page === 'search') {
       history.push({
         pathname: '/youtubers',
         state: {
@@ -46,15 +66,7 @@ export default function SearchInput() {
         },
       });
       setSearchValue('');
-      setAutoSearchValue('');
       setIsSearch(false);
-    } else {
-      history.push({
-        pathname: '/search',
-        state: {
-          searchValue: searchValue,
-        },
-      });
     }
   };
 
@@ -76,6 +88,37 @@ export default function SearchInput() {
     };
   }, [isSearch]);
 
+  // 등록된 유튜버 검색 api
+  // TODO 서지수 api 완성 시 주석 제거
+  // const getSearchResult = async () => {
+  //   await listAPI
+  //     .getYoutuber(searchValue, 90, 5)
+  //     .then((res) => {
+  //       setSearchResults(res.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+  // 유튜브에 유튜버 검색 api
+  const [searchResults, setSearchResults] = useState();
+  const searchYoutuber = async (value) => {
+    await searchAPI
+      .youtuberSearchFromGoogle(value, 5)
+      .then((res) => {
+        setSearchResults(res.data.channels);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //TODO 서지수 임시로 작성한 듯 삭제하기
+  const throttled = useMemo(
+    () =>
+      throttle((value) => {
+        searchYoutuber(value);
+      }, 5000),
+    [],
+  );
+
   // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
@@ -87,7 +130,13 @@ export default function SearchInput() {
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
       setIsSearch(true);
-      // getSearchResult(); TODO 서지수 api 완성 시 주석 제거
+      if (page === 'registration') {
+        throttled(e.target.value);
+        // TODO 서지수 api 용량 초과 해결되면 위에 코드 지우고 아래 코드로 사용하기
+        // searchYoutuber(e.target.value);
+      } else {
+        // getSearchResult(); TODO 서지수 api 완성 시 주석 제거
+      }
     } else {
       // 검색어가 없으면 연관검색어 미표시
       setIsSearch(false);
@@ -148,27 +197,33 @@ export default function SearchInput() {
         ref={inputRef}
         onSubmit={onSearch}
         onKeyDown={handleKeyArrow}
+        page={page}
       >
-        <style.SearchImg
-          src={require('assets/images/searchIcon.svg').default}
-          onClick={onSearch}
-        />
+        {page === 'header' && (
+          <style.SearchImg
+            src={require('assets/images/searchIcon.svg').default}
+            onClick={onSearch}
+          />
+        )}
         <style.SearchInput
+          page={page}
           placeholder="유튜버 이름으로 검색하세요!"
           value={autoSearchValue ? autoSearchValue : searchValue}
           onChange={onSearchValueChange}
           onClick={() => {
             if (searchValue) setIsSearch(!isSearch);
           }}
+          autoFocus={page !== 'header' && true}
         />
       </style.SearchForm>
       {isSearch && (
         <RelatedSearch
-          page={'header'}
-          // searchResults={searchResults} TODO 서지수 api 완성 시 주석 제거
+          page={page}
+          searchResults={searchResults}
           setSearchValue={setSearchValue}
           setAutoSearchValue={setAutoSearchValue}
           setIsSearch={setIsSearch}
+          setChannel={setChannel}
           autoRef={autoRef}
           index={index}
           setIndex={setIndex}
