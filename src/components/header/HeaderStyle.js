@@ -92,39 +92,9 @@ export const SearchNav = styled(NavLink)`
   cursor: default;
 `;
 
-export const SearchForm = styled.form`
-  display: flex;
-  align-items: center;
-  width: 350px;
 export const RegisterBtn = styled.button`
   width: 100px;
   height: 38px;
-  border: 1px solid #dedede;
-  padding: 9px 20px;
-  &:focus-within {
-    border: 1px solid #3ea6ff;
-  }
-
-  @media ${(props) => props.theme.tablet} {
-    border: none;
-    width: 20px;
-    height: 30px;
-    padding: 0px;
-    margin-right: 4px;
-  }
-`;
-
-export const SearchImg = styled.img`
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-export const SearchInput = styled.input`
-  border: none;
-  width: 248px;
-  height: 18px;
-  margin: 0 20px;
   background: #eb3323 0% 0% no-repeat padding-box;
   opacity: 1;
   margin-left: 20px;
@@ -135,21 +105,12 @@ export const SearchInput = styled.input`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-  &::placeholder {
-    color: #94969b;
-  }
-  &:focus {
-    outline: none;
   color: #ffffff;
   :hover {
     background-color: #e02514;
     cursor: pointer;
   }
   @media ${(props) => props.theme.tablet} {
-    display: none;
-  }
-`;
-
     width: 80px;
     height: 30px;
     margin-left: 14px;
