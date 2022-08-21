@@ -161,14 +161,14 @@ export default function Header() {
   return (
     <style.HeaderContainer className={isScrolled ? 'scrolled' : undefined}>
       <style.HeaderBox>
-        <style.HeaderFlex direction="column">
+        <style.HeaderFlex M_direction={'column'}>
           <style.LogoLink to="/">
             <style.LogoImg
               src={require('assets/images/YouChu_logo.png').default}
             />
           </style.LogoLink>
           <style.HeaderNavBox>
-            <style.HeaderNav to="/" exact={true}>
+            <style.HeaderNav exact to="/">
               홈
             </style.HeaderNav>
             <style.HeaderNav to="/youtubers">유튜버 리뷰</style.HeaderNav>
@@ -215,14 +215,14 @@ export default function Header() {
 
           <style.RegisterButton color="red" onClick={registClose}>
             유튜버 등록
-          </style.RegisterButton>
+          </style.RegisterBtn>
           {registOpen && <Registration registClose={registClose} />}
           {userObj.imageUrl !== '' ? (
-            <style.AvatarLink to="/profile">
+            <style.HeaderLink to="/profile">
               <style.GoogleAvatar src={userObj.imageUrl} />
-            </style.AvatarLink>
+            </style.HeaderLink>
           ) : (
-            <Link
+            <style.HeaderLink
               to={{
                 pathname: '/login',
                 state: {
@@ -231,7 +231,7 @@ export default function Header() {
               }}
             >
               <style.LoginButton>로그인</style.LoginButton>
-            </Link>
+            </style.HeaderLink>
           )}
         </style.HeaderFlex>
       </style.HeaderBox>
