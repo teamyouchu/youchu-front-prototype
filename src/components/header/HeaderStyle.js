@@ -85,13 +85,6 @@ export const HeaderNav = styled(NavLink)`
   }
 `;
 
-export const SearchNav = styled(NavLink)`
-  &.active {
-    display: none;
-  }
-  cursor: default;
-`;
-
 export const RegisterBtn = styled.button`
   width: 100px;
   height: 38px;

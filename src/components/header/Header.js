@@ -4,7 +4,7 @@ import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import Registration from 'components/registration/Registration';
 
-export default function Header() {
+export default function Header({ isSearchShow }) {
   const { userObj } = useContext(UserContext);
 
   // 스크롤 여부 (하단 그림자)
@@ -39,13 +39,7 @@ export default function Header() {
           </style.HeaderNavBox>
         </style.HeaderFlex>
         <style.HeaderFlex>
-          <style.SearchNav
-            exact
-            to="/youtubers"
-            onClick={(e) => e.preventDefault()}
-          >
-            <SearchInput />
-          </style.SearchNav>
+          {isSearchShow && <SearchInput page={'header'} />}
           <style.RegisterBtn onClick={registClose}>
             유튜버 등록
           </style.RegisterBtn>

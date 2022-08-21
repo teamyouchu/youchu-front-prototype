@@ -4,15 +4,25 @@ import { useEffect, useState } from 'react';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
+import { useLocation } from 'react-router-dom';
 // import ReviewCard from 'components/reviewCard/ReviewCard';
 
-export default function List(props) {
+export default function List({ setIsSearchShow }) {
+  useEffect(() => {
+    setIsSearchShow(false);
+    return () => {
+      setIsSearchShow(true);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const location = useLocation();
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
-    if (props.location.state) {
-      setSearchValue(props.location.state.searchValue);
+    if (location.state) {
+      setSearchValue(location.state.searchValue);
     }
-  }, [props.location.state]);
+  }, [location.state]);
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
   };
