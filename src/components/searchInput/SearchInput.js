@@ -55,7 +55,14 @@ export default function SearchInput({ page, setChannel }) {
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    if (page !== 'registration') {
+    if (page === 'header' && window.innerWidth < 1170) {
+      history.push({
+        pathname: '/search',
+        state: {
+          searchValue: searchValue,
+        },
+      });
+    } else if (page !== 'registration') {
       history.push({
         pathname: '/youtubers',
         state: {
@@ -65,14 +72,6 @@ export default function SearchInput({ page, setChannel }) {
       setSearchValue('');
       setAutoSearchValue('');
       setIsRelatedSearch(false);
-    }
-    if (page === 'header' && window.innerWidth < 1170) {
-      history.push({
-        pathname: '/search',
-        state: {
-          searchValue: searchValue,
-        },
-      });
     }
   };
 
