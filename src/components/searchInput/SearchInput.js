@@ -77,18 +77,19 @@ export default function SearchInput({ page, setChannel }) {
   };
 
   // 유추에 등록된 유튜버 검색 api
-  // TODO 서지수 api 완성 시 주석 제거
-  // const getSearchResult = async () => {
-  //   await listAPI
-  //     .getYoutuber(searchValue, 90, 5)
-  //     .then((res) => {
-  //       setSearchResults(res.data.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const getSearchResult = async () => {
+    // TODO 서지수 api 완성 시 수정
+    // await listAPI
+    //   .getYoutuber(searchValue, 90, 5)
+    //   .then((res) => {
+    //     setSearchResults(res.data.data);
+    //   })
+    //   .catch((err) => console.log(err));
+    setSearchResults(searchResults_Temp);
+  };
 
   // 유튜브에 유튜버 검색 api
-  const [searchResults, setSearchResults] = useState();
+  const [searchResults, setSearchResults] = useState([]);
   const searchYoutuber = async (value) => {
     await searchAPI
       .youtuberSearchFromGoogle(value, 5)
@@ -123,7 +124,7 @@ export default function SearchInput({ page, setChannel }) {
         // TODO 서지수 api 용량 초과 해결되면 위에 코드 지우고 아래 코드로 사용하기
         // searchYoutuber(e.target.value);
       } else {
-        // getSearchResult(); TODO 서지수 api 완성 시 주석 제거
+        getSearchResult();
       }
     } else {
       // 검색어가 없으면 연관검색어 미표시
@@ -221,3 +222,41 @@ export default function SearchInput({ page, setChannel }) {
     </>
   );
 }
+
+const searchResults_Temp = [
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    title: '빠더너스 BDNS 1',
+    subscribe: 1234,
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    title: '빠더너스 BDNS 2',
+    subscribe: 12345,
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    title: '빠더너스 BDNS 3',
+    subscribe: 123456,
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    title: '빠더너스 BDNS 4',
+    subscribe: 1234567,
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    title: '빠더너스 BDNS빠더너스 BDNS빠더너스 BDNS',
+    subscribe: 12345678,
+  },
+];
