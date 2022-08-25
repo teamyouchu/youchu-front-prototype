@@ -16,7 +16,7 @@ export default function SearchInput({ page, setChannel }) {
     }
   };
 
-  // esc 키 누르면 모달 종료
+  // esc 키 누르면 연관 검색어 종료
   const escFunction = (e) => {
     if (e.keyCode === 27) {
       setIsRelatedSearch(false);
@@ -32,6 +32,24 @@ export default function SearchInput({ page, setChannel }) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // 검색어 외 영역 클릭 시 연관검색어 종료
+  const inputRef = useRef();
+  const [isRelatedSearch, setIsRelatedSearch] = useState(false);
+  useEffect(() => {
+    const handleCloseSearch = (e) => {
+      if (
+        isRelatedSearch &&
+        (!inputRef.current || !inputRef.current.contains(e.target))
+      ) {
+        setIsRelatedSearch(false);
+      }
+    };
+    window.addEventListener('click', handleCloseSearch);
+    return () => {
+      window.removeEventListener('click', handleCloseSearch);
+    };
+  }, [isRelatedSearch]);
 
   // 검색 submit 다음 흐름
   const history = useHistory();
@@ -58,25 +76,7 @@ export default function SearchInput({ page, setChannel }) {
     }
   };
 
-  // 검색어 외 영역 클릭에 따른 연관검색어 표시 여부
-  const inputRef = useRef();
-  const [isRelatedSearch, setIsRelatedSearch] = useState(false);
-  useEffect(() => {
-    const handleCloseSearch = (e) => {
-      if (
-        isRelatedSearch &&
-        (!inputRef.current || !inputRef.current.contains(e.target))
-      ) {
-        setIsRelatedSearch(false);
-      }
-    };
-    window.addEventListener('click', handleCloseSearch);
-    return () => {
-      window.removeEventListener('click', handleCloseSearch);
-    };
-  }, [isRelatedSearch]);
-
-  // 등록된 유튜버 검색 api
+  // 유추에 등록된 유튜버 검색 api
   // TODO 서지수 api 완성 시 주석 제거
   // const getSearchResult = async () => {
   //   await listAPI
