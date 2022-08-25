@@ -8,7 +8,7 @@ export default function RelatedSearch({
   searchResults,
   setSearchValue,
   setAutoSearchValue,
-  setIsSearch,
+  setIsRelatedSearch,
   setChannel,
   autoRef,
   index,
@@ -39,7 +39,7 @@ export default function RelatedSearch({
               onClick={() => {
                 setSearchValue('');
                 setAutoSearchValue(null);
-                setIsSearch(false);
+                setIsRelatedSearch(false);
               }}
               onMouseOver={() => {
                 setIndex(idx);
@@ -60,7 +60,7 @@ export default function RelatedSearch({
               onClick={() => {
                 setSearchValue(data.title);
                 setAutoSearchValue(data.title);
-                setIsSearch(false);
+                setIsRelatedSearch(false);
                 setChannel({ channel_id: data.id, isExist: data.isExist });
               }}
               onMouseOver={() => {

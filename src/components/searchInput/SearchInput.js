@@ -11,7 +11,7 @@ export default function SearchInput({ page, setChannel }) {
   const handleWindowResize = () => {
     if (page === 'header') {
       if (window.innerWidth < 1170) {
-        setIsSearch(false);
+        setIsRelatedSearch(false);
       }
     }
   };
@@ -19,7 +19,7 @@ export default function SearchInput({ page, setChannel }) {
   // esc 키 누르면 모달 종료
   const escFunction = (e) => {
     if (e.keyCode === 27) {
-      setIsSearch(false);
+      setIsRelatedSearch(false);
     }
   };
 
@@ -47,7 +47,7 @@ export default function SearchInput({ page, setChannel }) {
         });
         setSearchValue('');
         setAutoSearchValue('');
-        setIsSearch(false);
+        setIsRelatedSearch(false);
       } else {
         history.push({
           pathname: '/search',
@@ -65,27 +65,27 @@ export default function SearchInput({ page, setChannel }) {
         },
       });
       setSearchValue('');
-      setIsSearch(false);
+      setIsRelatedSearch(false);
     }
   };
 
   // 검색어 외 영역 클릭에 따른 연관검색어 표시 여부
   const inputRef = useRef();
-  const [isSearch, setIsSearch] = useState(false);
+  const [isRelatedSearch, setIsRelatedSearch] = useState(false);
   useEffect(() => {
     const handleCloseSearch = (e) => {
       if (
-        isSearch &&
+        isRelatedSearch &&
         (!inputRef.current || !inputRef.current.contains(e.target))
       ) {
-        setIsSearch(false);
+        setIsRelatedSearch(false);
       }
     };
     window.addEventListener('click', handleCloseSearch);
     return () => {
       window.removeEventListener('click', handleCloseSearch);
     };
-  }, [isSearch]);
+  }, [isRelatedSearch]);
 
   // 등록된 유튜버 검색 api
   // TODO 서지수 api 완성 시 주석 제거
@@ -128,7 +128,7 @@ export default function SearchInput({ page, setChannel }) {
     }
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
-      setIsSearch(true);
+      setIsRelatedSearch(true);
       if (page === 'registration') {
         throttled(e.target.value);
         // TODO 서지수 api 용량 초과 해결되면 위에 코드 지우고 아래 코드로 사용하기
@@ -138,7 +138,7 @@ export default function SearchInput({ page, setChannel }) {
       }
     } else {
       // 검색어가 없으면 연관검색어 미표시
-      setIsSearch(false);
+      setIsRelatedSearch(false);
     }
   };
 
@@ -172,12 +172,12 @@ export default function SearchInput({ page, setChannel }) {
   };
   useEffect(() => {
     if (keyIndex >= 0) {
-      setIsSearch(true);
+      setIsRelatedSearch(true);
       setAutoSearchValue(
         autoRef.current?.children[keyIndex].children[1].innerText,
       );
     } else {
-      setIsSearch(false);
+      setIsRelatedSearch(false);
       setAutoSearchValue(null);
     }
   }, [keyIndex]);
@@ -210,18 +210,18 @@ export default function SearchInput({ page, setChannel }) {
           value={autoSearchValue ? autoSearchValue : searchValue}
           onChange={onSearchValueChange}
           onClick={() => {
-            if (searchValue) setIsSearch(!isSearch);
+            if (searchValue) setIsRelatedSearch(!isRelatedSearch);
           }}
           autoFocus={page !== 'header' && true}
         />
       </style.SearchForm>
-      {isSearch && (
+      {isRelatedSearch && (
         <RelatedSearch
           page={page}
           searchResults={searchResults}
           setSearchValue={setSearchValue}
           setAutoSearchValue={setAutoSearchValue}
-          setIsSearch={setIsSearch}
+          setIsRelatedSearch={setIsRelatedSearch}
           setChannel={setChannel}
           autoRef={autoRef}
           index={index}
