@@ -33,31 +33,11 @@ export default function SearchInput({ page, setChannel }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 유추에 등록된 유튜버 검색 api
+  // 검색 submit 다음 흐름
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    if (page === 'header') {
-      if (window.innerWidth > 1170) {
-        history.push({
-          pathname: '/youtubers',
-          state: {
-            searchValue: searchValue,
-          },
-        });
-        setSearchValue('');
-        setAutoSearchValue('');
-        setIsRelatedSearch(false);
-      } else {
-        history.push({
-          pathname: '/search',
-          state: {
-            searchValue: searchValue,
-          },
-        });
-      }
-    }
-    if (page === 'search') {
+    if (page !== 'registration') {
       history.push({
         pathname: '/youtubers',
         state: {
@@ -65,7 +45,16 @@ export default function SearchInput({ page, setChannel }) {
         },
       });
       setSearchValue('');
+      setAutoSearchValue('');
       setIsRelatedSearch(false);
+    }
+    if (page === 'header' && window.innerWidth < 1170) {
+      history.push({
+        pathname: '/search',
+        state: {
+          searchValue: searchValue,
+        },
+      });
     }
   };
 
