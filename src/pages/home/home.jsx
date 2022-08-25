@@ -54,7 +54,7 @@ export default function Home() {
           </style.HandleBtn>
           <style.ReviewCardContainer id="slider">
             {bestYoutuber.map((data) => (
-              <ReviewCard key={data.id} data={data} />
+              <ReviewCard key={data.id} page={'home'} data={data} />
             ))}
           </style.ReviewCardContainer>
           <style.HandleBtn onClick={slide_R}>

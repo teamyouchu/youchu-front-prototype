@@ -67,7 +67,7 @@ export default function List({ setIsSearchShow }) {
       {allYoutubers ? (
         <style.CardContainer>
           {allYoutubers.map((data) => (
-            <ReviewCard key={data.id} data={data} />
+            <ReviewCard key={data.id} page={'list'} data={data} />
           ))}
         </style.CardContainer>
       ) : (
