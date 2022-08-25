@@ -7,7 +7,7 @@ export const ListContainer = styled.div`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
-    padding: 124px 24px 60px 24px;
+    padding: 125px 24px 60px 24px;
   }
 `;
 
@@ -86,4 +86,12 @@ export const CardContainer = styled.div`
   row-gap: 60px;
   column-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+  @media ${(props) => props.theme.tablet} {
+    row-gap: 30px;
+    column-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media ${(props) => props.theme.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;

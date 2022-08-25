@@ -1,11 +1,11 @@
 import * as style from './style';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 // import listAPI from 'lib/api/listAPI';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
+import ReviewCard from 'components/reviewCard/ReviewCard';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
-import { useLocation } from 'react-router-dom';
-// import ReviewCard from 'components/reviewCard/ReviewCard';
 
 export default function List({ setIsSearchShow }) {
   useEffect(() => {
@@ -64,13 +64,86 @@ export default function List({ setIsSearchShow }) {
           </style.SearchForm>
         </style.FilterBox>
       </style.FilterContainer>
-      {/* <style.CardContainer>
-        {allYoutubers.map((data) => (
-          <ReviewCard key={data.id} data={data} />
-        ))}
-      </style.CardContainer> */}
-      {/* TODO 서지수 api요청 해결되면 검색결과 없는 상황 만들기 */}
-      <EmptyResult />
+      {allYoutubers ? (
+        <style.CardContainer>
+          {allYoutubers.map((data) => (
+            <ReviewCard key={data.id} data={data} />
+          ))}
+        </style.CardContainer>
+      ) : (
+        // TODO 서지수 api요청 해결되면 검색결과 없는 상황 만들기
+        <EmptyResult />
+      )}
     </style.ListContainer>
   );
 }
+
+const allYoutubers = [
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    category: 23,
+    name: '빠더너스 BDNSaaaaaa',
+    subscribes: 1234,
+    rating: '5.0',
+    reviews: 111111,
+    bestReview:
+      '매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게',
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    category: 23,
+    name: '빠더너스 BDNS',
+    subscribes: 12345,
+    rating: '4.9',
+    reviews: 100,
+    bestReview: '하하',
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    category: 23,
+    name: '빠더너스 BDNS',
+    subscribes: 123456,
+    rating: 3.9,
+    reviews: 100,
+    bestReview: '하하',
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    category: 23,
+    name: '빠더너스 BDNS',
+    subscribes: 1234567,
+    rating: 5,
+    reviews: 100,
+    bestReview: '하하',
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    category: 23,
+    name: '빠더너스 BDNS',
+    subscribes: 12345678,
+    rating: 5,
+    reviews: 100,
+    bestReview: '하하',
+  },
+  {
+    id: 'UC5xLohcPE65Y-U62X6snmRQ6',
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    category: 23,
+    name: '빠더너스 BDNS',
+    subscribes: 1234567890000,
+    rating: 5,
+    reviews: 100,
+    bestReview: '하하',
+  },
+];
