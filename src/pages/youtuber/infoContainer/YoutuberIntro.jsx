@@ -31,6 +31,7 @@ export default function YoutuberIntro({
         <style.YoutuberDescription className={showMore ? '' : 'showHidden'}>
           {description}
         </style.YoutuberDescription>
+        {/* TODO 서지수 6줄 이상일 때만 표시하도록 수정 */}
         {!showMore && (
           <style.ViewMore
             onClick={() => {
