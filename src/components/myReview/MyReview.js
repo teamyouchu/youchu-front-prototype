@@ -1,5 +1,5 @@
-import MyReviewInfo from 'components/myReviewInfo/MyReviewInfo';
 import * as style from './MyReviewStyle';
+import ReviewInfo from 'components/reviewInfo/ReviewInfo';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { sortOptions } from 'lib/modules';
 // import { useState, useEffect } from 'react';
@@ -51,7 +51,7 @@ export default function MyReview({ all }) {
         </style.ReviewDropdown>
       )}
       {myReviewList.data.map((data) => (
-        <MyReviewInfo key={data.id} data={data} />
+        <ReviewInfo key={data.id} data={data} />
       ))}
       <style.PaginationContainer>
         {!all && (

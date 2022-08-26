@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const MyReviewInfoContainer = styled.div`
-  width: 800px;
+export const ReviewInfoContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 30px 40px;
@@ -11,6 +11,39 @@ export const MyReviewInfoContainer = styled.div`
     width: 100%;
     padding: 20px 24px;
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+  }
+`;
+
+export const ReviewInfoHeader = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Span = styled.span`
+  text-align: left;
+  font-family: 'SHSN-B';
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0px;
+  color: #000000;
+`;
+
+export const BestReview = styled(Span)`
+  margin-bottom: 5px;
+  color: #5c7fdf;
+`;
+
+export const ReviewWriter = styled(Link)`
+  text-align: left;
+  font-family: 'SHSN-B';
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  margin-bottom: 5px;
+  color: #000000;
+  &:hover {
+    color: #000000;
   }
 `;
 

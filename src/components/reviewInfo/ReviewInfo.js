@@ -1,7 +1,7 @@
-import * as style from './MyReviewInfoStyle';
+import * as style from './ReviewInfoStyle';
 import StarRating from 'components/starRating/StarRating';
 
-export default function MyReviewInfo({
+export default function ReviewInfo({
   data: {
     youtuber: { id, name },
     rating,
@@ -9,6 +9,7 @@ export default function MyReviewInfo({
     createdDatetime,
     likes,
   },
+  from,
 }) {
   // 정렬 기능 구현
 
@@ -19,15 +20,22 @@ export default function MyReviewInfo({
     // TODO 서지수 리뷰 아이디로 삭제 요청 보내기
   };
   return (
-    <style.MyReviewInfoContainer>
-      {/* TODO 서지수 유튜버 클릭시 페이지 이동 */}
-      <style.YoutuberName to={`/youtubers/review/${id}`}>
-        {name}&nbsp;&gt;
-      </style.YoutuberName>
-      <style.RatingBox>
-        <StarRating ratings={rating} margins="5px 0px" />
-        <style.Ratings>{rating}</style.Ratings>
-      </style.RatingBox>
+    <style.ReviewInfoContainer>
+      {from === 'youtuber' ? (
+        <style.ReviewInfoHeader>
+          <style.BestReview>Best Review</style.BestReview>
+        </style.ReviewInfoHeader>
+      ) : (
+        <style.ReviewInfoHeader>
+          <style.YoutuberName to={`/youtubers/review/${id}`}>
+            {name}&nbsp;&gt;
+          </style.YoutuberName>
+          <style.RatingBox>
+            <StarRating ratings={rating} margins="5px 0px" />
+            <style.Ratings>{rating}</style.Ratings>
+          </style.RatingBox>
+        </style.ReviewInfoHeader>
+      )}
       <style.ReviewContent>{content}</style.ReviewContent>
       <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
       <style.UtilContainer>
@@ -40,6 +48,6 @@ export default function MyReviewInfo({
         </style.LikeButton>
         <style.DeleteButton onClick={delReview}>삭제하기</style.DeleteButton>
       </style.UtilContainer>
-    </style.MyReviewInfoContainer>
+    </style.ReviewInfoContainer>
   );
 }
