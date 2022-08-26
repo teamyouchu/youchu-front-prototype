@@ -1,6 +1,6 @@
 import * as style from './recommendYoutuberStyle';
 import RecommendCard from 'components/recommendCard/RecommendCard';
-import { categoryArray } from 'lib/modules';
+// import { categoryArray } from 'lib/modules';
 
 export default function RecommendYoutuber({ category }) {
   return (
@@ -8,15 +8,16 @@ export default function RecommendYoutuber({ category }) {
       <style.RecommendBox>
         {category ? (
           <style.RecommendTitle>
-            {categoryArray.find((x) => x.id === category).value}
-            유튜버
+            {/* TODO 서지수 api 수정되면 카테고리 수정 */}
+            {/* {categoryArray.find((x) => x.id === category).value} */}
+            {category} 유튜버
           </style.RecommendTitle>
         ) : (
           <style.RecommendTitle>이번주 인기 유튜버</style.RecommendTitle>
         )}
       </style.RecommendBox>
       {recommendYoutuber.map((data) => (
-        <style.RecommendBox>
+        <style.RecommendBox key={data.id}>
           <RecommendCard key={data.id} page={'youtuber'} data={data} />
         </style.RecommendBox>
       ))}

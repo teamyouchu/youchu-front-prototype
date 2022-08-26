@@ -23,7 +23,7 @@ export default function YoutuberReview({
           <style.Rating>{rating.toFixed(1)}</style.Rating>
           <Rating
             precision={0.1}
-            defaultValue={rating}
+            value={rating}
             emptyIcon={
               <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
             }
