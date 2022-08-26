@@ -17,9 +17,13 @@ export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #dedede;
-  padding: 30px 40px;
+  padding: 0 40px;
+  :first-child {
+    padding-top: 30px;
+  }
   :last-child {
     border-bottom: 0;
+    padding-bottom: ${({ padding_B }) => padding_B || '30px'};
   }
 `;
 
@@ -94,4 +98,36 @@ export const ViewMore = styled(Span)`
   line-height: 21px;
   color: #5c7fdf;
   cursor: pointer;
+`;
+
+// 유튜버 리뷰
+export const Rating = styled(Span)`
+  font-family: 'SHSN-B';
+  font-size: 25px;
+  line-height: 31px;
+  margin-right: 10px;
+`;
+
+export const ReviewCount = styled(Span)`
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 5px;
+  color: #94969b;
+`;
+
+export const ShowMoreBox = styled.div`
+  width: 100%;
+  height: 61px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ShowMoreSpan = styled(Span)`
+  font-family: 'SHSN-R';
+  font-size: 14px;
+  line-height: 18px;
+  :first-child {
+    font-family: 'SHSN-B';
+  }
 `;
