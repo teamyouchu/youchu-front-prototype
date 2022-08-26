@@ -1,19 +1,9 @@
-import { numToKorean } from 'lib/numberFomat';
-import { useState } from 'react';
 import * as style from './style';
+import { useState } from 'react';
+import { numToKorean } from 'lib/numberFomat';
 
 export default function YoutuberIntro({
-  youtuberInfo: {
-    id,
-    title,
-    description,
-    category,
-    thumbnail,
-    backgroundImage,
-    subscribes,
-    reviews,
-    rating,
-  },
+  youtuberInfo: { id, description, subscribes },
 }) {
   const [showMore, setShowMore] = useState(false);
   return (
