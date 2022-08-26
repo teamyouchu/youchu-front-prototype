@@ -3,7 +3,7 @@ import { Rating } from '@mui/material';
 import { numberComma } from 'lib/numberFomat';
 
 export default function YoutuberHeader({
-  youtuberInfo: { title, thumbnail, reviews, rating },
+  youtuberInfo: { id, title, thumbnail, reviews, rating },
 }) {
   return (
     <style.YoutuberHeaderContainer>
@@ -21,7 +21,7 @@ export default function YoutuberHeader({
         </style.InfoFlex>
       </style.HeaderBox>
       <style.HeaderBox>
-        <style.ReviewButton>
+        <style.ReviewButton to={`/youtubers/reviewWrite/${id}`}>
           <style.ReviewButtonSpan>이 유튜버 리뷰하기</style.ReviewButtonSpan>
         </style.ReviewButton>
       </style.HeaderBox>

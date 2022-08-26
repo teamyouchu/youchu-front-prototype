@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const YoutuberHeaderContainer = styled.div`
@@ -91,7 +92,7 @@ export const ReviewCount = styled(YoutuberRating)`
   margin: 0;
 `;
 
-export const ReviewButton = styled.div`
+export const ReviewButton = styled(Link)`
   width: 240px;
   height: 38px;
   border-radius: 5px;
@@ -99,9 +100,6 @@ export const ReviewButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover {
-    cursor: pointer;
-  }
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     margin-top: 20px;
