@@ -36,9 +36,13 @@ export default function AppRouter() {
             <Route exact path="/youtubers">
               <List setIsSearchShow={setIsSearchShow} />
             </Route>
-            <Route exact path="/youtubers/review/:id" component={Youtuber} />
             <Route
-              path="/youtubers/review/detail/:id"
+              exact
+              path="/youtubers/review/:channel_id"
+              component={Youtuber}
+            />
+            <Route
+              path="/youtubers/review/detail/:channel_id"
               component={ReviewDetail}
             />
             <PrivateRoute
