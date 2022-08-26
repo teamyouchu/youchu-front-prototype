@@ -10,7 +10,9 @@ export const YoutuberHeaderContainer = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin: 0 24px 30px 24px;
+    margin-bottom: 0;
+    padding: 0 24px 30px 24px;
+    border-bottom: 1px solid #dedede;
   }
 `;
 

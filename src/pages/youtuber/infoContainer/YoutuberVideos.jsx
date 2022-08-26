@@ -4,6 +4,7 @@ import VideoInfo from '../videoInfo/VideoInfo';
 
 export default function YoutuberVideos({
   youtuberInfo: { id, reviews, rating },
+  M_display,
 }) {
   const [sortFocus, SetSortSocus] = useState(true);
   const [videos, setVideos] = useState([]);
@@ -16,7 +17,7 @@ export default function YoutuberVideos({
     }
   }, [sortFocus]);
   return (
-    <style.InfoContainer>
+    <style.InfoContainer M_display={M_display}>
       <style.InfoBox>
         <style.TitleFlex>
           <style.InfoTitle margin_B={'0'}> 동영상</style.InfoTitle>

@@ -284,7 +284,7 @@ export default function Youtuber() {
     id: 'UC5xLohcPE65Y-U62X6snmRQ',
     title: '빠더너스',
     description:
-      '月刊 尹鍾信 [월간 윤종신]은 프로듀서 윤종신을 주축으로 한 독자적인 매체이자 기획 전문 집단이다.2010년 3월 두 곡의 음원을 발표하는 것으로 시작된 [월간 윤종신]은 매월 음원과 뮤직비디오를 제작하는 것에서 한걸음 더 나아가 2012 년부터는 디지털 매거진을 발행하고 있으며, 2013 년부터는 음악 뿐만 아니라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf',
+      '月刊 尹鍾信 [월간 윤종신]은 프로듀서 윤종신을 주축으로 한 독자적인 매체이자 기획 전문 집단이다.2010년 3월 두 곡의 음원을 발표하는 것으로 시작된 [월간 윤종신]은 매월 음원과 뮤직비디오를 제작하는 것에서 한걸음 더 나아가 2012 년부터는 디지털 매거진을 발행하고 있으며, 2013 년부터는 음악 뿐만 아니라 문학, 영화, 사진, 미술, 아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, 아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, 아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, 아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf',
     category: 23,
     thumbnail:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
@@ -309,7 +309,7 @@ export default function Youtuber() {
           <style.LeftInfoContainer>
             <YoutuberIntro youtuberInfo={youtuberInfo} />
             <YoutuberReview youtuberInfo={youtuberInfo} />
-            <YoutuberVideos youtuberInfo={youtuberInfo} />
+            <YoutuberVideos youtuberInfo={youtuberInfo} M_display={'none'} />
           </style.LeftInfoContainer>
           <style.RightInfoContainer>
             <RecommendYoutuber category={youtuberInfo.category} />

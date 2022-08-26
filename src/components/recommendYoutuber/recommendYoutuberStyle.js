@@ -11,6 +11,12 @@ export const RecommendContainer = styled.div`
   :last-child {
     margin-bottom: 0;
   }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 0;
+  }
 `;
 
 export const RecommendBox = styled.div`
@@ -21,6 +27,9 @@ export const RecommendBox = styled.div`
   }
   :last-child {
     border-bottom: 0;
+  }
+  @media ${(props) => props.theme.tablet} {
+    border-bottom: 1px solid rgb(222, 222, 222, 0.49);
   }
 `;
 

@@ -11,6 +11,13 @@ export const InfoContainer = styled.div`
   :last-child {
     margin-bottom: 0;
   }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 0;
+    display: ${({ M_display }) => M_display};
+  }
 `;
 export const InfoBox = styled.div`
   width: 100%;
@@ -24,6 +31,13 @@ export const InfoBox = styled.div`
   :last-child {
     border-bottom: 0;
     padding-bottom: ${({ padding_B }) => padding_B || '30px'};
+  }
+  @media ${(props) => props.theme.tablet} {
+    padding: 0 24px;
+    border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+    :first-child {
+      padding-top: 20px;
+    }
   }
 `;
 
@@ -52,6 +66,9 @@ export const SpanFlex = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${({ margin_B }) => margin_B || '20px'};
+  @media ${(props) => props.theme.tablet} {
+    margin-bottom: ${({ margin_B }) => margin_B || '15px'};
+  }
 `;
 
 export const InfoSpan = styled(Span)`
@@ -106,6 +123,10 @@ export const Rating = styled(Span)`
   font-size: 25px;
   line-height: 31px;
   margin-right: 10px;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 20px;
+    line-height: 25px;
+  }
 `;
 
 export const ReviewCount = styled(Span)`
@@ -121,6 +142,9 @@ export const ShowMoreBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media ${(props) => props.theme.tablet} {
+    height: 51px;
+  }
 `;
 
 export const ShowMoreSpan = styled(Span)`
