@@ -24,9 +24,7 @@ export default function YoutuberReview({
           <Rating
             precision={0.1}
             value={rating}
-            emptyIcon={
-              <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-            }
+            emptyIcon={<StarIcon fontSize="inherit" />}
             readOnly
           />
           <style.ReviewCount>{numberComma(reviews)}개 리뷰</style.ReviewCount>
