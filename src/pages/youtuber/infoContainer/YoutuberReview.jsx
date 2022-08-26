@@ -20,7 +20,7 @@ export default function YoutuberReview({
       <style.InfoBox>
         <style.InfoTitle> 리뷰</style.InfoTitle>
         <style.SpanFlex>
-          <style.Rating>{rating.toFixed(1)} </style.Rating>
+          <style.Rating>{rating.toFixed(1)}</style.Rating>
           <Rating
             precision={0.1}
             defaultValue={rating}
