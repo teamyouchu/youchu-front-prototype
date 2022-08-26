@@ -45,6 +45,9 @@ export const LeftInfoContainer = styled.div`
   flex-direction: column;
   width: 100%;
   margin-right: 42px;
+  @media ${(props) => props.theme.tablet} {
+    margin-right: 0;
+  }
 `;
 
 export const RightInfoContainer = styled(LeftInfoContainer)`
