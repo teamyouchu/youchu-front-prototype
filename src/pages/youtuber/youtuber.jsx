@@ -278,6 +278,58 @@ function Review() {
   );
 }
 
+export default function Youtuber() {
+  const [youtuberInfo, setYoutuberInfo] = useState({
+    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    title: '빠더너스',
+    description:
+      '月刊 尹鍾信 [월간 윤종신]은 프로듀서 윤종신을 주축으로 한 독자적인 매체이자 기획 전문 집단이다.2010년 3월 두 곡의 음원을 발표하는 것으로 시작된 [월간 윤종신]은 매월 음원과 뮤직비디오를 제작하는 것에서 한걸음 더 나아가 2012 년부터는 디지털 매거진을 발행하고 있으며, 2013 년부터는 음악 뿐만 아니라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf라 문학, 영화, 사진, 미술, dkfjkdajfskdjfkadsjfasjfklsdajfkl;adsjfkl;jdsaklf아ㅓㄹ아러ㅏ어라추ㅏㅍ머ㅏㄴㅇ럼낭러먼ㅇ람너아라아어람ㅇㄴ러ㅏㅁ러ㅏㅇㅁㄴ러ㅏㅇㄴㅁ러ㅏㅇㄴ러ㅏㅁㅇ너랑ㄴ머ㅏ ㅓㄴㅇ마렁나렁ㅁasdfasdfsadfasdfsdafasdfadsfsdf',
+    category: 23,
+    thumbnail:
+      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
+    backgroundImage: '',
+    subscribes: 11233143,
+    reviews: 391232,
+    rating: 4.9,
+  });
+  return (
+    <style.YoutuberContainer>
+      {youtuberInfo.backgroundImage ? (
+        <style.YoutuberBanner
+          src={youtuberInfo.backgroundImage}
+          alt="YoutuberBanner"
+        />
+      ) : (
+        <style.GrayBar />
+      )}
+      <style.InfoContatiner>
+        <style.YoutuberHeaderContainer>
+          <style.HeaderBox>
+            <style.YoutuberImg src={youtuberInfo.thumbnail} />
+            <style.Flex
+              direction={'column'}
+              alignItems={'flex-start'}
+              M_direction={'column'}
+              M_alignItems={'center'}
+            >
+              <style.YoutuberName>{youtuberInfo.title}</style.YoutuberName>
+              <style.Flex
+                direction={'row'}
+                M_justifyContent={'center'}
+                M_alignItems={'center'}
+              >
+                <Rating max={1} value={1} size="small" readOnly />
+                <style.YoutuberRating>
+                  {youtuberInfo.rating}
+                </style.YoutuberRating>
+                <style.ReviewCount>
+                  ({numberComma(youtuberInfo.reviews)})개 리뷰
+                </style.ReviewCount>
+              </style.Flex>
+            </style.Flex>
+          </style.HeaderBox>
+          <style.HeaderBox>
+            <style.ReviewButton>
               <style.ReviewButtonSpan>
                 이 유튜버 리뷰하기
               </style.ReviewButtonSpan>
@@ -292,3 +344,4 @@ function Review() {
       </style.InfoContatiner>
     </style.YoutuberContainer>
   );
+}
