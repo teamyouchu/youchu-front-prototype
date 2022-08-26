@@ -13,6 +13,7 @@ import YoutuberIntro from './infoContainer/YoutuberIntro';
 import YoutuberReview from './infoContainer/YoutuberReview';
 import YoutuberVideos from './infoContainer/YoutuberVideos';
 import YoutuberHeader from './youtuberHeader/YoutuberHeader';
+import RecommendYoutuber from 'components/recommendYoutuber/RecommendYoutuber';
 
 // function YoutuberDetail({ reviewOverView }) {
 //   const { title, subscribes, description } = reviewOverView;
@@ -305,9 +306,15 @@ export default function Youtuber() {
       <style.InfoContatiner>
         <YoutuberHeader youtuberInfo={youtuberInfo} />
         <style.MainInfoContainer>
-          <YoutuberIntro youtuberInfo={youtuberInfo} />
-          <YoutuberReview youtuberInfo={youtuberInfo} />
-          <YoutuberVideos youtuberInfo={youtuberInfo} />
+          <style.LeftInfoContainer>
+            <YoutuberIntro youtuberInfo={youtuberInfo} />
+            <YoutuberReview youtuberInfo={youtuberInfo} />
+            <YoutuberVideos youtuberInfo={youtuberInfo} />
+          </style.LeftInfoContainer>
+          <style.RightInfoContainer>
+            <RecommendYoutuber category={youtuberInfo.category} />
+            <RecommendYoutuber />
+          </style.RightInfoContainer>
         </style.MainInfoContainer>
       </style.InfoContatiner>
     </style.YoutuberContainer>

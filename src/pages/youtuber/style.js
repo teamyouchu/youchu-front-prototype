@@ -32,26 +32,23 @@ export const InfoContatiner = styled.div`
   }
 `;
 
-export const Flex = styled.div`
-  display: flex;
-  flex-direction: ${({ direction }) => direction};
-  justify-content: ${({ justifyContent }) => justifyContent};
-  align-items: ${({ alignItems }) => alignItems};
-  @media ${(props) => props.theme.tablet} {
-    flex-direction: ${({ M_direction }) => M_direction};
-    justify-content: ${({ M_justifyContent }) => M_justifyContent};
-    align-items: ${({ M_alignItems }) => M_alignItems};
-    width: 100%;
-  }
-`;
-
 export const MainInfoContainer = styled.div`
   display: flex;
-  flex-direction: column;
   width: 100%;
   @media ${(props) => props.theme.tablet} {
     flex-direction: column;
   }
+`;
+
+export const LeftInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 42px;
+`;
+
+export const RightInfoContainer = styled(LeftInfoContainer)`
+  margin-right: 0;
 `;
 
 // export const FlexContainer = styled.div`
