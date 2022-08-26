@@ -339,6 +339,7 @@ export default function Youtuber() {
         <style.MainInfoContainer>
           <YoutuberIntro youtuberInfo={youtuberInfo} />
           <YoutuberReview youtuberInfo={youtuberInfo} />
+          <YoutuberVideos youtuberInfo={youtuberInfo} />
         </style.MainInfoContainer>
       </style.InfoContatiner>
     </style.YoutuberContainer>

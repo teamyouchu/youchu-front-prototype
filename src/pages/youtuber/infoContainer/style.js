@@ -51,7 +51,7 @@ export const InfoTitle = styled(Span)`
 export const SpanFlex = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: ${({ margin_B }) => margin_B || '20px'};
 `;
 
 export const InfoSpan = styled(Span)`
@@ -130,4 +130,33 @@ export const ShowMoreSpan = styled(Span)`
   :first-child {
     font-family: 'SHSN-B';
   }
+`;
+
+// 유튜버 동영상
+export const TitleFlex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 31px;
+`;
+
+export const SortSpan = styled(Span)`
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: #94969b;
+  margin-right: 15px;
+  cursor: pointer;
+  &.sortFocus {
+    color: #eb3323;
+  }
+  :last-child {
+    margin-right: 0;
+  }
+`;
+
+export const VideosContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 53px;
 `;
