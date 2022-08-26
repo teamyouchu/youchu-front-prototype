@@ -96,9 +96,7 @@ export const YoutuberDescription = styled(Span)`
   font-family: 'SHSN-R';
   font-size: 16px;
   line-height: 23px;
-  margin-bottom: 5px;
   width: 100%;
-
   &.showHidden {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -115,6 +113,7 @@ export const ViewMore = styled(Span)`
   line-height: 21px;
   color: #5c7fdf;
   cursor: pointer;
+  margin-top: 5px;
 `;
 
 // 유튜버 리뷰

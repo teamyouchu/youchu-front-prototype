@@ -27,22 +27,22 @@ export default function RecommendYoutuber({ category }) {
 
 const recommendYoutuber = [
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
+    id: 'UCUj6rrhMTR9pipbAWBAMvUQ',
     imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNSaaaaaaaaaaaaaaaㅁㄴㅇㄹㅁㄴㅇaaaㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㄹㅁㄴㅇaaaasdasdfadsfasfds',
+      'https://yt3.ggpht.com/ytc/AMLnZu-OoCj8oG4hssfpUAvZ5EPCjBu21krVcB6tkVFsQA=s88-c-k-c0x00ffffff-no-rj',
+    name: '침착맨',
     rating: 5.0,
     reviews: 1000,
-    category: 23,
+    category: 24,
   },
   {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
+    id: 'UCRnoBo60_joBvIQCoAiNCqg',
     imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
+      'https://yt3.ggpht.com/ytc/AKedOLTiuOfbCXthi59y1-b1mnJywXGjUl8BfSfapzyM=s88-c-k-c0x00ffffff-no-rj-mo',
+    name: '월간 윤종신',
     rating: 4.9,
     reviews: 998,
-    category: 23,
+    category: 10,
   },
   {
     id: 'UC5xLohcPE65Y-U62X6snmRQ3',
