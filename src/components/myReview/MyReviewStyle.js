@@ -28,7 +28,8 @@ export const ReviewTitle = styled.div`
   @media ${(props) => props.theme.tablet} {
     font-size: 22px;
     line-height: 27px;
-    padding: 20px 24px 15px 24px;
+    padding: 20px 0 15px 0;
+    margin: 0 24px;
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
   }
 `;
