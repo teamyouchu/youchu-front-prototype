@@ -1,5 +1,5 @@
-import { numberComma } from 'lib/numberFomat';
 import * as style from './VideoInfoStyle';
+import { numberComma } from 'lib/numberFomat';
 
 export default function VideoInfo({
   data: { thumbnail, title, views, dates },
