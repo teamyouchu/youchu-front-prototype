@@ -1,19 +1,15 @@
 import * as style from './ReviewInfoStyle';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from 'lib/UserContext';
 import StarRating from 'components/starRating/StarRating';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
 export default function ReviewInfo({
-  data: {
-    youtuber: { id, name },
-    rating,
-    content,
-    createdDatetime,
-    likes,
-  },
+  data: { youtuber, writer, rating, content, createdDatetime, likes },
   from,
 }) {
+  const { userObj } = useContext(UserContext);
   // 정렬 기능 구현
 
   const onLikeClick = () => {
@@ -36,9 +32,7 @@ export default function ReviewInfo({
         <style.ReviewInfoHeader>
           <style.BestReview>Best Review</style.BestReview>
           <style.WriterInfoFlex>
-            <style.ReviewWriterImg
-              src={require('assets/images/profile.png').default}
-            />
+            <style.ReviewWriterImg src={writer.writerThumbnail} />
             <style.WriterInfoBox>
               <style.RatingBox margin_B={'3px'}>
                 <Rating
@@ -49,14 +43,16 @@ export default function ReviewInfo({
                 />
                 <style.Ratings>{rating.toFixed(1)}</style.Ratings>
               </style.RatingBox>
-              <style.ReviewWriterName>병팔이</style.ReviewWriterName>
+              <style.ReviewWriterName>
+                {writer.writerName}
+              </style.ReviewWriterName>
             </style.WriterInfoBox>
           </style.WriterInfoFlex>
         </style.ReviewInfoHeader>
       ) : (
         <style.ReviewInfoHeader>
-          <style.YoutuberName to={`/youtubers/review/${id}`}>
-            {name}&nbsp;&gt;
+          <style.YoutuberName to={`/youtubers/review/${youtuber.id}`}>
+            {youtuber.name}&nbsp;&gt;
           </style.YoutuberName>
           <style.RatingBox>
             <StarRating ratings={rating} margins="5px 0px" />
@@ -86,12 +82,15 @@ export default function ReviewInfo({
             />
             <style.likeCount>{likes}</style.likeCount>
           </style.LikeButton>
-          {/* TODO 서지수 자신의 리뷰인지에 따라 신고하기와 삭제하기 적절하게 표시하기 */}
-          <style.ReportButton onClick={reportReview}>
-            신고하기
-          </style.ReportButton>
+          {writer.writerEmail !== userObj.email && (
+            <style.ReportButton onClick={reportReview}>
+              신고하기
+            </style.ReportButton>
+          )}
         </style.UtilBox>
-        <style.DeleteButton onClick={delReview}>삭제하기</style.DeleteButton>
+        {writer.writerEmail === userObj.email && (
+          <style.DeleteButton onClick={delReview}>삭제하기</style.DeleteButton>
+        )}
       </style.UtilContainer>
     </style.ReviewInfoContainer>
   );
