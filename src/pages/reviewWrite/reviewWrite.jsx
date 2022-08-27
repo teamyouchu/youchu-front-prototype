@@ -93,9 +93,7 @@ export default function ReviewWrite() {
                 onClick={() => {
                   setIsRating(false);
                 }}
-                emptyIcon={
-                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                }
+                emptyIcon={<StarIcon fontSize="inherit" />}
               />
               {isRating && (
                 <Warning text="별점을 입력해주세요" margin="5px 0 0 0" />

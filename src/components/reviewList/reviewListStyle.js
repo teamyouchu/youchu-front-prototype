@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Pagination } from 'semantic-ui-react';
 
-export const MyReviewContainer = styled.div`
+export const reviewListContainer = styled.div`
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,8 @@ export const ReviewTitle = styled.div`
   @media ${(props) => props.theme.tablet} {
     font-size: 22px;
     line-height: 27px;
-    padding: 20px 24px 15px 24px;
+    padding: 20px 0 15px 0;
+    margin: 0 24px;
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
   }
 `;

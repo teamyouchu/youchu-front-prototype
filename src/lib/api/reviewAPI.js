@@ -5,7 +5,4 @@ export default {
   getReviews(id, num, sortBy) {
     return axios.get(`/youtuber/${id}/review?page=${num}&sort=${sortBy}`);
   },
-  getReview(id) {
-    return axios.get(`/youtuber/${id}`);
-  },
 };
