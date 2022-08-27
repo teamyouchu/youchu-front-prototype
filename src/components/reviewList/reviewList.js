@@ -1,11 +1,11 @@
-import MyReviewInfo from 'components/myReviewInfo/MyReviewInfo';
-import * as style from './MyReviewStyle';
+import * as style from './reviewListStyle';
+import ReviewInfo from 'components/reviewInfo/ReviewInfo';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { sortOptions } from 'lib/modules';
 // import { useState, useEffect } from 'react';
 // import userAPI from 'lib/api/userAPI';
 
-export default function MyReview({ all }) {
+export default function ReviewList({ all, youtuberAll, from }) {
   // TODO 서지수 api 나오면 수정하기
 
   // const [myReviewList, setMyReviewList] = useState({});
@@ -34,15 +34,17 @@ export default function MyReview({ all }) {
     //   });
   };
   return (
-    <style.MyReviewContainer>
-      <style.ReviewTitle>
-        {!all && '최근 '}
-        내가 쓴 리뷰
-        <style.ProfileSub>
-          리뷰 수정은 불가능하고, 삭제만 가능합니다.
-        </style.ProfileSub>
-      </style.ReviewTitle>
-      {all && (
+    <style.reviewListContainer>
+      {!youtuberAll && (
+        <style.ReviewTitle>
+          {!all && '최근 '}
+          내가 쓴 리뷰
+          <style.ProfileSub>
+            리뷰 수정은 불가능하고, 삭제만 가능합니다.
+          </style.ProfileSub>
+        </style.ReviewTitle>
+      )}
+      {(all || youtuberAll) && (
         <style.ReviewDropdown>
           <FilterDropdown
             placeholder={sortOptions[0].text}
@@ -51,10 +53,15 @@ export default function MyReview({ all }) {
         </style.ReviewDropdown>
       )}
       {myReviewList.data.map((data) => (
-        <MyReviewInfo key={data.id} data={data} />
+        <ReviewInfo
+          key={data.id}
+          data={data}
+          from={from}
+          youtuberAll={youtuberAll}
+        />
       ))}
       <style.PaginationContainer>
-        {!all && (
+        {!all && !youtuberAll && (
           <style.MoreBtn to="/profile/allReview">
             <style.MoreBtnSpan font={'SHSN-B'}>
               최근 내가 쓴 리뷰 &nbsp;
@@ -62,7 +69,7 @@ export default function MyReview({ all }) {
             <style.MoreBtnSpan>모두 보기 &gt;</style.MoreBtnSpan>
           </style.MoreBtn>
         )}
-        {all && (
+        {(all || youtuberAll) && (
           <style.PaginationItem
             boundaryRange={0}
             defaultActivePage={1}
@@ -77,7 +84,7 @@ export default function MyReview({ all }) {
           />
         )}
       </style.PaginationContainer>
-    </style.MyReviewContainer>
+    </style.reviewListContainer>
   );
 }
 
@@ -88,6 +95,12 @@ const myReviewList = {
       youtuber: {
         id: 'UCRnoBo60_joBvIQCoAiNCqg',
         name: '월간 윤종신',
+      },
+      writer: {
+        writerEmail: 'jseo9732@gmail.com',
+        writerName: '지구',
+        writerThumbnail:
+          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
       author: '병팔이',
       content:
@@ -102,6 +115,12 @@ const myReviewList = {
         id: 'FDSFWEVSD',
         name: '월간 윤종신',
       },
+      writer: {
+        writerEmail: 'jseo9732@gmail.com',
+        writerName: '지구',
+        writerThumbnail:
+          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
+      },
       author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
@@ -113,6 +132,12 @@ const myReviewList = {
       youtuber: {
         id: 'FDSFWEVSD',
         name: '월간 윤종신',
+      },
+      writer: {
+        writerEmail: 'jseo9732@gmail.com',
+        writerName: '지구',
+        writerThumbnail:
+          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
       author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
@@ -126,6 +151,12 @@ const myReviewList = {
         id: 'FDSFWEVSD',
         name: '월간 윤종신',
       },
+      writer: {
+        writerEmail: 'jseo9732@gmail.com',
+        writerName: '지구',
+        writerThumbnail:
+          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
+      },
       author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
@@ -137,6 +168,12 @@ const myReviewList = {
       youtuber: {
         id: 'FDSFWEVSD',
         name: '월간 윤종신',
+      },
+      writer: {
+        writerEmail: 'jseo9732@gmail.com',
+        writerName: '지구',
+        writerThumbnail:
+          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
       author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',

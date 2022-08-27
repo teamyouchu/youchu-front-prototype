@@ -7,12 +7,12 @@ import PrivateRoute from 'components/PrivateRoute';
 import {
   Home,
   List,
-  Review,
+  Youtuber,
   ReviewWrite,
   Login,
   EmptyPage,
   Signup,
-  ReviewDetail,
+  YoutuberAllReview,
   Profile,
   MyAllReview,
   Search,
@@ -22,9 +22,10 @@ import {
 
 export default function AppRouter() {
   const [isShow, setIsShow] = useState(true);
+  const [isSearchShow, setIsSearchShow] = useState(true);
   return (
     <Router>
-      {isShow && <Header />}
+      {isShow && <Header isSearchShow={isSearchShow} />}
       <div id="wrap">
         <ScrollToTop>
           <Switch>
@@ -32,11 +33,17 @@ export default function AppRouter() {
             <Route path="/search">
               <Search setIsShow={setIsShow} />
             </Route>
-            <Route exact path="/youtubers" component={List} />
-            <Route exact path="/youtubers/review/:id" component={Review} />
+            <Route exact path="/youtubers">
+              <List setIsSearchShow={setIsSearchShow} />
+            </Route>
             <Route
-              path="/youtubers/review/detail/:id"
-              component={ReviewDetail}
+              exact
+              path="/youtubers/review/:channel_id"
+              component={Youtuber}
+            />
+            <Route
+              path="/youtubers/review/detail/:channel_id"
+              component={YoutuberAllReview}
             />
             <PrivateRoute
               path="/youtubers/reviewWrite/:channel_id"

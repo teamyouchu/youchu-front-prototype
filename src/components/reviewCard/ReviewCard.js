@@ -4,6 +4,7 @@ import StarRating from 'components/starRating/StarRating';
 import { numToKorean, overThousand } from 'lib/numberFomat';
 
 export default function ReviewCard({
+  page,
   data: {
     id,
     thumbnail,
@@ -16,7 +17,7 @@ export default function ReviewCard({
   },
 }) {
   return (
-    <style.RvContainer to={`/youtubers/review/${id}`}>
+    <style.RvContainer to={`/youtubers/review/${id}`} page={page}>
       <style.Img src={thumbnail} alt={name} />
       <style.RvInfoContainer>
         <style.Group marginB="10px" marginB_M="5px">

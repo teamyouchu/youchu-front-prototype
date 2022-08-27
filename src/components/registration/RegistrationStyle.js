@@ -54,26 +54,6 @@ export const RediretInfo = styled(Span)`
   margin: 5px 0px;
 `;
 
-export const InputContainer = styled.div`
-  position: relative;
-`;
-
-export const LinkInput = styled.input`
-  border: 1px solid #dedede;
-  width: 380px;
-  height: 40px;
-  border-radius: 5px;
-  padding: 11px 20px;
-  margin-bottom: 30px;
-  font-family: 'SHSN-L';
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  &:focus {
-    outline: 1px solid #3ea6ff;
-  }
-`;
-
 export const CompleteButton = styled.button`
   width: 380px;
   height: 55px;
