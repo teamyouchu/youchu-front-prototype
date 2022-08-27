@@ -46,18 +46,16 @@ export default function YoutuberVideos({
           ))}
         </style.VideosContainer>
       </style.InfoBox>
-      <style.InfoBox padding_B={'0'}>
-        <style.ShowMoreBox>
-          <a
-            href={`https://www.youtube.com/channel/${id}/videos`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <style.ShowMoreSpan>유튜버&nbsp;</style.ShowMoreSpan>
-            <style.ShowMoreSpan>동영상 모두 보기&nbsp;&gt;</style.ShowMoreSpan>
-          </a>
-        </style.ShowMoreBox>
-      </style.InfoBox>
+      <style.ShowMoreBox>
+        <a
+          href={`https://www.youtube.com/channel/${id}/videos`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <style.ShowMoreSpan>유튜버&nbsp;</style.ShowMoreSpan>
+          <style.ShowMoreSpan>동영상 모두 보기&nbsp;&gt;</style.ShowMoreSpan>
+        </a>
+      </style.ShowMoreBox>
     </style.InfoContainer>
   );
 }

@@ -7,41 +7,6 @@ import YoutuberReview from './infoContainer/YoutuberReview';
 import YoutuberVideos from './infoContainer/YoutuberVideos';
 import RecommendYoutuber from 'components/recommendYoutuber/RecommendYoutuber';
 import youtuberAPI from 'lib/api/youtuberAPI';
-// import DetailReviewInfo from 'components/detailReviewInfo/DetailReviewInfo';
-// import ReviewOverview from 'components/reviewOverview/ReviewOverview';
-
-// function YoutuberReviewDetail({ reviewOverView }) {
-//   const history = useHistory();
-//   const handleClick = () => {
-//     history.push({
-//       pathname: `/youtubers/review/detail/${reviewOverView.id}`,
-//       state: {
-//         imageUrl: reviewOverView.imageUrl,
-//         title: reviewOverView.title,
-//         rating: reviewOverView.rating,
-//         reviews: reviewOverView.reviews,
-//         subscribes: reviewOverView.subscribes,
-//         category: reviewOverView.category,
-//       },
-//     });
-//   };
-
-//   return (
-//     <style.ReviewContainer>
-//       <ReviewOverview reviewOverView={reviewOverView} />
-//       <DetailReviewInfo isBest={true} />
-//       <style.ReviewContainerFooter>
-//         <style.AllDetailButton onClick={handleClick}>
-//           <style.Span font="SHSN-B" size="14px">
-//             {reviewOverView && reviewOverView.name}
-//           </style.Span>{' '}
-//           &nbsp;리뷰 모두 보기
-//           <style.RightButton icon={faChevronRight} />
-//         </style.AllDetailButton>
-//       </style.ReviewContainerFooter>
-//     </style.ReviewContainer>
-//   );
-// }
 
 export default function Youtuber() {
   const { channel_id } = useParams();

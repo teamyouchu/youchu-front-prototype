@@ -8,7 +8,7 @@ export default function YoutuberIntro({
   const [showMore, setShowMore] = useState(false);
   return (
     <style.InfoContainer>
-      <style.InfoBox>
+      <style.IntroBox>
         <style.InfoTitle> 소개</style.InfoTitle>
         <style.SpanFlex>
           <style.InfoSpan>홈페이지</style.InfoSpan>
@@ -41,7 +41,7 @@ export default function YoutuberIntro({
             자세히 보기
           </style.ViewMore>
         )}
-      </style.InfoBox>
+      </style.IntroBox>
     </style.InfoContainer>
   );
 }

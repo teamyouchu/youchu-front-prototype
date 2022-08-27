@@ -19,25 +19,13 @@ export const InfoContainer = styled.div`
     display: ${({ M_display }) => M_display};
   }
 `;
-export const InfoBox = styled.div`
-  width: 100%;
+
+export const IntroBox = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #dedede;
-  padding: 0 40px;
-  :first-child {
-    padding-top: 30px;
-  }
-  :last-child {
-    border-bottom: 0;
-    padding-bottom: ${({ padding_B }) => padding_B || '30px'};
-  }
+  padding: 30px 40px;
   @media ${(props) => props.theme.tablet} {
-    padding: 0 24px;
-    border-bottom: 1px solid rgb(222, 222, 222, 0.49);
-    :first-child {
-      padding-top: 20px;
-    }
+    padding: 20px 24px;
   }
 `;
 
@@ -117,6 +105,18 @@ export const ViewMore = styled(Span)`
 `;
 
 // 유튜버 리뷰
+export const ReviewHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dedede;
+  padding: 30px 40px 0 40px;
+  @media ${(props) => props.theme.tablet} {
+    border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+    padding: 0;
+    margin: 20px 24px 0 24px;
+  }
+`;
+
 export const Rating = styled(Span)`
   font-family: 'SHSN-B';
   font-size: 25px;
@@ -156,6 +156,16 @@ export const ShowMoreSpan = styled(Span)`
 `;
 
 // 유튜버 동영상
+export const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dedede;
+  padding: 30px 40px;
+  @media ${(props) => props.theme.tablet} {
+    padding: 20px 24px;
+  }
+`;
+
 export const TitleFlex = styled.div`
   display: flex;
   justify-content: space-between;
@@ -181,5 +191,5 @@ export const SortSpan = styled(Span)`
 export const VideosContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 53px;
+  margin-bottom: 23px;
 `;
