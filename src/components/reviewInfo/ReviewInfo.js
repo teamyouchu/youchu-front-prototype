@@ -8,6 +8,7 @@ import StarIcon from '@mui/icons-material/Star';
 export default function ReviewInfo({
   data: { youtuber, writer, rating, content, createdDatetime, likes },
   from,
+  youtuberAll,
 }) {
   const { userObj } = useContext(UserContext);
   // 정렬 기능 구현
@@ -30,7 +31,7 @@ export default function ReviewInfo({
     <style.ReviewInfoContainer>
       {from === 'youtuber' ? (
         <style.ReviewInfoHeader>
-          <style.BestReview>Best Review</style.BestReview>
+          {!youtuberAll && <style.BestReview>Best Review</style.BestReview>}
           <style.WriterInfoFlex>
             <style.ReviewWriterImg src={writer.writerThumbnail} />
             <style.WriterInfoBox>

@@ -53,7 +53,12 @@ export default function ReviewList({ all, youtuberAll, from }) {
         </style.ReviewDropdown>
       )}
       {myReviewList.data.map((data) => (
-        <ReviewInfo key={data.id} data={data} from={from} />
+        <ReviewInfo
+          key={data.id}
+          data={data}
+          from={from}
+          youtuberAll={youtuberAll}
+        />
       ))}
       <style.PaginationContainer>
         {!all && !youtuberAll && (
