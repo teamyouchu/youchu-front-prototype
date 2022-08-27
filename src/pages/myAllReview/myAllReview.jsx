@@ -1,10 +1,10 @@
-import MyReview from 'components/myReview/MyReview';
+import ReviewList from 'components/reviewList/reviewList';
 import * as style from './style';
 
 export default function MyAllReview() {
   return (
     <style.MyAllReviewContainer>
-      <MyReview all={true} />
+      <ReviewList all={true} />
     </style.MyAllReviewContainer>
   );
 }

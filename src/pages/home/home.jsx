@@ -54,7 +54,7 @@ export default function Home() {
           </style.HandleBtn>
           <style.ReviewCardContainer id="slider">
             {bestYoutuber.map((data) => (
-              <ReviewCard key={data.id} data={data} />
+              <ReviewCard key={data.id} page={'home'} data={data} />
             ))}
           </style.ReviewCardContainer>
           <style.HandleBtn onClick={slide_R}>
@@ -167,7 +167,7 @@ const recommendYoutuber = [
     imageUrl:
       'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
     name: '빠더너스 BDNSaaaaaaaaaaaaaaaㅁㄴㅇㄹㅁㄴㅇaaaㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㄹㅁㄴㅇaaaasdasdfadsfasfds',
-    rating: '5.0',
+    rating: 5.0,
     reviews: 1000,
     category: 23,
   },

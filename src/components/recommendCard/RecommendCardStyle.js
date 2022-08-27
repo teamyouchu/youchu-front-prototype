@@ -5,10 +5,10 @@ export const RcmdContainer = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 350px;
-  border: 1px solid #dedede;
+  width: ${({ page }) => (page === 'youtuber' ? '100%' : '350px')};
+  border: ${({ page }) => (page === 'youtuber' ? '0' : '1px solid #dedede')};
   border-radius: 10px;
-  padding: 18px 20px;
+  padding: ${({ page }) => (page === 'youtuber' ? '20px 18px' : '18px 20px')};
   color: #000000;
   &:hover {
     color: #000000;
@@ -33,6 +33,13 @@ export const Img = styled.img`
   }
 `;
 
+export const GroupBox = styled.div`
+  width: calc(100% - 92px);
+  @media ${(props) => props.theme.mobile} {
+    width: calc(100% - 52px);
+  }
+`;
+
 export const Group = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -45,7 +52,7 @@ export const RcmdChannelName = styled.div`
   font-size: 16px;
   line-height: 21px;
 
-  max-width: 216px;
+  max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

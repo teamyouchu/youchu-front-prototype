@@ -7,12 +7,12 @@ import PrivateRoute from 'components/PrivateRoute';
 import {
   Home,
   List,
-  Review,
+  Youtuber,
   ReviewWrite,
   Login,
   EmptyPage,
   Signup,
-  ReviewDetail,
+  YoutuberAllReview,
   Profile,
   MyAllReview,
   Search,
@@ -36,10 +36,14 @@ export default function AppRouter() {
             <Route exact path="/youtubers">
               <List setIsSearchShow={setIsSearchShow} />
             </Route>
-            <Route exact path="/youtubers/review/:id" component={Review} />
             <Route
-              path="/youtubers/review/detail/:id"
-              component={ReviewDetail}
+              exact
+              path="/youtubers/review/:channel_id"
+              component={Youtuber}
+            />
+            <Route
+              path="/youtubers/review/detail/:channel_id"
+              component={YoutuberAllReview}
             />
             <PrivateRoute
               path="/youtubers/reviewWrite/:channel_id"

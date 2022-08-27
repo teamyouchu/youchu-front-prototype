@@ -3,7 +3,7 @@ import { useEffect, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import userAPI from 'lib/api/userAPI';
 import { categoryArray } from 'lib/modules';
-import MyReview from 'components/myReview/MyReview';
+import ReviewList from 'components/reviewList/reviewList';
 import Logout from 'components/logout/Logout';
 
 export default function Profile() {
@@ -51,7 +51,7 @@ export default function Profile() {
             <Logout />
           </style.flexBox>
         </style.PicBox>
-        <MyReview />
+        <ReviewList />
       </style.ProfileBox>
     </style.ProfileContainer>
   );

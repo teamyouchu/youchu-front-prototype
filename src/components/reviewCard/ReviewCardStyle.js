@@ -12,10 +12,10 @@ export const RvContainer = styled(Link)`
   }
 
   @media ${(props) => props.theme.tablet} {
-    width: 28vw;
+    width: ${({ page }) => (page === 'home' ? '28vw' : '100%')};
   }
   @media ${(props) => props.theme.mobile} {
-    width: 38vw;
+    width: ${({ page }) => (page === 'home' ? '38vw' : '100%')};
   }
 `;
 
