@@ -18,6 +18,7 @@ export const ReviewInfoHeader = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 `;
 
 export const Span = styled.span`
@@ -30,21 +31,48 @@ export const Span = styled.span`
 `;
 
 export const BestReview = styled(Span)`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #5c7fdf;
 `;
 
-export const ReviewWriter = styled(Link)`
-  text-align: left;
+export const WriterInfoFlex = styled.div`
+  display: flex;
+`;
+
+export const ReviewWriterImg = styled.img`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #dedede;
+  margin-right: 8px;
+`;
+
+export const WriterInfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RatingBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${({ margin_B }) => margin_B};
+  @media ${(props) => props.theme.tablet} {
+    margin-bottom: 15px;
+  }
+`;
+
+export const Ratings = styled.div`
   font-family: 'SHSN-B';
   font-size: 14px;
   line-height: 18px;
-  letter-spacing: 0px;
-  margin-bottom: 5px;
-  color: #000000;
-  &:hover {
-    color: #000000;
-  }
+  padding-left: 5px;
+`;
+
+export const ReviewWriterName = styled(Span)`
+  font-family: 'SHSN-R';
+  font-size: 13px;
+  line-height: 17px;
+  color: #94969b;
 `;
 
 export const YoutuberName = styled(Link)`
@@ -60,22 +88,6 @@ export const YoutuberName = styled(Link)`
   }
 `;
 
-export const RatingBox = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  @media ${(props) => props.theme.tablet} {
-    margin-bottom: 15px;
-  }
-`;
-
-export const Ratings = styled.div`
-  font-family: 'SHSN-B';
-  font-size: 14px;
-  line-height: 18px;
-  padding-left: 5px;
-`;
-
 export const ReviewContent = styled.div`
   text-align: left;
   font-family: 'SHSN-R';
@@ -83,6 +95,24 @@ export const ReviewContent = styled.div`
   line-height: 23px;
   letter-spacing: 0px;
   color: #000000;
+  margin-bottom: 5px;
+
+  &.showHidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+`;
+
+export const ViewMore = styled(Span)`
+  font-family: 'SHSN-R';
+  font-size: 15px;
+  line-height: 23px;
+  color: #5c7fdf;
+  cursor: pointer;
   margin-bottom: 5px;
 `;
 
@@ -103,6 +133,11 @@ export const UtilContainer = styled.div`
   align-items: flex-end;
 `;
 
+export const UtilBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const LikeButton = styled.div`
   width: 67px;
   height: 30px;
@@ -112,6 +147,7 @@ export const LikeButton = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 6px 13px;
+  margin-right: 10px;
   &:hover {
     cursor: pointer;
   }
@@ -129,6 +165,17 @@ export const likeCount = styled.span`
   line-height: 18px;
   letter-spacing: 0px;
   color: #000000;
+`;
+
+export const ReportButton = styled(Span)`
+  font-family: 'SHSN-R';
+  font-size: 14px;
+  line-height: 18px;
+  color: #94969b;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 export const DeleteButton = styled.button`
