@@ -7,6 +7,9 @@ export const ReviewInfoContainer = styled.div`
   flex-direction: column;
   padding: 30px 40px;
   border-bottom: 1px solid #dedede;
+  :last-child {
+    border-bottom: 0;
+  }
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     padding: 20px 24px;

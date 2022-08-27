@@ -12,7 +12,7 @@ import {
   Login,
   EmptyPage,
   Signup,
-  ReviewDetail,
+  YoutuberAllReview,
   Profile,
   MyAllReview,
   Search,
@@ -43,7 +43,7 @@ export default function AppRouter() {
             />
             <Route
               path="/youtubers/review/detail/:channel_id"
-              component={ReviewDetail}
+              component={YoutuberAllReview}
             />
             <PrivateRoute
               path="/youtubers/reviewWrite/:channel_id"
