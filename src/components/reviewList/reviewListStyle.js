@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Pagination } from 'semantic-ui-react';
 
-export const MyReviewContainer = styled.div`
+export const reviewListContainer = styled.div`
   width: 800px;
   display: flex;
   flex-direction: column;
