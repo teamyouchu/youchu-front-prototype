@@ -22,6 +22,9 @@ export const ReviewInfoHeader = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.tablet} {
+    margin-bottom: 15px;
+  }
 `;
 
 export const Span = styled.span`
@@ -59,9 +62,6 @@ export const RatingBox = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${({ margin_B }) => margin_B};
-  @media ${(props) => props.theme.tablet} {
-    margin-bottom: 15px;
-  }
 `;
 
 export const Ratings = styled.div`
