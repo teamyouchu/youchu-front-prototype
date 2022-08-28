@@ -1,5 +1,5 @@
 import * as style from './ReviewInfoStyle';
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { UserContext } from 'lib/UserContext';
 import StarRating from 'components/starRating/StarRating';
 import Rating from '@mui/material/Rating';
@@ -25,7 +25,16 @@ export default function ReviewInfo({
     // TODO 서지수 리뷰 아이디로 삭제 요청 보내기
     console.log('삭제하기');
   };
+  const contentRef = useRef();
+  let clientHeight = contentRef.current?.clientHeight;
+  useEffect(() => {
+    console.log(clientHeight);
+    if (clientHeight >= 138) {
+      setShowMoreBtn(true);
+    }
+  }, [clientHeight]);
 
+  const [showMoreBtn, setShowMoreBtn] = useState(false);
   const [showMore, setShowMore] = useState(false);
   return (
     <style.ReviewInfoContainer>
@@ -61,16 +70,19 @@ export default function ReviewInfo({
           </style.RatingBox>
         </style.ReviewInfoHeader>
       )}
-      <style.ReviewContent className={showMore ? '' : 'showHidden'}>
+      <style.ReviewContent
+        ref={contentRef}
+        className={showMore ? '' : 'showHidden'}
+      >
         {content}
       </style.ReviewContent>
-      {!showMore && (
+      {showMoreBtn && (
         <style.ViewMore
           onClick={() => {
             setShowMore(!showMore);
           }}
         >
-          자세히 보기
+          {showMore ? '간략히 보기' : '자세히 보기'}
         </style.ViewMore>
       )}
       <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>

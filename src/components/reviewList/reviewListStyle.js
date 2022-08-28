@@ -51,7 +51,7 @@ export const ProfileSub = styled.div`
 export const ReviewDropdown = styled.div`
   padding: 30px 40px 0 40px;
   @media ${(props) => props.theme.tablet} {
-    padding: 15px 24px 0 24px;
+    padding: 15px 24px 10px 24px;
   }
 `;
 
