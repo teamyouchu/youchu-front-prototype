@@ -1,9 +1,10 @@
 import * as style from './ReviewInfoStyle';
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import StarRating from 'components/starRating/StarRating';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
 
 export default function ReviewInfo({
   data: { youtuber, writer, rating, content, createdDatetime, likes },
@@ -25,17 +26,7 @@ export default function ReviewInfo({
     // TODO 서지수 리뷰 아이디로 삭제 요청 보내기
     console.log('삭제하기');
   };
-  const contentRef = useRef();
-  let clientHeight = contentRef.current?.clientHeight;
-  useEffect(() => {
-    console.log(clientHeight);
-    if (clientHeight >= 138) {
-      setShowMoreBtn(true);
-    }
-  }, [clientHeight]);
 
-  const [showMoreBtn, setShowMoreBtn] = useState(false);
-  const [showMore, setShowMore] = useState(false);
   return (
     <style.ReviewInfoContainer>
       {from === 'youtuber' ? (
@@ -70,21 +61,7 @@ export default function ReviewInfo({
           </style.RatingBox>
         </style.ReviewInfoHeader>
       )}
-      <style.ReviewContent
-        ref={contentRef}
-        className={showMore ? '' : 'showHidden'}
-      >
-        {content}
-      </style.ReviewContent>
-      {showMoreBtn && (
-        <style.ViewMore
-          onClick={() => {
-            setShowMore(!showMore);
-          }}
-        >
-          {showMore ? '간략히 보기' : '자세히 보기'}
-        </style.ViewMore>
-      )}
+      <ContentsOverflow contents={content} />
       <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
       <style.UtilContainer>
         <style.UtilBox>
