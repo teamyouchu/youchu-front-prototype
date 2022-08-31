@@ -1,7 +1,6 @@
 import * as style from './ReviewInfoStyle';
 import { useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
-import StarRating from 'components/starRating/StarRating';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
@@ -61,7 +60,13 @@ export default function ReviewInfo({
               {youtuber.name}&nbsp;&gt;
             </style.YoutuberName>
             <style.RatingBox>
-              <StarRating ratings={rating} margins="5px 0px" />
+              <Rating
+                precision={0.1}
+                value={rating}
+                emptyIcon={<StarIcon fontSize="inherit" />}
+                readOnly
+                size="small"
+              />
               <style.Ratings>{rating.toFixed(1)}</style.Ratings>
             </style.RatingBox>
           </style.ReviewInfoHeader>

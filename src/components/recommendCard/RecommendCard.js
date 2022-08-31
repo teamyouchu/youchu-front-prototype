@@ -1,5 +1,6 @@
 import * as style from './RecommendCardStyle';
-import StarRating from 'components/starRating/StarRating';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 import { categoryArray } from 'lib/modules';
 import { overThousand } from 'lib/numberFomat';
 
@@ -15,7 +16,13 @@ export default function RecommendCard({
           <style.RcmdChannelName>{name}</style.RcmdChannelName>
         </style.Group>
         <style.Group marginB="5px">
-          <StarRating ratings={rating} from={'RcmdCard'} />
+          <Rating
+            precision={0.1}
+            value={rating}
+            emptyIcon={<StarIcon fontSize="inherit" />}
+            readOnly
+            size="small"
+          />
           <style.Ratings>{rating.toFixed(1)}</style.Ratings>
           {page !== 'youtuber' && (
             <style.ReviewCount>
