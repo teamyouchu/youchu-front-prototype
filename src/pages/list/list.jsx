@@ -86,7 +86,7 @@ const allYoutubers = [
     category: 23,
     name: '빠더너스 BDNSaaaaaa',
     subscribes: 1234,
-    rating: '5.0',
+    rating: 5.0,
     reviews: 111111,
     bestReview:
       '매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게',
@@ -98,7 +98,7 @@ const allYoutubers = [
     category: 23,
     name: '빠더너스 BDNS',
     subscribes: 12345,
-    rating: '4.9',
+    rating: 4.9,
     reviews: 100,
     bestReview: '하하',
   },
