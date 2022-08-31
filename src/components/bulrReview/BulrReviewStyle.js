@@ -1,34 +1,40 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const ConfirmReviewContainer = styled.div`
+export const BulrReviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 720px;
-  height: auto;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: 50px;
-  left: 45px;
+  backdrop-filter: blur(12px);
+  z-index: 2;
 `;
 
-export const Span = styled.span`
-  font-family: ${(props) => props.font};
-  font-size: ${(props) => props.size};
-  color: ${(props) => props.color};
-  margin: ${(props) => props.margins};
+export const BulrTitle = styled.span`
+  text-align: center;
+  font-family: 'SHSN-B';
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0px;
+  color: #000000;
 `;
 
-export const ReviewButton = styled.div`
+export const ReviewButton = styled(Link)`
   width: 170px;
   height: 40px;
   border-radius: 5px;
-  background-color: #5c7fdf;
+  background: #5c7fdf 0% 0% no-repeat padding-box;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  &:hover {
-    cursor: pointer;
-  }
+`;
+
+export const BtnSpan = styled(BulrTitle)`
+  font-size: 14px;
+  line-height: 18px;
+  color: #ffffff;
 `;

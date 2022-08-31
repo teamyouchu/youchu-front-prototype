@@ -1,9 +1,10 @@
 import * as style from './ReviewInfoStyle';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
-import StarRating from 'components/starRating/StarRating';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
+import BulrReview from 'components/bulrReview/BulrReview';
 
 export default function ReviewInfo({
   data: { youtuber, writer, rating, content, createdDatetime, likes },
@@ -26,73 +27,74 @@ export default function ReviewInfo({
     console.log('삭제하기');
   };
 
-  const [showMore, setShowMore] = useState(false);
   return (
     <style.ReviewInfoContainer>
-      {from === 'youtuber' ? (
-        <style.ReviewInfoHeader>
-          {!youtuberAll && <style.BestReview>Best Review</style.BestReview>}
-          <style.WriterInfoFlex>
-            <style.ReviewWriterImg src={writer.writerThumbnail} />
-            <style.WriterInfoBox>
-              <style.RatingBox margin_B={'3px'}>
-                <Rating
-                  precision={0.1}
-                  value={rating}
-                  emptyIcon={<StarIcon fontSize="inherit" />}
-                  readOnly
-                />
-                <style.Ratings>{rating.toFixed(1)}</style.Ratings>
-              </style.RatingBox>
-              <style.ReviewWriterName>
-                {writer.writerName}
-              </style.ReviewWriterName>
-            </style.WriterInfoBox>
-          </style.WriterInfoFlex>
-        </style.ReviewInfoHeader>
-      ) : (
-        <style.ReviewInfoHeader>
-          <style.YoutuberName to={`/youtubers/review/${youtuber.id}`}>
-            {youtuber.name}&nbsp;&gt;
-          </style.YoutuberName>
-          <style.RatingBox>
-            <StarRating ratings={rating} margins="5px 0px" />
-            <style.Ratings>{rating.toFixed(1)}</style.Ratings>
-          </style.RatingBox>
-        </style.ReviewInfoHeader>
+      {from === 'youtuber' && youtuberAll && !userObj.hasReview && (
+        <BulrReview channel_id={youtuber.id} />
       )}
-      <style.ReviewContent className={showMore ? '' : 'showHidden'}>
-        {content}
-      </style.ReviewContent>
-      {!showMore && (
-        <style.ViewMore
-          onClick={() => {
-            setShowMore(!showMore);
-          }}
-        >
-          자세히 보기
-        </style.ViewMore>
-      )}
-      <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
-      <style.UtilContainer>
-        <style.UtilBox>
-          <style.LikeButton onClick={onLikeClick}>
-            <style.LikeImg
-              alt="좋아요"
-              src={require('assets/images/heart.svg').default}
-            />
-            <style.likeCount>{likes}</style.likeCount>
-          </style.LikeButton>
-          {writer.writerEmail !== userObj.email && (
-            <style.ReportButton onClick={reportReview}>
-              신고하기
-            </style.ReportButton>
-          )}
-        </style.UtilBox>
-        {writer.writerEmail === userObj.email && (
-          <style.DeleteButton onClick={delReview}>삭제하기</style.DeleteButton>
+      <style.ReviewInfoBox>
+        {from === 'youtuber' ? (
+          <style.ReviewInfoHeader>
+            {!youtuberAll && <style.BestReview>Best Review</style.BestReview>}
+            <style.WriterInfoFlex>
+              <style.ReviewWriterImg src={writer.writerThumbnail} />
+              <style.WriterInfoBox>
+                <style.RatingBox margin_B={'3px'}>
+                  <Rating
+                    precision={0.1}
+                    value={rating}
+                    emptyIcon={<StarIcon fontSize="inherit" />}
+                    readOnly
+                  />
+                  <style.Ratings>{rating.toFixed(1)}</style.Ratings>
+                </style.RatingBox>
+                <style.ReviewWriterName>
+                  {writer.writerName}
+                </style.ReviewWriterName>
+              </style.WriterInfoBox>
+            </style.WriterInfoFlex>
+          </style.ReviewInfoHeader>
+        ) : (
+          <style.ReviewInfoHeader>
+            <style.YoutuberName to={`/youtubers/review/${youtuber.id}`}>
+              {youtuber.name}&nbsp;&gt;
+            </style.YoutuberName>
+            <style.RatingBox>
+              <Rating
+                precision={0.1}
+                value={rating}
+                emptyIcon={<StarIcon fontSize="inherit" />}
+                readOnly
+                size="small"
+              />
+              <style.Ratings>{rating.toFixed(1)}</style.Ratings>
+            </style.RatingBox>
+          </style.ReviewInfoHeader>
         )}
-      </style.UtilContainer>
+        <ContentsOverflow contents={content} />
+        <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
+        <style.UtilContainer>
+          <style.UtilBox>
+            <style.LikeButton onClick={onLikeClick}>
+              <style.LikeImg
+                alt="좋아요"
+                src={require('assets/images/heart.svg').default}
+              />
+              <style.likeCount>{likes}</style.likeCount>
+            </style.LikeButton>
+            {writer.writerEmail !== userObj.email && (
+              <style.ReportButton onClick={reportReview}>
+                신고하기
+              </style.ReportButton>
+            )}
+          </style.UtilBox>
+          {writer.writerEmail === userObj.email && (
+            <style.DeleteButton onClick={delReview}>
+              삭제하기
+            </style.DeleteButton>
+          )}
+        </style.UtilContainer>
+      </style.ReviewInfoBox>
     </style.ReviewInfoContainer>
   );
 }

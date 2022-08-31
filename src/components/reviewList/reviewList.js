@@ -102,7 +102,6 @@ const myReviewList = {
         writerThumbnail:
           'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
-      author: '병팔이',
       content:
         '제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다.',
       rating: 4.5,
@@ -121,7 +120,6 @@ const myReviewList = {
         writerThumbnail:
           'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
-      author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
@@ -139,7 +137,6 @@ const myReviewList = {
         writerThumbnail:
           'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
-      author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
@@ -157,7 +154,6 @@ const myReviewList = {
         writerThumbnail:
           'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
-      author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
@@ -175,7 +171,6 @@ const myReviewList = {
         writerThumbnail:
           'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
       },
-      author: '병팔이',
       content: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,

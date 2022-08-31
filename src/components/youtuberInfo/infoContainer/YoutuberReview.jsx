@@ -55,6 +55,11 @@ export default function YoutuberReview({
 }
 
 const bestReveiw_Temp = {
+  id: 10,
+  youtuber: {
+    id: 'UCRnoBo60_joBvIQCoAiNCqg',
+    name: '월간 윤종신',
+  },
   writer: {
     writerEmail: 'jseo9732@gmail.com',
     writerName: '지구',

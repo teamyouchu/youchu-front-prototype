@@ -35,14 +35,16 @@ export default function YoutuberInfo({ youtuberAll }) {
 
   return (
     <style.YoutuberContainer>
-      {youtuberInfo.backgroundImage ? (
-        <style.YoutuberBanner
-          src={youtuberInfo.backgroundImage}
-          alt="YoutuberBanner"
-        />
-      ) : (
-        <style.GrayBar />
-      )}
+      <style.YoutuberBannerBox>
+        {youtuberInfo.backgroundImage ? (
+          <style.YoutuberBanner
+            src={youtuberInfo.backgroundImage}
+            alt="YoutuberBanner"
+          />
+        ) : (
+          <style.GrayBar />
+        )}
+      </style.YoutuberBannerBox>
       <style.InfoContatiner>
         <YoutuberHeader youtuberInfo={youtuberInfo} />
         <style.MainInfoContainer>

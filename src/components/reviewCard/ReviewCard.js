@@ -1,6 +1,7 @@
 import * as style from './ReviewCardStyle';
 import { categoryArray } from 'lib/modules';
-import StarRating from 'components/starRating/StarRating';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 import { numToKorean, overThousand } from 'lib/numberFomat';
 
 export default function ReviewCard({
@@ -33,9 +34,15 @@ export default function ReviewCard({
             구독자 {numToKorean(subscribes)}명
           </style.SubscriberCount>
         </style.Group>
-        <style.Group marginB="15px">
-          <StarRating ratings={rating} from={'RVCard'} />
-          <style.Ratings>{rating}</style.Ratings>
+        <style.Group alignItems={'center'} marginB={'15px'}>
+          <Rating
+            precision={0.1}
+            value={rating}
+            emptyIcon={<StarIcon fontSize="inherit" />}
+            readOnly
+            size="small"
+          />
+          <style.Ratings>{rating.toFixed(1)}</style.Ratings>
           <style.ReviewCount>
             ({overThousand(reviews)}개 리뷰)
           </style.ReviewCount>

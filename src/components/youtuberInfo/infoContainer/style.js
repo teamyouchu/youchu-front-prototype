@@ -80,30 +80,6 @@ export const SubscriberCount = styled(Span)`
   line-height: 21px;
 `;
 
-export const YoutuberDescription = styled(Span)`
-  font-family: 'SHSN-R';
-  font-size: 16px;
-  line-height: 23px;
-  width: 100%;
-  &.showHidden {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-  }
-`;
-
-export const ViewMore = styled(Span)`
-  font-family: 'SHSN-R';
-  font-size: 16px;
-  line-height: 21px;
-  color: #5c7fdf;
-  cursor: pointer;
-  margin-top: 5px;
-`;
-
 // 유튜버 리뷰
 export const ReviewHeader = styled.div`
   display: flex;
