@@ -39,7 +39,7 @@ export const RvInfoContainer = styled.div`
 export const Group = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: ${({ alignItems }) => alignItems || 'flex-end'};
   margin-bottom: ${({ marginB }) => marginB};
 
   @media ${(props) => props.theme.tablet} {
@@ -101,7 +101,7 @@ export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
 
   @media ${(props) => props.theme.tablet} {
     font-size: 11px;

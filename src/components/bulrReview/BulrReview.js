@@ -1,22 +1,14 @@
-import React from 'react';
-import { useHistory } from 'react-router';
 import * as style from './BulrReviewStyle';
 
-export default function BulrReview() {
-  const history = useHistory();
-  const handleClick = () => {
-    history.push('/youtubers/reviewWrite');
-  };
+export default function BulrReview({ channel_id }) {
   return (
-    <style.ConfirmReviewContainer>
-      <style.Span font={'SHSN-B'} size={'20px'}>
+    <style.BulrReviewContainer>
+      <style.BulrTitle>
         유튜버 리뷰를 작성하고 전체 리뷰를 확인하세요!
-      </style.Span>
-      <style.ReviewButton onClick={handleClick}>
-        <style.Span color="#fff" font="SHSN-B" size="14px">
-          유튜버 리뷰하기
-        </style.Span>
+      </style.BulrTitle>
+      <style.ReviewButton to={`/youtubers/reviewWrite/${channel_id}`}>
+        <style.BtnSpan>이 유튜버 리뷰하기</style.BtnSpan>
       </style.ReviewButton>
-    </style.ConfirmReviewContainer>
+    </style.BulrReviewContainer>
   );
 }

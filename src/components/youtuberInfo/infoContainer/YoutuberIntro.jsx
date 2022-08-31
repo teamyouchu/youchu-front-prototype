@@ -1,11 +1,10 @@
 import * as style from './style';
-import { useState } from 'react';
 import { numToKorean } from 'lib/numberFomat';
+import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
 
 export default function YoutuberIntro({
   youtuberInfo: { id, description, subscribes },
 }) {
-  const [showMore, setShowMore] = useState(false);
   return (
     <style.InfoContainer>
       <style.IntroBox>
@@ -28,19 +27,7 @@ export default function YoutuberIntro({
             {numToKorean(subscribes)}명
           </style.SubscriberCount>
         </style.SpanFlex>
-        <style.YoutuberDescription className={showMore ? '' : 'showHidden'}>
-          {description}
-        </style.YoutuberDescription>
-        {/* TODO 서지수 6줄 이상일 때만 표시하도록 수정 */}
-        {!showMore && (
-          <style.ViewMore
-            onClick={() => {
-              setShowMore(!showMore);
-            }}
-          >
-            자세히 보기
-          </style.ViewMore>
-        )}
+        <ContentsOverflow contents={description} />
       </style.IntroBox>
     </style.InfoContainer>
   );

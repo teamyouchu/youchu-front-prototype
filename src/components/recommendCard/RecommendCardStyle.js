@@ -43,7 +43,7 @@ export const GroupBox = styled.div`
 export const Group = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: ${({ marginB }) => marginB};
 `;
 
@@ -69,7 +69,7 @@ export const Ratings = styled.div`
   font-family: 'SHSN-M';
   font-size: 14px;
   line-height: 18px;
-  margin-right: 2px;
+  margin: 0 2px 0 6px;
 `;
 
 export const ReviewCount = styled.div`

@@ -3,17 +3,22 @@ import { Link } from 'react-router-dom';
 
 export const ReviewInfoContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 40px;
   border-bottom: 1px solid #dedede;
+  position: relative;
   :last-child {
     border-bottom: 0;
   }
   @media ${(props) => props.theme.tablet} {
     width: 100%;
-    padding: 20px 24px;
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+  }
+`;
+export const ReviewInfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 30px 40px;
+  @media ${(props) => props.theme.tablet} {
+    margin: 20px 24px;
   }
 `;
 
@@ -91,38 +96,12 @@ export const YoutuberName = styled(Link)`
   }
 `;
 
-export const ReviewContent = styled.div`
+export const ReviewCreated = styled.div`
   text-align: left;
-  font-family: 'SHSN-R';
-  font-size: 15px;
-  line-height: 23px;
-  letter-spacing: 0px;
-  color: #000000;
-  margin-bottom: 5px;
-
-  &.showHidden {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-  }
-`;
-
-export const ViewMore = styled(Span)`
-  font-family: 'SHSN-R';
-  font-size: 15px;
-  line-height: 23px;
-  color: #5c7fdf;
-  cursor: pointer;
-  margin-bottom: 5px;
-`;
-
-export const ReviewCreated = styled(ReviewContent)`
   font-family: 'SHSN-M';
   font-size: 12px;
   line-height: 15px;
+  letter-spacing: 0px;
   color: #94969b;
   margin-bottom: 20px;
   @media ${(props) => props.theme.tablet} {
