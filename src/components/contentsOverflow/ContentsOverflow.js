@@ -6,7 +6,6 @@ export default function ContentsOverflow({ contents }) {
   const [overflow, setOverflow] = useState(false);
   const [showMore, setShowMore] = useState(true);
   useEffect(() => {
-    console.log(contentRef.current?.clientHeight);
     if (contentRef.current?.clientHeight > 138) {
       setOverflow(true);
       setShowMore(false);
