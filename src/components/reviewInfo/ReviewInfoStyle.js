@@ -3,17 +3,22 @@ import { Link } from 'react-router-dom';
 
 export const ReviewInfoContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 40px;
   border-bottom: 1px solid #dedede;
+  position: relative;
   :last-child {
     border-bottom: 0;
   }
   @media ${(props) => props.theme.tablet} {
     width: 100%;
-    padding: 20px 24px;
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+  }
+`;
+export const ReviewInfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 30px 40px;
+  @media ${(props) => props.theme.tablet} {
+    margin: 20px 24px;
   }
 `;
 
