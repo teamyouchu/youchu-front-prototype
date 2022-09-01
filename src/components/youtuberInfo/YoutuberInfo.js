@@ -1,6 +1,7 @@
 import * as style from './YoutuberInfoStyle';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import YoutuberBanner from './youtuberBanner/YoutuberBanner';
 import YoutuberHeader from './youtuberHeader/YoutuberHeader';
 import YoutuberIntro from './infoContainer/YoutuberIntro';
 import YoutuberReview from './infoContainer/YoutuberReview';
@@ -35,16 +36,7 @@ export default function YoutuberInfo({ youtuberAll }) {
 
   return (
     <style.YoutuberContainer>
-      <style.YoutuberBannerBox>
-        {youtuberInfo.backgroundImage ? (
-          <style.YoutuberBanner
-            src={youtuberInfo.backgroundImage}
-            alt="YoutuberBanner"
-          />
-        ) : (
-          <style.GrayBar />
-        )}
-      </style.YoutuberBannerBox>
+      <YoutuberBanner bannerImgUrl={youtuberInfo.backgroundImage} />
       <style.InfoContatiner>
         <YoutuberHeader youtuberInfo={youtuberInfo} />
         <style.MainInfoContainer>
