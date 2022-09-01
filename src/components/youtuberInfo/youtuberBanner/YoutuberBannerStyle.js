@@ -14,7 +14,6 @@ export const YoutuberBannerBox = styled.div`
   }
 `;
 
-// TODO 서지수 배너 디자인 확인
 export const YoutuberBanner = styled.img`
   width: 100%;
   @media ${(props) => props.theme.tablet} {
@@ -27,7 +26,6 @@ export const YoutuberBanner = styled.img`
   }
 `;
 
-// TODO 서지수 배너 디자인 확인
 export const GrayBar = styled.div`
   height: 320px;
   background-color: #75787a;
