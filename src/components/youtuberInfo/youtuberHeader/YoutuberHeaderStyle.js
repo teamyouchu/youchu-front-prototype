@@ -6,12 +6,14 @@ export const YoutuberHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
   @media ${(props) => props.theme.tablet} {
     height: 188px;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 0;
+    margin-bottom: 12px;
     padding: 0 24px 30px 24px;
     border-bottom: 1px solid #dedede;
   }

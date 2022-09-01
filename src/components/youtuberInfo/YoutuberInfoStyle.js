@@ -4,7 +4,8 @@ export const YoutuberContainer = styled.div`
   padding: 80px 0 60px 0;
   @media ${(props) => props.theme.tablet} {
     width: 100%;
-    padding: 125px 0 30px 0;
+    padding: 115px 0 30px 0;
+    background: #f6f7fa 0% 0% no-repeat padding-box;
   }
 `;
 

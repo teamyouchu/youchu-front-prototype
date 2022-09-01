@@ -6,7 +6,7 @@ import YoutuberHeader from './youtuberHeader/YoutuberHeader';
 import YoutuberIntro from './infoContainer/YoutuberIntro';
 import YoutuberReview from './infoContainer/YoutuberReview';
 import YoutuberVideos from './infoContainer/YoutuberVideos';
-import RecommendYoutuber from 'components/recommendYoutuber/RecommendYoutuber';
+import RecommendYoutuber from 'components/youtuberInfo/recommendYoutuber/RecommendYoutuber';
 import ReviewList from 'components/reviewList/reviewList';
 import youtuberAPI from 'lib/api/youtuberAPI';
 
