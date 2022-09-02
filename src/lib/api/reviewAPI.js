@@ -1,8 +1,10 @@
 import axios from './config';
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  getReviews(id, num, sortBy) {
-    return axios.get(`/youtuber/${id}/review?page=${num}&sort=${sortBy}`);
+const reviewAPI = {
+  // 리뷰 삭제
+  delReview(review_id) {
+    return axios.delete(`/review/${review_id}`);
   },
 };
+
+export default reviewAPI;

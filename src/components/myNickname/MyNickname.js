@@ -29,8 +29,11 @@ export default function MyNickname({
 
   const onNickNameBlur = () => {
     if (currentNickname !== nickName) {
-      setIsValidNickname(stringTest(nickName));
-      setIsNickNameNull(nickName === '');
+      if (nickName === '') {
+        setIsNickNameNull(nickName === '');
+      } else {
+        setIsValidNickname(stringTest(nickName));
+      }
       if (nickName !== '' && nickName !== null && !stringTest(nickName)) {
         setIsNickNameLen(nickName.length < 2);
         if (nickName.length >= 2) {
@@ -45,11 +48,7 @@ export default function MyNickname({
 
   const nickNameDuplicate = async () => {
     await userAPI
-      .getDupNickName({
-        params: {
-          nickname: nickName,
-        },
-      })
+      .getDupNickName(nickName)
       .then((res) => {
         setIsNickNameDup(res.data.isExist);
         setIsNotNickNameDup(!res.data.isExist);

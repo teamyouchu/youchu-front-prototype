@@ -26,7 +26,7 @@ export default function YoutuberInfo({ youtuberAll }) {
 
   useEffect(() => {
     youtuberAPI
-      .getYoutuber(channel_id)
+      .getYoutuberInfo(channel_id)
       .then((res) => {
         setYoutuberInfo(res.data);
       })
