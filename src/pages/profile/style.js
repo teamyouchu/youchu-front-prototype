@@ -37,8 +37,9 @@ export const ProfileBox = styled.div`
 `;
 
 export const PicBox = styled.div`
+  padding: 30px 25px;
   width: 300px;
-  height: 350px;
+  height: 310px;
   background: #ffffff 0% 0% no-repeat;
   border: 1px solid #dedede;
   display: flex;
@@ -73,7 +74,7 @@ export const UserPic = styled.img`
   height: 108px;
   border: 1px solid #dedede;
   border-radius: 50%;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 20px;
   @media ${(props) => props.theme.tablet} {
     width: 60px;

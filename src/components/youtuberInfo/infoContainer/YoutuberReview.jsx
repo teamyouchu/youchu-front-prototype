@@ -27,7 +27,7 @@ export default function YoutuberReview({
     setBestReveiw(bestReveiw_Temp);
   }, []);
   return (
-    <style.InfoContainer>
+    <style.InfoContainer M_marginB={'0px'}>
       <style.ReviewHeader>
         <style.InfoTitle> 리뷰</style.InfoTitle>
         <style.SpanFlex>

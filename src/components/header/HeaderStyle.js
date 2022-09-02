@@ -134,6 +134,14 @@ export const LoginButton = styled(RegisterBtn)`
   }
 `;
 
+export const GoogleAvatarBox = styled.div`
+  height: 38px;
+  @media ${(props) => props.theme.tablet} {
+    height: 30px;
+  }
+  position: relative;
+`;
+
 export const GoogleAvatar = styled.img`
   width: 38px;
   height: 38px;

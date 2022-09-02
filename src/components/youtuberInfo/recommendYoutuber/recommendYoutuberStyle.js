@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const RecommendContainer = styled.div`
   width: 298px;
-  background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dedede;
-  opacity: 1;
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
@@ -20,6 +18,8 @@ export const RecommendContainer = styled.div`
 `;
 
 export const RecommendBox = styled.div`
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
   border-bottom: 1px solid #dedede;
   :first-child {
     border-bottom: 0;
@@ -30,6 +30,10 @@ export const RecommendBox = styled.div`
   }
   @media ${(props) => props.theme.tablet} {
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
+    :first-child {
+      background-color: transparent;
+      padding: 20px 24px 14px 24px;
+    }
   }
 `;
 
