@@ -10,13 +10,9 @@ const youtuberAPI = {
     return axios.get(`/youtuber/${channel_id}`);
   },
   // 유튜버 리뷰 작성
-  postReview(data, params) {
-    return axios.post(`/youtuber/review`, data, params);
+  postReview(data, channel_id) {
+    return axios.post(`/youtuber/review?channel_id=${channel_id}`, data);
   },
-  // // 유튜버 리뷰 작성
-  // postReview(data, channel_id) {
-  //   return axios.post(`/youtuber/review?channel_id=${channel_id}`, data);
-  // },
   // 유튜버 리뷰 조회
   getYoutuberReview(channel_id, page, sort) {
     return axios.get(

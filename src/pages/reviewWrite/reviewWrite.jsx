@@ -48,11 +48,7 @@ export default function ReviewWrite() {
           comment: comment,
           rating: rating,
         },
-        {
-          params: {
-            channel_id: channel_id,
-          },
-        },
+        channel_id,
       )
       .then(() => {
         history.goBack();
