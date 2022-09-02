@@ -8,7 +8,7 @@ export const RcmdContainer = styled(Link)`
   width: ${({ page }) => (page === 'youtuber' ? '100%' : '350px')};
   border: ${({ page }) => (page === 'youtuber' ? '0' : '1px solid #dedede')};
   border-radius: 10px;
-  padding: ${({ page }) => (page === 'youtuber' ? '20px 18px' : '18px 20px')};
+  padding: ${({ page }) => (page === 'youtuber' ? '16px 24px' : '18px 20px')};
   color: #000000;
   &:hover {
     color: #000000;
@@ -88,6 +88,6 @@ export const Category = styled.div`
   border-radius: 5px;
   padding: 6px 8px;
   @media ${(props) => props.theme.tablet} {
-    padding: 5px 9px 4px 9px;
+    padding: 6px 8px 5px 8px;
   }
 `;
