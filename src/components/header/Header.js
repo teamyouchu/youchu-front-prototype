@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import Registration from 'components/registration/Registration';
+import LogoutModal from 'components/logout/LogoutModal';
 
 export default function Header({ isSearchShow }) {
   const { userObj } = useContext(UserContext);
@@ -20,6 +21,12 @@ export default function Header({ isSearchShow }) {
   const [registOpen, setRistOpen] = useState(false);
   const registClose = () => {
     setRistOpen(!registOpen);
+  };
+
+  // 로그아웃 모달 토글
+  const [showLogout, setShowLogout] = useState(false);
+  const onAvatarClick = () => {
+    setShowLogout(!showLogout);
   };
 
   return (
@@ -45,9 +52,13 @@ export default function Header({ isSearchShow }) {
           </style.RegisterBtn>
           {registOpen && <Registration registClose={registClose} />}
           {userObj.imageUrl !== '' ? (
-            <style.HeaderLink to="/profile">
-              <style.GoogleAvatar src={userObj.imageUrl} />
-            </style.HeaderLink>
+            <style.GoogleAvatarBox>
+              <style.GoogleAvatar
+                src={userObj.imageUrl}
+                onClick={onAvatarClick}
+              />
+              {showLogout && <LogoutModal setShowLogout={setShowLogout} />}
+            </style.GoogleAvatarBox>
           ) : (
             <style.HeaderLink
               to={{
