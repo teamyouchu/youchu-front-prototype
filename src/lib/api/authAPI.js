@@ -1,11 +1,11 @@
 import axios from './config';
 
 const authAPI = {
-  // 로그인 api
+  // 로그인
   postLogin(data) {
     return axios.post('/login', data);
   },
-  // 엑세스토큰 만료 시 토큰 재요청 api
+  // 엑세스토큰 만료 시 토큰 재요청
   postRefresh() {
     const refreshToken = localStorage.getItem('refreshToken');
     return axios.post(
@@ -18,7 +18,7 @@ const authAPI = {
       },
     );
   },
-  // 회원가입 api
+  // 회원가입
   putSignup(data) {
     return axios.put('/register', data);
   },
