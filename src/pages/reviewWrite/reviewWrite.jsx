@@ -20,7 +20,7 @@ export default function ReviewWrite() {
   useEffect(() => {
     // 페이지 렌더링 시 유튜버 id로 정보 가져오기
     youtuberAPI
-      .getYoutuber(channel_id)
+      .getYoutuberInfo(channel_id)
       .then(({ data }) => {
         setYoutuberProfile({ title: data.title, thumbnail: data.thumbnail });
       })
