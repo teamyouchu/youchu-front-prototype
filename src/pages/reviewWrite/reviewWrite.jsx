@@ -2,9 +2,8 @@ import * as style from './style';
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import youtuberAPI from 'lib/api/youtuberAPI';
+import WriteRating from './WriteRating.js/WriteRating';
 import Warning from 'components/warning/Warning';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
 
 export default function ReviewWrite() {
   const history = useHistory();
@@ -38,7 +37,7 @@ export default function ReviewWrite() {
         channel_id,
       )
       .then(() => {
-        history.goBack();
+        history.push(`/youtubers/review/${channel_id}`);
       })
       .catch((err) => {
         console.error(err);
@@ -71,43 +70,39 @@ export default function ReviewWrite() {
             </style.FlexContainer>
           </style.ChannelContainer>
         </style.HeaderContainer>
-        <style.BodyContainer onSubmit={onDoneSubmit}>
-          <style.SubTitle>유튜버 리뷰 작성하기</style.SubTitle>
-          <style.WriteContainer>
-            <style.Label>별점</style.Label>
-            <Rating
-              precision={0.5}
-              value={rating}
-              onChange={(event, newValue) => {
-                setRating(newValue);
-              }}
-              onClick={() => {
-                setIsRating(false);
-              }}
-              emptyIcon={<StarIcon fontSize="inherit" />}
-            />
-            {isRating && (
-              <Warning text="별점을 입력해주세요" margin="5px 0 0 0" />
-            )}
-            <style.CommentLabel>리뷰쓰기</style.CommentLabel>
-            <style.CommentInput
-              required
-              minLength="3"
-              maxLength="5000"
-              placeholder="이 유튜버에 대한 생각을 자유롭게 작성해주세요."
-              onChange={(e) => setComment(e.target.value)}
-            />
-          </style.WriteContainer>
-        </style.BodyContainer>
-        <style.FooterContainer>
-          <style.Caution>
-            솔직하게 작성하신 리뷰는 수정이 불가능하고 삭제만 가능합니다. 허위
-            리뷰나, 명예훼손, 욕설, 타인비방글 등 유튜버나 제3자의 권리를
-            침해하는 리뷰는 제재를 받을 수 있습니다. 게시에 따른 책임은
-            작성자에게 있으며, 유추는 이에 대한 법적 책임을 지지 않습니다.
-          </style.Caution>
-          <style.SubmitBtn type="submit">완료</style.SubmitBtn>
-        </style.FooterContainer>
+        <form onSubmit={onDoneSubmit}>
+          <style.BodyContainer>
+            <style.SubTitle>유튜버 리뷰 작성하기</style.SubTitle>
+            <style.WriteContainer>
+              <style.Label>별점</style.Label>
+              <WriteRating
+                rating={rating}
+                setRating={setRating}
+                setIsRating={setIsRating}
+              />
+              {isRating && (
+                <Warning text="별점을 입력해주세요" margin="5px 0 0 0" />
+              )}
+              <style.CommentLabel>리뷰쓰기</style.CommentLabel>
+              <style.CommentInput
+                required
+                minLength="3"
+                maxLength="5000"
+                placeholder="이 유튜버에 대한 생각을 자유롭게 작성해주세요."
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </style.WriteContainer>
+          </style.BodyContainer>
+          <style.FooterContainer>
+            <style.Caution>
+              솔직하게 작성하신 리뷰는 수정이 불가능하고 삭제만 가능합니다. 허위
+              리뷰나, 명예훼손, 욕설, 타인비방글 등 유튜버나 제3자의 권리를
+              침해하는 리뷰는 제재를 받을 수 있습니다. 게시에 따른 책임은
+              작성자에게 있으며, 유추는 이에 대한 법적 책임을 지지 않습니다.
+            </style.Caution>
+            <style.SubmitBtn type="submit">완료</style.SubmitBtn>
+          </style.FooterContainer>
+        </form>
       </style.ContentsContainer>
     </style.reviewWriteContainer>
   );

@@ -95,7 +95,7 @@ export const ChannelName = styled.div`
   }
 `;
 
-export const BodyContainer = styled.form`
+export const BodyContainer = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   border-bottom: 1px solid #dedede;
   padding: 25px 40px;
