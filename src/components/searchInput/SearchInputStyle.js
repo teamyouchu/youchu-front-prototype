@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
+export const SearchBox = styled.div`
+  position: relative;
+`;
+
 export const SearchForm = styled.form`
-  position: ${({ page }) => (page === 'registration' ? 'relative' : '')};
   display: flex;
   align-items: center;
   width: ${({ page }) =>
@@ -22,7 +25,8 @@ export const SearchForm = styled.form`
   }
   @media ${(props) => props.theme.tablet} {
     border: ${({ page }) => (page === 'header' ? 'none' : '')};
-    width: ${({ page }) => (page === 'header' ? '18px' : '')};
+    width: ${({ page }) =>
+      page === 'header' ? '18px' : page === 'registration' ? '100%' : ''};
     height: ${({ page }) => (page === 'header' ? '30px' : '')};
     padding: ${({ page }) => (page === 'header' ? '0' : '')};
   }

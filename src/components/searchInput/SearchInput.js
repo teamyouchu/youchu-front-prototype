@@ -180,7 +180,7 @@ export default function SearchInput({ page, setChannel }) {
   // }, [autoSearchValue, index, keyIndex, searchValue]);
 
   return (
-    <>
+    <style.SearchBox>
       <style.SearchForm
         ref={inputRef}
         onSubmit={onSearch}
@@ -218,7 +218,7 @@ export default function SearchInput({ page, setChannel }) {
           setKeyIndex={setKeyIndex}
         />
       )}
-    </>
+    </style.SearchBox>
   );
 }
 
