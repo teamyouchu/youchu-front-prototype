@@ -31,7 +31,7 @@ export default function ReviewCard({
         <style.Group marginB="8px" marginB_M="5px">
           <style.RvChannelName>{name}</style.RvChannelName>
           <style.SubscriberCount>
-            구독자 {numToKorean(subscribes)}명
+            {numToKorean(subscribes)}명
           </style.SubscriberCount>
         </style.Group>
         <style.Group alignItems={'center'} marginB={'15px'}>
@@ -43,9 +43,7 @@ export default function ReviewCard({
             size="small"
           />
           <style.Ratings>{rating.toFixed(1)}</style.Ratings>
-          <style.ReviewCount>
-            ({overThousand(reviews)}개 리뷰)
-          </style.ReviewCount>
+          <style.ReviewCount>({overThousand(reviews)}</style.ReviewCount>
         </style.Group>
         <style.Group marginB="5px">
           <style.BestReviewTitle>Best Review</style.BestReviewTitle>

@@ -81,9 +81,6 @@ export const RvChannelName = styled.div`
     line-height: 18px;
     max-width: 55%;
   }
-  @media ${(props) => props.theme.mobile} {
-    max-width: 35%;
-  }
 `;
 
 export const SubscriberCount = styled.div`
@@ -91,9 +88,15 @@ export const SubscriberCount = styled.div`
   font-size: 14px;
   line-height: 18px;
   color: #94969b;
+  ::before {
+    content: '구독자 ';
+  }
   @media ${(props) => props.theme.tablet} {
     font-size: 11px;
     line-height: 14px;
+    ::before {
+      content: '';
+    }
   }
 `;
 
@@ -114,10 +117,18 @@ export const ReviewCount = styled.div`
   font-size: 14px;
   line-height: 18px;
   color: #94969b;
+  ::after {
+    content: '개 리뷰)';
+  }
 
   @media ${(props) => props.theme.tablet} {
     font-size: 11px;
     line-height: 14px;
+  }
+  @media ${(props) => props.theme.mobile} {
+    ::after {
+      content: ')';
+    }
   }
 `;
 
