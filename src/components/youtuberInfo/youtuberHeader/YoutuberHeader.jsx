@@ -1,5 +1,4 @@
 import * as style from './YoutuberHeaderStyle';
-import { Rating } from '@mui/material';
 import { numberComma } from 'lib/numberFomat';
 
 export default function YoutuberHeader({
@@ -12,7 +11,7 @@ export default function YoutuberHeader({
         <style.InfoFlex>
           <style.YoutuberName>{title}</style.YoutuberName>
           <style.SpanFlex>
-            <Rating max={1} value={1} size="small" readOnly />
+            <style.OneStar>★</style.OneStar>
             <style.YoutuberRating>{rating.toFixed(1)}</style.YoutuberRating>
             <style.ReviewCount>
               ({numberComma(reviews)}개 리뷰)

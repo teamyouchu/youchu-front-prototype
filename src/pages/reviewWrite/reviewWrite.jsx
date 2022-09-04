@@ -2,21 +2,19 @@ import * as style from './style';
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import youtuberAPI from 'lib/api/youtuberAPI';
+import WriteRating from './WriteRating.js/WriteRating';
 import Warning from 'components/warning/Warning';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
 
 export default function ReviewWrite() {
   const history = useHistory();
   const { channel_id } = useParams();
+  const [comment, setComment] = useState();
+  const [rating, setRating] = useState(null);
+
   const [youtuberProfile, setYoutuberProfile] = useState({
     title: '',
     thumbnail: '',
   });
-  const [comment, setComment] = useState();
-  const [rating, setRating] = useState(null);
-  const [isRating, setIsRating] = useState(false);
-
   useEffect(() => {
     // 페이지 렌더링 시 유튜버 id로 정보 가져오기
     youtuberAPI
@@ -29,6 +27,24 @@ export default function ReviewWrite() {
       });
   }, [channel_id]);
 
+  const reviewWriteFunc = async () => {
+    await youtuberAPI
+      .postReview(
+        {
+          comment: comment,
+          rating: rating,
+        },
+        channel_id,
+      )
+      .then(() => {
+        history.push(`/youtubers/review/${channel_id}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const [isRating, setIsRating] = useState(false);
   const onDoneSubmit = (e) => {
     e.preventDefault();
     if (rating === null) {
@@ -41,34 +57,13 @@ export default function ReviewWrite() {
     }
   };
 
-  const reviewWriteFunc = async () => {
-    await youtuberAPI
-      .postReview(
-        {
-          comment: comment,
-          rating: rating,
-        },
-        channel_id,
-      )
-      .then(() => {
-        history.goBack();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   return (
     <style.reviewWriteContainer>
       <style.ContentsContainer>
         <style.HeaderContainer>
           <style.Title>유튜버 리뷰 작성</style.Title>
           <style.ChannelContainer>
-            <style.Img
-              src={youtuberProfile.thumbnail}
-              alt={youtuberProfile.title}
-              title={youtuberProfile.title}
-            />
+            <style.Img src={youtuberProfile.thumbnail} />
             <style.FlexContainer>
               <style.ChannelNameTitle>유튜버 이름</style.ChannelNameTitle>
               <style.ChannelName>{youtuberProfile.title}</style.ChannelName>
@@ -80,16 +75,10 @@ export default function ReviewWrite() {
             <style.SubTitle>유튜버 리뷰 작성하기</style.SubTitle>
             <style.WriteContainer>
               <style.Label>별점</style.Label>
-              <Rating
-                precision={0.5}
-                value={rating}
-                onChange={(event, newValue) => {
-                  setRating(newValue);
-                }}
-                onClick={() => {
-                  setIsRating(false);
-                }}
-                emptyIcon={<StarIcon fontSize="inherit" />}
+              <WriteRating
+                rating={rating}
+                setRating={setRating}
+                setIsRating={setIsRating}
               />
               {isRating && (
                 <Warning text="별점을 입력해주세요" margin="5px 0 0 0" />

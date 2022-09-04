@@ -4,7 +4,7 @@ export default function YoutuberBanner({ bannerImgUrl }) {
   return (
     <style.YoutuberBannerBox>
       {bannerImgUrl ? (
-        <style.YoutuberBannerBox src={bannerImgUrl} alt="YoutuberBanner" />
+        <style.YoutuberBanner src={bannerImgUrl} alt="YoutuberBanner" />
       ) : (
         <style.GrayBar />
       )}

@@ -4,7 +4,7 @@ import * as style from './style';
 export default function MyAllReview() {
   return (
     <style.MyAllReviewContainer>
-      <ReviewList all={true} />
+      <ReviewList from={'myInfo'} all={true} />
     </style.MyAllReviewContainer>
   );
 }

@@ -10,7 +10,7 @@ import RecommendYoutuber from 'components/youtuberInfo/recommendYoutuber/Recomme
 import ReviewList from 'components/reviewList/reviewList';
 import youtuberAPI from 'lib/api/youtuberAPI';
 
-export default function YoutuberInfo({ youtuberAll }) {
+export default function YoutuberInfo({ all }) {
   const { channel_id } = useParams();
   const [youtuberInfo, setYoutuberInfo] = useState({
     id: '',
@@ -41,17 +41,12 @@ export default function YoutuberInfo({ youtuberAll }) {
         <YoutuberHeader youtuberInfo={youtuberInfo} />
         <style.MainInfoContainer>
           <style.LeftInfoContainer>
-            {!youtuberAll && <YoutuberIntro youtuberInfo={youtuberInfo} />}
-            <YoutuberReview
-              youtuberInfo={youtuberInfo}
-              youtuberAll={youtuberAll}
-            />
-            {!youtuberAll && (
+            {!all && <YoutuberIntro youtuberInfo={youtuberInfo} />}
+            <YoutuberReview youtuberInfo={youtuberInfo} all={all} />
+            {!all && (
               <YoutuberVideos youtuberInfo={youtuberInfo} M_display={'none'} />
             )}
-            {youtuberAll && (
-              <ReviewList youtuberAll={youtuberAll} from={'youtuber'} />
-            )}
+            {all && <ReviewList from={'youtuber'} all={all} />}
           </style.LeftInfoContainer>
           <style.RightInfoContainer>
             <RecommendYoutuber category={youtuberInfo.category} />

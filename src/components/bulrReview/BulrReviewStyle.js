@@ -20,6 +20,10 @@ export const BulrTitle = styled.span`
   line-height: 25px;
   letter-spacing: 0px;
   color: #000000;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 16px;
+    line-height: 21px;
+  }
 `;
 
 export const ReviewButton = styled(Link)`
@@ -31,10 +35,18 @@ export const ReviewButton = styled(Link)`
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  @media ${(props) => props.theme.tablet} {
+    width: 144px;
+    height: 38px;
+  }
 `;
 
 export const BtnSpan = styled(BulrTitle)`
   font-size: 14px;
   line-height: 18px;
   color: #ffffff;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 12px;
+    line-height: 15px;
+  }
 `;
