@@ -60,7 +60,7 @@ export default function Registration({ registClose }) {
       className="close-modal__container"
       onClick={closeModal}
     >
-      <style.Modal width="500px" height="386px" padding="70px 60px">
+      <style.Modal>
         <style.ModalTitleFlex>
           <style.Span font="SHSN-L" size="25px" lineHeight="31px">
             유튜버 등록
@@ -83,7 +83,7 @@ export default function Registration({ registClose }) {
 
         <SearchInput page={'registration'} setChannel={setChannel} />
         <style.CompleteButton onClick={onRegisterClick}>
-          완료
+          등록하기
         </style.CompleteButton>
       </style.Modal>
     </style.ModalContainer>

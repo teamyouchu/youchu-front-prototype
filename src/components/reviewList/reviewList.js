@@ -5,21 +5,21 @@ import { sortOptions } from 'lib/modules';
 // import { useState, useEffect } from 'react';
 // import userAPI from 'lib/api/userAPI';
 
-export default function ReviewList({ all, youtuberAll, from }) {
+export default function ReviewList({ from, all }) {
   // TODO 서지수 api 나오면 수정하기
 
-  // const [myReviewList, setMyReviewList] = useState({});
+  // const [reviewList, setReviewList] = useState({});
   // useEffect(() => {
-  //   // 페이지 로드 시 나의 리뷰 요청 api
-  //   userAPI
-  //     .getMyReviews(1)
-  //     .then((res) => {
-  //       setMyReviewList(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  //   if (from === 'myInfo') {
+  //     userAPI
+  //       .getMyReviews(1, 'latest')
+  //       .then((res) => {
+  //         setReviewList(res.data);
+  //         console.log(res.data);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [from]);
 
   const onPageChange = (e) => {
     const nextPage = e.currentTarget.getAttribute('value');
@@ -35,7 +35,7 @@ export default function ReviewList({ all, youtuberAll, from }) {
   };
   return (
     <style.reviewListContainer>
-      {!youtuberAll && (
+      {from === 'myInfo' && (
         <style.ReviewTitle>
           {!all && '최근 '}
           내가 쓴 리뷰
@@ -44,7 +44,7 @@ export default function ReviewList({ all, youtuberAll, from }) {
           </style.ProfileSub>
         </style.ReviewTitle>
       )}
-      {(all || youtuberAll) && (
+      {all && (
         <style.ReviewDropdown>
           <FilterDropdown
             placeholder={sortOptions[0].text}
@@ -52,16 +52,11 @@ export default function ReviewList({ all, youtuberAll, from }) {
           />
         </style.ReviewDropdown>
       )}
-      {myReviewList.data.map((data) => (
-        <ReviewInfo
-          key={data.id}
-          data={data}
-          from={from}
-          youtuberAll={youtuberAll}
-        />
+      {reviewList.data.map((data) => (
+        <ReviewInfo key={data.id} data={data} from={from} all={all} />
       ))}
       <style.PaginationContainer>
-        {!all && !youtuberAll && (
+        {!all && (
           <style.MoreBtn to="/profile/allReview">
             <style.MoreBtnSpan font={'SHSN-B'}>
               최근 내가 쓴 리뷰 &nbsp;
@@ -69,7 +64,7 @@ export default function ReviewList({ all, youtuberAll, from }) {
             <style.MoreBtnSpan>모두 보기 &gt;</style.MoreBtnSpan>
           </style.MoreBtn>
         )}
-        {(all || youtuberAll) && (
+        {all && (
           <style.PaginationItem
             boundaryRange={0}
             defaultActivePage={1}
@@ -77,7 +72,7 @@ export default function ReviewList({ all, youtuberAll, from }) {
             lastItem={null}
             ellipsisItem={null}
             siblingRange={2}
-            totalPages={myReviewList.maxPage}
+            totalPages={reviewList.maxPage}
             pointing
             secondary
             onPageChange={onPageChange}
@@ -88,21 +83,14 @@ export default function ReviewList({ all, youtuberAll, from }) {
   );
 }
 
-const myReviewList = {
+const reviewList = {
   data: [
     {
       id: 10,
-      youtuber: {
-        id: 'UCRnoBo60_joBvIQCoAiNCqg',
-        name: '월간 윤종신',
-      },
-      writer: {
-        writerEmail: 'jseo9732@gmail.com',
-        writerName: '지구',
-        writerThumbnail:
-          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
-      },
-      content:
+      youtuberId: 'UCRnoBo60_joBvIQCoAiNCqg',
+      youtuberName: '월간 윤종신',
+      writerId: 17,
+      comment:
         '제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다. 제가 많이 힘들고 혼란스러웠을 때 큰 도움이 되었던 노래였습니다. 그 당시에는 멜로디는 잔잔하지만 지금은 좋습니다.',
       rating: 4.5,
       likes: 10,
@@ -110,68 +98,40 @@ const myReviewList = {
     },
     {
       id: 20,
-      youtuber: {
-        id: 'FDSFWEVSD',
-        name: '월간 윤종신',
-      },
-      writer: {
-        writerEmail: 'jseo9732@gmail.com',
-        writerName: '지구',
-        writerThumbnail:
-          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
-      },
-      content: '힘들 때 많은 힘이 되어주었습니다.',
+      youtuberId: 'UCRnoBo60_joBvIQCoAiNCqg',
+      youtuberName: '월간 윤종신',
+      writerId: 17,
+      comment: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
       createdDatetime: '2021.09.22',
     },
     {
       id: 220,
-      youtuber: {
-        id: 'FDSFWEVSD',
-        name: '월간 윤종신',
-      },
-      writer: {
-        writerEmail: 'jseo9732@gmail.com',
-        writerName: '지구',
-        writerThumbnail:
-          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
-      },
-      content: '힘들 때 많은 힘이 되어주었습니다.',
+      youtuberId: 'UCRnoBo60_joBvIQCoAiNCqg',
+      youtuberName: '월간 윤종신',
+      writerId: 17,
+      comment: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
       createdDatetime: '2021.09.22',
     },
     {
       id: 222,
-      youtuber: {
-        id: 'FDSFWEVSD',
-        name: '월간 윤종신',
-      },
-      writer: {
-        writerEmail: 'jseo9732@gmail.com',
-        writerName: '지구',
-        writerThumbnail:
-          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
-      },
-      content: '힘들 때 많은 힘이 되어주었습니다.',
+      youtuberId: 'UCRnoBo60_joBvIQCoAiNCqg',
+      youtuberName: '월간 윤종신',
+      writerId: 17,
+      comment: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
       createdDatetime: '2021.09.22',
     },
     {
       id: 223,
-      youtuber: {
-        id: 'FDSFWEVSD',
-        name: '월간 윤종신',
-      },
-      writer: {
-        writerEmail: 'jseo9732@gmail.com',
-        writerName: '지구',
-        writerThumbnail:
-          'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
-      },
-      content: '힘들 때 많은 힘이 되어주었습니다.',
+      youtuberId: 'UCRnoBo60_joBvIQCoAiNCqg',
+      youtuberName: '월간 윤종신',
+      writerId: 17,
+      comment: '힘들 때 많은 힘이 되어주었습니다.',
       rating: 4.5,
       likes: 10,
       createdDatetime: '2021.09.22',

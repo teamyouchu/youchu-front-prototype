@@ -49,7 +49,7 @@ export default function Profile() {
             </style.CategoryBtn>
           </style.flexBox>
         </style.PicBox>
-        <ReviewList />
+        <ReviewList from={'myInfo'} />
       </style.ProfileBox>
     </style.ProfileContainer>
   );

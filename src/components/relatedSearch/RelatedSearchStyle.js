@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
 export const SearchDropdownContainer = styled.div`
-  position: ${({ page }) => (page === 'search' ? 'relative' : 'absolute')};
+  position: absolute;
   top: ${({ page }) =>
-    page === 'header' ? '69px' : page === 'search' ? '10px' : '220px'};
-  width: ${({ page }) =>
-    page === 'header' ? '350px' : page === 'search' ? '100%' : '380px'};
+    page === 'header' ? '41px' : page === 'search' ? '45px' : '43px'};
+  width: 100%;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: ${({ page }) =>
     page === 'search' ? 0 : '0px 0px 15px #00000029'};
   opacity: 1;
-  padding: 5px 0;
+  @media ${(props) => props.theme.tablet} {
+    width: ${({ page }) => (page === 'registration' ? '100%' : '')};
+  }
 `;
 
 export const RelatedSearch = styled.div`
@@ -27,6 +28,12 @@ export const SearchResultBox = styled.div`
   display: flex;
   align-items: center;
   padding: ${({ page }) => (page === 'search' ? '5px 16px' : '5px 20px')};
+  :first-child {
+    margin-top: 5px;
+  }
+  :last-child {
+    margin-bottom: 5px;
+  }
   &.item_over {
     background-color: #f9fafc;
     cursor: pointer;

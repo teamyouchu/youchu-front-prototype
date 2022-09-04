@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { Label } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 export const ModalContainer = styled.div`
   width: 100%;
@@ -10,12 +8,15 @@ export const ModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  /* @media ${(props) => props.theme.tablet} {
+    background-color: rgba(0, 0, 0, 0);
+  } */
 `;
 
 export const Modal = styled.div`
-  width: ${(props) => props.width};
-  height: ${(props) => props.hegiht};
-  padding: ${(props) => props.padding};
+  width: 500px;
+  height: 386px;
+  padding: 70px 60px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dedede;
   border-radius: 5px;
@@ -24,9 +25,19 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
+  top: 140px;
+  margin: 0 auto;
   z-index: 100;
+  @media ${(props) => props.theme.tablet} {
+    /* margin-top: 115px; */
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+    top: 0;
+    padding: 50px 24px;
+  }
 `;
 
 export const ModalTitleFlex = styled.div`
@@ -39,7 +50,7 @@ export const Span = styled.span`
   font-family: ${(props) => props.font};
   font-size: ${(props) => props.size || '14px'};
   line-height: ${(props) => props.lineHeight || '18px'};
-  color: ${(props) => props.color};
+  color: ${(props) => props.color || '#000000;'};
   margin: ${(props) => props.margins};
 `;
 
@@ -65,59 +76,7 @@ export const CompleteButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-`;
-
-export const SearchResultContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  position: relative;
-`;
-
-export const YoutuberContainer = styled.div`
-  display: flex;
-  align-items: center;
-  & > img {
-    border: 1px solid #dedede;
-    border-radius: 50%;
-    width: ${(props) => props.width || '50px'};
-    height: ${(props) => props.height || '50px'};
-    margin: ${(props) => props.margin || '0 0 10px 0'};
-  }
-  &:hover {
-    background-color: #f9fafc;
-    cursor: pointer;
-    color: #000000;
-  }
-`;
-
-export const Tag = styled(Label)`
-  border-radius: 2rem !important;
-  margin: 0.5rem !important;
-`;
-
-export const SearchDropdownContainer = styled.div`
-  position: absolute;
-  top: -30px;
-  width: 380px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 15px #00000029;
-  opacity: 1;
-  padding: 20px 0px 0px 10px;
-`;
-
-export const SearchResult = styled(Link)`
-  font-family: 'SHSN-R';
-  display: block;
-  text-align: left;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  padding: 5px 20px;
-  color: #000000;
-  &:hover {
-    background-color: #f9fafc;
-    cursor: pointer;
-    color: #000000;
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
   }
 `;
