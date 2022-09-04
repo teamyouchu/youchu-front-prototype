@@ -1,8 +1,7 @@
 import * as style from './style';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import StarRating from 'components/starRating/StarRating';
 import ReviewInfo from 'components/reviewInfo/ReviewInfo';
 import { numberComma } from 'lib/numberFomat';
 
@@ -31,12 +30,7 @@ export default function YoutuberReview({
         <style.InfoTitle> 리뷰</style.InfoTitle>
         <style.SpanFlex>
           <style.Rating>{rating.toFixed(1)}</style.Rating>
-          <Rating
-            precision={0.1}
-            value={rating}
-            emptyIcon={<StarIcon fontSize="inherit" />}
-            readOnly
-          />
+          <StarRating rating={rating} />
           <style.ReviewCount>{numberComma(reviews)}개 리뷰</style.ReviewCount>
         </style.SpanFlex>
       </style.ReviewHeader>

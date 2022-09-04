@@ -1,8 +1,7 @@
 import * as style from './ReviewInfoStyle';
 import { useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import StarRating from 'components/starRating/StarRating';
 import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
 import BulrReview from 'components/bulrReview/BulrReview';
 import reviewAPI from 'lib/api/reviewAPI';
@@ -56,12 +55,7 @@ export default function ReviewInfo({
               <style.ReviewWriterImg src={writerImgUrl} />
               <style.WriterInfoBox>
                 <style.RatingBox margin_B={'3px'}>
-                  <Rating
-                    precision={0.1}
-                    value={rating}
-                    emptyIcon={<StarIcon fontSize="inherit" />}
-                    readOnly
-                  />
+                  <StarRating rating={rating} />
                   <style.Ratings>{rating.toFixed(1)}</style.Ratings>
                 </style.RatingBox>
                 <style.ReviewWriterName>{writerName}</style.ReviewWriterName>
@@ -74,13 +68,7 @@ export default function ReviewInfo({
               {youtuberName}&nbsp;&gt;
             </style.YoutuberName>
             <style.RatingBox>
-              <Rating
-                precision={0.1}
-                value={rating}
-                emptyIcon={<StarIcon fontSize="inherit" />}
-                readOnly
-                size="small"
-              />
+              <StarRating rating={rating} />
               <style.Ratings>{rating.toFixed(1)}</style.Ratings>
             </style.RatingBox>
           </style.ReviewInfoHeader>

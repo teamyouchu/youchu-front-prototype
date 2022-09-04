@@ -82,6 +82,13 @@ export const YoutuberName = styled(Span)`
   }
 `;
 
+export const OneStar = styled(Span)`
+  font-family: 'SHSN-R';
+  font-size: 16px;
+  line-height: 18px;
+  color: #f8d26a;
+`;
+
 export const YoutuberRating = styled(Span)`
   font-family: 'SHSN-M';
   font-size: 14px;
