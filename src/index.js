@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GlobalStyle from './globalStyle';
-import GlobalFonts from 'assets/font/font';
 import App from './components/App';
+import GlobalStyle from 'styles/globalStyle';
+import theme from 'styles/theme';
+import GlobalFonts from 'assets/font/font';
 import 'semantic-ui-css/semantic.min.css';
 import { ThemeProvider } from 'styled-components';
-import theme from 'theme';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
