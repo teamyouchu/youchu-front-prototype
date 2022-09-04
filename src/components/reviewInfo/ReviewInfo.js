@@ -8,9 +8,20 @@ import BulrReview from 'components/bulrReview/BulrReview';
 import reviewAPI from 'lib/api/reviewAPI';
 
 export default function ReviewInfo({
-  data: { id, youtuber, writer, rating, content, createdDatetime, likes },
+  data: {
+    id,
+    youtuberId,
+    youtuberName,
+    writerId,
+    writerName,
+    writerImgUrl,
+    rating,
+    comment,
+    createdDatetime,
+    likes,
+  },
   from,
-  youtuberAll,
+  all,
 }) {
   const { userObj } = useContext(UserContext);
   // 정렬 기능 구현
@@ -34,15 +45,15 @@ export default function ReviewInfo({
 
   return (
     <style.ReviewInfoContainer>
-      {from === 'youtuber' && youtuberAll && !userObj.hasReview && (
-        <BulrReview channel_id={youtuber.id} />
+      {from === 'youtuber' && all && !userObj.hasReview && (
+        <BulrReview channel_id={youtuberId} />
       )}
       <style.ReviewInfoBox>
         {from === 'youtuber' ? (
           <style.ReviewInfoHeader>
-            {!youtuberAll && <style.BestReview>Best Review</style.BestReview>}
+            {!all && <style.BestReview>Best Review</style.BestReview>}
             <style.WriterInfoFlex>
-              <style.ReviewWriterImg src={writer.writerThumbnail} />
+              <style.ReviewWriterImg src={writerImgUrl} />
               <style.WriterInfoBox>
                 <style.RatingBox margin_B={'3px'}>
                   <Rating
@@ -53,16 +64,14 @@ export default function ReviewInfo({
                   />
                   <style.Ratings>{rating.toFixed(1)}</style.Ratings>
                 </style.RatingBox>
-                <style.ReviewWriterName>
-                  {writer.writerName}
-                </style.ReviewWriterName>
+                <style.ReviewWriterName>{writerName}</style.ReviewWriterName>
               </style.WriterInfoBox>
             </style.WriterInfoFlex>
           </style.ReviewInfoHeader>
         ) : (
           <style.ReviewInfoHeader>
-            <style.YoutuberName to={`/youtubers/review/${youtuber.id}`}>
-              {youtuber.name}&nbsp;&gt;
+            <style.YoutuberName to={`/youtubers/review/${youtuberId}`}>
+              {youtuberName}&nbsp;&gt;
             </style.YoutuberName>
             <style.RatingBox>
               <Rating
@@ -76,7 +85,7 @@ export default function ReviewInfo({
             </style.RatingBox>
           </style.ReviewInfoHeader>
         )}
-        <ContentsOverflow contents={content} />
+        <ContentsOverflow contents={comment} />
         <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
         <style.UtilContainer>
           <style.UtilBox>
@@ -87,13 +96,13 @@ export default function ReviewInfo({
               />
               <style.likeCount>{likes}</style.likeCount>
             </style.LikeButton>
-            {writer.writerEmail !== userObj.email && (
+            {writerId !== userObj.id && (
               <style.ReportButton onClick={reportReview}>
                 신고하기
               </style.ReportButton>
             )}
           </style.UtilBox>
-          {writer.writerEmail === userObj.email && (
+          {writerId === userObj.id && (
             <style.DeleteButton onClick={delReview}>
               삭제하기
             </style.DeleteButton>

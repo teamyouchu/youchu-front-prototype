@@ -8,16 +8,15 @@ import { numberComma } from 'lib/numberFomat';
 
 export default function YoutuberReview({
   youtuberInfo: { id, title, reviews, rating },
-  youtuberAll,
+  all,
 }) {
   const [bestReveiw, setBestReveiw] = useState({
-    writer: {
-      writerEmail: '',
-      writerName: '',
-      writerThumbnail: '',
-    },
+    id: '',
+    writerId: 0,
+    writerName: '',
+    writerImgUrl: '',
     rating: 0,
-    content: '',
+    comment: '',
     createdDatetime: '',
     likes: 0,
   });
@@ -42,7 +41,7 @@ export default function YoutuberReview({
         </style.SpanFlex>
       </style.ReviewHeader>
       <ReviewInfo data={bestReveiw} from={'youtuber'} />
-      {!youtuberAll && (
+      {!all && (
         <style.ShowMoreBox>
           <Link to={`/youtubers/review/detail/${id}`}>
             <style.ShowMoreSpan>유튜버&nbsp;</style.ShowMoreSpan>
@@ -56,18 +55,12 @@ export default function YoutuberReview({
 
 const bestReveiw_Temp = {
   id: 10,
-  youtuber: {
-    id: 'UCRnoBo60_joBvIQCoAiNCqg',
-    name: '월간 윤종신',
-  },
-  writer: {
-    writerEmail: 'jseo9732@gmail.com',
-    writerName: '지구',
-    writerThumbnail:
-      'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
-  },
+  writerId: 17,
+  writerName: '지구',
+  writerImgUrl:
+    'https://lh3.googleusercontent.com/a/AItbvmnuMbIpaRKvIL6YP8XlFxexupC-_SV4s5zecvPQ=s96-c',
   rating: 4.3,
-  content:
+  comment:
     '재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요재밌어요',
   createdDatetime: '2021.09.22',
   likes: 32,

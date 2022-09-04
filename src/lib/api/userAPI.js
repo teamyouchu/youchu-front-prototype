@@ -19,7 +19,7 @@ const userAPI = {
   },
   // 내가 작성한 리뷰 조회
   getMyReviews(page, sort) {
-    return axios.get(`/review?page=${page}&sort=${sort}`);
+    return axios.get(`/me/review?page=${page}&sort=${sort}`);
   },
 };
 
