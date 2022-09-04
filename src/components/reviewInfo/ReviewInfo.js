@@ -5,9 +5,10 @@ import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
 import BulrReview from 'components/bulrReview/BulrReview';
+import reviewAPI from 'lib/api/reviewAPI';
 
 export default function ReviewInfo({
-  data: { youtuber, writer, rating, content, createdDatetime, likes },
+  data: { id, youtuber, writer, rating, content, createdDatetime, likes },
   from,
   youtuberAll,
 }) {
@@ -22,9 +23,13 @@ export default function ReviewInfo({
     // TODO 서지수 신고하기 기능 구현
     console.log('신고하기');
   };
-  const delReview = () => {
-    // TODO 서지수 리뷰 아이디로 삭제 요청 보내기
-    console.log('삭제하기');
+  const delReview = async () => {
+    await reviewAPI
+      .delReview(id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
