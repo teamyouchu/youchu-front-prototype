@@ -15,7 +15,7 @@ export const InfoContainer = styled.div`
     width: 100%;
     border: 0;
     border-bottom: 1px solid #dedede;
-    margin-bottom: ${({ M_marginB }) => M_marginB || '12px'};
+    margin-bottom: ${({ M_marginB, all }) => (all && M_marginB) || '0'};
     display: ${({ M_display }) => M_display};
   }
 `;

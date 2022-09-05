@@ -48,10 +48,12 @@ export default function YoutuberInfo({ all }) {
             )}
             {all && <ReviewList from={'youtuber'} all={all} />}
           </style.LeftInfoContainer>
-          <style.RightInfoContainer>
-            <RecommendYoutuber category={youtuberInfo.category} />
-            <RecommendYoutuber />
-          </style.RightInfoContainer>
+          {!all && (
+            <style.RightInfoContainer>
+              <RecommendYoutuber category={youtuberInfo.category} />
+              <RecommendYoutuber />
+            </style.RightInfoContainer>
+          )}
         </style.MainInfoContainer>
       </style.InfoContatiner>
     </style.YoutuberContainer>
