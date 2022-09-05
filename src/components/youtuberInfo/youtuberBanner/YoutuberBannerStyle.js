@@ -10,7 +10,7 @@ export const YoutuberBannerBox = styled.div`
     height: 195px;
   }
   @media ${(props) => props.theme.mobile} {
-    height: 110px;
+    height: 120px;
   }
 `;
 
@@ -20,6 +20,7 @@ export const YoutuberBanner = styled.img`
     width: auto;
     position: relative;
     height: 100%;
+    display: block;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
