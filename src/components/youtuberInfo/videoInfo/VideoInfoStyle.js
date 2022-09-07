@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const VideoBox = styled.div`
+export const VideoBox = styled.a`
   width: 210px;
   display: flex;
   flex-direction: column;

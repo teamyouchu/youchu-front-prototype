@@ -2,10 +2,10 @@ import * as style from './VideoInfoStyle';
 import { numberComma } from 'lib/numberFomat';
 
 export default function VideoInfo({
-  data: { thumbnail, title, views, dates },
+  data: { videoUrl, thumbnail, title, views, dates },
 }) {
   return (
-    <style.VideoBox>
+    <style.VideoBox href={videoUrl} target="_blank" rel="noreferrer">
       <style.VideoThumbnail src={thumbnail} />
       <style.VideoTitle>{title}</style.VideoTitle>
       <style.SpanFlex>
