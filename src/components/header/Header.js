@@ -65,6 +65,8 @@ export default function Header({ isSearchShow }) {
                 pathname: '/login',
                 state: {
                   from: 'button',
+                  msg1: '유튜버를 추천받고',
+                  msg2: '유튜버 리뷰를 남겨보세요!',
                 },
               }}
             >
