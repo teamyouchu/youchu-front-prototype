@@ -38,6 +38,6 @@ export const LeftInfoContainer = styled.div`
 export const RightInfoContainer = styled(LeftInfoContainer)`
   margin-right: 0;
   @media ${(props) => props.theme.tablet} {
-    display: none;
+    display: ${({ all }) => all && 'none'};
   }
 `;
