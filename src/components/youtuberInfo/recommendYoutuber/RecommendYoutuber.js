@@ -30,7 +30,7 @@ export default function RecommendYoutuber({ category }) {
         {category ? (
           <style.RecommendTitle>
             {/* TODO 서지수 api 수정되면 카테고리 수정 */}
-            {categoryArray.find((x) => x.id === parseInt(category)).value}
+            {categoryArray.find((x) => x.id === category).value}
             &nbsp;유튜버
           </style.RecommendTitle>
         ) : (
