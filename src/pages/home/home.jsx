@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as style from './style';
 import youtuberAPI from 'lib/api/youtuberAPI';
+import { UserContext } from 'lib/UserContext';
 import ReviewCard from 'components/reviewCard/ReviewCard';
 import RecommendCard from 'components/recommendCard/RecommendCard';
 
 export default function Home() {
+  const { userObj } = useContext(UserContext);
+
   const [bestYoutuber, setBestYoutuber] = useState([]);
-  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
-
-  useEffect(() => {
-    getBestYoutuber();
-    getRecommendYoutuber();
-  }, []);
-
   const getBestYoutuber = async () => {
     await youtuberAPI
       .getMostYoutubers()
@@ -21,7 +17,11 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    getBestYoutuber();
+  }, []);
 
+  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
   const getRecommendYoutuber = async () => {
     await youtuberAPI
       .getRecommendYoutubers()
@@ -30,6 +30,9 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    getRecommendYoutuber();
+  }, [userObj.nickname]);
 
   return (
     <style.HomeContainer>
