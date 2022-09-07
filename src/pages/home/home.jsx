@@ -1,12 +1,12 @@
-import { /* useState,*/ useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as style from './style';
-// import mainAPI from 'lib/api/mainAPI';
-import RecommendCard from 'components/recommendCard/RecommendCard';
+import youtuberAPI from 'lib/api/youtuberAPI';
 import ReviewCard from 'components/reviewCard/ReviewCard';
+import RecommendCard from 'components/recommendCard/RecommendCard';
 
 export default function Home() {
-  // const [bestYoutuber, setBestYoutuber] = useState([]);
-  // const [recommendYoutuber, setRecommendYoutuber] = useState([]);
+  const [bestYoutuber, setBestYoutuber] = useState([]);
+  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
 
   useEffect(() => {
     getBestYoutuber();
@@ -14,21 +14,21 @@ export default function Home() {
   }, []);
 
   const getBestYoutuber = async () => {
-    // await mainAPI
-    //   .getBest()
-    //   .then((res) => {
-    //     setBestYoutuber(res.data.data);
-    //   })
-    //   .catch((err) => console.log(err));
+    await youtuberAPI
+      .getMostYoutubers()
+      .then((res) => {
+        setBestYoutuber(res.data.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   const getRecommendYoutuber = async () => {
-    // await mainAPI
-    //   .getRecommend()
-    //   .then((res) => {
-    //     setRecommendYoutuber(res.data.data);
-    //   })
-    //   .catch((err) => console.log(err));
+    await youtuberAPI
+      .getRecommendYoutubers()
+      .then((res) => {
+        setRecommendYoutuber(res.data.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -90,130 +90,3 @@ const slide_R = () =>
     left: 280,
     behavior: 'smooth',
   });
-
-const bestYoutuber = [
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNSaaaaaa',
-    subscribes: 1234,
-    rating: 5.0,
-    reviews: 111111,
-    bestReview:
-      '매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게매우길게',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 12345,
-    rating: 4.9,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 123456,
-    rating: 3.9,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 1234567,
-    rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 12345678,
-    rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ6',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    category: 23,
-    name: '빠더너스 BDNS',
-    subscribes: 1234567890000,
-    rating: 5,
-    reviews: 100,
-    bestReview: '하하',
-  },
-];
-
-const recommendYoutuber = [
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ1',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNSaaaaaaaaaaaaaaaㅁㄴㅇㄹㅁㄴㅇaaaㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㄹㅁㄴㅇaaaasdasdfadsfasfds',
-    rating: 5.0,
-    reviews: 1000,
-    category: 23,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 4.9,
-    reviews: 998,
-    category: 23,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 3.2,
-    reviews: 100,
-    category: 23,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 5.0,
-    reviews: 100,
-    category: 23,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 5.0,
-    reviews: 100,
-    category: 23,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ6',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 5.0,
-    reviews: 100,
-    category: 23,
-  },
-];
