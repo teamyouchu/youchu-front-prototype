@@ -20,7 +20,7 @@ export const RelatedSearch = styled.div`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0px;
-  padding: 5px 20px;
+  padding: 10px 20px 5px 20px;
   color: #eb3323;
 `;
 
