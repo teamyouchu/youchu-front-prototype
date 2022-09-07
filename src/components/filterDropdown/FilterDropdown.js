@@ -1,9 +1,8 @@
 import * as style from './FilterDropdownStyle';
 
-export default function FilterDropdown({ options, setSort, setNextPage }) {
+export default function FilterDropdown({ options, setSort }) {
   const handleChange = (e, { value }) => {
     setSort(value);
-    setNextPage(1);
   };
   return (
     <style.FilterDropdown

@@ -12,21 +12,8 @@ export default function ReviewList({ from, all }) {
 
   // TODO 서지수 api 나오면 수정하기
   const [reviewList, setReviewList] = useState({
-    data: [
-      {
-        comment: '',
-        createdDatetime: '',
-        id: 0,
-        imgUrl: '',
-        likes: 0,
-        nickname: '',
-        rating: 0,
-      },
-    ],
+    data: [],
     maxPage: 1,
-    perPage: 1,
-    size: 1,
-    totalCount: 1,
   });
   const getReviews = () => {
     if (from === 'myInfo') {
@@ -51,7 +38,12 @@ export default function ReviewList({ from, all }) {
   useEffect(() => {
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nextPage, sort]);
+  }, [nextPage]);
+  useEffect(() => {
+    setNextPage(1);
+    getReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sort]);
   return (
     <style.reviewListContainer>
       {from === 'myInfo' && (
@@ -65,11 +57,7 @@ export default function ReviewList({ from, all }) {
       )}
       {all && (
         <style.ReviewDropdown>
-          <FilterDropdown
-            options={reviewSortOptions}
-            setSort={setSort}
-            setNextPage={setNextPage}
-          />
+          <FilterDropdown options={reviewSortOptions} setSort={setSort} />
         </style.ReviewDropdown>
       )}
       {reviewList.data.map((data) => (
