@@ -56,12 +56,7 @@ export default function SearchInput({ page, setChannel }) {
   const onSearch = (e) => {
     e.preventDefault();
     if (page === 'header' && window.innerWidth < 1170) {
-      history.push({
-        pathname: '/search',
-        state: {
-          searchValue: searchValue,
-        },
-      });
+      history.push('/search');
     } else if (page !== 'registration') {
       history.push({
         pathname: '/youtubers',
