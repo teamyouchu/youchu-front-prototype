@@ -56,12 +56,7 @@ export default function SearchInput({ page, setChannel }) {
   const onSearch = (e) => {
     e.preventDefault();
     if (page === 'header' && window.innerWidth < 1170) {
-      history.push({
-        pathname: '/search',
-        state: {
-          searchValue: searchValue,
-        },
-      });
+      history.push('/search');
     } else if (page !== 'registration') {
       history.push({
         pathname: '/youtubers',
@@ -70,7 +65,6 @@ export default function SearchInput({ page, setChannel }) {
         },
       });
       setSearchValue('');
-      setAutoSearchValue('');
       setIsRelatedSearch(false);
     }
   };
@@ -110,11 +104,7 @@ export default function SearchInput({ page, setChannel }) {
   // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
-    if (autoSearchValue) {
-      setAutoSearchValue(e.target.value);
-    } else {
-      setSearchValue(e.target.value);
-    }
+    setSearchValue(e.target.value);
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
       setIsRelatedSearch(true);
@@ -132,59 +122,48 @@ export default function SearchInput({ page, setChannel }) {
   };
 
   // 위, 아래 키보드 입력 시 자동 완성
-  const autoRef = useRef(null);
-  const [index, setIndex] = useState(-1);
-  const [keyIndex, setKeyIndex] = useState(-1);
-  const [autoSearchValue, setAutoSearchValue] = useState(null);
-  const handleKeyArrow = (e) => {
-    if (searchValue.length > 0) {
-      switch (e.key) {
-        case 'ArrowDown': //키보드 down 키
-          setIndex(index + 1);
-          setKeyIndex(index + 1);
-          if (autoRef.current?.childElementCount === index + 1) {
-            setIndex(0);
-            setKeyIndex(0);
-          }
-          break;
-        case 'ArrowUp': //키보드 up 키
-          setIndex(index - 1);
-          setKeyIndex(index - 1);
-          if (index <= 0) {
-            setIndex(-1);
-            setKeyIndex(-1);
-          }
-          break;
-        default:
-      }
-    }
-  };
-  useEffect(() => {
-    if (keyIndex >= 0) {
-      setIsRelatedSearch(true);
-      setAutoSearchValue(
-        autoRef.current?.children[keyIndex].children[1].innerText,
-      );
-    } else {
-      setIsRelatedSearch(false);
-      setAutoSearchValue(null);
-    }
-  }, [keyIndex]);
-
+  // const autoRef = useRef(null);
+  // const [index, setIndex] = useState(-1);
+  // const [keyIndex, setKeyIndex] = useState(-1);
+  // const handleKeyArrow = (e) => {
+  //   if (searchValue.length > 0) {
+  //     switch (e.key) {
+  //       case 'ArrowDown': //키보드 down 키
+  //         setIndex(index + 1);
+  //         setKeyIndex(index + 1);
+  //         if (autoRef.current?.childElementCount === index + 1) {
+  //           setIndex(0);
+  //           setKeyIndex(0);
+  //         }
+  //         break;
+  //       case 'ArrowUp': //키보드 up 키
+  //         setIndex(index - 1);
+  //         setKeyIndex(index - 1);
+  //         if (index <= 0) {
+  //           setIndex(-1);
+  //           setKeyIndex(-1);
+  //         }
+  //         break;
+  //       default:
+  //     }
+  //   }
+  // };
   // useEffect(() => {
-  //   console.log('searchValue: ', searchValue);
-  //   console.log('auto: ', autoSearchValue);
-  //   console.log('index: ', index);
-  //   console.log('keyIndex: ', keyIndex);
-  //   console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
-  // }, [autoSearchValue, index, keyIndex, searchValue]);
+  //   if (keyIndex >= 0) {
+  //     setIsRelatedSearch(true);
+  //     setSearchValue(autoRef.current?.children[keyIndex].children[1].innerText);
+  //   } else {
+  //     setIsRelatedSearch(false);
+  //     setSearchValue('');
+  //   }
+  // }, [keyIndex]);
 
   return (
     <style.SearchBox>
       <style.SearchForm
         ref={inputRef}
         onSubmit={onSearch}
-        onKeyDown={handleKeyArrow}
+        // onKeyDown={handleKeyArrow}
         page={page}
       >
         {page === 'header' && (
@@ -196,7 +175,7 @@ export default function SearchInput({ page, setChannel }) {
         <style.SearchInput
           page={page}
           placeholder="유튜버 이름으로 검색하세요!"
-          value={autoSearchValue ? autoSearchValue : searchValue}
+          value={searchValue}
           onChange={onSearchValueChange}
           onClick={() => {
             if (searchValue) setIsRelatedSearch(!isRelatedSearch);
@@ -209,13 +188,12 @@ export default function SearchInput({ page, setChannel }) {
           page={page}
           searchResults={searchResults}
           setSearchValue={setSearchValue}
-          setAutoSearchValue={setAutoSearchValue}
           setIsRelatedSearch={setIsRelatedSearch}
           setChannel={setChannel}
-          autoRef={autoRef}
-          index={index}
-          setIndex={setIndex}
-          setKeyIndex={setKeyIndex}
+          // autoRef={autoRef}
+          // index={index}
+          // setIndex={setIndex}
+          // setKeyIndex={setKeyIndex}
         />
       )}
     </style.SearchBox>

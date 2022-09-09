@@ -12,7 +12,11 @@ function PrivateRoute({ component: Component, ...rest }) {
           <Redirect
             to={{
               pathname: '/login',
-              state: { from: props.location },
+              state: {
+                from: props.location,
+                msg1: '로그인이 필요한 서비스입니다.',
+                msg2: '로그인 후 이용해주세요!',
+              },
             }}
           />
         )

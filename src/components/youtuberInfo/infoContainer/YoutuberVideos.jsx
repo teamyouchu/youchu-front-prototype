@@ -63,6 +63,7 @@ export default function YoutuberVideos({
 const bestVideos = [
   {
     id: 1,
+    videoUrl: 'https://youtu.be/Lb1UMS-n-rY',
     thumbnail:
       'https://i.ytimg.com/vi/Lb1UMS-n-rY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBqoyEbEnx6itkQMXZi8Br5Txi3vQ',
     title: '[ENG][문쌤] 수업 중 에어드랍 테러 그만해! 내가 돼지라는 소리야?',
@@ -71,6 +72,7 @@ const bestVideos = [
   },
   {
     id: 2,
+    videoUrl: 'https://youtu.be/rcZDzL7rMTM',
     thumbnail:
       'https://i.ytimg.com/vi/rcZDzL7rMTM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCr7Wgx64k7_K1Vsxo6Z6C1ZN92gg',
     title: '[문쌤] 에어드랍 꺼놨더니 또 이런 짓을 해? 문제 테러 당한 문쌤',
@@ -79,6 +81,7 @@ const bestVideos = [
   },
   {
     id: 3,
+    videoUrl: 'https://youtu.be/nvOb18mDR1A',
     thumbnail:
       'https://i.ytimg.com/vi/nvOb18mDR1A/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBXUw4fMoubA1TI7mXyY1agdyafrg',
     title: '뉴스 도중에 포켓몬빵 깠는데... (레전드 방송사고)',
@@ -90,6 +93,7 @@ const bestVideos = [
 const newVideos = [
   {
     id: 1,
+    videoUrl: 'https://youtu.be/c2ynY3AnUNg',
     thumbnail:
       'https://i.ytimg.com/vi/c2ynY3AnUNg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAIZwDf4RmrWRhperiXCnwXFULFLg',
     title: '뉴스 도중에 층간소음 항의하러 갔다가... (레전드 방송사고)',
@@ -98,6 +102,7 @@ const newVideos = [
   },
   {
     id: 2,
+    videoUrl: 'https://youtu.be/nX1ExikYzxU',
     thumbnail:
       'https://i.ytimg.com/vi/nX1ExikYzxU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBEQCN85X8ZdM5Nvd033A2kNX1O5g',
     title: '[해인칭] “무인도에 떨어진다면?” 극 N들의 대화, 만약에 게임!',
@@ -106,6 +111,7 @@ const newVideos = [
   },
   {
     id: 3,
+    videoUrl: 'https://youtu.be/WXYU7vNGTMY',
     thumbnail:
       'https://i.ytimg.com/vi/WXYU7vNGTMY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD6Ns1hru565kjYJdipOvhJMQUXyg',
     title: '면치기 하지 말자 얘들아',

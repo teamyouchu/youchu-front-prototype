@@ -63,6 +63,11 @@ export const categoryArray = [
 
 export const categoryOptions = [
   {
+    key: '전체 카테고리',
+    text: '전체 카테고리',
+    value: '전체 키테고리',
+  },
+  {
     key: '영화/애니메이션',
     text: '영화/애니메이션',
     value: '영화/애니메이션',
@@ -159,5 +164,18 @@ export const sortOptions = [
     key: '인기순',
     text: '인기순',
     value: '인기순',
+  },
+];
+
+export const reviewSortOptions = [
+  {
+    key: '1',
+    text: '최근에 등록된',
+    value: 'latest',
+  },
+  {
+    key: '2',
+    text: '좋아요가 많이 달린',
+    value: 'like',
   },
 ];

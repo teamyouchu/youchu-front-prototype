@@ -45,11 +45,8 @@ export default function List({ setIsSearchShow }) {
       <style.Title>전체 유튜버</style.Title>
       <style.FilterContainer>
         <style.FilterBox>
-          <FilterDropdown
-            placeholder="세부 카테고리"
-            options={categoryOptions}
-          />
-          <FilterDropdown placeholder="정렬" options={sortOptions} />
+          <FilterDropdown options={categoryOptions} />
+          <FilterDropdown options={sortOptions} />
         </style.FilterBox>
         <style.FilterBox>
           <style.SearchForm>
