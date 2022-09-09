@@ -7,7 +7,6 @@ export default function RelatedSearch({
   page,
   searchResults,
   setSearchValue,
-  setAutoSearchValue,
   setIsRelatedSearch,
   setChannel,
   autoRef,
@@ -39,10 +38,8 @@ export default function RelatedSearch({
               setIsRelatedSearch(false);
               if (page !== 'registration') {
                 setSearchValue('');
-                setAutoSearchValue(null);
               } else {
                 setSearchValue(data.title);
-                setAutoSearchValue(data.title);
                 setChannel({ channel_id: data.id, isExist: data.isExist });
               }
             }}

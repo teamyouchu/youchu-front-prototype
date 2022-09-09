@@ -65,7 +65,6 @@ export default function SearchInput({ page, setChannel }) {
         },
       });
       setSearchValue('');
-      setAutoSearchValue('');
       setIsRelatedSearch(false);
     }
   };
@@ -105,11 +104,7 @@ export default function SearchInput({ page, setChannel }) {
   // 검색어
   const [searchValue, setSearchValue] = useState('');
   const onSearchValueChange = (e) => {
-    if (autoSearchValue) {
-      setAutoSearchValue(e.target.value);
-    } else {
-      setSearchValue(e.target.value);
-    }
+    setSearchValue(e.target.value);
     if (e.target.value) {
       // 검색어가 있으면 연관검색어 표시
       setIsRelatedSearch(true);
@@ -130,7 +125,6 @@ export default function SearchInput({ page, setChannel }) {
   const autoRef = useRef(null);
   const [index, setIndex] = useState(-1);
   const [keyIndex, setKeyIndex] = useState(-1);
-  const [autoSearchValue, setAutoSearchValue] = useState(null);
   const handleKeyArrow = (e) => {
     if (searchValue.length > 0) {
       switch (e.key) {
@@ -157,22 +151,12 @@ export default function SearchInput({ page, setChannel }) {
   useEffect(() => {
     if (keyIndex >= 0) {
       setIsRelatedSearch(true);
-      setAutoSearchValue(
-        autoRef.current?.children[keyIndex].children[1].innerText,
-      );
+      setSearchValue(autoRef.current?.children[keyIndex].children[1].innerText);
     } else {
       setIsRelatedSearch(false);
-      setAutoSearchValue(null);
+      setSearchValue('');
     }
   }, [keyIndex]);
-
-  // useEffect(() => {
-  //   console.log('searchValue: ', searchValue);
-  //   console.log('auto: ', autoSearchValue);
-  //   console.log('index: ', index);
-  //   console.log('keyIndex: ', keyIndex);
-  //   console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
-  // }, [autoSearchValue, index, keyIndex, searchValue]);
 
   return (
     <style.SearchBox>
@@ -191,7 +175,7 @@ export default function SearchInput({ page, setChannel }) {
         <style.SearchInput
           page={page}
           placeholder="유튜버 이름으로 검색하세요!"
-          value={autoSearchValue ? autoSearchValue : searchValue}
+          value={searchValue}
           onChange={onSearchValueChange}
           onClick={() => {
             if (searchValue) setIsRelatedSearch(!isRelatedSearch);
@@ -204,7 +188,6 @@ export default function SearchInput({ page, setChannel }) {
           page={page}
           searchResults={searchResults}
           setSearchValue={setSearchValue}
-          setAutoSearchValue={setAutoSearchValue}
           setIsRelatedSearch={setIsRelatedSearch}
           setChannel={setChannel}
           autoRef={autoRef}
