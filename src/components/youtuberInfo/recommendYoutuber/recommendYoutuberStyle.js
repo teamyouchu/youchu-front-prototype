@@ -14,6 +14,10 @@ export const RecommendContainer = styled.div`
     border: 0;
     border-bottom: 1px solid #dedede;
     margin-bottom: 0;
+    margin-top: 12px;
+    :first-child {
+      margin-top: 0px;
+    }
   }
 `;
 
@@ -32,7 +36,7 @@ export const RecommendBox = styled.div`
     border-bottom: 1px solid rgb(222, 222, 222, 0.49);
     :first-child {
       background-color: transparent;
-      padding: 20px 24px 14px 24px;
+      padding: 8px 24px 14px 24px;
     }
   }
 `;

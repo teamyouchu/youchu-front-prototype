@@ -11,7 +11,7 @@ export default function Login() {
   const { setUserObj } = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
-  const from = location.state.from;
+  const { from, msg1, msg2 } = location.state;
 
   //로그인 성공했을 떄 처리 함수
   const successGoogle = async (res) => {
@@ -70,8 +70,8 @@ export default function Login() {
     <style.LoginContainer>
       <style.LoginBox>
         <style.Title>
-          유튜버를 추천받고
-          <br /> 유튜버 리뷰를 남겨보세요!
+          {msg1} <br />
+          {msg2}
         </style.Title>
         <GoogleLogin
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}

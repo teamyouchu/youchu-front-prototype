@@ -1,16 +1,37 @@
 import * as style from './recommendYoutuberStyle';
+import { useState, useEffect } from 'react';
 import RecommendCard from 'components/recommendCard/RecommendCard';
-// import { categoryArray } from 'lib/modules';
+import { categoryArray } from 'lib/modules';
+import youtuberAPI from 'lib/api/youtuberAPI';
 
 export default function RecommendYoutuber({ category }) {
+  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
+  useEffect(() => {
+    if (category) {
+      youtuberAPI
+        .getCategoryRecommendYoutubers(category)
+        .then((res) => {
+          setRecommendYoutuber(res.data.data);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      youtuberAPI
+        .getMostYoutubers()
+        .then((res) => {
+          const sliceData = res.data.data.slice(0, 5);
+          setRecommendYoutuber(sliceData);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [category]);
   return (
     <style.RecommendContainer>
       <style.RecommendBox>
         {category ? (
           <style.RecommendTitle>
             {/* TODO 서지수 api 수정되면 카테고리 수정 */}
-            {/* {categoryArray.find((x) => x.id === category).value} */}
-            {category} 유튜버
+            {categoryArray.find((x) => x.id === category).value}
+            &nbsp;유튜버
           </style.RecommendTitle>
         ) : (
           <style.RecommendTitle>이번주 인기 유튜버</style.RecommendTitle>
@@ -24,42 +45,3 @@ export default function RecommendYoutuber({ category }) {
     </style.RecommendContainer>
   );
 }
-
-const recommendYoutuber = [
-  {
-    id: 'UCUj6rrhMTR9pipbAWBAMvUQ',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AMLnZu-OoCj8oG4hssfpUAvZ5EPCjBu21krVcB6tkVFsQA=s88-c-k-c0x00ffffff-no-rj',
-    name: '침착맨',
-    rating: 5.0,
-    reviews: 1000,
-    category: 24,
-  },
-  {
-    id: 'UCRnoBo60_joBvIQCoAiNCqg',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLTiuOfbCXthi59y1-b1mnJywXGjUl8BfSfapzyM=s88-c-k-c0x00ffffff-no-rj-mo',
-    name: '월간 윤종신',
-    rating: 4.9,
-    reviews: 998,
-    category: 10,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 3.2,
-    reviews: 100,
-    category: 23,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
-    imageUrl:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    name: '빠더너스 BDNS',
-    rating: 5.0,
-    reviews: 100,
-    category: 23,
-  },
-];

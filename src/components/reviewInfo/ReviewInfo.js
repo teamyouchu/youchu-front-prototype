@@ -34,12 +34,15 @@ export default function ReviewInfo({
     console.log('신고하기');
   };
   const delReview = async () => {
-    await reviewAPI
-      .delReview(id)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.error(err));
+    if (window.confirm('삭제하시겠습니까?')) {
+      await reviewAPI
+        .delReview(id)
+        .then((res) => {
+          alert('삭제되었습니다.');
+          window.location.reload();
+        })
+        .catch((err) => console.error(err));
+    }
   };
 
   return (

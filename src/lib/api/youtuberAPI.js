@@ -23,6 +23,14 @@ const youtuberAPI = {
   getMostYoutubers() {
     return axios.get(`/youtuber/most`);
   },
+  // 추천 유튜버 조회
+  getRecommendYoutubers() {
+    return axios.get(`/youtuber/recommend`);
+  },
+  // 카테고리 별 추천 유튜버
+  getCategoryRecommendYoutubers(category_id) {
+    return axios.get(`/youtuber/recommend/${category_id}`);
+  },
 };
 
 export default youtuberAPI;
