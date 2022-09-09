@@ -122,48 +122,48 @@ export default function SearchInput({ page, setChannel }) {
   };
 
   // 위, 아래 키보드 입력 시 자동 완성
-  const autoRef = useRef(null);
-  const [index, setIndex] = useState(-1);
-  const [keyIndex, setKeyIndex] = useState(-1);
-  const handleKeyArrow = (e) => {
-    if (searchValue.length > 0) {
-      switch (e.key) {
-        case 'ArrowDown': //키보드 down 키
-          setIndex(index + 1);
-          setKeyIndex(index + 1);
-          if (autoRef.current?.childElementCount === index + 1) {
-            setIndex(0);
-            setKeyIndex(0);
-          }
-          break;
-        case 'ArrowUp': //키보드 up 키
-          setIndex(index - 1);
-          setKeyIndex(index - 1);
-          if (index <= 0) {
-            setIndex(-1);
-            setKeyIndex(-1);
-          }
-          break;
-        default:
-      }
-    }
-  };
-  useEffect(() => {
-    if (keyIndex >= 0) {
-      setIsRelatedSearch(true);
-      setSearchValue(autoRef.current?.children[keyIndex].children[1].innerText);
-    } else {
-      setIsRelatedSearch(false);
-      setSearchValue('');
-    }
-  }, [keyIndex]);
+  // const autoRef = useRef(null);
+  // const [index, setIndex] = useState(-1);
+  // const [keyIndex, setKeyIndex] = useState(-1);
+  // const handleKeyArrow = (e) => {
+  //   if (searchValue.length > 0) {
+  //     switch (e.key) {
+  //       case 'ArrowDown': //키보드 down 키
+  //         setIndex(index + 1);
+  //         setKeyIndex(index + 1);
+  //         if (autoRef.current?.childElementCount === index + 1) {
+  //           setIndex(0);
+  //           setKeyIndex(0);
+  //         }
+  //         break;
+  //       case 'ArrowUp': //키보드 up 키
+  //         setIndex(index - 1);
+  //         setKeyIndex(index - 1);
+  //         if (index <= 0) {
+  //           setIndex(-1);
+  //           setKeyIndex(-1);
+  //         }
+  //         break;
+  //       default:
+  //     }
+  //   }
+  // };
+  // useEffect(() => {
+  //   if (keyIndex >= 0) {
+  //     setIsRelatedSearch(true);
+  //     setSearchValue(autoRef.current?.children[keyIndex].children[1].innerText);
+  //   } else {
+  //     setIsRelatedSearch(false);
+  //     setSearchValue('');
+  //   }
+  // }, [keyIndex]);
 
   return (
     <style.SearchBox>
       <style.SearchForm
         ref={inputRef}
         onSubmit={onSearch}
-        onKeyDown={handleKeyArrow}
+        // onKeyDown={handleKeyArrow}
         page={page}
       >
         {page === 'header' && (
@@ -190,10 +190,10 @@ export default function SearchInput({ page, setChannel }) {
           setSearchValue={setSearchValue}
           setIsRelatedSearch={setIsRelatedSearch}
           setChannel={setChannel}
-          autoRef={autoRef}
-          index={index}
-          setIndex={setIndex}
-          setKeyIndex={setKeyIndex}
+          // autoRef={autoRef}
+          // index={index}
+          // setIndex={setIndex}
+          // setKeyIndex={setKeyIndex}
         />
       )}
     </style.SearchBox>

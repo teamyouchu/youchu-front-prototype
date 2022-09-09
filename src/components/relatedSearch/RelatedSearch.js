@@ -1,7 +1,7 @@
 import * as style from './RelatedSearchStyle.js';
 import { numToKorean } from 'lib/numberFomat.js';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function RelatedSearch({
   page,
@@ -9,24 +9,26 @@ export default function RelatedSearch({
   setSearchValue,
   setIsRelatedSearch,
   setChannel,
-  autoRef,
-  index,
-  setIndex,
-  setKeyIndex,
+  // autoRef,
+  // index,
+  // setIndex,
+  // setKeyIndex,
 }) {
-  useEffect(() => {
-    return () => {
-      setIndex(-1);
-      setKeyIndex(-1);
-    };
-  }, [setIndex, setKeyIndex]);
+  // useEffect(() => {
+  //   return () => {
+  //     setIndex(-1);
+  //     setKeyIndex(-1);
+  //   };
+  // }, [setIndex, setKeyIndex]);
+
+  const [index, setIndex] = useState(-1);
 
   return (
     <style.SearchDropdownContainer page={page}>
       {page === 'header' && (
         <style.RelatedSearch>연관 검색어</style.RelatedSearch>
       )}
-      <div ref={autoRef}>
+      <div /*ref={autoRef}*/>
         {searchResults.map((data, idx) => (
           <style.SearchResultBox
             key={data.id}
