@@ -9,7 +9,7 @@ export default function ReviewCard({
     id,
     thumbnail,
     category,
-    name,
+    title,
     subscribes,
     rating,
     reviews,
@@ -18,7 +18,7 @@ export default function ReviewCard({
 }) {
   return (
     <style.RvContainer to={`/youtubers/review/${id}`} page={page}>
-      <style.Img src={thumbnail} alt={name} />
+      <style.Img src={thumbnail} alt={title} />
       <style.RvInfoContainer>
         <style.Group marginB="10px" marginB_M="5px">
           <style.RvCategory>
@@ -28,7 +28,7 @@ export default function ReviewCard({
           </style.RvCategory>
         </style.Group>
         <style.Group marginB="8px" marginB_M="5px">
-          <style.RvChannelName>{name}</style.RvChannelName>
+          <style.RvChannelName>{title}</style.RvChannelName>
           <style.SubscriberCount>
             {numToKorean(subscribes)}명
           </style.SubscriberCount>
