@@ -4,15 +4,15 @@ import { categoryArray } from 'lib/modules';
 import { overThousand } from 'lib/numberFomat';
 
 export default function RecommendCard({
-  data: { id, imageUrl, name, rating, reviews, category },
+  data: { id, thumbnail, title, rating, reviews, category },
   page,
 }) {
   return (
     <style.RcmdContainer to={`/youtubers/review/${id}`} page={page}>
-      <style.Img src={imageUrl} alt={name} />
+      <style.Img src={thumbnail} alt={title} />
       <style.GroupBox>
         <style.Group marginB="3px">
-          <style.RcmdChannelName>{name}</style.RcmdChannelName>
+          <style.RcmdChannelName>{title}</style.RcmdChannelName>
         </style.Group>
         <style.Group marginB="5px">
           <StarRating rating={rating} />
