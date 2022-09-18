@@ -2,14 +2,16 @@ import * as style from './style';
 import { useEffect, useState } from 'react';
 import VideoInfo from '../videoInfo/VideoInfo';
 import youtuberAPI from 'lib/api/youtuberAPI';
+import { useParams } from 'react-router-dom';
 
-export default function YoutuberVideos({ youtuberInfo: { id }, M_display }) {
+export default function YoutuberVideos({ M_display }) {
+  const { channel_id } = useParams();
   const [sortFocus /*SetSortSocus*/] = useState(true);
   const [videos, setVideos] = useState([]);
 
   const getVideos = async () => {
     await youtuberAPI
-      .getYoutuberVideos(id)
+      .getYoutuberVideos(channel_id)
       .then((res) => {
         setVideos(res.data.videos);
       })
@@ -18,12 +20,12 @@ export default function YoutuberVideos({ youtuberInfo: { id }, M_display }) {
   useEffect(() => {
     // 유튜버 영상 요청 api
     if (sortFocus === true) {
-      getVideos(id, '조회수 순');
+      getVideos('조회수 순');
     } else {
-      getVideos(id, '최신순');
+      getVideos('최신순');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, sortFocus]);
+  }, [sortFocus]);
 
   return (
     <style.InfoContainer M_display={M_display}>
@@ -58,7 +60,7 @@ export default function YoutuberVideos({ youtuberInfo: { id }, M_display }) {
       </style.InfoBox>
       <style.ShowMoreBox>
         <a
-          href={`https://www.youtube.com/channel/${id}/videos`}
+          href={`https://www.youtube.com/channel/${channel_id}/videos`}
           target="_blank"
           rel="noreferrer"
         >
