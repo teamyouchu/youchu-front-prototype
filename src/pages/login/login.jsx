@@ -4,7 +4,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import authAPI from 'lib/api/authAPI';
 import userAPI from 'lib/api/userAPI';
-import axios from 'axios';
 import { UserContext } from 'lib/UserContext';
 
 export default function Login() {
@@ -21,10 +20,8 @@ export default function Login() {
         redirectUri: window.location.origin,
       })
       .then((res) => {
+        localStorage.setItem('accessToken', res.data.authToken.accessToken);
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
-        axios.defaults.headers.common[
-          'Authorization'
-        ] = `Bearer ${res.data.authToken.accessToken}`;
         // TODO 서지수 api 수정되면 회원가입 페이지로 넘어가는 코드 수정
         if (res.data.isRegistered) {
           if (from === 'button') {

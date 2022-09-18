@@ -4,9 +4,45 @@ import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import Registration from 'components/registration/Registration';
 import LogoutModal from 'components/logoutModal/LogoutModal';
+import userAPI from 'lib/api/userAPI';
+import { useHistory } from 'react-router-dom';
 
 export default function Header({ isSearchShow }) {
-  const { userObj } = useContext(UserContext);
+  const { userObj, setUserObj } = useContext(UserContext);
+  const history = useHistory();
+  useEffect(() => {
+    if (localStorage.getItem('refreshToken')) {
+      userAPI
+        .getMe()
+        .then(({ data }) => {
+          if (data.status === 1) {
+            setUserObj({
+              email: data.email,
+              favoriteCategory: data.favoriteCategory,
+              hasReview: data.hasReview,
+              imageUrl: data.imageUrl,
+              nickname: data.nickname,
+            });
+          } else if (data.status === 2) {
+            history.push({
+              pathname: '/signup',
+              state: { from: 'button' },
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setUserObj({
+            email: '',
+            favoriteCategory: [],
+            hasReview: '',
+            imageUrl: '',
+            nickname: '',
+          });
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);

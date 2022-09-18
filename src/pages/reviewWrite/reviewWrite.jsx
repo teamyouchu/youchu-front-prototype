@@ -37,7 +37,7 @@ export default function ReviewWrite() {
         channel_id,
       )
       .then(() => {
-        history.push(`/youtubers/review/${channel_id}`);
+        history.push(`/youtubers/review/detail/${channel_id}`);
       })
       .catch((err) => {
         console.error(err);
