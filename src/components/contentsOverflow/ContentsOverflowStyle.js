@@ -8,6 +8,7 @@ export const Contents = styled.div`
   letter-spacing: 0px;
   color: #000000;
   margin-bottom: 5px;
+  white-space: pre-line;
 
   &.hidden {
     overflow: hidden;
@@ -15,7 +16,7 @@ export const Contents = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
-    white-space: normal;
+    white-space: pre-line;
   }
 `;
 

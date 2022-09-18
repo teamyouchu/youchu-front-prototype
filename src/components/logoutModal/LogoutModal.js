@@ -29,6 +29,7 @@ export default function LogoutModal({ setShowLogout }) {
   };
   const onLogoutClick = () => {
     setShowLogout(false);
+    window.localStorage.removeItem('accessToken');
     window.localStorage.removeItem('refreshToken');
     setUserObj({
       email: '',
