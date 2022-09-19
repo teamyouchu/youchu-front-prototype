@@ -52,7 +52,7 @@ export default function RelatedSearch({
             <style.SearchResultImg src={data.thumbnail} alt={data.name} />
             <style.SearchResultName>{data.title}</style.SearchResultName>
             <style.SearchResultSubscribers>
-              구독자 {numToKorean(data.subscribe)}명
+              구독자 {numToKorean(data.subscribes)}명
             </style.SearchResultSubscribers>
           </style.SearchResultBox>
         ))}
