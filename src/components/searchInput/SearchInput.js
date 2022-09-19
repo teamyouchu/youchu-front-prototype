@@ -1,7 +1,6 @@
 import * as style from './SearchInputStyle';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-// import listAPI from 'lib/api/listAPI';
 import searchAPI from 'lib/api/searchAPI';
 import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 import { throttle } from 'lodash';
@@ -71,21 +70,19 @@ export default function SearchInput({ page, setChannel }) {
 
   // 유추에 등록된 유튜버 검색 api
   const getSearchResult = async () => {
-    // TODO 서지수 api 완성 시 수정
-    // await listAPI
-    //   .getYoutuber(searchValue, 90, 5)
-    //   .then((res) => {
-    //     setSearchResults(res.data.data);
-    //   })
-    //   .catch((err) => console.log(err));
-    setSearchResults(searchResults_Temp);
+    await searchAPI
+      .youtuberSearchFromYouchu('lastedRegistered', 0, searchValue, 0, 6)
+      .then((res) => {
+        setSearchResults(res.data.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   // 유튜브에 유튜버 검색 api
   const [searchResults, setSearchResults] = useState([]);
-  const searchYoutuber = async (value) => {
+  const searchYoutuber = async () => {
     await searchAPI
-      .youtuberSearchFromGoogle(value, 5)
+      .youtuberSearchFromGoogle(searchValue, 5)
       .then((res) => {
         setSearchResults(res.data.channels);
       })
@@ -95,21 +92,21 @@ export default function SearchInput({ page, setChannel }) {
   //TODO 서지수 임시로 작성한 듯 삭제하기
   const throttled = useMemo(
     () =>
-      throttle((value) => {
-        searchYoutuber(value);
+      throttle(() => {
+        searchYoutuber(searchValue);
       }, 5000),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
   // 검색어
   const [searchValue, setSearchValue] = useState('');
-  const onSearchValueChange = (e) => {
-    setSearchValue(e.target.value);
-    if (e.target.value) {
+  useEffect(() => {
+    if (searchValue) {
       // 검색어가 있으면 연관검색어 표시
       setIsRelatedSearch(true);
       if (page === 'registration') {
-        throttled(e.target.value);
+        throttled();
         // TODO 서지수 api 용량 초과 해결되면 위에 코드 지우고 아래 코드로 사용하기
         // searchYoutuber(e.target.value);
       } else {
@@ -119,7 +116,8 @@ export default function SearchInput({ page, setChannel }) {
       // 검색어가 없으면 연관검색어 미표시
       setIsRelatedSearch(false);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue]);
 
   // 위, 아래 키보드 입력 시 자동 완성
   // const autoRef = useRef(null);
@@ -176,7 +174,7 @@ export default function SearchInput({ page, setChannel }) {
           page={page}
           placeholder="유튜버 이름으로 검색하세요!"
           value={searchValue}
-          onChange={onSearchValueChange}
+          onChange={(e) => setSearchValue(e.target.value)}
           onClick={() => {
             if (searchValue) setIsRelatedSearch(!isRelatedSearch);
           }}
@@ -199,41 +197,3 @@ export default function SearchInput({ page, setChannel }) {
     </style.SearchBox>
   );
 }
-
-const searchResults_Temp = [
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    title: '빠더너스 BDNS 1',
-    subscribe: 1234,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ2',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    title: '빠더너스 BDNS 2',
-    subscribe: 12345,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ3',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    title: '빠더너스 BDNS 3',
-    subscribe: 123456,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ4',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    title: '빠더너스 BDNS 4',
-    subscribe: 1234567,
-  },
-  {
-    id: 'UC5xLohcPE65Y-U62X6snmRQ5',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AKedOLQsvosDKDnUr_pgsdnS_smR9RmjincBJD9lL0vHaw=s88-c-k-c0x00ffffff-no-rj',
-    title: '빠더너스 BDNS빠더너스 BDNS빠더너스 BDNS',
-    subscribe: 12345678,
-  },
-];
