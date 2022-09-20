@@ -9,6 +9,7 @@ export default function RelatedSearch({
   setSearchValue,
   setIsRelatedSearch,
   setChannel,
+  setRistOpen,
   // autoRef,
   // index,
   // setIndex,
@@ -25,7 +26,7 @@ export default function RelatedSearch({
 
   return (
     <style.SearchDropdownContainer page={page}>
-      {page === 'header' && (
+      {searchResults.length > 0 && page === 'header' && (
         <style.RelatedSearch>연관 검색어</style.RelatedSearch>
       )}
       <div /*ref={autoRef}*/>
@@ -57,6 +58,11 @@ export default function RelatedSearch({
           </style.SearchResultBox>
         ))}
       </div>
+      {page !== 'registration' && (
+        <style.redRegi onClick={() => setRistOpen(true)}>
+          찾는 유튜버가 없다면?&nbsp;&nbsp;&nbsp;&nbsp;
+        </style.redRegi>
+      )}
     </style.SearchDropdownContainer>
   );
 }

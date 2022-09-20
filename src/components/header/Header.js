@@ -82,7 +82,9 @@ export default function Header({ isSearchShow }) {
           </style.HeaderNavBox>
         </style.HeaderFlex>
         <style.HeaderFlex>
-          {isSearchShow && <SearchInput page={'header'} />}
+          {isSearchShow && (
+            <SearchInput page={'header'} setRistOpen={setRistOpen} />
+          )}
           <style.RegisterBtn onClick={registClose}>
             유튜버 등록
           </style.RegisterBtn>
