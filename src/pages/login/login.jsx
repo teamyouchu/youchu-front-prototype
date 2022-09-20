@@ -22,7 +22,6 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem('accessToken', res.data.authToken.accessToken);
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
-        // TODO 서지수 api 수정되면 회원가입 페이지로 넘어가는 코드 수정
         if (res.data.isRegistered) {
           if (from === 'button') {
             history.goBack();
@@ -44,7 +43,6 @@ export default function Login() {
             })
             .catch((err) => {
               console.error(err);
-              // TODO 서지수 리프레시토큰 만료 시 토큰 재요청 코드 추가
             });
         } else {
           history.push({

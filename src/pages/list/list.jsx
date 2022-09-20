@@ -79,7 +79,6 @@ export default function List({ setIsSearchShow }) {
           ))}
         </style.CardContainer>
       ) : (
-        // TODO 서지수 api요청 해결되면 검색결과 없는 상황 만들기
         <EmptyResult />
       )}
     </style.ListContainer>
