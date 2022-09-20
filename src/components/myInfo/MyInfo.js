@@ -45,6 +45,7 @@ export default function MyInfo({
         .getMe()
         .then(({ data }) => {
           setUserObj({
+            id: data.id,
             email: data.email,
             favoriteCategory: data.favoriteCategory,
             hasReview: data.hasReview,

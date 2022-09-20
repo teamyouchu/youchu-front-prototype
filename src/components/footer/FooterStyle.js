@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.div`
   width: 100%;
@@ -59,7 +58,7 @@ export const LinkLi = styled.li`
   }
 `;
 
-export const FooterSpan = styled(Link)`
+export const FooterSpan = styled.a`
   font-family: 'SHSN-M';
   text-align: left;
   font-size: 14px;

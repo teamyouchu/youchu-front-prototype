@@ -40,7 +40,6 @@ axios.interceptors.response.use(
       },
     } = error;
     if (status === 401 && accessToken) {
-      console.log(type);
       if (type === 'expired.refresh_token') {
         alert('인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.');
         window.localStorage.removeItem('accessToken');
