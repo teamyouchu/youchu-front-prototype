@@ -34,6 +34,7 @@ export default function Login() {
             .getMe()
             .then(({ data }) => {
               setUserObj({
+                id: data.id,
                 email: data.email,
                 favoriteCategory: data.favoriteCategory,
                 hasReview: data.hasReview,

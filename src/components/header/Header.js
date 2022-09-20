@@ -17,6 +17,7 @@ export default function Header({ isSearchShow }) {
         .then(({ data }) => {
           if (data.status === 1) {
             setUserObj({
+              id: data.id,
               email: data.email,
               favoriteCategory: data.favoriteCategory,
               hasReview: data.hasReview,
@@ -32,13 +33,14 @@ export default function Header({ isSearchShow }) {
         })
         .catch((err) => {
           console.log(err);
-          setUserObj({
-            email: '',
-            favoriteCategory: [],
-            hasReview: '',
-            imageUrl: '',
-            nickname: '',
-          });
+          // setUserObj({
+          //   id: 0,
+          //   email: '',
+          //   favoriteCategory: [],
+          //   hasReview: false,
+          //   imageUrl: '',
+          //   nickname: '',
+          // });
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
