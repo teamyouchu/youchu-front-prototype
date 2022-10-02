@@ -24,15 +24,15 @@ export const RelatedSearch = styled.div`
   color: #eb3323;
 `;
 
-export const redRegi = styled(RelatedSearch)`
+export const Registration = styled(RelatedSearch)`
   padding: 10px 20px 10px 20px;
   color: #000000;
+`;
+
+export const RedRegiText = styled.span`
+  color: #eb3323;
   cursor: pointer;
-  ::after {
-    content: '유튜버 등록';
-    color: #eb3323;
-    text-decoration: underline;
-  }
+  text-decoration: underline;
 `;
 
 export const SearchResultBox = styled.div`
