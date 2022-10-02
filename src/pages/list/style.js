@@ -40,7 +40,7 @@ export const FilterBox = styled.div`
   display: flex;
 `;
 
-export const SearchForm = styled.form`
+export const SearchDiv = styled.div`
   display: flex;
   align-items: center;
   width: 350px;

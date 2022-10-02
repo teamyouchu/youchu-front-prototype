@@ -36,7 +36,6 @@ export default function Registration({ registClose }) {
   const history = useHistory();
   const onRegisterClick = async () => {
     if (channel.isExist) {
-      //TODO 서지수 이미 등록된 유튜버 등록 안되고 페이지로 넘어가도록 처리
       registClose();
       alert('이미 등록된 유튜버입니다. 유튜버 페이지로 이동합니다.');
       history.push(`/youtubers/review/${channel.channel_id}`);
@@ -46,7 +45,6 @@ export default function Registration({ registClose }) {
           channel_id: channel.channel_id,
         })
         .then((res) => {
-          // TODO 서지수 제대로 작동하는지 확인
           registClose();
           alert('유튜버의 첫 리뷰를 작성해주세요.');
           history.push(`/youtubers/reviewWrite/${channel.channel_id}`);

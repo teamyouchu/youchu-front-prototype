@@ -9,7 +9,7 @@ export default function ReviewCard({
     id,
     thumbnail,
     category,
-    name,
+    title,
     subscribes,
     rating,
     reviews,
@@ -18,24 +18,28 @@ export default function ReviewCard({
 }) {
   return (
     <style.RvContainer to={`/youtubers/review/${id}`} page={page}>
-      <style.Img src={thumbnail} alt={name} />
+      <style.Img src={thumbnail} alt={title} />
       <style.RvInfoContainer>
         <style.Group marginB="10px" marginB_M="5px">
-          <style.RvCategory>
-            <style.RvCategoryText>
-              {categoryArray.find((x) => x.id === category).value}
-            </style.RvCategoryText>
-          </style.RvCategory>
+          {category && (
+            <style.RvCategory>
+              <style.RvCategoryText>
+                {categoryArray.find((x) => x.id === category).value}
+              </style.RvCategoryText>
+            </style.RvCategory>
+          )}
         </style.Group>
         <style.Group marginB="8px" marginB_M="5px">
-          <style.RvChannelName>{name}</style.RvChannelName>
+          <style.RvChannelName>{title}</style.RvChannelName>
           <style.SubscriberCount>
             {numToKorean(subscribes)}명
           </style.SubscriberCount>
         </style.Group>
         <style.Group alignItems={'center'} marginB={'15px'}>
           <StarRating rating={rating} from={'RVCard'} />
-          <style.Ratings>{rating.toFixed(1)}</style.Ratings>
+          <style.Ratings>
+            {rating !== null ? rating.toFixed(1) : 0}
+          </style.Ratings>
           <style.ReviewCount>
             ({overThousand(reviews)}개 리뷰)
           </style.ReviewCount>

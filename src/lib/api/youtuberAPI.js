@@ -19,6 +19,10 @@ const youtuberAPI = {
       `/youtuber/${channel_id}/review?page=${page}&sort=${sort}`,
     );
   },
+  // 유튜버 동영상 조회
+  getYoutuberVideos(channel_id) {
+    return axios.get(`/youtuber/${channel_id}/videos`);
+  },
   // 이번주 인기 유튜버 조회
   getMostYoutubers() {
     return axios.get(`/youtuber/most`);

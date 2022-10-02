@@ -10,7 +10,6 @@ import { useParams } from 'react-router-dom';
 export default function ReviewList({ from, all }) {
   const { channel_id } = useParams();
 
-  // TODO 서지수 api 나오면 수정하기
   const [reviewList, setReviewList] = useState({
     data: [],
     maxPage: 1,
