@@ -72,12 +72,9 @@ export default function Registration({ registClose }) {
           />
         </style.ModalTitleFlex>
 
-        <style.Span font="SHSN-R">
+        <style.Span font="SHSN-R" margins="0 0 10px 0">
           등록하시려는 유튜버의 이름을 입력해주세요!
         </style.Span>
-        <style.RediretInfo font="SHSN-M" color="#5C7FDF">
-          이해가 안되면 클릭!
-        </style.RediretInfo>
 
         <SearchInput page={'registration'} setChannel={setChannel} />
         <style.CompleteButton onClick={onRegisterClick}>
