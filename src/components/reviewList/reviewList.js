@@ -62,7 +62,7 @@ export default function ReviewList({ from, all }) {
       {reviewList.totalCount >= 1 ? (
         <>
           {reviewList.data.map((data) => (
-            <ReviewInfo key={data.id} data={data} from={from} all={all} />
+            <ReviewInfo key={data.reviewId} data={data} from={from} all={all} />
           ))}
           <style.PaginationContainer>
             {!all && (
