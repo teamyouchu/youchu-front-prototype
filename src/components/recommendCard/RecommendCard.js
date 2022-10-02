@@ -16,7 +16,9 @@ export default function RecommendCard({
         </style.Group>
         <style.Group marginB="5px">
           <StarRating rating={rating} />
-          <style.Ratings>{rating.toFixed(1)}</style.Ratings>
+          <style.Ratings>
+            {rating !== null ? rating.toFixed(1) : 0}
+          </style.Ratings>
           {page !== 'youtuber' && (
             <style.ReviewCount>
               ({overThousand(reviews)}개 리뷰)

@@ -8,12 +8,12 @@ import reviewAPI from 'lib/api/reviewAPI';
 
 export default function ReviewInfo({
   data: {
-    id,
-    youtuberId,
-    youtuberName,
-    writerId,
-    writerName,
-    writerImgUrl,
+    reviewId,
+    channelId,
+    title,
+    authorId,
+    authorName,
+    authorImgUrl,
     rating,
     comment,
     createdDatetime,
@@ -36,7 +36,7 @@ export default function ReviewInfo({
   const delReview = async () => {
     if (window.confirm('삭제하시겠습니까?')) {
       await reviewAPI
-        .delReview(id)
+        .delReview(reviewId)
         .then((res) => {
           alert('삭제되었습니다.');
           window.location.reload();
@@ -48,27 +48,27 @@ export default function ReviewInfo({
   return (
     <style.ReviewInfoContainer>
       {from === 'youtuber' && all && !userObj.hasReview && (
-        <BulrReview channel_id={youtuberId} />
+        <BulrReview channel_id={channelId} />
       )}
       <style.ReviewInfoBox>
         {from === 'youtuber' ? (
           <style.ReviewInfoHeader>
             {!all && <style.BestReview>Best Review</style.BestReview>}
             <style.WriterInfoFlex>
-              <style.ReviewWriterImg src={writerImgUrl} />
+              <style.ReviewWriterImg src={authorImgUrl} />
               <style.WriterInfoBox>
                 <style.RatingBox margin_B={'3px'}>
                   <StarRating rating={rating} />
                   <style.Ratings>{rating.toFixed(1)}</style.Ratings>
                 </style.RatingBox>
-                <style.ReviewWriterName>{writerName}</style.ReviewWriterName>
+                <style.ReviewWriterName>{authorName}</style.ReviewWriterName>
               </style.WriterInfoBox>
             </style.WriterInfoFlex>
           </style.ReviewInfoHeader>
         ) : (
           <style.ReviewInfoHeader>
-            <style.YoutuberName to={`/youtubers/review/${youtuberId}`}>
-              {youtuberName}&nbsp;&gt;
+            <style.YoutuberName to={`/youtubers/review/${channelId}`}>
+              {title}&nbsp;&gt;
             </style.YoutuberName>
             <style.RatingBox>
               <StarRating rating={rating} />
@@ -77,7 +77,10 @@ export default function ReviewInfo({
           </style.ReviewInfoHeader>
         )}
         <ContentsOverflow contents={comment} />
-        <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
+        <style.ReviewCreated>
+          {createdDatetime.substr(0, 4)}.{createdDatetime.substr(5, 2)}.
+          {createdDatetime.substr(8, 2)}
+        </style.ReviewCreated>
         <style.UtilContainer>
           <style.UtilBox>
             <style.LikeButton onClick={onLikeClick}>
@@ -87,13 +90,13 @@ export default function ReviewInfo({
               />
               <style.likeCount>{likes}</style.likeCount>
             </style.LikeButton>
-            {writerId !== userObj.id && (
+            {authorId !== userObj.id && (
               <style.ReportButton onClick={reportReview}>
                 신고하기
               </style.ReportButton>
             )}
           </style.UtilBox>
-          {writerId === userObj.id && (
+          {authorId === userObj.id && (
             <style.DeleteButton onClick={delReview}>
               삭제하기
             </style.DeleteButton>

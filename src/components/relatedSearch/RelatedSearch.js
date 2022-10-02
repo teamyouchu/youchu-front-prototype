@@ -59,9 +59,12 @@ export default function RelatedSearch({
         ))}
       </div>
       {page !== 'registration' && (
-        <style.redRegi onClick={() => setRistOpen(true)}>
+        <style.Registration>
           찾는 유튜버가 없다면?&nbsp;&nbsp;&nbsp;&nbsp;
-        </style.redRegi>
+          <style.RedRegiText onClick={() => setRistOpen(true)}>
+            유튜버 등록
+          </style.RedRegiText>
+        </style.Registration>
       )}
     </style.SearchDropdownContainer>
   );

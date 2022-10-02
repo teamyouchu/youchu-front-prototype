@@ -71,7 +71,7 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
   // 유추에 등록된 유튜버 검색 api
   const getSearchResult = async () => {
     await searchAPI
-      .youtuberSearchFromYouchu('lastedRegistered', 0, searchValue, 0, 6)
+      .youtuberSearchFromYouchu('lastedReviewed', 0, searchValue, 0, 6)
       .then((res) => {
         setSearchResults(res.data.data);
       })
