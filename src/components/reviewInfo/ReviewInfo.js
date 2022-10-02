@@ -77,7 +77,10 @@ export default function ReviewInfo({
           </style.ReviewInfoHeader>
         )}
         <ContentsOverflow contents={comment} />
-        <style.ReviewCreated>{createdDatetime}</style.ReviewCreated>
+        <style.ReviewCreated>
+          {createdDatetime.substr(0, 4)}.{createdDatetime.substr(5, 2)}.
+          {createdDatetime.substr(8, 2)}
+        </style.ReviewCreated>
         <style.UtilContainer>
           <style.UtilBox>
             <style.LikeButton onClick={onLikeClick}>
