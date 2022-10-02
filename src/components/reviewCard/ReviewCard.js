@@ -21,11 +21,13 @@ export default function ReviewCard({
       <style.Img src={thumbnail} alt={title} />
       <style.RvInfoContainer>
         <style.Group marginB="10px" marginB_M="5px">
-          <style.RvCategory>
-            <style.RvCategoryText>
-              {categoryArray.find((x) => x.id === category).value}
-            </style.RvCategoryText>
-          </style.RvCategory>
+          {category && (
+            <style.RvCategory>
+              <style.RvCategoryText>
+                {categoryArray.find((x) => x.id === category).value}
+              </style.RvCategoryText>
+            </style.RvCategory>
+          )}
         </style.Group>
         <style.Group marginB="8px" marginB_M="5px">
           <style.RvChannelName>{title}</style.RvChannelName>
@@ -35,7 +37,9 @@ export default function ReviewCard({
         </style.Group>
         <style.Group alignItems={'center'} marginB={'15px'}>
           <StarRating rating={rating} from={'RVCard'} />
-          <style.Ratings>{rating.toFixed(1)}</style.Ratings>
+          <style.Ratings>
+            {rating !== null ? rating.toFixed(1) : 0}
+          </style.Ratings>
           <style.ReviewCount>
             ({overThousand(reviews)}개 리뷰)
           </style.ReviewCount>
