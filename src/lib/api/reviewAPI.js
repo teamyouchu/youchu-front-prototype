@@ -9,6 +9,10 @@ const reviewAPI = {
   getBestReview(channel_id) {
     return axios.get(`/review/${channel_id}/bestReview`);
   },
+  // 리뷰 좋아요
+  postReviewLike(review_id) {
+    return axios.post(`/review/${review_id}/like`);
+  },
 };
 
 export default reviewAPI;
