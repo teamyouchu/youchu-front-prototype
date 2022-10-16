@@ -16,6 +16,7 @@ import {
   Profile,
   MyAllReview,
   Search,
+  MRegistration,
   ModifyNickName,
   ModifyCategory,
 } from 'pages/pageIndex';
@@ -33,6 +34,7 @@ export default function AppRouter() {
             <Route path="/search">
               <Search setIsShow={setIsShow} />
             </Route>
+            <Route exact path="/registration" component={MRegistration} />
             <Route exact path="/youtubers">
               <List setIsSearchShow={setIsSearchShow} />
             </Route>

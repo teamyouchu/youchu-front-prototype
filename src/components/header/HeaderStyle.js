@@ -148,6 +148,7 @@ export const GoogleAvatar = styled.img`
   margin-left: 10px;
   border-radius: 50%;
   border: 1px solid #dedede;
+  cursor: pointer;
   @media ${(props) => props.theme.tablet} {
     width: 30px;
     height: 30px;
