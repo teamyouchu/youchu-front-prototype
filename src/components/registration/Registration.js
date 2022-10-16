@@ -23,10 +23,17 @@ export default function Registration({ registClose }) {
       registClose();
     }
   };
+  const handleWindowResize = () => {
+    if (window.innerWidth < 1170) {
+      registClose();
+    }
+  };
   useEffect(() => {
     document.addEventListener('keydown', escFunction);
+    window.addEventListener('resize', handleWindowResize);
     return () => {
       document.removeEventListener('keydown', escFunction);
+      window.addEventListener('resize', handleWindowResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

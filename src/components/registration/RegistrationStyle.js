@@ -29,15 +29,15 @@ export const Modal = styled.div`
   top: 140px;
   margin: 0 auto;
   z-index: 100;
-  @media ${(props) => props.theme.tablet} {
-    /* margin-top: 115px; */
+  /* @media ${(props) => props.theme.tablet} {
+    margin-top: 115px;
     width: 100%;
     height: 100%;
     border: 0;
     border-radius: 0;
     top: 0;
     padding: 50px 24px;
-  }
+  } */
 `;
 
 export const ModalTitleFlex = styled.div`
@@ -76,7 +76,7 @@ export const CompleteButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  @media ${(props) => props.theme.tablet} {
+  /* @media ${(props) => props.theme.tablet} {
     width: 100%;
-  }
+  } */
 `;
