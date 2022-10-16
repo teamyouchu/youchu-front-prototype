@@ -86,6 +86,7 @@ export const CardContainer = styled.div`
   row-gap: 60px;
   column-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   @media ${(props) => props.theme.tablet} {
     row-gap: 30px;
     column-gap: 16px;

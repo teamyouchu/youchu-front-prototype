@@ -58,7 +58,12 @@ export default function Header({ isSearchShow }) {
   // 유튜버 등록 모달 토글
   const [registOpen, setRistOpen] = useState(false);
   const registClose = () => {
-    setRistOpen(!registOpen);
+    if (window.innerWidth <= 1170) {
+      history.push('registration');
+      setRistOpen(false);
+    } else {
+      setRistOpen(!registOpen);
+    }
   };
 
   // 로그아웃 모달 토글

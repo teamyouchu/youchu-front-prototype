@@ -15,7 +15,7 @@ export const RvContainer = styled(Link)`
     width: ${({ page }) => (page === 'home' ? '28vw' : '100%')};
   }
   @media ${(props) => props.theme.mobile} {
-    width: ${({ page }) => (page === 'home' ? '38vw' : '100%')};
+    width: ${({ page }) => (page === 'home' ? '38vw' : '40vw')};
   }
 `;
 
