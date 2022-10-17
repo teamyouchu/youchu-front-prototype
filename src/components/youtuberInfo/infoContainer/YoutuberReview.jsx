@@ -19,6 +19,7 @@ export default function YoutuberReview({
     comment: '',
     createdDatetime: '',
     likes: 0,
+    liked: false,
   });
 
   const { channel_id } = useParams();
