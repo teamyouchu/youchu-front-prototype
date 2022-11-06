@@ -30,7 +30,9 @@ export default function Profile() {
       <style.ProfileBox>
         <style.PicBox>
           <style.flexBox>
-            <style.UserPic src={userObj.imageUrl} />
+            <style.UserPic
+              src={require('assets/images/DefaultProfile.png').default}
+            />
             <style.ModifyBtn to="/modifyNickName">
               <style.UserName>{userObj.nickname}</style.UserName>
               <style.UserEmail>{userObj.email}</style.UserEmail>

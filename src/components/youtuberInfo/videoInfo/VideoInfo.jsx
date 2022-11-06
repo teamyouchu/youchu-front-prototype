@@ -10,7 +10,9 @@ export default function VideoInfo({
       target="_blank"
       rel="noreferrer"
     >
-      <style.VideoThumbnail src={thumbnail} />
+      <style.VideoThumbnailBox>
+        <style.VideoThumbnail src={thumbnail} />
+      </style.VideoThumbnailBox>
       <style.VideoTitle>{title}</style.VideoTitle>
       <style.SpanFlex>
         <style.PlayIcon src={require('assets/images/play.png').default} />

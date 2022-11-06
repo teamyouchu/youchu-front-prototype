@@ -96,10 +96,10 @@ export default function Header({ isSearchShow }) {
             유튜버 등록
           </style.RegisterBtn>
           {registOpen && <Registration registClose={registClose} />}
-          {userObj.imageUrl !== '' ? (
+          {userObj.id !== 0 ? (
             <style.GoogleAvatarBox>
               <style.GoogleAvatar
-                src={userObj.imageUrl}
+                src={require('assets/images/DefaultProfile.png').default}
                 onClick={onAvatarClick}
               />
               {showLogout && <LogoutModal setShowLogout={setShowLogout} />}

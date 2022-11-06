@@ -13,6 +13,10 @@ const reviewAPI = {
   postReviewLike(review_id) {
     return axios.post(`/review/${review_id}/like`);
   },
+  // 리뷰 신고하기
+  postReviewReport(review_id) {
+    return axios.post(`/review/${review_id}/report`);
+  },
 };
 
 export default reviewAPI;
