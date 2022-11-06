@@ -80,9 +80,9 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
 
   // 유튜브에 유튜버 검색 api
   const [searchResults, setSearchResults] = useState([]);
-  const searchYoutuber = async () => {
+  const searchYoutuber = async (value) => {
     await searchAPI
-      .youtuberSearchFromGoogle(searchValue, 5)
+      .youtuberSearchFromGoogle(value, 30)
       .then((res) => {
         setSearchResults(res.data.channels);
       })
@@ -92,8 +92,8 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
   //TODO 서지수 임시로 작성한 듯 삭제하기
   const throttled = useMemo(
     () =>
-      throttle(() => {
-        searchYoutuber(searchValue);
+      throttle((value) => {
+        searchYoutuber(value);
       }, 5000),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -106,7 +106,7 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
       // 검색어가 있으면 연관검색어 표시
       setIsRelatedSearch(true);
       if (page === 'registration') {
-        throttled();
+        throttled(searchValue);
         // TODO 서지수 api 용량 초과 해결되면 위에 코드 지우고 아래 코드로 사용하기
         // searchYoutuber(e.target.value);
       } else {

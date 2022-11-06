@@ -19,6 +19,7 @@ export default function YoutuberReview({
     comment: '',
     createdDatetime: '',
     likes: 0,
+    liked: false,
   });
 
   const { channel_id } = useParams();
@@ -26,7 +27,7 @@ export default function YoutuberReview({
     reviewAPI
       .getBestReview(channel_id)
       .then((res) => {
-        setBestReveiw(res.data);
+        setBestReveiw(res.data.data[0]);
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +35,7 @@ export default function YoutuberReview({
   return (
     <style.InfoContainer>
       {/* TODO 리뷰없을 때 api 수정되면 코드 수정 */}
-      {bestReveiw ? (
+      {bestReveiw !== undefined ? (
         <>
           <style.ReviewHeader>
             <style.InfoTitle> 리뷰</style.InfoTitle>

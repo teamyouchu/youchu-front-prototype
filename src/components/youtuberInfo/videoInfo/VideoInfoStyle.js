@@ -6,10 +6,17 @@ export const VideoBox = styled.a`
   flex-direction: column;
 `;
 
-export const VideoThumbnail = styled.img`
+export const VideoThumbnailBox = styled.div`
   width: 210px;
-  height: auto;
+  height: 117px;
   margin-bottom: 15px;
+  overflow: hidden;
+`;
+
+export const VideoThumbnail = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const Span = styled.span`
