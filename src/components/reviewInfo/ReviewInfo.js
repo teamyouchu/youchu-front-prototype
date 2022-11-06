@@ -21,6 +21,7 @@ export default function ReviewInfo({
     likes,
     liked,
   },
+  getReviews,
   from,
   all,
 }) {
@@ -41,9 +42,9 @@ export default function ReviewInfo({
     if (window.confirm('삭제하시겠습니까?')) {
       await reviewAPI
         .delReview(reviewId)
-        .then((res) => {
+        .then(() => {
           alert('삭제되었습니다.');
-          window.location.reload();
+          getReviews();
         })
         .catch((err) => console.error(err));
     }
