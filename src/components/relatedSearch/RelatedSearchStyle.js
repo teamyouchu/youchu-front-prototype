@@ -9,6 +9,8 @@ export const SearchDropdownContainer = styled.div`
   box-shadow: ${({ page }) =>
     page === 'search' ? 0 : '0px 0px 15px #00000029'};
   opacity: 1;
+  height: ${({ page }) => page === 'registration' && '210px'};
+  overflow: ${({ page }) => page === 'registration' && 'overlay'};
   @media ${(props) => props.theme.tablet} {
     width: ${({ page }) => (page === 'registration' ? '100%' : '')};
   }
