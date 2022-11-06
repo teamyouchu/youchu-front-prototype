@@ -25,10 +25,18 @@ export default function ReviewInfo({
   all,
 }) {
   const { userObj } = useContext(UserContext);
-  const reportReview = () => {
+  const reportReview = async () => {
     // TODO 서지수 신고하기 기능 구현
-    console.log('신고하기');
+    if (window.confirm('신고하시겠습니까?')) {
+      await reviewAPI
+        .postReviewReport(reviewId)
+        .then(() => {
+          alert('신고되었습니다.');
+        })
+        .catch((err) => console.error(err));
+    }
   };
+
   const delReview = async () => {
     if (window.confirm('삭제하시겠습니까?')) {
       await reviewAPI
