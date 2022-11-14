@@ -22,12 +22,12 @@ export default function ReviewInfo({
     liked,
   },
   getReviews,
+  getBestReview,
   from,
   all,
 }) {
   const { userObj } = useContext(UserContext);
   const reportReview = async () => {
-    // TODO 서지수 신고하기 기능 구현
     if (window.confirm('신고하시겠습니까?')) {
       await reviewAPI
         .postReviewReport(reviewId)
@@ -45,6 +45,7 @@ export default function ReviewInfo({
         .then(() => {
           alert('삭제되었습니다.');
           getReviews();
+          // getBestReview();
         })
         .catch((err) => console.error(err));
     }
