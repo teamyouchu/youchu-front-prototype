@@ -64,6 +64,24 @@ export const SpanFlex = styled.div`
   }
 `;
 
+export const YoutuberName = styled(Link)`
+  font-family: 'SHSN-B';
+  text-align: left;
+  font-size: 28px;
+  line-height: 35px;
+  letter-spacing: 0px;
+  color: #000000;
+  :hover {
+    color: #000000;
+  }
+  margin-bottom: 6px;
+  @media ${(props) => props.theme.tablet} {
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 5px;
+  }
+`;
+
 export const Span = styled.span`
   font-family: 'SHSN-B';
   text-align: left;
@@ -71,15 +89,6 @@ export const Span = styled.span`
   line-height: 35px;
   letter-spacing: 0px;
   color: #000000;
-`;
-
-export const YoutuberName = styled(Span)`
-  margin-bottom: 6px;
-  @media ${(props) => props.theme.tablet} {
-    font-size: 22px;
-    line-height: 27px;
-    margin-bottom: 5px;
-  }
 `;
 
 export const OneStar = styled(Span)`

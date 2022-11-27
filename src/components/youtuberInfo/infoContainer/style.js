@@ -206,7 +206,7 @@ export const SortSpan = styled(Span)`
   letter-spacing: 0px;
   color: #94969b;
   margin-right: 15px;
-  cursor: pointer;
+  /* cursor: pointer; */
   &.sortFocus {
     color: #eb3323;
   }

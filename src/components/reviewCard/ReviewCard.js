@@ -48,7 +48,11 @@ export default function ReviewCard({
           <style.BestReviewTitle>Best Review</style.BestReviewTitle>
         </style.Group>
         <style.Group>
-          <style.BestReview>{bestReview}</style.BestReview>
+          {bestReview[0] ? (
+            <style.BestReview>{bestReview[0].comment}</style.BestReview>
+          ) : (
+            <style.BestReview>아직 리뷰가 없습니다.</style.BestReview>
+          )}
         </style.Group>
       </style.RvInfoContainer>
     </style.RvContainer>
