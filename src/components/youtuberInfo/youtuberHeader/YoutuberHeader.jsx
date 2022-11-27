@@ -9,7 +9,9 @@ export default function YoutuberHeader({
       <style.HeaderBox>
         <style.YoutuberImg src={thumbnail} />
         <style.InfoFlex>
-          <style.YoutuberName>{title}</style.YoutuberName>
+          <style.YoutuberName to={`/youtubers/review/${id}`}>
+            {title}
+          </style.YoutuberName>
           <style.SpanFlex>
             <style.OneStar>★</style.OneStar>
             <style.YoutuberRating>{rating.toFixed(1)}</style.YoutuberRating>
