@@ -27,7 +27,9 @@ export default function RecommendCard({
         </style.Group>
         <style.Group>
           <style.Category>
-            {categoryArray.find((x) => x.id === category).value}
+            {category
+              ? categoryArray.find((x) => x.id === category).value
+              : '미지정'}
           </style.Category>
         </style.Group>
       </style.GroupBox>
