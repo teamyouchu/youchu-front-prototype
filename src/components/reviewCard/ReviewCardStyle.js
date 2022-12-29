@@ -43,7 +43,7 @@ export const Group = styled.div`
   margin-bottom: ${({ marginB }) => marginB};
 
   @media ${(props) => props.theme.tablet} {
-    margin-bottom: ${({ marginB_M }) => marginB_M || '0px'};
+    margin-bottom: ${({ marginB_M }) => marginB_M || '5px'};
   }
 `;
 
@@ -132,7 +132,8 @@ export const BestReviewTitle = styled.div`
   line-height: 15px;
 
   @media ${(props) => props.theme.tablet} {
-    display: none;
+    font-size: 10px;
+    line-height: 13px;
   }
 `;
 
@@ -151,6 +152,7 @@ export const BestReview = styled.div`
   white-space: normal;
 
   @media ${(props) => props.theme.tablet} {
-    display: none;
+    font-size: 10px;
+    line-height: 13px;
   }
 `;

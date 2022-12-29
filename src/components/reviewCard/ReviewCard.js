@@ -20,7 +20,7 @@ export default function ReviewCard({
     <style.RvContainer to={`/youtubers/review/${id}`} page={page}>
       <style.Img src={thumbnail} alt={title} />
       <style.RvInfoContainer>
-        <style.Group marginB="10px" marginB_M="5px">
+        <style.Group marginB="10px">
           {category && (
             <style.RvCategory>
               <style.RvCategoryText>
@@ -29,7 +29,7 @@ export default function ReviewCard({
             </style.RvCategory>
           )}
         </style.Group>
-        <style.Group marginB="8px" marginB_M="5px">
+        <style.Group marginB="8px">
           <style.RvChannelName>{title}</style.RvChannelName>
           <style.SubscriberCount>
             {numToKorean(subscribes)}명
@@ -44,16 +44,20 @@ export default function ReviewCard({
             ({overThousand(reviews)}개 리뷰)
           </style.ReviewCount>
         </style.Group>
-        <style.Group marginB="5px">
-          <style.BestReviewTitle>Best Review</style.BestReviewTitle>
-        </style.Group>
-        <style.Group>
-          {bestReview[0] ? (
-            <style.BestReview>{bestReview[0].comment}</style.BestReview>
-          ) : (
-            <style.BestReview>아직 리뷰가 없습니다.</style.BestReview>
-          )}
-        </style.Group>
+        {page !== 'home' && (
+          <>
+            <style.Group marginB="5px">
+              <style.BestReviewTitle>Best Review</style.BestReviewTitle>
+            </style.Group>
+            <style.Group marginB_M="0px">
+              {bestReview[0] ? (
+                <style.BestReview>{bestReview[0].comment}</style.BestReview>
+              ) : (
+                <style.BestReview>아직 리뷰가 없습니다.</style.BestReview>
+              )}
+            </style.Group>
+          </>
+        )}
       </style.RvInfoContainer>
     </style.RvContainer>
   );
