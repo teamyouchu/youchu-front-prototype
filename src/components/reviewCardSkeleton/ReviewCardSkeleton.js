@@ -15,19 +15,15 @@ export default function ReviewCardSkeleton({ page }) {
         <style.Group marginB={'15px'}>
           <style.SkeletonRatings variant="rounded" />
         </style.Group>
-        {page !== 'home' && (
-          <>
-            <style.Group marginB="5px">
-              <style.SkeletonBestReviewTitle variant="rounded" />
-            </style.Group>
-            <style.Group marginB="2px" marginB_M="2px">
-              <style.SkeletonBestReview variant="rounded" />
-            </style.Group>
-            <style.Group marginB_M="0px">
-              <style.SkeletonBestReview variant="rounded" />
-            </style.Group>
-          </>
-        )}
+        <style.Group marginB="5px" page={page}>
+          <style.SkeletonBestReviewTitle variant="rounded" />
+        </style.Group>
+        <style.Group marginB="2px" marginB_M="2px" page={page}>
+          <style.SkeletonBestReview variant="rounded" />
+        </style.Group>
+        <style.Group marginB_M="0px" page={page}>
+          <style.SkeletonBestReview variant="rounded" />
+        </style.Group>
       </style.RvInfoContainer>
     </style.RvContainer>
   );

@@ -45,6 +45,7 @@ export const Group = styled.div`
 
   @media ${(props) => props.theme.tablet} {
     margin-bottom: ${({ marginB_M }) => marginB_M || '5px'};
+    display: ${({ page }) => page === 'home' && 'none'};
   }
 `;
 

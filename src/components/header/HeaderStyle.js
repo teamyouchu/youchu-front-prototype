@@ -114,8 +114,11 @@ export const RegisterBtn = styled.button`
 
 export const HeaderLink = styled(Link)`
   height: 38px;
+  margin-left: 10px;
+
   @media ${(props) => props.theme.tablet} {
     height: 30px;
+    margin-left: 8px;
   }
 `;
 
@@ -123,14 +126,14 @@ export const LoginButton = styled(RegisterBtn)`
   width: 80px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dedede;
-  margin-left: 10px;
   color: #000000;
+  margin-left: 0px;
   :hover {
     background-color: #ebebeb;
   }
   @media ${(props) => props.theme.tablet} {
-    margin-left: 8px;
     width: 60px;
+    margin-left: 0px;
   }
 `;
 
