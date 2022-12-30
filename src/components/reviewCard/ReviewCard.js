@@ -21,13 +21,13 @@ export default function ReviewCard({
       <style.Img src={thumbnail} alt={title} />
       <style.RvInfoContainer>
         <style.Group marginB="10px">
-          {category && (
-            <style.RvCategory>
-              <style.RvCategoryText>
-                {categoryArray.find((x) => x.id === category).value}
-              </style.RvCategoryText>
-            </style.RvCategory>
-          )}
+          <style.RvCategory>
+            <style.RvCategoryText>
+              {category
+                ? categoryArray.find((x) => x.id === category).value
+                : '미지정'}
+            </style.RvCategoryText>
+          </style.RvCategory>
         </style.Group>
         <style.Group marginB="8px">
           <style.RvChannelName>{title}</style.RvChannelName>
