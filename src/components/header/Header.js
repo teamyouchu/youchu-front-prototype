@@ -62,7 +62,7 @@ export default function Header({ isSearchShow }) {
       history.push('registration');
       setRistOpen(false);
     } else {
-      setRistOpen(!registOpen);
+      setRistOpen(true);
     }
   };
 
@@ -95,7 +95,7 @@ export default function Header({ isSearchShow }) {
           <style.RegisterBtn onClick={registClose}>
             유튜버 등록
           </style.RegisterBtn>
-          {registOpen && <Registration registClose={registClose} />}
+          {registOpen && <Registration setRistOpen={setRistOpen} />}
           {userObj.id !== 0 ? (
             <style.GoogleAvatarBox>
               <style.GoogleAvatar
