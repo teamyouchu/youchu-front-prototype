@@ -3,22 +3,31 @@ import * as style from './style';
 import youtuberAPI from 'lib/api/youtuberAPI';
 import { UserContext } from 'lib/UserContext';
 import ReviewCard from 'components/reviewCard/ReviewCard';
+import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';
 import RecommendCard from 'components/recommendCard/RecommendCard';
 
 export default function Home() {
   const { userObj } = useContext(UserContext);
 
-  const [bestYoutuber, setBestYoutuber] = useState([]);
+  const [bestYoutuber, setBestYoutuber] = useState({
+    isLoading: false,
+    data: [],
+  });
   const getBestYoutuber = async () => {
     await youtuberAPI
       .getMostYoutubers()
       .then((res) => {
-        setBestYoutuber(res.data.data);
+        setBestYoutuber({
+          ...bestYoutuber,
+          isLoading: true,
+          data: res.data.data,
+        });
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     getBestYoutuber();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [recommendYoutuber, setRecommendYoutuber] = useState([]);
@@ -56,9 +65,15 @@ export default function Home() {
             <i className="fas fa-chevron-left"></i>
           </style.HandleBtn>
           <style.ReviewCardContainer id="slider">
-            {bestYoutuber.map((data) => (
-              <ReviewCard key={data.id} page={'home'} data={data} />
-            ))}
+            {bestYoutuber.isLoading
+              ? bestYoutuber.data.map((data) => (
+                  <ReviewCard key={data.id} page={'home'} data={data} />
+                ))
+              : Array(6)
+                  .fill()
+                  .map((item, index) => (
+                    <ReviewCardSkeleton key={index} page={'home'} />
+                  ))}
           </style.ReviewCardContainer>
           <style.HandleBtn onClick={slide_R}>
             <i className="fas fa-chevron-right"></i>

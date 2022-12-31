@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import searchAPI from 'lib/api/searchAPI';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
 import ReviewCard from 'components/reviewCard/ReviewCard';
+import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
 
@@ -21,16 +22,24 @@ export default function List({ setIsSearchShow }) {
     location.state ? location.state.searchValue : '',
   );
 
-  const [allYoutubers, setAllYoutubers] = useState([]);
+  const [allYoutubers, setAllYoutubers] = useState({
+    isLoading: false,
+    data: [],
+  });
   const [category, setCategory] = useState(0);
   const [sortBy, setSortBy] = useState('lastedRegistered');
   const [size, setSize] = useState(20);
+
   useEffect(() => {
     const getAllYoutubers = () => {
       searchAPI
         .youtuberSearchFromYouchu(sortBy, category, searchValue, 0, size)
         .then((res) => {
-          setAllYoutubers(res.data.data);
+          setAllYoutubers({
+            ...allYoutubers,
+            isLoading: true,
+            data: res.data.data,
+          });
         })
         .catch((err) => console.log(err));
     };
@@ -72,14 +81,26 @@ export default function List({ setIsSearchShow }) {
           </style.SearchDiv>
         </style.FilterBox>
       </style.FilterContainer>
-      {allYoutubers.length > 0 ? (
-        <style.CardContainer>
-          {allYoutubers.map((data) => (
-            <ReviewCard key={data.id} page={'list'} data={data} />
-          ))}
-        </style.CardContainer>
+      {allYoutubers.isLoading ? (
+        <>
+          {allYoutubers.data.length > 0 ? (
+            <style.CardContainer>
+              {allYoutubers.data.map((data) => (
+                <ReviewCard key={data.id} page={'list'} data={data} />
+              ))}
+            </style.CardContainer>
+          ) : (
+            <EmptyResult />
+          )}
+        </>
       ) : (
-        <EmptyResult />
+        <style.CardContainer>
+          {Array(20)
+            .fill()
+            .map((item, index) => (
+              <ReviewCardSkeleton key={index} page={'list'} />
+            ))}
+        </style.CardContainer>
       )}
     </style.ListContainer>
   );

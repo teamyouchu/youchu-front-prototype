@@ -20,16 +20,16 @@ export default function ReviewCard({
     <style.RvContainer to={`/youtubers/review/${id}`} page={page}>
       <style.Img src={thumbnail} alt={title} />
       <style.RvInfoContainer>
-        <style.Group marginB="10px" marginB_M="5px">
-          {category && (
-            <style.RvCategory>
-              <style.RvCategoryText>
-                {categoryArray.find((x) => x.id === category).value}
-              </style.RvCategoryText>
-            </style.RvCategory>
-          )}
+        <style.Group marginB="10px">
+          <style.RvCategory>
+            <style.RvCategoryText>
+              {category
+                ? categoryArray.find((x) => x.id === category).value
+                : '미지정'}
+            </style.RvCategoryText>
+          </style.RvCategory>
         </style.Group>
-        <style.Group marginB="8px" marginB_M="5px">
+        <style.Group marginB="8px">
           <style.RvChannelName>{title}</style.RvChannelName>
           <style.SubscriberCount>
             {numToKorean(subscribes)}명
@@ -44,10 +44,10 @@ export default function ReviewCard({
             ({overThousand(reviews)}개 리뷰)
           </style.ReviewCount>
         </style.Group>
-        <style.Group marginB="5px">
+        <style.Group marginB="5px" page={page}>
           <style.BestReviewTitle>Best Review</style.BestReviewTitle>
         </style.Group>
-        <style.Group>
+        <style.Group marginB_M="0px" page={page}>
           {bestReview[0] ? (
             <style.BestReview>{bestReview[0].comment}</style.BestReview>
           ) : (

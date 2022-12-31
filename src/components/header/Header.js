@@ -7,7 +7,12 @@ import LogoutModal from 'components/logoutModal/LogoutModal';
 import userAPI from 'lib/api/userAPI';
 import { useHistory } from 'react-router-dom';
 
-export default function Header({ isSearchShow }) {
+export default function Header({
+  isSearchShow,
+  isShowRegisterBtn,
+  registOpen,
+  setRistOpen,
+}) {
   const { userObj, setUserObj } = useContext(UserContext);
   const history = useHistory();
   useEffect(() => {
@@ -56,13 +61,12 @@ export default function Header({ isSearchShow }) {
   }, []);
 
   // 유튜버 등록 모달 토글
-  const [registOpen, setRistOpen] = useState(false);
   const registClose = () => {
     if (window.innerWidth <= 1170) {
       history.push('registration');
       setRistOpen(false);
     } else {
-      setRistOpen(!registOpen);
+      setRistOpen(true);
     }
   };
 
@@ -92,10 +96,12 @@ export default function Header({ isSearchShow }) {
           {isSearchShow && (
             <SearchInput page={'header'} setRistOpen={setRistOpen} />
           )}
-          <style.RegisterBtn onClick={registClose}>
-            유튜버 등록
-          </style.RegisterBtn>
-          {registOpen && <Registration registClose={registClose} />}
+          {isShowRegisterBtn && (
+            <style.RegisterBtn onClick={registClose}>
+              유튜버 등록
+            </style.RegisterBtn>
+          )}
+          {registOpen && <Registration setRistOpen={setRistOpen} />}
           {userObj.id !== 0 ? (
             <style.GoogleAvatarBox>
               <style.GoogleAvatar
