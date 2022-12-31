@@ -1,13 +1,32 @@
 import * as style from './style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import youtuberAPI from 'lib/api/youtuberAPI';
 import SearchInput from 'components/searchInput/SearchInput';
 
-export default function MRegistration() {
+export default function MRegistration({ setIsShowRegisterBtn, setRistOpen }) {
+  const history = useHistory();
+
+  useEffect(() => {
+    // 화면이 1170 이상이면 home 페이지로 이동 후 모달 켜기
+    const handleWindowResize = () => {
+      if (window.innerWidth >= 1170) {
+        history.goBack();
+        setRistOpen(true);
+      }
+    };
+
+    setIsShowRegisterBtn(false);
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      setIsShowRegisterBtn(true);
+      window.removeEventListener('resize', handleWindowResize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // 유튜버 등록 요청 코드
   const [channel, setChannel] = useState();
-  const history = useHistory();
   const onRegisterClick = async () => {
     if (channel.isExist) {
       alert('이미 등록된 유튜버입니다. 유튜버 페이지로 이동합니다.');

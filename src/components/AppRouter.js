@@ -24,9 +24,18 @@ import {
 export default function AppRouter() {
   const [isShow, setIsShow] = useState(true);
   const [isSearchShow, setIsSearchShow] = useState(true);
+  const [isShowRegisterBtn, setIsShowRegisterBtn] = useState(true);
+  const [registOpen, setRistOpen] = useState(false);
   return (
     <Router>
-      {isShow && <Header isSearchShow={isSearchShow} />}
+      {isShow && (
+        <Header
+          isSearchShow={isSearchShow}
+          isShowRegisterBtn={isShowRegisterBtn}
+          registOpen={registOpen}
+          setRistOpen={setRistOpen}
+        />
+      )}
       <div id="wrap">
         <ScrollToTop>
           <Switch>
@@ -34,7 +43,12 @@ export default function AppRouter() {
             <Route path="/search">
               <Search setIsShow={setIsShow} />
             </Route>
-            <Route exact path="/registration" component={MRegistration} />
+            <Route exact path="/registration">
+              <MRegistration
+                setIsShowRegisterBtn={setIsShowRegisterBtn}
+                setRistOpen={setRistOpen}
+              />
+            </Route>
             <Route exact path="/youtubers">
               <List setIsSearchShow={setIsSearchShow} />
             </Route>
