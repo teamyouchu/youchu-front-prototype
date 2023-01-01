@@ -32,7 +32,6 @@ export default function Home() {
 
   const [recommendYoutuber, setRecommendYoutuber] = useState([]);
   const getRecommendYoutuber = async () => {
-    console.log('aaaaaa: ', userObj.isLogin);
     await youtuberAPI
       .getRecommendYoutubers()
       .then((res) => {
