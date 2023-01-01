@@ -12,48 +12,48 @@ export default function Profile() {
       .getMe()
       .then(({ data }) => {
         setUserObj({
-          id: data.id,
-          email: data.email,
-          favoriteCategory: data.favoriteCategory,
-          hasReview: data.hasReview,
-          imageUrl: data.imageUrl,
-          nickname: data.nickname,
+          ...userObj,
+          isLogin: true,
+          data,
         });
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [setUserObj]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <style.ProfileContainer>
       <style.ProfileTitle>내 정보</style.ProfileTitle>
-      <style.ProfileBox>
-        <style.PicBox>
-          <style.flexBox>
-            <style.UserPic
-              src={require('assets/images/DefaultProfile.png').default}
-            />
-            <style.ModifyBtn to="/modifyNickName">
-              <style.UserName>{userObj.nickname}</style.UserName>
-              <style.UserEmail>{userObj.email}</style.UserEmail>
-            </style.ModifyBtn>
-          </style.flexBox>
-          <style.flexBox>
-            <style.CategoryBtn to="/modifyCategory">
-              <style.CategoryTitle>관심사</style.CategoryTitle>
-              <style.CategorysBox>
-                {userObj.favoriteCategory.map((category) => (
-                  <style.Categorycontents key={category}>
-                    {categoryArray.find((x) => x.id === category).value}
-                  </style.Categorycontents>
-                ))}
-              </style.CategorysBox>
-              <style.ChevronIcon>&gt;</style.ChevronIcon>
-            </style.CategoryBtn>
-          </style.flexBox>
-        </style.PicBox>
-        <ReviewList from={'myInfo'} />
-      </style.ProfileBox>
+      {userObj.isLogin && (
+        <style.ProfileBox>
+          <style.PicBox>
+            <style.flexBox>
+              <style.UserPic
+                src={require('assets/images/DefaultProfile.png').default}
+              />
+              <style.ModifyBtn to="/modifyNickName">
+                <style.UserName>{userObj.data.nickname}</style.UserName>
+                <style.UserEmail>{userObj.data.email}</style.UserEmail>
+              </style.ModifyBtn>
+            </style.flexBox>
+            <style.flexBox>
+              <style.CategoryBtn to="/modifyCategory">
+                <style.CategoryTitle>관심사</style.CategoryTitle>
+                <style.CategorysBox>
+                  {userObj.data.favoriteCategory.map((category) => (
+                    <style.Categorycontents key={category}>
+                      {categoryArray.find((x) => x.id === category).value}
+                    </style.Categorycontents>
+                  ))}
+                </style.CategorysBox>
+                <style.ChevronIcon>&gt;</style.ChevronIcon>
+              </style.CategoryBtn>
+            </style.flexBox>
+          </style.PicBox>
+          <ReviewList from={'myInfo'} />
+        </style.ProfileBox>
+      )}
     </style.ProfileContainer>
   );
 }
