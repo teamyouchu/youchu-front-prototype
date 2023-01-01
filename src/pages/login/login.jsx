@@ -7,7 +7,7 @@ import userAPI from 'lib/api/userAPI';
 import { UserContext } from 'lib/UserContext';
 
 export default function Login() {
-  const { setUserObj } = useContext(UserContext);
+  const { userObj, setUserObj } = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
   const { from, msg1, msg2 } = location.state;
@@ -33,12 +33,9 @@ export default function Login() {
             .getMe()
             .then(({ data }) => {
               setUserObj({
-                id: data.id,
-                email: data.email,
-                favoriteCategory: data.favoriteCategory,
-                hasReview: data.hasReview,
-                imageUrl: data.imageUrl,
-                nickname: data.nickname,
+                ...userObj,
+                isLogin: true,
+                data,
               });
             })
             .catch((err) => {

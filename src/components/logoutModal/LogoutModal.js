@@ -3,9 +3,10 @@ import { useRef, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
+import { async } from 'q';
 
 export default function LogoutModal({ setShowLogout }) {
-  const { setUserObj } = useContext(UserContext);
+  const { userObj, setUserObj } = useContext(UserContext);
   const history = useHistory();
 
   // 모달 외 영역 클릭 시 종료
@@ -27,16 +28,14 @@ export default function LogoutModal({ setShowLogout }) {
     setShowLogout(false);
     history.push('/profile');
   };
-  const onLogoutClick = () => {
+  const onLogoutClick = async () => {
     setShowLogout(false);
     window.localStorage.removeItem('accessToken');
     window.localStorage.removeItem('refreshToken');
-    setUserObj({
-      email: '',
-      favoriteCategory: [],
-      hasReview: '',
-      imageUrl: '',
-      nickname: '',
+    await setUserObj({
+      ...userObj,
+      isLogin: false,
+      data: {},
     });
   };
   return (
