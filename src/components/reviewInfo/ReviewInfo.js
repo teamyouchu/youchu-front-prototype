@@ -61,7 +61,9 @@ export default function ReviewInfo({
           <style.ReviewInfoHeader>
             {!all && <style.BestReview>Best Review</style.BestReview>}
             <style.WriterInfoFlex>
-              <style.ReviewWriterImg src={authorImgUrl} />
+              <style.ReviewWriterImg
+                src={require('assets/images/DefaultProfile.png').default}
+              />
               <style.WriterInfoBox>
                 <style.RatingBox margin_B={'3px'}>
                   <StarRating rating={rating} />
