@@ -28,11 +28,11 @@ export default function LogoutModal({ setShowLogout }) {
     setShowLogout(false);
     history.push('/profile');
   };
-  const onLogoutClick = async () => {
+  const onLogoutClick = () => {
     setShowLogout(false);
     window.localStorage.removeItem('accessToken');
     window.localStorage.removeItem('refreshToken');
-    await setUserObj({
+    setUserObj({
       ...userObj,
       isLogin: false,
       data: {},
