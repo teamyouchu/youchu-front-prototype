@@ -3,7 +3,6 @@ import { useRef, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-import { async } from 'q';
 
 export default function LogoutModal({ setShowLogout }) {
   const { userObj, setUserObj } = useContext(UserContext);
