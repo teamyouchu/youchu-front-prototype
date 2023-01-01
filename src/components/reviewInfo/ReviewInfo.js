@@ -53,7 +53,7 @@ export default function ReviewInfo({
 
   return (
     <style.ReviewInfoContainer>
-      {from === 'youtuber' && all && !userObj.hasReview && (
+      {from === 'youtuber' && all && !userObj.data.hasReview && (
         <BulrReview channel_id={channelId} />
       )}
       <style.ReviewInfoBox>
@@ -61,7 +61,9 @@ export default function ReviewInfo({
           <style.ReviewInfoHeader>
             {!all && <style.BestReview>Best Review</style.BestReview>}
             <style.WriterInfoFlex>
-              <style.ReviewWriterImg src={authorImgUrl} />
+              <style.ReviewWriterImg
+                src={require('assets/images/DefaultProfile.png').default}
+              />
               <style.WriterInfoBox>
                 <style.RatingBox margin_B={'3px'}>
                   <StarRating rating={rating} />
@@ -91,17 +93,17 @@ export default function ReviewInfo({
           <style.UtilBox>
             <LikeButton
               reviewId={reviewId}
-              userId={userObj.id}
+              userId={userObj.data.id}
               liked={liked}
               likes={likes}
             />
-            {authorId !== userObj.id && (
+            {authorId !== userObj.data.id && (
               <style.ReportButton onClick={reportReview}>
                 신고하기
               </style.ReportButton>
             )}
           </style.UtilBox>
-          {authorId === userObj.id && (
+          {authorId === userObj.data.id && (
             <style.DeleteButton onClick={delReview}>
               삭제하기
             </style.DeleteButton>

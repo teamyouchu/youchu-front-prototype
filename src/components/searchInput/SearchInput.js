@@ -73,18 +73,30 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
     await searchAPI
       .youtuberSearchFromYouchu('lastedReviewed', 0, searchValue, 0, 6)
       .then((res) => {
-        setSearchResults(res.data.data);
+        setSearchResults({
+          ...searchResults,
+          isLoading: true,
+          data: res.data.data,
+        });
       })
       .catch((err) => console.log(err));
   };
 
   // 유튜브에 유튜버 검색 api
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState({
+    isLoading: false,
+    data: [],
+  });
   const searchYoutuber = async (value) => {
     await searchAPI
       .youtuberSearchFromGoogle(value, 30)
       .then((res) => {
-        setSearchResults(res.data.channels);
+        setSearchResults({
+          ...searchResults,
+          isLoading: true,
+          data: res.data.channels,
+        });
+        // setSearchResults(res.data.channels);
       })
       .catch((err) => console.log(err));
   };
@@ -106,6 +118,10 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
       // 검색어가 있으면 연관검색어 표시
       setIsRelatedSearch(true);
       if (page === 'registration') {
+        setSearchResults({
+          ...searchResults,
+          isLoading: false,
+        });
         throttled(searchValue);
         // TODO 서지수 api 용량 초과 해결되면 위에 코드 지우고 아래 코드로 사용하기
         // searchYoutuber(e.target.value);
