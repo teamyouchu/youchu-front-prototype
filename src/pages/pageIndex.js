@@ -9,6 +9,5 @@ export { default as Login } from 'pages/login/login';
 export { default as EmptyPage } from 'pages/emptyPage/emptyPage';
 export { default as Signup } from 'pages/signup/signup';
 export { default as Search } from 'pages/search/search';
-export { default as MRegistration } from 'pages/mRegistration/mRegistration';
 export { default as ModifyNickName } from 'pages/modifyNickName/modifyNickName';
 export { default as ModifyCategory } from 'pages/modifyCategory/modifyCategory';

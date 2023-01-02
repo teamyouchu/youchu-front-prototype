@@ -24,6 +24,9 @@ export const HeaderBox = styled.div`
   padding: 27px 0 13px 0;
   align-items: center;
   justify-content: space-between;
+  &.noShow {
+    display: none;
+  }
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
