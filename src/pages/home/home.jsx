@@ -35,7 +35,6 @@ export default function Home() {
     await youtuberAPI
       .getRecommendYoutubers()
       .then((res) => {
-        console.log(res.data.data);
         setRecommendYoutuber(res.data.data);
       })
       .catch((err) => console.log(err));
