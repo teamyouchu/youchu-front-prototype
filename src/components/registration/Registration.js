@@ -1,8 +1,8 @@
 import * as style from './RegistrationStyle';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import youtuberAPI from 'lib/api/youtuberAPI';
 import SearchInput from 'components/searchInput/SearchInput';
+import RegButton from 'components/regButton/RegButton';
 
 export default function Registration({ setRistOpen }) {
   // 모달 영역 외 클릭 시 종료
@@ -41,24 +41,6 @@ export default function Registration({ setRistOpen }) {
   // 유튜버 등록 요청 코드
   const [channel, setChannel] = useState();
   const history = useHistory();
-  const onRegisterClick = async () => {
-    if (channel.isExist) {
-      setRistOpen(false);
-      alert('이미 등록된 유튜버입니다. 유튜버 페이지로 이동합니다.');
-      history.push(`/youtubers/review/${channel.channel_id}`);
-    } else {
-      await youtuberAPI
-        .registYoutuber({
-          channel_id: channel.channel_id,
-        })
-        .then((res) => {
-          setRistOpen(false);
-          alert('유튜버의 첫 리뷰를 작성해주세요.');
-          history.push(`/youtubers/reviewWrite/${channel.channel_id}`);
-        })
-        .catch((err) => console.log(err));
-    }
-  };
 
   return (
     <style.ModalContainer
@@ -82,9 +64,7 @@ export default function Registration({ setRistOpen }) {
         </style.Span>
 
         <SearchInput page={'registration'} setChannel={setChannel} />
-        <style.CompleteButton onClick={onRegisterClick}>
-          등록하기
-        </style.CompleteButton>
+        <RegButton channel={channel} />
       </style.Modal>
     </style.ModalContainer>
   );
