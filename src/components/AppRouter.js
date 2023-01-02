@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from 'lib/UserContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from 'components/ScrollToTop';
 import Header from 'components/header/Header';
@@ -16,42 +17,21 @@ import {
   Profile,
   MyAllReview,
   Search,
-  MRegistration,
   ModifyNickName,
   ModifyCategory,
 } from 'pages/pageIndex';
 
 export default function AppRouter() {
-  const [isShow, setIsShow] = useState(true);
-  const [isSearchShow, setIsSearchShow] = useState(true);
-  const [isShowRegisterBtn, setIsShowRegisterBtn] = useState(true);
-  const [registOpen, setRistOpen] = useState(false);
+  const { isShowHeader } = useContext(UserContext);
   return (
     <Router>
-      {isShow && (
-        <Header
-          isSearchShow={isSearchShow}
-          isShowRegisterBtn={isShowRegisterBtn}
-          registOpen={registOpen}
-          setRistOpen={setRistOpen}
-        />
-      )}
+      <Header />
       <div id="wrap">
         <ScrollToTop>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/search">
-              <Search setIsShow={setIsShow} />
-            </Route>
-            <Route exact path="/registration">
-              <MRegistration
-                setIsShowRegisterBtn={setIsShowRegisterBtn}
-                setRistOpen={setRistOpen}
-              />
-            </Route>
-            <Route exact path="/youtubers">
-              <List setIsSearchShow={setIsSearchShow} />
-            </Route>
+            <Route path="/search" component={Search} />
+            <Route exact path="/youtubers" component={List} />
             <Route
               exact
               path="/youtubers/review/:channel_id"
@@ -74,7 +54,7 @@ export default function AppRouter() {
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>
-        <div id="footer">{isShow && <Footer />}</div>
+        <div id="footer">{isShowHeader && <Footer />}</div>
       </div>
     </Router>
   );

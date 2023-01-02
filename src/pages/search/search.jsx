@@ -1,9 +1,12 @@
 import * as style from './style';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { UserContext } from 'lib/UserContext';
 import { useHistory } from 'react-router-dom';
 import SearchInput from 'components/searchInput/SearchInput';
 
-export default function Search({ setIsShow }) {
+export default function Search() {
+  const { setIsShowHeader } = useContext(UserContext);
+
   // esc 키 누르면 뒤로가기
   const history = useHistory();
   const escFunction = (e) => {
@@ -14,10 +17,10 @@ export default function Search({ setIsShow }) {
 
   // Header, Footer 안 보이게 하는 코드 + keydown 인식
   useEffect(() => {
-    setIsShow(false);
+    setIsShowHeader(false);
     document.addEventListener('keydown', escFunction);
     return () => {
-      setIsShow(true);
+      setIsShowHeader(true);
       document.removeEventListener('keydown', escFunction);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,5 +1,5 @@
 import * as style from './style';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import searchAPI from 'lib/api/searchAPI';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
@@ -7,8 +7,11 @@ import ReviewCard from 'components/reviewCard/ReviewCard';
 import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { categoryOptions, sortOptions } from 'lib/modules';
+import { UserContext } from 'lib/UserContext';
 
-export default function List({ setIsSearchShow }) {
+export default function List() {
+  const { setIsSearchShow } = useContext(UserContext);
+
   useEffect(() => {
     setIsSearchShow(false);
     return () => {

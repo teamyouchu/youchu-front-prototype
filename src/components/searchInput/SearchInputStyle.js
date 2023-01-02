@@ -13,12 +13,7 @@ export const SearchForm = styled.form`
   border: 1px solid #dedede;
   border-radius: ${({ page }) =>
     page === 'header' ? '0' : page === 'registration' ? '5px' : '2px'};
-  padding: ${({ page }) =>
-    page === 'header'
-      ? '9px 20px'
-      : page === 'registration'
-      ? '11px 20px'
-      : '11px 16px'};
+  padding: ${({ page }) => (page === 'registration' ? '0 3px' : 0)};
   margin-bottom: ${({ page }) => (page === 'registration' ? '30px' : 0)};
   &:focus-within {
     border: 1px solid #3ea6ff;
@@ -36,13 +31,22 @@ export const SearchImg = styled.img`
   width: 18px;
   height: 18px;
   cursor: pointer;
+  margin-left: 20px;
+  @media ${(props) => props.theme.tablet} {
+    margin-left: 0;
+  }
 `;
 
 export const SearchInput = styled.input`
   border: none;
   width: 100%;
-  height: 18px;
-  margin-left: ${({ page }) => (page === 'header' ? '20px' : '0')};
+  height: 100%;
+  padding: ${({ page }) =>
+    page === 'header'
+      ? '0 20px'
+      : page === 'registration'
+      ? '0 15px'
+      : '0 16px'};
 
   text-align: left;
   font-family: ${({ page }) => (page === 'registration' ? 'SHSN-L' : 'SHSN-M')};

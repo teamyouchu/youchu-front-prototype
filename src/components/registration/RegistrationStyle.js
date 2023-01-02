@@ -5,12 +5,13 @@ export const ModalContainer = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 10;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  /* @media ${(props) => props.theme.tablet} {
+  @media ${(props) => props.theme.tablet} {
+    margin-top: 113px;
     background-color: rgba(0, 0, 0, 0);
-  } */
+  }
 `;
 
 export const Modal = styled.div`
@@ -25,19 +26,16 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   left: 50%;
-  transform: translate(-50%, 0);
-  top: 140px;
-  margin: 0 auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 100;
-  /* @media ${(props) => props.theme.tablet} {
-    margin-top: 115px;
+  @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
     border: 0;
     border-radius: 0;
-    top: 0;
-    padding: 50px 24px;
-  } */
+    padding: 60px 24px;
+  }
 `;
 
 export const ModalTitleFlex = styled.div`
@@ -58,25 +56,12 @@ export const ModalXIcon = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
 `;
 
 export const RediretInfo = styled(Span)`
   cursor: pointer;
   margin: 5px 0px;
-`;
-
-export const CompleteButton = styled.button`
-  width: 380px;
-  height: 55px;
-  background-color: #000000;
-  color: #ffffff;
-  font-family: 'SHSN-M';
-  font-size: 19px;
-  line-height: 23px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  /* @media ${(props) => props.theme.tablet} {
-    width: 100%;
-  } */
 `;

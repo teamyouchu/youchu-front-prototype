@@ -5,7 +5,7 @@ import searchAPI from 'lib/api/searchAPI';
 import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 import { throttle } from 'lodash';
 
-export default function SearchInput({ page, setChannel, setRistOpen }) {
+export default function SearchInput({ page, setChannel }) {
   // 화면 넓이 1170px 이하되면 연관검색어 종료
   const handleWindowResize = () => {
     if (page === 'header') {
@@ -26,7 +26,7 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
     window.addEventListener('resize', handleWindowResize);
     document.addEventListener('keydown', escFunction);
     return () => {
-      window.addEventListener('resize', handleWindowResize);
+      window.removeEventListener('resize', handleWindowResize);
       document.removeEventListener('keydown', escFunction);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -173,9 +173,8 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
   // }, [keyIndex]);
 
   return (
-    <style.SearchBox>
+    <style.SearchBox ref={inputRef}>
       <style.SearchForm
-        ref={inputRef}
         onSubmit={onSearch}
         // onKeyDown={handleKeyArrow}
         page={page}
@@ -204,7 +203,6 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
           setSearchValue={setSearchValue}
           setIsRelatedSearch={setIsRelatedSearch}
           setChannel={setChannel}
-          setRistOpen={setRistOpen}
           // autoRef={autoRef}
           // index={index}
           // setIndex={setIndex}
