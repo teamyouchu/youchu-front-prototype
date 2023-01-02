@@ -26,7 +26,7 @@ export default function SearchInput({ page, setChannel, setRistOpen }) {
     window.addEventListener('resize', handleWindowResize);
     document.addEventListener('keydown', escFunction);
     return () => {
-      window.addEventListener('resize', handleWindowResize);
+      window.removeEventListener('resize', handleWindowResize);
       document.removeEventListener('keydown', escFunction);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

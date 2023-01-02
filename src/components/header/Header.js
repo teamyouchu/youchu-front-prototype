@@ -22,6 +22,9 @@ export default function Header({
   };
   useEffect(() => {
     window.addEventListener('scroll', listener);
+    return () => {
+      window.removeEventListener('scroll', listener);
+    };
   }, []);
 
   // 유튜버 등록 모달 토글
