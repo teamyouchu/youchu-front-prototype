@@ -24,6 +24,9 @@ export default function YoutuberVideos({ M_display }) {
     } else {
       getVideos('최신순');
     }
+    return () => {
+      setVideos([]);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortFocus]);
 
