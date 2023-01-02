@@ -10,7 +10,7 @@ import { categoryOptions, sortOptions } from 'lib/modules';
 import { UserContext } from 'lib/UserContext';
 
 export default function List() {
-  const { isSearchShow, setIsSearchShow } = useContext(UserContext);
+  const { setIsSearchShow } = useContext(UserContext);
 
   useEffect(() => {
     setIsSearchShow(false);
@@ -18,7 +18,7 @@ export default function List() {
       setIsSearchShow(true);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSearchShow]);
+  }, []);
 
   const location = useLocation();
   const [searchValue, setSearchValue] = useState(

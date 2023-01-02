@@ -17,7 +17,6 @@ import {
   Profile,
   MyAllReview,
   Search,
-  MRegistration,
   ModifyNickName,
   ModifyCategory,
 } from 'pages/pageIndex';
@@ -31,12 +30,6 @@ export default function AppRouter() {
         <ScrollToTop>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/registration">
-              <MRegistration
-                setIsShowRegisterBtn={setIsShowRegisterBtn}
-                setRistOpen={setRistOpen}
-              />
-            </Route>
             <Route path="/search" component={Search} />
             <Route exact path="/youtubers" component={List} />
             <Route
