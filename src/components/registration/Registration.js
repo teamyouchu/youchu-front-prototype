@@ -1,15 +1,19 @@
 import * as style from './RegistrationStyle';
-import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import RegButton from 'components/regButton/RegButton';
 
-export default function Registration({ setRistOpen }) {
   // 모달 영역 외 클릭 시 종료
   const closeModal = ({ target }) => {
     const className = target.getAttribute('class');
     if (className.includes('close-modal__container')) {
       setRistOpen(false);
+export default function Registration() {
+  const {
+    setRistOpen,
+  } = useContext(UserContext);
     }
   };
 

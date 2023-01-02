@@ -1,7 +1,8 @@
 import * as style from './RelatedSearchStyle.js';
 import { numToKorean } from 'lib/numberFomat.js';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from 'lib/UserContext.js';
 import SearchResultSkeleton from 'components/searchResultSkeleton/SearchResultSkeleton.js';
 
 export default function RelatedSearch({
@@ -10,7 +11,6 @@ export default function RelatedSearch({
   setSearchValue,
   setIsRelatedSearch,
   setChannel,
-  setRistOpen,
   // autoRef,
   // index,
   // setIndex,
@@ -23,6 +23,7 @@ export default function RelatedSearch({
   //   };
   // }, [setIndex, setKeyIndex]);
 
+  const { setRistOpen } = useContext(UserContext);
   const [index, setIndex] = useState(-1);
   return (
     <style.SearchDropdownContainer page={page}>

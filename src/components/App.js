@@ -38,8 +38,30 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 헤더 표시 여부 상태값
+  const [isShowHeader, setIsShowHeader] = useState(true);
+  // 검색 아이콘 표시 여부 상태값
+  const [isSearchShow, setIsSearchShow] = useState(true);
+  // 유튜버 등록 버튼 표시 여부 상태값
+  const [isShowRegisterBtn, setIsShowRegisterBtn] = useState(true);
+  // 유튜버 등록 모달 표시 여부 상태값
+  const [registOpen, setRistOpen] = useState(false);
+
   return (
-    <UserContext.Provider value={{ userObj, setUserObj }}>
+    <UserContext.Provider
+      value={{
+        userObj,
+        setUserObj,
+        isShowHeader,
+        setIsShowHeader,
+        isSearchShow,
+        setIsSearchShow,
+        isShowRegisterBtn,
+        setIsShowRegisterBtn,
+        registOpen,
+        setRistOpen,
+      }}
+    >
       <AppRouter />
     </UserContext.Provider>
   );

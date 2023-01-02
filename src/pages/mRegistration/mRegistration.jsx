@@ -1,10 +1,12 @@
 import * as style from './style';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import SearchInput from 'components/searchInput/SearchInput';
 import RegButton from 'components/regButton/RegButton';
+import { UserContext } from 'lib/UserContext';
 
-export default function MRegistration({ setIsShowRegisterBtn, setRistOpen }) {
+export default function MRegistration() {
+  const { setIsShowRegisterBtn, setRistOpen } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {

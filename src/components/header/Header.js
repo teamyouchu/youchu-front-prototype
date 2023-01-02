@@ -6,14 +6,16 @@ import Registration from 'components/registration/Registration';
 import LogoutModal from 'components/logoutModal/LogoutModal';
 import { useHistory } from 'react-router-dom';
 
-export default function Header({
-  isSearchShow,
-  isShowRegisterBtn,
-  registOpen,
-  setRistOpen,
-}) {
-  const { userObj } = useContext(UserContext);
   const history = useHistory();
+export default function Header() {
+  const {
+    userObj,
+    isShowHeader,
+    isSearchShow,
+    isShowRegisterBtn,
+    registOpen,
+    setRistOpen,
+  } = useContext(UserContext);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
