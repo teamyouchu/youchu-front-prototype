@@ -173,9 +173,8 @@ export default function SearchInput({ page, setChannel }) {
   // }, [keyIndex]);
 
   return (
-    <style.SearchBox>
+    <style.SearchBox ref={inputRef}>
       <style.SearchForm
-        ref={inputRef}
         onSubmit={onSearch}
         // onKeyDown={handleKeyArrow}
         page={page}
