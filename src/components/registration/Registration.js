@@ -14,6 +14,7 @@ export default function Registration() {
 
   const ModalRef = useRef();
   useEffect(() => {
+    setIsShowHeader(true);
     setIsSearchShow(true);
     if (window.innerWidth < 1170) {
       setIsShowRegisterBtn(false);
