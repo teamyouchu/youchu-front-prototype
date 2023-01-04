@@ -1,8 +1,7 @@
 import * as style from './LogoutModalStyle';
-import { useRef, useContext } from 'react';
+import { useRef, useContext, useEffect } from 'react';
 import { UserContext } from 'lib/UserContext';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
 
 export default function LogoutModal({ setShowLogout }) {
   const { userObj, setUserObj } = useContext(UserContext);
@@ -23,10 +22,13 @@ export default function LogoutModal({ setShowLogout }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 마이페이지 이동 함수
   const onProfileClick = () => {
     setShowLogout(false);
     history.push('/profile');
   };
+
+  // 로그아웃 함수
   const onLogoutClick = () => {
     setShowLogout(false);
     window.localStorage.removeItem('accessToken');
