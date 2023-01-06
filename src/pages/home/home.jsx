@@ -5,6 +5,7 @@ import { UserContext } from 'lib/UserContext';
 import ReviewCard from 'components/reviewCard/ReviewCard';
 import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';
 import RecommendCard from 'components/recommendCard/RecommendCard';
+import RecommendCardSkeleton from 'components/recommendCardSkeleton/RecommendCardSkeleton';
 
 export default function Home() {
   const { userObj } = useContext(UserContext);
@@ -37,12 +38,19 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
+  const [recommendYoutuber, setRecommendYoutuber] = useState({
+    isLoading: false,
+    data: [],
+  });
   const getRecommendYoutuber = async () => {
     await youtuberAPI
       .getRecommendYoutubers()
       .then((res) => {
-        setRecommendYoutuber(res.data.data);
+        setRecommendYoutuber({
+          ...recommendYoutuber,
+          isLoading: true,
+          data: res.data.data,
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -84,7 +92,7 @@ export default function Home() {
               ? bestYoutuber.data.map((data) => (
                   <ReviewCard key={data.id} page={'home'} data={data} />
                 ))
-              : Array(6)
+              : Array(4)
                   .fill()
                   .map((item, index) => (
                     <ReviewCardSkeleton key={index} page={'home'} />
@@ -101,9 +109,15 @@ export default function Home() {
           여러분이 관심 있을 유튜버를 모아봤어요!
         </style.RowDescription>
         <style.RecommendCardContainer>
-          {recommendYoutuber.map((data) => (
-            <RecommendCard key={data.id} data={data} />
-          ))}
+          {recommendYoutuber.isLoading
+            ? recommendYoutuber.data.map((data) => (
+                <RecommendCard key={data.id} page={'home'} data={data} />
+              ))
+            : Array(6)
+                .fill()
+                .map((item, index) => (
+                  <RecommendCardSkeleton key={index} page={'home'} />
+                ))}
         </style.RecommendCardContainer>
       </style.RowContainer>
     </style.HomeContainer>
