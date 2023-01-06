@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import AppRouter from 'components/AppRouter';
 import { UserContext } from 'lib/UserContext';
-import userAPI from 'lib/api/userAPI';
+import userAPI from 'api/userAPI';
 
 function App() {
   // 로그인 유저 객체 상태값

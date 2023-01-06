@@ -1,7 +1,7 @@
 import * as style from './style';
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import WriteRating from './WriteRating.js/WriteRating';
 import Warning from 'components/warning/Warning';
 

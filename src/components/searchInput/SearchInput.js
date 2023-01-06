@@ -1,7 +1,7 @@
 import * as style from './SearchInputStyle';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import searchAPI from 'lib/api/searchAPI';
+import searchAPI from 'api/searchAPI';
 import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 import { throttle } from 'lodash';
 

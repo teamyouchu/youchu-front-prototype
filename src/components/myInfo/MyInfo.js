@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as style from './MyInfoStyle';
-import userAPI from 'lib/api/userAPI';
-import authAPI from 'lib/api/authAPI';
+import userAPI from 'api/userAPI';
+import authAPI from 'api/authAPI';
 import MyNickname from 'components/myNickname/MyNickname';
 import MyCategory from 'components/myCategory/MyCategory';
 import { UserContext } from 'lib/UserContext';

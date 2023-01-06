@@ -1,7 +1,7 @@
 import * as style from './style';
 import { useEffect, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
-import userAPI from 'lib/api/userAPI';
+import userAPI from 'api/userAPI';
 import { categoryArray } from 'lib/modules';
 import ReviewList from 'components/reviewList/reviewList';
 

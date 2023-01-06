@@ -1,5 +1,5 @@
 import * as style from './MyNickNameStyle';
-import userAPI from 'lib/api/userAPI';
+import userAPI from 'api/userAPI';
 import Warning from 'components/warning/Warning';
 import { stringTest } from 'lib/stringTest';
 

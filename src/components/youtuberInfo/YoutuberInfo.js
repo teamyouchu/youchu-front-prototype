@@ -8,7 +8,7 @@ import YoutuberReview from './infoContainer/YoutuberReview';
 import YoutuberVideos from './infoContainer/YoutuberVideos';
 import RecommendYoutuber from 'components/youtuberInfo/recommendYoutuber/RecommendYoutuber';
 import ReviewList from 'components/reviewList/reviewList';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 
 export default function YoutuberInfo({ all }) {
   const { channel_id } = useParams();

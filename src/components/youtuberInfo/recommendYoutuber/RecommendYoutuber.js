@@ -2,7 +2,7 @@ import * as style from './recommendYoutuberStyle';
 import { useState, useEffect } from 'react';
 import RecommendCard from 'components/recommendCard/RecommendCard';
 import { categoryArray } from 'lib/modules';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 
 export default function RecommendYoutuber({ category }) {
   const [recommendYoutuber, setRecommendYoutuber] = useState([]);

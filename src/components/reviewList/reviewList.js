@@ -3,8 +3,8 @@ import ReviewInfo from 'components/reviewInfo/ReviewInfo';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { reviewSortOptions } from 'lib/modules';
 import { useState, useEffect } from 'react';
-import userAPI from 'lib/api/userAPI';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import userAPI from 'api/userAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import { useParams } from 'react-router-dom';
 
 export default function ReviewList({ from, all }) {

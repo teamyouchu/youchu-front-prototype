@@ -1,7 +1,7 @@
 import * as style from './style';
 import { useEffect, useState } from 'react';
 import VideoInfo from '../videoInfo/VideoInfo';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import { useParams } from 'react-router-dom';
 
 export default function YoutuberVideos({ M_display }) {

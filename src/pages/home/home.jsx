@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import * as style from './style';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import { UserContext } from 'lib/UserContext';
 import ReviewCard from 'components/reviewCard/ReviewCard';
 import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';

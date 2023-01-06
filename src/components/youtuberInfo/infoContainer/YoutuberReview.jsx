@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import StarRating from 'components/starRating/StarRating';
 import ReviewInfo from 'components/reviewInfo/ReviewInfo';
 import { numberComma } from 'lib/numberFomat';
-import reviewAPI from 'lib/api/reviewAPI';
+import reviewAPI from 'api/reviewAPI';
 
 export default function YoutuberReview({
   youtuberInfo: { id, reviews, rating },

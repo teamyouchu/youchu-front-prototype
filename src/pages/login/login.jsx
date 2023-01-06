@@ -2,8 +2,8 @@ import * as style from './style';
 import { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-import authAPI from 'lib/api/authAPI';
-import userAPI from 'lib/api/userAPI';
+import authAPI from 'api/authAPI';
+import userAPI from 'api/userAPI';
 import { UserContext } from 'lib/UserContext';
 
 export default function Login() {

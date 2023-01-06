@@ -4,7 +4,7 @@ import { UserContext } from 'lib/UserContext';
 import StarRating from 'components/starRating/StarRating';
 import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
 import BulrReview from 'components/bulrReview/BulrReview';
-import reviewAPI from 'lib/api/reviewAPI';
+import reviewAPI from 'api/reviewAPI';
 import LikeButton from 'components/likeButton/LikeButton';
 
 export default function ReviewInfo({
