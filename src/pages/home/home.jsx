@@ -27,6 +27,13 @@ export default function Home() {
   };
   useEffect(() => {
     getBestYoutuber();
+    return () => {
+      setBestYoutuber({
+        ...bestYoutuber,
+        isLoading: false,
+        data: [],
+      });
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,6 +48,14 @@ export default function Home() {
   };
   useEffect(() => {
     getRecommendYoutuber();
+    return () => {
+      setRecommendYoutuber({
+        ...recommendYoutuber,
+        isLoading: false,
+        data: [],
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userObj.isLogin]);
 
   return (

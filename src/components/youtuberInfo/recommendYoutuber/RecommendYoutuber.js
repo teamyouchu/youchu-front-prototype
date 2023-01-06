@@ -23,6 +23,14 @@ export default function RecommendYoutuber({ category }) {
         })
         .catch((err) => console.log(err));
     }
+    return () => {
+      setRecommendYoutuber({
+        ...recommendYoutuber,
+        isLoading: false,
+        data: [],
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
   return (
     <style.RecommendContainer>
