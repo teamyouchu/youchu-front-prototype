@@ -84,9 +84,14 @@ export default function Home() {
           리뷰 보러 가보실까요?
         </style.RowDescription>
         <style.ReviewContainer>
-          <style.HandleBtn onClick={slide_L}>
-            <i className="fas fa-chevron-left"></i>
-          </style.HandleBtn>
+          <style.HandleBtnBox>
+            {bestYoutuber.data.length > 4 && (
+              <style.HandleBtn
+                className="fas fa-chevron-left"
+                onClick={slide_L}
+              />
+            )}
+          </style.HandleBtnBox>
           <style.ReviewCardContainer id="slider">
             {bestYoutuber.isLoading
               ? bestYoutuber.data.map((data) => (
@@ -98,9 +103,14 @@ export default function Home() {
                     <ReviewCardSkeleton key={index} page={'home'} />
                   ))}
           </style.ReviewCardContainer>
-          <style.HandleBtn onClick={slide_R}>
-            <i className="fas fa-chevron-right"></i>
-          </style.HandleBtn>
+          <style.HandleBtnBox>
+            {bestYoutuber.data.length > 4 && (
+              <style.HandleBtn
+                className="fas fa-chevron-right"
+                onClick={slide_R}
+              />
+            )}
+          </style.HandleBtnBox>
         </style.ReviewContainer>
       </style.RowContainer>
       <style.RowContainer width="1100px">

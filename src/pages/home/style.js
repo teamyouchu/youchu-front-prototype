@@ -95,8 +95,7 @@ export const ReviewContainer = styled.div`
   display: flex;
 `;
 
-export const HandleBtn = styled.div`
-  cursor: pointer;
+export const HandleBtnBox = styled.div`
   position: relative;
   top: 50px;
   width: 35px;
@@ -108,6 +107,10 @@ export const HandleBtn = styled.div`
   @media ${(props) => props.theme.tablet} {
     display: none;
   }
+`;
+
+export const HandleBtn = styled.div`
+  cursor: pointer;
 `;
 
 export const ReviewCardContainer = styled.div`
