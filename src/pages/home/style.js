@@ -123,7 +123,7 @@ export const ReviewCardContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(${({ count }) => (count < 5 ? 4 : count)}, 1fr);
   column-gap: 20px;
   margin-bottom: 60px;
 

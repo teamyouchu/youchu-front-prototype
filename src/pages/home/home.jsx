@@ -92,7 +92,10 @@ export default function Home() {
               />
             )}
           </style.HandleBtnBox>
-          <style.ReviewCardContainer id="slider">
+          <style.ReviewCardContainer
+            id="slider"
+            count={bestYoutuber.data.length}
+          >
             {bestYoutuber.isLoading
               ? bestYoutuber.data.map((data) => (
                   <ReviewCard key={data.id} page={'home'} data={data} />
