@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import StarRating from 'components/starRating/StarRating';
 import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
-import BulrReview from 'components/bulrReview/BulrReview';
+import BulrReview from './bulrReview/BulrReview';
+import LikeButton from './likeButton/LikeButton';
 import reviewAPI from 'api/reviewAPI';
-import LikeButton from 'components/likeButton/LikeButton';
 
 export default function ReviewInfo({
   data: {
