@@ -44,16 +44,16 @@ export default function MyNickname({
     // 현재 닉네임과 다른지 확인
     if (userObj.data.nickname !== nickName) {
       // 닉네임이 빈 값인지 확인
-      if (nickName === '' && nickName === null) {
+      if (nickName === '' || nickName === null) {
         setIsNickNameNull(true);
       } else {
-        // 유효한 닉네임인지 확인
-        if (stringTest(nickName)) {
-          setIsValidNickname(true);
+        // 닉네임 2 ~ 15자인지 확인
+        if (nickName.length < 2 || nickName.length > 15) {
+          setIsNickNameLen(true);
         } else {
-          // 닉네임 2 ~ 15자인지 확인
-          if (nickName.length < 2 || nickName.length > 15) {
-            setIsNickNameLen(true);
+          // 유효한 닉네임인지 확인
+          if (stringTest(nickName)) {
+            setIsValidNickname(true);
           } else {
             nickNameDuplicate();
           }

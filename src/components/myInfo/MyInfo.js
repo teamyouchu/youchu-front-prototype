@@ -29,8 +29,10 @@ export default function MyInfo({
   const [isCategoryLen, setIsCategoryLen] = useState(false);
 
   useEffect(() => {
-    setNickName(userObj.data.nickname);
-    setCategoryList(userObj.data.favoriteCategory);
+    if (userObj.isLogin) {
+      setNickName(userObj.data.nickname);
+      setCategoryList(userObj.data.favoriteCategory);
+    }
   }, [userObj]);
 
   //회원가입 함수
@@ -49,6 +51,18 @@ export default function MyInfo({
           favoriteCategories: categoryList,
         })
         .then(() => {
+          userAPI
+            .getMe()
+            .then(({ data }) => {
+              setUserObj({
+                ...userObj,
+                isLogin: true,
+                data,
+              });
+            })
+            .catch((err) => {
+              console.error(err);
+            });
           if (from === 'button') {
             history.go(-2);
           } else {
