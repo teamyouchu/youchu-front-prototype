@@ -93,7 +93,7 @@ export default function ReviewInfo({
           <style.UtilBox>
             <LikeButton
               reviewId={reviewId}
-              userId={userObj.data.id}
+              userObj={userObj}
               liked={liked}
               likes={likes}
             />
