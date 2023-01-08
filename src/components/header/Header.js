@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import Registration from 'components/registration/Registration';
-import LogoutModal from 'components/logoutModal/LogoutModal';
+import LogoutModal from './logoutModal/LogoutModal';
 
 export default function Header() {
   const {
