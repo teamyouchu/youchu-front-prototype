@@ -1,4 +1,4 @@
-import * as style from './ReviewListsStyle';
+import * as style from './ReviewListStyle';
 import ReviewInfo from 'components/reviewInfo/ReviewInfo';
 import FilterDropdown from 'components/filterDropdown/FilterDropdown';
 import { reviewSortOptions } from 'lib/modules';

@@ -7,7 +7,7 @@ import YoutuberIntro from './infoContainer/YoutuberIntro';
 import YoutuberReview from './infoContainer/YoutuberReview';
 import YoutuberVideos from './infoContainer/YoutuberVideos';
 import RecommendYoutuber from 'components/youtuberInfo/recommendYoutuber/RecommendYoutuber';
-import ReviewList from 'components/reviewList/reviewList';
+import ReviewList from 'components/reviewList/ReviewList';
 import youtuberAPI from 'api/youtuberAPI';
 
 export default function YoutuberInfo({ all }) {

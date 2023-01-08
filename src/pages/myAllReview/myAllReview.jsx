@@ -1,4 +1,4 @@
-import ReviewList from 'components/reviewList/reviewList';
+import ReviewList from 'components/reviewList/ReviewList';
 import * as style from './style';
 
 export default function MyAllReview() {

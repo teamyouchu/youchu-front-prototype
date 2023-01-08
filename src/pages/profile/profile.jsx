@@ -3,7 +3,7 @@ import { useEffect, useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
 import userAPI from 'api/userAPI';
 import { categoryArray } from 'lib/modules';
-import ReviewList from 'components/reviewList/reviewList';
+import ReviewList from 'components/reviewList/ReviewList';
 
 export default function Profile() {
   const { userObj, setUserObj } = useContext(UserContext);
