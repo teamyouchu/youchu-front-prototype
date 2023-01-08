@@ -1,4 +1,6 @@
 import * as style from './MyNickNameStyle';
+import { useContext } from 'react';
+import { UserContext } from 'lib/UserContext';
 import userAPI from 'api/userAPI';
 import Warning from 'components/warning/Warning';
 import { stringTest } from 'lib/stringTest';
@@ -16,8 +18,9 @@ export default function MyNickname({
   setIsNotNickNameDup,
   isValidNickname,
   setIsValidNickname,
-  currentNickname,
 }) {
+  const { userObj } = useContext(UserContext);
+
   const onNickNameChange = (e) => {
     setNickName(e.target.value);
     setIsNickNameNull(false);
@@ -25,25 +28,6 @@ export default function MyNickname({
     setIsNickNameDup(false);
     setIsNotNickNameDup(false);
     setIsValidNickname(false);
-  };
-
-  const onNickNameBlur = () => {
-    if (currentNickname !== nickName) {
-      if (nickName === '') {
-        setIsNickNameNull(nickName === '');
-      } else {
-        setIsValidNickname(stringTest(nickName));
-      }
-      if (nickName !== '' && nickName !== null && !stringTest(nickName)) {
-        setIsNickNameLen(nickName.length < 2);
-        if (nickName.length >= 2) {
-          nickNameDuplicate();
-        } else {
-          setIsNickNameDup(false);
-          setIsNotNickNameDup(false);
-        }
-      }
-    }
   };
 
   const nickNameDuplicate = async () => {
@@ -54,6 +38,28 @@ export default function MyNickname({
         setIsNotNickNameDup(!res.data.isExist);
       })
       .catch((err) => console.log(err));
+  };
+
+  const onNickNameBlur = () => {
+    // 현재 닉네임과 다른지 확인
+    if (userObj.data.nickname !== nickName) {
+      // 닉네임이 빈 값인지 확인
+      if (nickName === '' && nickName === null) {
+        setIsNickNameNull(true);
+      } else {
+        // 유효한 닉네임인지 확인
+        if (stringTest(nickName)) {
+          setIsValidNickname(true);
+        } else {
+          // 닉네임 2 ~ 15자인지 확인
+          if (nickName.length < 2 || nickName.length > 15) {
+            setIsNickNameLen(true);
+          } else {
+            nickNameDuplicate();
+          }
+        }
+      }
+    }
   };
 
   return (

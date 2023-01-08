@@ -15,49 +15,23 @@ export default function MyInfo({
   buttonMsg,
   from,
 }) {
+  const history = useHistory();
+  const { userObj, setUserObj } = useContext(UserContext);
+
   const [nickName, setNickName] = useState('');
   const [isNickNameNull, setIsNickNameNull] = useState(false);
   const [isNickNameLen, setIsNickNameLen] = useState(false);
   const [isNickNameDup, setIsNickNameDup] = useState(false);
   const [isNotNickNameDup, setIsNotNickNameDup] = useState(false);
   const [isValidNickname, setIsValidNickname] = useState(false);
-  const [currentNickname, setCurrentNickname] = useState('');
 
   const [categoryList, setCategoryList] = useState([]);
   const [isCategoryLen, setIsCategoryLen] = useState(false);
 
-  const { setUserObj } = useContext(UserContext);
-  const history = useHistory();
-
   useEffect(() => {
-    userAPI
-      .getMe()
-      .then((res) => {
-        setNickName(res.data.nickname);
-        setCurrentNickname(res.data.nickname);
-        setCategoryList(res.data.favoriteCategory);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    return () => {
-      userAPI
-        .getMe()
-        .then(({ data }) => {
-          setUserObj({
-            id: data.id,
-            email: data.email,
-            favoriteCategory: data.favoriteCategory,
-            hasReview: data.hasReview,
-            imageUrl: data.imageUrl,
-            nickname: data.nickname,
-          });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    };
-  }, [setUserObj]);
+    setNickName(userObj.data.nickname);
+    setCategoryList(userObj.data.favoriteCategory);
+  }, [userObj]);
 
   //회원가입 함수
   const onSignupClick = async () => {
@@ -87,7 +61,7 @@ export default function MyInfo({
 
   // 닉네임 변경 함수
   const onNicknameClick = async () => {
-    if (currentNickname === nickName) {
+    if (userObj.data.nickname === nickName) {
       history.go(-1);
     } else {
       setIsNickNameNull(nickName === '');
@@ -102,6 +76,13 @@ export default function MyInfo({
             nickname: nickName,
           })
           .then(() => {
+            setUserObj({
+              ...userObj,
+              data: {
+                ...userObj.data,
+                nickname: nickName,
+              },
+            });
             history.go(-1);
           })
           .catch((err) => console.error(err));
@@ -118,6 +99,13 @@ export default function MyInfo({
           favoriteCategory: categoryList,
         })
         .then(() => {
+          setUserObj({
+            ...userObj,
+            data: {
+              ...userObj.data,
+              favoriteCategory: categoryList,
+            },
+          });
           history.go(-1);
         })
         .catch((err) => {
@@ -142,7 +130,6 @@ export default function MyInfo({
             setIsNickNameDup={setIsNickNameDup}
             isNotNickNameDup={isNotNickNameDup}
             setIsNotNickNameDup={setIsNotNickNameDup}
-            currentNickname={currentNickname}
             isValidNickname={isValidNickname}
             setIsValidNickname={setIsValidNickname}
           />

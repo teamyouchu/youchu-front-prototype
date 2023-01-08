@@ -53,9 +53,10 @@ export default function ReviewInfo({
 
   return (
     <style.ReviewInfoContainer>
-      {from === 'youtuber' && all && !userObj.data.hasReview && (
-        <BulrReview channel_id={channelId} />
-      )}
+      {from === 'youtuber' &&
+        all &&
+        !userObj.isLogin &&
+        !userObj.data.hasReview && <BulrReview channel_id={channelId} />}
       <style.ReviewInfoBox>
         {from === 'youtuber' ? (
           <style.ReviewInfoHeader>
