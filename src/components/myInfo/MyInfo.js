@@ -1,10 +1,10 @@
+import * as style from './MyInfoStyle';
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import * as style from './MyInfoStyle';
 import userAPI from 'api/userAPI';
 import authAPI from 'api/authAPI';
-import MyNickname from 'components/myNickname/MyNickname';
-import MyCategory from 'components/myCategory/MyCategory';
+import MyNickname from './myNickname/MyNickname';
+import MyCategory from './myCategory/MyCategory';
 import { UserContext } from 'lib/UserContext';
 
 export default function MyInfo({
