@@ -14,6 +14,7 @@ export default function Header() {
     isShowRegisterBtn,
     registOpen,
     setRistOpen,
+    isShowLogin,
   } = useContext(UserContext);
 
   // TODO 서지수 status관련 수정되면 활성화 하기
@@ -83,18 +84,22 @@ export default function Header() {
               {showLogout && <LogoutModal setShowLogout={setShowLogout} />}
             </style.GoogleAvatarBox>
           ) : (
-            <style.HeaderLink
-              to={{
-                pathname: '/login',
-                state: {
-                  from: 'button',
-                  msg1: '유튜버를 추천받고',
-                  msg2: '유튜버 리뷰를 남겨보세요!',
-                },
-              }}
-            >
-              <style.LoginButton>로그인</style.LoginButton>
-            </style.HeaderLink>
+            <>
+              {isShowLogin && (
+                <style.HeaderLink
+                  to={{
+                    pathname: '/login',
+                    state: {
+                      from: 'button',
+                      msg1: '유튜버를 추천받고',
+                      msg2: '유튜버 리뷰를 남겨보세요!',
+                    },
+                  }}
+                >
+                  <style.LoginButton>로그인</style.LoginButton>
+                </style.HeaderLink>
+              )}
+            </>
           )}
         </style.HeaderFlex>
       </style.HeaderBox>

@@ -37,6 +37,8 @@ function App() {
   const [isSearchShow, setIsSearchShow] = useState(true);
   // 유튜버 등록 버튼 표시 여부 상태값
   const [isShowRegisterBtn, setIsShowRegisterBtn] = useState(true);
+  // 로그인 버튼 표시 여부 상태값
+  const [isShowLogin, setIsShowLogin] = useState(true);
   // 유튜버 등록 모달 표시 여부 상태값
   const [registOpen, setRistOpen] = useState(false);
 
@@ -53,6 +55,8 @@ function App() {
         setIsShowRegisterBtn,
         registOpen,
         setRistOpen,
+        isShowLogin,
+        setIsShowLogin,
       }}
     >
       <AppRouter />
