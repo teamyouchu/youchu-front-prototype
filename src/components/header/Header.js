@@ -1,5 +1,6 @@
 import * as style from './HeaderStyle';
 import { useState, useEffect, useContext } from 'react';
+// import { useHistory } from 'react-router-dom';
 import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import Registration from 'components/registration/Registration';
@@ -14,6 +15,19 @@ export default function Header() {
     registOpen,
     setRistOpen,
   } = useContext(UserContext);
+
+  // TODO 서지수 status관련 수정되면 활성화 하기
+  // const history = useHistory();
+  // useEffect(() => {
+  //   if (userObj.isLogin && userObj.data.status === 2) {
+  //     alert('회원가입을 완료해주세요.');
+  //     history.push({
+  //       pathname: '/signup',
+  //       state: { from: 'button' },
+  //     });
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [userObj]);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);

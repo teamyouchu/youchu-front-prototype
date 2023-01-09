@@ -46,7 +46,7 @@ export default function AppRouter() {
               component={ReviewWrite}
             />
             <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <PrivateRoute path="/signup" component={Signup} />
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute path="/profile/allReview" component={MyAllReview} />
             <PrivateRoute path="/modifyNickName" component={ModifyNickName} />
