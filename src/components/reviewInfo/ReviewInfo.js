@@ -1,5 +1,5 @@
 import * as style from './ReviewInfoStyle';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from 'lib/UserContext';
 import StarRating from 'components/starRating/StarRating';
 import ContentsOverflow from 'components/contentsOverflow/ContentsOverflow';
@@ -27,6 +27,14 @@ export default function ReviewInfo({
   all,
 }) {
   const { userObj } = useContext(UserContext);
+  const [isBulrReview, setIsBulrReview] = useState(false);
+  useEffect(() => {
+    if (from === 'youtuber' && all) {
+      setIsBulrReview(!userObj.isLogin && !userObj.data.hasReview);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userObj]);
+
   const reportReview = async () => {
     if (window.confirm('신고하시겠습니까?')) {
       await reviewAPI
@@ -53,10 +61,7 @@ export default function ReviewInfo({
 
   return (
     <style.ReviewInfoContainer>
-      {from === 'youtuber' &&
-        all &&
-        !userObj.isLogin &&
-        !userObj.data.hasReview && <BulrReview channel_id={channelId} />}
+      {isBulrReview && <BulrReview channel_id={channelId} />}
       <style.ReviewInfoBox>
         {from === 'youtuber' ? (
           <style.ReviewInfoHeader>
@@ -66,11 +71,15 @@ export default function ReviewInfo({
                 src={require('assets/images/DefaultProfile.png').default}
               />
               <style.WriterInfoBox>
-                <style.RatingBox margin_B={'3px'}>
-                  <StarRating rating={rating} />
-                  <style.Ratings>{rating.toFixed(1)}</style.Ratings>
-                </style.RatingBox>
-                <style.ReviewWriterName>{authorName}</style.ReviewWriterName>
+                {!isBulrReview && (
+                  <style.RatingBox margin_B={'3px'}>
+                    <StarRating rating={rating} />
+                    <style.Ratings>{rating.toFixed(1)}</style.Ratings>
+                  </style.RatingBox>
+                )}
+                <style.ReviewWriterName>
+                  {isBulrReview ? '리뷰 작성 후 조회 가능' : authorName}
+                </style.ReviewWriterName>
               </style.WriterInfoBox>
             </style.WriterInfoFlex>
           </style.ReviewInfoHeader>
@@ -85,7 +94,9 @@ export default function ReviewInfo({
             </style.RatingBox>
           </style.ReviewInfoHeader>
         )}
-        <ContentsOverflow contents={comment} />
+        <ContentsOverflow
+          contents={isBulrReview ? '리뷰 작성 후 조회 가능' : comment}
+        />
         <style.ReviewCreated>
           {createdDatetime.substr(0, 4)}.{createdDatetime.substr(5, 2)}.
           {createdDatetime.substr(8, 2)}
