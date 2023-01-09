@@ -30,7 +30,7 @@ export default function ReviewInfo({
   const [isBulrReview, setIsBulrReview] = useState(false);
   useEffect(() => {
     if (from === 'youtuber' && all) {
-      setIsBulrReview(!userObj.isLogin && !userObj.data.hasReview);
+      setIsBulrReview(!userObj.isLogin || !userObj.data.hasReview);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userObj]);
