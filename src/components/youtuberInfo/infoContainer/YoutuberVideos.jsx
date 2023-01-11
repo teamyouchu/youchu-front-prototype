@@ -1,10 +1,10 @@
 import * as style from './style';
 import { useEffect, useState } from 'react';
 import VideoInfo from '../videoInfo/VideoInfo';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import { useParams } from 'react-router-dom';
 
-export default function YoutuberVideos({ M_display }) {
+export default function YoutuberVideos() {
   const { channel_id } = useParams();
   const [sortFocus /*SetSortSocus*/] = useState(true);
   const [videos, setVideos] = useState([]);
@@ -33,7 +33,7 @@ export default function YoutuberVideos({ M_display }) {
   return (
     <>
       {videos.length >= 1 && (
-        <style.InfoContainer M_display={M_display}>
+        <style.InfoContainer M_display={'none'}>
           <style.InfoBox>
             <style.TitleFlex>
               <style.InfoTitle margin_B={'0'}> 동영상</style.InfoTitle>

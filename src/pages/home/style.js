@@ -95,8 +95,7 @@ export const ReviewContainer = styled.div`
   display: flex;
 `;
 
-export const HandleBtn = styled.div`
-  cursor: pointer;
+export const HandleBtnBox = styled.div`
   position: relative;
   top: 50px;
   width: 35px;
@@ -110,6 +109,10 @@ export const HandleBtn = styled.div`
   }
 `;
 
+export const HandleBtn = styled.div`
+  cursor: pointer;
+`;
+
 export const ReviewCardContainer = styled.div`
   display: grid;
   width: 1100px;
@@ -120,7 +123,7 @@ export const ReviewCardContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(${({ count }) => (count < 5 ? 4 : count)}, 1fr);
   column-gap: 20px;
   margin-bottom: 60px;
 

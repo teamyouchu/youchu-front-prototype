@@ -1,7 +1,7 @@
 import * as style from './RegButtonStyle';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import { UserContext } from 'lib/UserContext';
 
 export default function RegButton({ channel }) {

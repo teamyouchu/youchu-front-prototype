@@ -1,7 +1,7 @@
 import * as style from './style';
 import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import searchAPI from 'lib/api/searchAPI';
+import searchAPI from 'api/searchAPI';
 import EmptyResult from 'pages/list/emptyResult/EmptyResult';
 import ReviewCard from 'components/reviewCard/ReviewCard';
 import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';

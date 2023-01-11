@@ -1,30 +1,21 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import AppRouter from 'components/AppRouter';
 import { UserContext } from 'lib/UserContext';
-import userAPI from 'lib/api/userAPI';
+import userAPI from 'api/userAPI';
 
 function App() {
   // 로그인 유저 객체 상태값
   const [userObj, setUserObj] = useState({ isLogin: false, data: {} });
-  const history = useHistory();
   useEffect(() => {
     if (localStorage.getItem('refreshToken')) {
       userAPI
         .getMe()
         .then(({ data }) => {
-          if (data.status === 1) {
-            setUserObj({
-              ...userObj,
-              isLogin: true,
-              data,
-            });
-          } else if (data.status === 2) {
-            history.push({
-              pathname: '/signup',
-              state: { from: 'button' },
-            });
-          }
+          setUserObj({
+            ...userObj,
+            isLogin: true,
+            data,
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -33,6 +24,8 @@ function App() {
             isLogin: false,
             data: {},
           });
+          window.localStorage.removeItem('accessToken');
+          window.localStorage.removeItem('refreshToken');
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,6 +37,8 @@ function App() {
   const [isSearchShow, setIsSearchShow] = useState(true);
   // 유튜버 등록 버튼 표시 여부 상태값
   const [isShowRegisterBtn, setIsShowRegisterBtn] = useState(true);
+  // 로그인 버튼 표시 여부 상태값
+  const [isShowLogin, setIsShowLogin] = useState(true);
   // 유튜버 등록 모달 표시 여부 상태값
   const [registOpen, setRistOpen] = useState(false);
 
@@ -60,6 +55,8 @@ function App() {
         setIsShowRegisterBtn,
         registOpen,
         setRistOpen,
+        isShowLogin,
+        setIsShowLogin,
       }}
     >
       <AppRouter />

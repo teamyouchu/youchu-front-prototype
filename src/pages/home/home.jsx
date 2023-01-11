@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import * as style from './style';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import youtuberAPI from 'api/youtuberAPI';
 import { UserContext } from 'lib/UserContext';
 import ReviewCard from 'components/reviewCard/ReviewCard';
 import ReviewCardSkeleton from 'components/reviewCardSkeleton/ReviewCardSkeleton';
 import RecommendCard from 'components/recommendCard/RecommendCard';
+import RecommendCardSkeleton from 'components/recommendCardSkeleton/RecommendCardSkeleton';
 
 export default function Home() {
   const { userObj } = useContext(UserContext);
@@ -27,20 +28,42 @@ export default function Home() {
   };
   useEffect(() => {
     getBestYoutuber();
+    return () => {
+      setBestYoutuber({
+        ...bestYoutuber,
+        isLoading: false,
+        data: [],
+      });
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [recommendYoutuber, setRecommendYoutuber] = useState([]);
+  const [recommendYoutuber, setRecommendYoutuber] = useState({
+    isLoading: false,
+    data: [],
+  });
   const getRecommendYoutuber = async () => {
     await youtuberAPI
       .getRecommendYoutubers()
       .then((res) => {
-        setRecommendYoutuber(res.data.data);
+        setRecommendYoutuber({
+          ...recommendYoutuber,
+          isLoading: true,
+          data: res.data.data,
+        });
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     getRecommendYoutuber();
+    return () => {
+      setRecommendYoutuber({
+        ...recommendYoutuber,
+        isLoading: false,
+        data: [],
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userObj.isLogin]);
 
   return (
@@ -61,23 +84,36 @@ export default function Home() {
           리뷰 보러 가보실까요?
         </style.RowDescription>
         <style.ReviewContainer>
-          <style.HandleBtn onClick={slide_L}>
-            <i className="fas fa-chevron-left"></i>
-          </style.HandleBtn>
-          <style.ReviewCardContainer id="slider">
+          <style.HandleBtnBox>
+            {bestYoutuber.data.length > 4 && (
+              <style.HandleBtn
+                className="fas fa-chevron-left"
+                onClick={slide_L}
+              />
+            )}
+          </style.HandleBtnBox>
+          <style.ReviewCardContainer
+            id="slider"
+            count={bestYoutuber.data.length}
+          >
             {bestYoutuber.isLoading
               ? bestYoutuber.data.map((data) => (
                   <ReviewCard key={data.id} page={'home'} data={data} />
                 ))
-              : Array(6)
+              : Array(4)
                   .fill()
                   .map((item, index) => (
                     <ReviewCardSkeleton key={index} page={'home'} />
                   ))}
           </style.ReviewCardContainer>
-          <style.HandleBtn onClick={slide_R}>
-            <i className="fas fa-chevron-right"></i>
-          </style.HandleBtn>
+          <style.HandleBtnBox>
+            {bestYoutuber.data.length > 4 && (
+              <style.HandleBtn
+                className="fas fa-chevron-right"
+                onClick={slide_R}
+              />
+            )}
+          </style.HandleBtnBox>
         </style.ReviewContainer>
       </style.RowContainer>
       <style.RowContainer width="1100px">
@@ -86,9 +122,15 @@ export default function Home() {
           여러분이 관심 있을 유튜버를 모아봤어요!
         </style.RowDescription>
         <style.RecommendCardContainer>
-          {recommendYoutuber.map((data) => (
-            <RecommendCard key={data.id} data={data} />
-          ))}
+          {recommendYoutuber.isLoading
+            ? recommendYoutuber.data.map((data) => (
+                <RecommendCard key={data.id} page={'home'} data={data} />
+              ))
+            : Array(6)
+                .fill()
+                .map((item, index) => (
+                  <RecommendCardSkeleton key={index} page={'home'} />
+                ))}
         </style.RecommendCardContainer>
       </style.RowContainer>
     </style.HomeContainer>
