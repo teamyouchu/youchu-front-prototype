@@ -54,7 +54,7 @@ export default function SearchInput({ page, setChannel }) {
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    if (page === 'header' && window.innerWidth < 1170) {
+    if (page === 'header' && window.innerWidth <= 1170) {
       history.push('/search');
     } else if (page !== 'registration') {
       history.push({
