@@ -1,27 +1,12 @@
 import * as style from './style';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { UserContext } from 'lib/UserContext';
-import userAPI from 'lib/api/userAPI';
 import { categoryArray } from 'lib/modules';
-import ReviewList from 'components/reviewList/reviewList';
+import ReviewList from 'components/reviewList/ReviewList';
 
 export default function Profile() {
-  const { userObj, setUserObj } = useContext(UserContext);
-  useEffect(() => {
-    userAPI
-      .getMe()
-      .then(({ data }) => {
-        setUserObj({
-          ...userObj,
-          isLogin: true,
-          data,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { userObj } = useContext(UserContext);
+
   return (
     <style.ProfileContainer>
       <style.ProfileTitle>내 정보</style.ProfileTitle>

@@ -46,11 +46,11 @@ export default function AppRouter() {
               component={ReviewWrite}
             />
             <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <PrivateRoute path="/signup" component={Signup} />
             <PrivateRoute exact path="/profile" component={Profile} />
-            <Route path="/profile/allReview" component={MyAllReview} />
-            <Route path="/modifyNickName" component={ModifyNickName} />
-            <Route path="/modifyCategory" component={ModifyCategory} />
+            <PrivateRoute path="/profile/allReview" component={MyAllReview} />
+            <PrivateRoute path="/modifyNickName" component={ModifyNickName} />
+            <PrivateRoute path="/modifyCategory" component={ModifyCategory} />
             <Route component={EmptyPage} />
           </Switch>
         </ScrollToTop>

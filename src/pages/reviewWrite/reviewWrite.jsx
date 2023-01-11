@@ -1,7 +1,8 @@
 import * as style from './style';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import youtuberAPI from 'lib/api/youtuberAPI';
+import { UserContext } from 'lib/UserContext';
+import youtuberAPI from 'api/youtuberAPI';
 import WriteRating from './WriteRating.js/WriteRating';
 import Warning from 'components/warning/Warning';
 
@@ -10,6 +11,7 @@ export default function ReviewWrite() {
   const { channel_id } = useParams();
   const [comment, setComment] = useState();
   const [rating, setRating] = useState(null);
+  const { userObj, setUserObj } = useContext(UserContext);
 
   const [youtuberProfile, setYoutuberProfile] = useState({
     title: '',
@@ -37,6 +39,15 @@ export default function ReviewWrite() {
         channel_id,
       )
       .then(() => {
+        if (userObj.data.hasReview === false) {
+          setUserObj({
+            ...userObj,
+            data: {
+              ...userObj.data,
+              hasReview: true,
+            },
+          });
+        }
         history.push(`/youtubers/review/detail/${channel_id}`);
       })
       .catch((err) => {

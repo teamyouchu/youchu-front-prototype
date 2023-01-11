@@ -1,7 +1,7 @@
 import * as style from './SearchInputStyle';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import searchAPI from 'lib/api/searchAPI';
+import searchAPI from 'api/searchAPI';
 import RelatedSearch from 'components/relatedSearch/RelatedSearch';
 import { throttle } from 'lodash';
 
@@ -54,7 +54,7 @@ export default function SearchInput({ page, setChannel }) {
   const history = useHistory();
   const onSearch = (e) => {
     e.preventDefault();
-    if (page === 'header' && window.innerWidth < 1170) {
+    if (page === 'header' && window.innerWidth <= 1170) {
       history.push('/search');
     } else if (page !== 'registration') {
       history.push({

@@ -2,7 +2,7 @@ import * as style from './RegistrationStyle';
 import { useState, useEffect, useContext, useRef } from 'react';
 import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
-import RegButton from 'components/regButton/RegButton';
+import RegButton from 'components/registration/regButton/RegButton';
 
 export default function Registration() {
   const {
@@ -36,7 +36,7 @@ export default function Registration() {
       }
     };
 
-    // 화면이 1170 이하면 모달 종료 후 registration 페이지로 이동
+    // 화면이 1170 이하면 유튜버 등록 버튼 미표시
     const handleWindowResize = () => {
       if (window.innerWidth < 1170) {
         setIsShowRegisterBtn(false);

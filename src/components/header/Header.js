@@ -1,9 +1,10 @@
 import * as style from './HeaderStyle';
 import { useState, useEffect, useContext } from 'react';
+// import { useHistory } from 'react-router-dom';
 import { UserContext } from 'lib/UserContext';
 import SearchInput from 'components/searchInput/SearchInput';
 import Registration from 'components/registration/Registration';
-import LogoutModal from 'components/logoutModal/LogoutModal';
+import LogoutModal from './logoutModal/LogoutModal';
 
 export default function Header() {
   const {
@@ -13,7 +14,21 @@ export default function Header() {
     isShowRegisterBtn,
     registOpen,
     setRistOpen,
+    isShowLogin,
   } = useContext(UserContext);
+
+  // TODO 서지수 status관련 수정되면 활성화 하기
+  // const history = useHistory();
+  // useEffect(() => {
+  //   if (userObj.isLogin && userObj.data.status === 2) {
+  //     alert('회원가입을 완료해주세요.');
+  //     history.push({
+  //       pathname: '/signup',
+  //       state: { from: 'button' },
+  //     });
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [userObj]);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,18 +84,22 @@ export default function Header() {
               {showLogout && <LogoutModal setShowLogout={setShowLogout} />}
             </style.GoogleAvatarBox>
           ) : (
-            <style.HeaderLink
-              to={{
-                pathname: '/login',
-                state: {
-                  from: 'button',
-                  msg1: '유튜버를 추천받고',
-                  msg2: '유튜버 리뷰를 남겨보세요!',
-                },
-              }}
-            >
-              <style.LoginButton>로그인</style.LoginButton>
-            </style.HeaderLink>
+            <>
+              {isShowLogin && (
+                <style.HeaderLink
+                  to={{
+                    pathname: '/login',
+                    state: {
+                      from: 'button',
+                      msg1: '유튜버를 추천받고',
+                      msg2: '유튜버 리뷰를 남겨보세요!',
+                    },
+                  }}
+                >
+                  <style.LoginButton>로그인</style.LoginButton>
+                </style.HeaderLink>
+              )}
+            </>
           )}
         </style.HeaderFlex>
       </style.HeaderBox>

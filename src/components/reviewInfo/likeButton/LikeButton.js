@@ -1,18 +1,18 @@
 import * as style from './LikeButtonStyle';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import reviewAPI from 'lib/api/reviewAPI';
+import reviewAPI from 'api/reviewAPI';
 
-export default function LikeButton({ reviewId, userId, liked, likes }) {
+export default function LikeButton({ reviewId, userObj, liked, likes }) {
   const history = useHistory();
   const [isliked, setIsLiked] = useState(liked);
   const [likeCount, setLikeCount] = useState(likes);
   const onLikeClick = () => {
-    if (userId !== 0) {
+    if (userObj.isLogin) {
       reviewAPI
         .postReviewLike(reviewId)
         .then(() => {
-          if (isliked === true) {
+          if (isliked) {
             setIsLiked(false);
             setLikeCount(likeCount - 1);
           } else {
