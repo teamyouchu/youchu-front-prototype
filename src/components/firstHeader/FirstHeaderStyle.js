@@ -4,7 +4,7 @@ export const FirstHeaderContainer = styled.div`
   width: 100%;
   position: fixed;
   top: 0px;
-  z-index: 5;
+  z-index: 90;
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
 

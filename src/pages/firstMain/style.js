@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FirstMainContainer = styled.div`
@@ -46,5 +47,11 @@ export const EvalList = styled.div`
   width: 100%;
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
-  padding: 0 24px;
+  padding: 0 24px 20px 24px;
+`;
+
+export const LoginLink = styled(Link)`
+  position: sticky;
+  bottom: 30px;
+  z-index: 60;
 `;

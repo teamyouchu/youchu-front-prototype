@@ -22,8 +22,17 @@ export default function FirstMain() {
             setEvalYoutubers={setEvalYoutubers}
           />
         ))}
+        <style.LoginLink
+          to={{
+            pathname: '/login',
+            state: {
+              from: 'button',
+            },
+          }}
+        >
+          <FirstButton text={'5초만에 가입하고 계속하기'} />
+        </style.LoginLink>
       </style.EvalList>
-      <FirstButton text={'5초만에 가입하고 계속하기'} />
     </style.FirstMainContainer>
   );
 }

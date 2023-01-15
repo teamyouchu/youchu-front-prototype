@@ -5,7 +5,7 @@ import { UserContext } from 'lib/UserContext';
 import LogoutModal from 'components/header/logoutModal/LogoutModal';
 
 export default function FirstHeader() {
-  const { userObj } = useContext(UserContext);
+  const { userObj, isShowLogin } = useContext(UserContext);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,13 +46,11 @@ export default function FirstHeader() {
             to={{
               pathname: '/login',
               state: {
-                from: 'button',
-                msg1: '유튜버 평점을 남기고',
-                msg2: '추천 받아봐요!',
+                from: 'header',
               },
             }}
           >
-            <style.LoginButton>로그인</style.LoginButton>
+            {isShowLogin && <style.LoginButton>로그인</style.LoginButton>}
           </Link>
         )}
       </style.FirstHeaderBox>

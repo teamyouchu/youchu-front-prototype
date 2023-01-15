@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ScrollToTop from 'components/ScrollToTop';
 import FirstHeader from './firstHeader/FirstHeader';
 // import Header from 'components/header/Header';
-import Footer from 'components/footer/Footer';
+import FirstFooter from './firstFooter/FirstFooter';
+// import Footer from 'components/footer/Footer';
 // import PrivateRoute from 'components/PrivateRoute';
 // import {
 //   Home,
@@ -21,7 +22,7 @@ import Footer from 'components/footer/Footer';
 //   ModifyNickName,
 //   ModifyCategory,
 // } from 'pages/pageIndex';
-import { FirstMain } from 'pages/firstPageIndex';
+import { FirstMain, FirstLogin } from 'pages/firstPageIndex';
 
 export default function AppRouter() {
   const { isShowHeader } = useContext(UserContext);
@@ -32,7 +33,8 @@ export default function AppRouter() {
       <div id="wrap">
         <ScrollToTop>
           <Switch>
-            <Route path="/" component={FirstMain} />
+            <Route exact path="/" component={FirstMain} />
+            <Route path="/login" component={FirstLogin} />
             {/* <Route exact path="/" component={Home} />
             <Route path="/search" component={Search} /> 
             <Route exact path="/youtubers" component={List} />

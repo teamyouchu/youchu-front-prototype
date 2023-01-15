@@ -14,10 +14,11 @@ export const FirstButton = styled.button`
   letter-spacing: 0px;
   color: #ffffff;
 
-  position: fixed;
-  bottom: 30px;
-
-  z-index: 10;
+  z-index: 60;
   border: 0;
   cursor: pointer;
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
