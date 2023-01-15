@@ -25,7 +25,7 @@ export default function FirstEvalYoutuber({
         <style.Group marginB="5px">
           <style.FirstEvalYoutuberName>{title}</style.FirstEvalYoutuberName>
         </style.Group>
-        <style.Group marginB="15px">
+        <style.Group marginB="14px">
           <style.Star>★</style.Star>
           <style.Ratings>
             {rating !== null ? rating.toFixed(1) : 0}
@@ -34,7 +34,7 @@ export default function FirstEvalYoutuber({
             ({overThousand(reviews)}개 리뷰)
           </style.ReviewCount>
         </style.Group>
-        <style.Group marginB="20px">
+        <style.Group>
           <FirstWriteRating
             youtuberId={id}
             inputRating={inputRating}
