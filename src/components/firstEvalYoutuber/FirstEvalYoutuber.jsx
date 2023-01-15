@@ -1,5 +1,4 @@
 import * as style from './FirstEvalYoutuberStyle';
-import { useState } from 'react';
 import { categoryArray } from 'lib/modules';
 import { overThousand } from 'lib/numberFomat';
 import FirstWriteRating from './firstWriteRating.js/FirstWriteRating';
@@ -9,8 +8,6 @@ export default function FirstEvalYoutuber({
   evalYoutubers,
   setEvalYoutubers,
 }) {
-  const [inputRating, setInputRating] = useState(0);
-
   return (
     <style.FirstEvalYoutuberContainer>
       <style.Thumbnail src={thumbnail} alt={title} />
@@ -37,8 +34,6 @@ export default function FirstEvalYoutuber({
         <style.Group>
           <FirstWriteRating
             youtuberId={id}
-            inputRating={inputRating}
-            setInputRating={setInputRating}
             evalYoutubers={evalYoutubers}
             setEvalYoutubers={setEvalYoutubers}
           />

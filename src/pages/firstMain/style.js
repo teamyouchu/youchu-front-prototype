@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FirstMainContainer = styled.div`
@@ -57,7 +56,7 @@ export const EvalList = styled.div`
   margin-top: 20px;
 `;
 
-export const LoginLink = styled(Link)`
+export const BtnBox = styled.div`
   position: sticky;
   bottom: 30px;
   z-index: 60;

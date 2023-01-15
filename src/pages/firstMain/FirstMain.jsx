@@ -1,23 +1,52 @@
 import * as style from './style';
 import { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { categoryOptions } from 'lib/modules';
+import { UserContext } from 'lib/UserContext';
+import ClearableDropdown from 'components/clearableDropdown/ClearableDropdown';
 import FirstEvalYoutuber from 'components/firstEvalYoutuber/FirstEvalYoutuber';
 import FirstButton from 'components/firstButton/FirstButton';
-import { categoryOptions } from 'lib/modules';
-import ClearableDropdown from 'components/clearableDropdown/ClearableDropdown';
-import { UserContext } from 'lib/UserContext';
+import { useEffect } from 'react';
 
 export default function FirstMain() {
   const { userObj } = useContext(UserContext);
 
   const [evalYoutubers, setEvalYoutubers] = useState({ count: 0, list: [] });
-  const [category, setCategory] = useState(0);
+  const [/* category,*/ setCategory] = useState(0);
+
+  const history = useHistory();
+  const [isSatisfy, setIsSatisfy] = useState(false);
+  useEffect(() => {
+    if (evalYoutubers.count >= 5) {
+      setIsSatisfy(true);
+    } else {
+      setIsSatisfy(false);
+    }
+  }, [evalYoutubers.count]);
+
+  const onBtnClick = () => {
+    if (isSatisfy) {
+      if (userObj.isLogin) {
+        history.push('/recommendation');
+      } else {
+        history.push({
+          pathname: '/login',
+          state: {
+            from: 'button',
+          },
+        });
+      }
+    }
+  };
 
   return (
     <style.FirstMainContainer>
       <style.EvalCountBox>
         <style.EvalCount>{evalYoutubers.count}</style.EvalCount>
         <style.EvalCountText>
-          유튜버 5명에게 평점 남기기 도전!!
+          {evalYoutubers.count < 5
+            ? '유튜버 5명에게 평점 남기기 도전!!'
+            : '더 많이 평가하시면 추천이 더 정확해져요!'}
         </style.EvalCountText>
       </style.EvalCountBox>
 
@@ -36,22 +65,13 @@ export default function FirstMain() {
             setEvalYoutubers={setEvalYoutubers}
           />
         ))}
-        {userObj.isLogin ? (
-          <style.LoginLink to={'recommendation'}>
-            <FirstButton text={'추천 받으러 가기'} />
-          </style.LoginLink>
-        ) : (
-          <style.LoginLink
-            to={{
-              pathname: '/login',
-              state: {
-                from: 'button',
-              },
-            }}
-          >
-            <FirstButton text={'5초만에 가입하고 계속하기'} />
-          </style.LoginLink>
-        )}
+        <style.BtnBox onClick={onBtnClick}>
+          <FirstButton
+            text={
+              userObj.isLogin ? '추천 받으러 가기' : '5초만에 가입하고 계속하기'
+            }
+          />
+        </style.BtnBox>
       </style.EvalList>
     </style.FirstMainContainer>
   );
