@@ -63,69 +63,64 @@ export const categoryArray = [
 
 export const categoryOptions = [
   {
-    key: 0,
-    text: '전체 카테고리',
-    value: 0,
-  },
-  {
     key: 1,
-    text: '영화/애니메이션',
     value: 1,
+    text: '영화/애니메이션',
   },
   {
     key: 2,
-    text: '자동차/교통',
     value: 2,
+    text: '자동차/교통',
   },
   {
     key: 10,
-    text: '음악',
     value: 10,
+    text: '음악',
   },
   {
     key: 15,
-    text: '애완동물/동물',
     value: 15,
+    text: '애완동물/동물',
   },
   {
     key: 17,
-    text: '스포츠',
     value: 17,
+    text: '스포츠',
   },
   {
     key: 19,
-    text: '여행/이벤트',
     value: 19,
+    text: '여행/이벤트',
   },
   {
     key: 20,
-    text: '게임',
     value: 20,
+    text: '게임',
   },
   {
     key: 22,
-    text: '인물/블로그',
     value: 22,
+    text: '인물/블로그',
   },
   {
     key: 23,
-    text: '코미디',
     value: 23,
+    text: '코미디',
   },
   {
     key: 24,
-    text: '엔터테인먼트',
     value: 24,
+    text: '엔터테인먼트',
   },
   {
     key: 25,
-    text: '뉴스/정치',
     value: 25,
+    text: '뉴스/정치',
   },
   {
     key: 26,
-    text: '노하우/스타일',
     value: 26,
+    text: '노하우/스타일',
   },
   {
     key: 27,
@@ -134,13 +129,13 @@ export const categoryOptions = [
   },
   {
     key: 28,
-    text: '과학기술',
     value: 28,
+    text: '과학기술',
   },
   {
     key: 29,
-    text: '비영리/사회운동',
     value: 29,
+    text: '비영리/사회운동',
   },
 ];
 

@@ -14,7 +14,6 @@ export const FirstButton = styled.button`
   letter-spacing: 0px;
   color: #ffffff;
 
-  z-index: 60;
   border: 0;
   cursor: pointer;
 

@@ -22,7 +22,7 @@ export const EvalCountBox = styled.div`
   padding: 12px;
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `;
 
 export const EvalCount = styled.span`
@@ -43,11 +43,18 @@ export const EvalCountText = styled(EvalCount)`
   margin-bottom: 0;
 `;
 
+export const EvalCategory = styled.div`
+  width: 100%;
+  padding: 0 24px;
+  z-index: 70;
+`;
+
 export const EvalList = styled.div`
   width: 100%;
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
   padding: 0 24px 20px 24px;
+  margin-top: 20px;
 `;
 
 export const LoginLink = styled(Link)`

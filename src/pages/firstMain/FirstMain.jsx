@@ -1,10 +1,17 @@
 import * as style from './style';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import FirstEvalYoutuber from 'components/firstEvalYoutuber/FirstEvalYoutuber';
 import FirstButton from 'components/firstButton/FirstButton';
+import { categoryOptions } from 'lib/modules';
+import ClearableDropdown from 'components/clearableDropdown/ClearableDropdown';
+import { UserContext } from 'lib/UserContext';
 
 export default function FirstMain() {
+  const { userObj } = useContext(UserContext);
+
   const [evalYoutubers, setEvalYoutubers] = useState({ count: 0, list: [] });
+  const [category, setCategory] = useState(0);
+
   return (
     <style.FirstMainContainer>
       <style.EvalCountBox>
@@ -13,6 +20,13 @@ export default function FirstMain() {
           유튜버 5명에게 평점 남기기 도전!!
         </style.EvalCountText>
       </style.EvalCountBox>
+
+      {userObj.isLogin && (
+        <style.EvalCategory>
+          <ClearableDropdown options={categoryOptions} setSort={setCategory} />
+        </style.EvalCategory>
+      )}
+
       <style.EvalList>
         {youtuberList.map((data) => (
           <FirstEvalYoutuber
@@ -22,16 +36,22 @@ export default function FirstMain() {
             setEvalYoutubers={setEvalYoutubers}
           />
         ))}
-        <style.LoginLink
-          to={{
-            pathname: '/login',
-            state: {
-              from: 'button',
-            },
-          }}
-        >
-          <FirstButton text={'5초만에 가입하고 계속하기'} />
-        </style.LoginLink>
+        {userObj.isLogin ? (
+          <style.LoginLink to={'recommendation'}>
+            <FirstButton text={'추천 받으러 가기'} />
+          </style.LoginLink>
+        ) : (
+          <style.LoginLink
+            to={{
+              pathname: '/login',
+              state: {
+                from: 'button',
+              },
+            }}
+          >
+            <FirstButton text={'5초만에 가입하고 계속하기'} />
+          </style.LoginLink>
+        )}
       </style.EvalList>
     </style.FirstMainContainer>
   );
