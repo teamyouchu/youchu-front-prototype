@@ -20,7 +20,6 @@ export const LoginBox = styled.div`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
     height: 100%;
-    margin: 0 auto;
     margin-top: 40px;
     border: 0;
     border-radius: 0;
@@ -75,14 +74,13 @@ export const LoginLetter = styled.div`
 export const GoogleLogo = styled.img.attrs(() => ({
   src: require('assets/images/googleLogo.png').default,
 }))`
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   position: absolute;
-  left: -106px;
-  top: 2px;
+  top: 0.5px;
+  left: -108px;
 
   @media ${(props) => props.theme.tablet} {
-    top: 2px;
-    left: -30px;
+    left: -32px;
   }
 `;
