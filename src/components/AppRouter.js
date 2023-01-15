@@ -58,7 +58,8 @@ export default function AppRouter() {
             <Route component={EmptyPage} /> */}
           </Switch>
         </ScrollToTop>
-        <div id="footer">{isShowHeader && <Footer />}</div>
+        <div id="footer">{isShowHeader && <FirstFooter />}</div>
+        {/* <div id="footer">{isShowHeader && <Footer />}</div> */}
       </div>
     </Router>
   );
