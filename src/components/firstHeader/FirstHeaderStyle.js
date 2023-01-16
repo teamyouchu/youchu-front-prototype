@@ -2,17 +2,9 @@ import styled from 'styled-components';
 
 export const FirstHeaderContainer = styled.div`
   width: 100%;
-  position: fixed;
-  top: 0px;
   z-index: 90;
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
-
-  transition: box-shadow 0.5s;
-  &.scrolled {
-    box-shadow: 0 0 15px #dedede;
-    border: 1px solid #dedede;
-  }
 `;
 
 export const FirstHeaderBox = styled.div`
@@ -53,6 +45,7 @@ export const LoginButton = styled.button`
 export const GoogleAvatarBox = styled.div`
   height: 30px;
   position: relative;
+  z-index: 90;
 `;
 
 export const GoogleAvatar = styled.img`

@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 
 export const LoginContainer = styled.div`
-  padding-top: 82px;
+  padding-top: 81px;
   padding-bottom: 100px;
-  @media (max-width: 400px) {
-  }
 `;
 
 export const LoginBox = styled.div`
   width: 400px;
   margin: 0 auto;
-  margin-top: 81px;
   padding: 0 24px;
   @media (max-width: 400px) {
     width: 100%;

@@ -11,6 +11,18 @@ import { useEffect } from 'react';
 export default function FirstMain() {
   const { userObj } = useContext(UserContext);
 
+  // 스크롤 여부 (하단 그림자)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const listener = () => {
+    setIsScrolled(window.pageYOffset > 82);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', listener);
+    return () => {
+      window.removeEventListener('scroll', listener);
+    };
+  }, []);
+
   const [evalYoutubers, setEvalYoutubers] = useState({ count: 0, list: [] });
   const [/* category,*/ setCategory] = useState(0);
 
@@ -41,7 +53,7 @@ export default function FirstMain() {
 
   return (
     <style.FirstMainContainer>
-      <style.EvalCountBox>
+      <style.EvalCountBox className={isScrolled && 'scrolled'}>
         <style.EvalCount>{evalYoutubers.count}</style.EvalCount>
         <style.EvalCountText>
           {evalYoutubers.count < 5

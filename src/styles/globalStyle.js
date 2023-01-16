@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #wrap{
-    min-height: 100vh;
+    min-height: calc(100vh - 82px);
     position: relative;
     padding-bottom: 88px;
     @media ${(props) => props.theme.tablet} {
