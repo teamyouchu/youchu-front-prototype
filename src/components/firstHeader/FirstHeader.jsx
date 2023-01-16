@@ -1,23 +1,11 @@
 import * as style from './FirstHeaderStyle';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from 'lib/UserContext';
 import LogoutModal from 'components/header/logoutModal/LogoutModal';
 
 export default function FirstHeader() {
   const { userObj, isShowLogin } = useContext(UserContext);
-
-  // 스크롤 여부 (하단 그림자)
-  const [isScrolled, setIsScrolled] = useState(false);
-  const listener = () => {
-    setIsScrolled(window.pageYOffset > 0);
-  };
-  useEffect(() => {
-    window.addEventListener('scroll', listener);
-    return () => {
-      window.removeEventListener('scroll', listener);
-    };
-  }, []);
 
   // 로그아웃 모달 토글
   const [showLogout, setShowLogout] = useState(false);
@@ -26,7 +14,7 @@ export default function FirstHeader() {
   };
 
   return (
-    <style.FirstHeaderContainer className={isScrolled && 'scrolled'}>
+    <style.FirstHeaderContainer>
       <style.FirstHeaderBox>
         <Link to="/">
           <style.LogoImg

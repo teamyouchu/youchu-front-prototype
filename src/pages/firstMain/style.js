@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const FirstMainContainer = styled.div`
   width: 400px;
   margin: 0 auto;
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +21,15 @@ export const EvalCountBox = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
   margin-bottom: 10px;
+
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  transition: box-shadow 0.5s;
+  &.scrolled {
+    border-bottom: 1px solid #dedede;
+    /* box-shadow: 0 0 15px #dedede; */
+  }
 `;
 
 export const EvalCount = styled.span`

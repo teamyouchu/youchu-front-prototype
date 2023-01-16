@@ -22,7 +22,7 @@ import FirstFooter from './firstFooter/FirstFooter';
 //   ModifyNickName,
 //   ModifyCategory,
 // } from 'pages/pageIndex';
-import { FirstMain, FirstLogin } from 'pages/firstPageIndex';
+import { FirstMain, FirstLogin, FirstRecs } from 'pages/firstPageIndex';
 
 export default function AppRouter() {
   const { isShowHeader } = useContext(UserContext);
@@ -35,6 +35,7 @@ export default function AppRouter() {
           <Switch>
             <Route exact path="/" component={FirstMain} />
             <Route path="/login" component={FirstLogin} />
+            <Route path="/recommendation" component={FirstRecs} />
             {/* <Route exact path="/" component={Home} />
             <Route path="/search" component={Search} /> 
             <Route exact path="/youtubers" component={List} />
