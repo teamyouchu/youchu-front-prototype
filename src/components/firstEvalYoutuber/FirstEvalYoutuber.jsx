@@ -28,7 +28,7 @@ export default function FirstEvalYoutuber({
             {rating !== null ? rating.toFixed(1) : 0}
           </style.Ratings>
           <style.ReviewCount>
-            ({overThousand(reviews)}개 리뷰)
+            ({overThousand(reviews)}개 평가)
           </style.ReviewCount>
         </style.Group>
         <style.Group>
