@@ -9,7 +9,8 @@ export default function FirstYoutuberList({ from }) {
       <style.RecsTitle>
         (구글 닉네임)님이
         <br />
-        좋아하실 만한 <style.RecsTitleBlue>유튜버</style.RecsTitleBlue>
+        {from === 'recs' ? '좋아하실 만한 ' : '평가한 '}
+        <style.RecsTitleBlue>유튜버</style.RecsTitleBlue>
       </style.RecsTitle>
       <div>
         {youtuberList.map((data) => (
