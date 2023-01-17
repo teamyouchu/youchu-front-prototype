@@ -27,8 +27,7 @@ export const EvalCountBox = styled.div`
   z-index: 80;
   transition: box-shadow 0.5s;
   &.scrolled {
-    border-bottom: 1px solid #dedede;
-    /* box-shadow: 0 0 15px #dedede; */
+    box-shadow: 0 20px 20px -20px #dedede;
   }
 `;
 
