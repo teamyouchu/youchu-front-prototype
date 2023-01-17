@@ -81,23 +81,3 @@ export const EvaledCountText = styled(EvaledCountTitle)`
   letter-spacing: 0px;
   color: #787878;
 `;
-
-export const RecsYoutuberList = styled.div`
-  width: 100%;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  opacity: 1;
-  padding: 24px 24px 30px 24px;
-`;
-
-export const RecsTitle = styled(EvaledCountTitle)`
-  font-size: 24px;
-  line-height: 35px;
-`;
-
-export const RecsTitleBlue = styled(RecsTitle)`
-  color: #5c7fdf;
-`;
-
-export const BtnBox = styled(Link)`
-  height: 55px;
-`;
