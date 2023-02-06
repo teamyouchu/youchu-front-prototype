@@ -105,3 +105,20 @@ a {
     color-scheme: dark;
   }
 } */
+
+@font-face {
+  font-family: 'SHSN-B';
+  src: url(/font/SpoqaHanSansNeo-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'SHSN-M';
+  src: url(/font/SpoqaHanSansNeo-Medium.woff) format('woff');
+}
+@font-face {
+  font-family: 'SHSN-R';
+  src: url(/font/SpoqaHanSansNeo-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'SHSN-L';
+  src: url(/font/SpoqaHanSansNeo-Light.woff) format('woff');
+}
