@@ -85,6 +85,12 @@ body {
   /* overflow-x: hidden; */
 }
 
+#wrap {
+  min-height: calc(100vh - 82px);
+  position: relative;
+  padding-bottom: 106px;
+}
+
 /* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
