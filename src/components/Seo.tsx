@@ -5,9 +5,10 @@ interface Props {
 }
 
 export default function Seo({ title }: Props) {
+  const message = `${title} | YouChu`;
   return (
     <Head>
-      <title>{title} | YouChu</title>
+      <title>{message}</title>
     </Head>
   );
 }
