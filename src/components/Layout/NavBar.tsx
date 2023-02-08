@@ -4,7 +4,7 @@ import { UserContext } from '@/lib/context';
 import LogoutModal from './LogoutModal';
 import { useRouter } from 'next/router';
 
-export default function Navbar() {
+export default function NavBar() {
   const { pathname } = useRouter();
   const { userObj } = useContext(UserContext);
 
