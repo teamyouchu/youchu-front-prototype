@@ -5,6 +5,7 @@ import { IUser, UserContext } from '@/lib/context';
 import userAPI from '@/api/userAPI';
 import Layout from '@/components/Layout/Layout';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import 'semantic-ui-css/semantic.min.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   // 로그인 유저 객체 상태값
