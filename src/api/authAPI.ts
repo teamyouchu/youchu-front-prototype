@@ -1,13 +1,14 @@
 import axios from './config';
 
+interface ILogin {
+  code: string;
+  redirectUri: string;
+}
+
 const authAPI = {
   // 로그인
-  postLogin(data) {
+  postLogin(data: ILogin) {
     return axios.post('/login', data);
-  },
-  // 회원가입
-  putSignup(data) {
-    return axios.put('/register', data);
   },
 };
 
