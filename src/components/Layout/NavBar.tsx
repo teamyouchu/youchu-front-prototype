@@ -17,10 +17,10 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="FirstHeaderContainer">
-        <div className="FirstHeaderBox">
+      <div className="header_container">
+        <div className="header_box">
           <Link href="/">
-            <img src={'images/YouChu_logo.png'} className="LogoImg" />
+            <img src={'images/YouChu_logo.png'} className="logo_img" />
           </Link>
           {!userObj.isLogin ? (
             // 유저가 로그인 하지 않았을 때
@@ -34,14 +34,14 @@ export default function Navbar() {
               as={`/login`}
             >
               {pathname !== '/login' && (
-                <button className="LoginButton">로그인</button>
+                <button className="login_button">로그인</button>
               )}
             </Link>
           ) : (
             // 유저가 로그인 했을 때
-            <div className="AvatarImgBox" ref={ModalRef}>
+            <div className="avatar_img_box" ref={ModalRef}>
               <img
-                className="AvatarImg"
+                className="avatar_img"
                 src={'images/DefaultProfile.png'}
                 onClick={onAvatarClick}
               />
@@ -57,41 +57,28 @@ export default function Navbar() {
       </div>
 
       <style jsx>{`
-        .FirstHeaderContainer {
+        .header_container {
           width: 100%;
           z-index: 90;
           background: #ffffff 0% 0% no-repeat padding-box;
           opacity: 1;
         }
-        .FirstHeaderBox {
+
+        .header_box {
           width: 400px;
           height: 82px;
           margin: 0px auto;
           display: flex;
           padding: 24px 24px 18px 24px;
           justify-content: space-between;
-
-          @media (max-width: 400px) {
-            width: 100%;
-          }
         }
-        .LogoImg {
+
+        .logo_img {
           width: 62px;
           height: 40px;
         }
-        .AvatarImgBox {
-          height: 30px;
-          position: relative;
-          z-index: 90;
-        }
-        .AvatarImg {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          border: 1px solid #dedede;
-          cursor: pointer;
-        }
-        .LoginButton {
+
+        .login_button {
           width: 60px;
           height: 30px;
           background: #ffffff 0% 0% no-repeat padding-box;
@@ -103,8 +90,27 @@ export default function Navbar() {
           line-height: 17px;
           letter-spacing: 0px;
           color: #000000;
-          :hover {
-            background-color: #ebebeb;
+        }
+        .login_button:hover {
+          background-color: #ebebeb;
+        }
+
+        .avatar_img_box {
+          height: 30px;
+          position: relative;
+          z-index: 90;
+        }
+        .avatar_img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid #dedede;
+          cursor: pointer;
+        }
+
+        @media (max-width: 400px) {
+          .header_box {
+            width: 100%;
           }
         }
       `}</style>

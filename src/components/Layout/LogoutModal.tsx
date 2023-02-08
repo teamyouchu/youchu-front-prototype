@@ -47,17 +47,17 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   };
   return (
     <>
-      <div className="LogoutModal">
-        <div className="MyInfoBtn" onClick={onProfileClick}>
+      <div className="logout_modal">
+        <div className="my_info_btn" onClick={onProfileClick}>
           내 정보
         </div>
-        <div className="MyInfoBtn LogoutBtn" onClick={onLogoutClick}>
+        <div className="my_info_btn logout_btn" onClick={onLogoutClick}>
           로그아웃
         </div>
       </div>
 
       <style jsx>{`
-        .LogoutModal {
+        .logout_modal {
           width: 192px;
           height: 106px;
           background: #ffffff 0% 0% no-repeat padding-box;
@@ -66,7 +66,8 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
           position: absolute;
           right: 0px;
         }
-        .MyInfoBtn {
+
+        .my_info_btn {
           padding: 16px;
           text-align: left;
           font-family: 'SHSN-B';
@@ -76,16 +77,17 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
           color: #000000;
           opacity: 1;
           cursor: pointer;
-          :hover {
-            color: #000000;
-            background-color: #f9f9f9;
-          }
         }
-        .LogoutBtn {
+        .my_info_btn:hover {
+          color: #000000;
+          background-color: #f9f9f9;
+        }
+
+        .logout_btn {
           color: #94969b;
-          :hover {
-            color: #94969b;
-          }
+        }
+        .logout_btn:hover {
+          color: #94969b;
         }
       `}</style>
     </>
