@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/lib/context';
+import { categoryArray } from '@/lib/arrays';
 import Seo from '@/components/Seo';
+import ClearableDropdown from '@/components/ClearableDropdown';
 
 export default function Home() {
   const { userObj } = useContext(UserContext);
@@ -19,7 +21,7 @@ export default function Home() {
   }, []);
 
   const [evalYoutubers, setEvalYoutubers] = useState({ count: 0, list: [] });
-  const [category, setCategory] = useState(0);
+  const [category, setCategory] = useState<string>('0');
 
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
@@ -63,11 +65,7 @@ export default function Home() {
 
         {userObj.isLogin && (
           <div className="eval_category">
-            카테고리 드랍다운
-            {/* <ClearableDropdown
-              options={categoryOptions}
-              setSort={setCategory}
-            /> */}
+            <ClearableDropdown options={categoryArray} setSort={setCategory} />
           </div>
         )}
 
