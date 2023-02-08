@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
-import { IUser, UserContext } from '@/lib/context1';
+import { IUser, UserContext } from '@/lib/context';
 import userAPI from '@/api/userAPI';
 import Layout from '@/components/Layout/Layout';
 

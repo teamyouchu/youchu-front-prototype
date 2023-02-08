@@ -1,5 +1,5 @@
 import { useRef, useContext, useEffect } from 'react';
-import { UserContext } from '@/lib/Context';
+import { UserContext } from '@/lib/context';
 import { useRouter } from 'next/router';
 
 interface IProps {
