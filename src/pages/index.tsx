@@ -4,6 +4,7 @@ import { UserContext } from '@/lib/context';
 import { categoryArray } from '@/lib/arrays';
 import Seo from '@/components/Seo';
 import ClearableDropdown from '@/components/ClearableDropdown';
+import SubmitButton from '@/components/SubmitButton';
 
 export default function Home() {
   const { userObj } = useContext(UserContext);
@@ -80,14 +81,13 @@ export default function Home() {
             // />
           ))}
           <div className="btn_box" onClick={onBtnClick}>
-            <button>버튼</button>
-            {/* <FirstButton
+            <SubmitButton
               text={
                 userObj.isLogin
                   ? '추천 받으러 가기'
                   : '5초만에 가입하고 계속하기'
               }
-            /> */}
+            />
           </div>
         </div>
       </div>
