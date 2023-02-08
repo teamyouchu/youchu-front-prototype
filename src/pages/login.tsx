@@ -1,8 +1,10 @@
 import { useContext } from 'react';
-import { UserContext } from '@/lib/context';
 import { useRouter } from 'next/router';
+import { useGoogleLogin } from '@react-oauth/google';
+import { UserContext } from '@/lib/context';
 import authAPI from '@/api/authAPI';
 import userAPI from '@/api/userAPI';
+import Seo from '@/components/Seo';
 
 export default function Login() {
   const { userObj, setUserObj } = useContext(UserContext);
@@ -11,11 +13,11 @@ export default function Login() {
     query: { from },
   } = router;
 
-  //로그인 성공했을 떄 처리 함수
-  const successGoogle = async (res: { code: string }) => {
+  // 로그인 성공했을 떄 처리 함수
+  const successGoogle = async (code: string) => {
     await authAPI
       .postLogin({
-        code: res.code,
+        code: code,
         redirectUri: window.location.origin,
       })
       .then((res) => {
@@ -24,7 +26,7 @@ export default function Login() {
         if (from === 'button') {
           router.push('recommendation');
         } else {
-          router.push('/');
+          router.back();
         }
         // 로그인 시 사용자 상태값 수정
         userAPI
@@ -45,14 +47,15 @@ export default function Login() {
       });
   };
 
-  //로그인 실패했을 때 처리 함수
-  // const failGoogle = (res) => {
-  //   // TODO 서지수 로그인 실패 시 코드 추가
-  //   alert('구글 로그인에 실패하였습니다');
-  // };
+  const login = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: (codeResponse) => successGoogle(codeResponse.code),
+    onError: (err) => console.log('Login Failed', err),
+  });
 
   return (
     <>
+      <Seo title="로그인" />
       <div className="login_container">
         <div className="login_box">
           <span>
@@ -60,26 +63,15 @@ export default function Login() {
             <br />
             추천 받아봐요!
           </span>
-          {/* <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            render={(renderProps) => (
-              <style.LoginBtn
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-              >
-                <style.LoginLetter>
-                  <style.GoogleLogo />
-                  구글로 로그인
-                </style.LoginLetter>
-              </style.LoginBtn>
-            )}
-            onSuccess={successGoogle}
-            onFailure={failGoogle}
-            cookiePolicy={'single_host_origin'}
-            responseType="code"
-          /> */}
+          <button className="login_btn" onClick={login}>
+            <div className="LoginLetter">
+              <img className="google_logo" src={'images/googleLogo.png'} />
+              구글로 로그인
+            </div>
+          </button>
         </div>
       </div>
+
       <style jsx>{`
         .login_container {
           padding-top: 81px;
@@ -90,10 +82,8 @@ export default function Login() {
           width: 400px;
           margin: 0 auto;
           padding: 0 24px;
-          @media (max-width: 400px) {
-            width: 100%;
-            height: 100%;
-          }
+          display: flex;
+          flex-direction: column;
         }
 
         span {
@@ -104,6 +94,41 @@ export default function Login() {
           color: #000000;
           letter-spacing: 0px;
           margin-bottom: 40px;
+        }
+
+        .login_btn {
+          width: 100%;
+          height: 55px;
+          background: #ffffff 0% 0% no-repeat padding-box;
+          border: 1px solid #dedede;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .LoginLetter {
+          position: relative;
+          text-align: center;
+          font-family: 'SHSN-M';
+          font-size: 15px;
+          line-height: 19px;
+          color: #000000;
+        }
+
+        .google_logo {
+          width: 18px;
+          height: 18px;
+          position: absolute;
+          left: -32px;
+          top: 0.5px;
+        }
+
+        @media (max-width: 400px) {
+          .login_box {
+            width: 100%;
+            height: 100%;
+          }
         }
       `}</style>
     </>

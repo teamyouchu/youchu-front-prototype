@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { IUser, UserContext } from '@/lib/context';
 import userAPI from '@/api/userAPI';
 import Layout from '@/components/Layout/Layout';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function App({ Component, pageProps }: AppProps) {
   // 로그인 유저 객체 상태값
@@ -40,9 +41,13 @@ export default function App({ Component, pageProps }: AppProps) {
         setUserObj,
       }}
     >
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <GoogleOAuthProvider
+        clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </GoogleOAuthProvider>
     </UserContext.Provider>
   );
 }
