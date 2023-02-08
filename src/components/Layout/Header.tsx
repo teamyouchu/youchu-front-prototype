@@ -1,14 +1,15 @@
 import { useContext, useRef, useState } from 'react';
 import Link from 'next/link';
-import { StateContext, UserContext } from '@/lib/Context';
+import { UserContext } from '@/lib/context';
 import LogoutModal from './LogoutModal';
+import { useRouter } from 'next/router';
 
-export default function FirstHeader() {
+export default function Header() {
+  const { pathname } = useRouter();
   const { userObj } = useContext(UserContext);
-  const { isShowLogin } = useContext(StateContext);
 
   // 로그아웃 모달 토글
-  const [showLogout, setShowLogout] = useState(false);
+  const [showLogout, setShowLogout] = useState<boolean>(false);
   const ModalRef = useRef<HTMLDivElement>(null);
   const onAvatarClick = () => {
     setShowLogout(!showLogout);
@@ -21,10 +22,26 @@ export default function FirstHeader() {
           <Link href="/">
             <img src={'images/YouChu_logo.png'} className="LogoImg" />
           </Link>
-          {userObj.isLogin ? (
-            <div className="GoogleAvatarBox" ref={ModalRef}>
+          {!userObj.isLogin ? (
+            // 유저가 로그인 하지 않았을 때
+            <Link
+              href={{
+                pathname: '/login',
+                query: {
+                  from: 'header',
+                },
+              }}
+              as={`/login`}
+            >
+              {pathname !== '/login' && (
+                <button className="LoginButton">로그인</button>
+              )}
+            </Link>
+          ) : (
+            // 유저가 로그인 했을 때
+            <div className="AvatarImgBox" ref={ModalRef}>
               <img
-                className="GoogleAvatar"
+                className="AvatarImg"
                 src={'images/DefaultProfile.png'}
                 onClick={onAvatarClick}
               />
@@ -35,18 +52,6 @@ export default function FirstHeader() {
                 />
               )}
             </div>
-          ) : (
-            <Link
-              href={{
-                pathname: '/login',
-                query: {
-                  from: 'header',
-                },
-              }}
-              as={`/login`}
-            >
-              {isShowLogin && <button className="LoginButton">로그인</button>}
-            </Link>
           )}
         </div>
       </div>
@@ -74,12 +79,12 @@ export default function FirstHeader() {
           width: 62px;
           height: 40px;
         }
-        .GoogleAvatarBox {
+        .AvatarImgBox {
           height: 30px;
           position: relative;
           z-index: 90;
         }
-        .GoogleAvatar {
+        .AvatarImg {
           width: 30px;
           height: 30px;
           border-radius: 50%;

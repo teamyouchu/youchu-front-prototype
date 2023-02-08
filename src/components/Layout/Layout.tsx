@@ -1,9 +1,9 @@
-import FirstHeader from './FirstHeader';
+import Header from './Header';
 
 export default function Layout({ children }: any) {
   return (
     <>
-      <FirstHeader />
+      <Header />
       <div>{children}</div>
     </>
   );
