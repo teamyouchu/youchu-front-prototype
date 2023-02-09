@@ -1,6 +1,7 @@
-import { UserContext } from '@/lib/context';
-import Link from 'next/link';
 import { useContext } from 'react';
+import Link from 'next/link';
+import { UserContext } from '@/lib/context';
+import RecsCard from './RecsCard';
 import SubmitButton from './SubmitButton';
 
 interface IProps {
@@ -21,8 +22,7 @@ export default function YoutuberList({ from }: IProps) {
         </span>
         <div>
           {youtuberList.map((youtuber) => (
-            <div key={youtuber.id}>{youtuber.title}</div>
-            // <FirstRecsCard key={data.id} data={data} />
+            <RecsCard key={youtuber.id} data={youtuber} />
           ))}
         </div>
         <Link href={'/'}>
@@ -57,7 +57,7 @@ export default function YoutuberList({ from }: IProps) {
 
 const youtuberList = [
   {
-    id: 0,
+    id: '0',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -66,7 +66,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 1,
+    id: '1',
     thumbnail:
       'https://yt3.ggpht.com/Fef_8oLf6u9pS1TEX6a4e12sTRr-IP-XQo26eg63vZizMItQiGrDZgcTJxugtE08216IZn2zNA=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '딩고 뮤직 / dingo music',
@@ -75,7 +75,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 2,
+    id: '2',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AMLnZu8Ia8DsIhh46F6WWu1xhktgEfbSZgSo8y-02K9dmQ=s176-c-k-c0x00ffffff-no-rj',
     title: '빠더너스',
@@ -84,7 +84,7 @@ const youtuberList = [
     category: 23,
   },
   {
-    id: 3,
+    id: '3',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -93,7 +93,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 4,
+    id: '4',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -102,7 +102,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 5,
+    id: '5',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -111,7 +111,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 6,
+    id: '6',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -120,7 +120,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 7,
+    id: '7',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -129,7 +129,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 8,
+    id: '8',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -138,7 +138,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 9,
+    id: '9',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
