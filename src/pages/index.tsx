@@ -4,7 +4,13 @@ import { UserContext } from '@/lib/context';
 import { categoryArray } from '@/lib/arrays';
 import Seo from '@/components/Seo';
 import ClearableDropdown from '@/components/ClearableDropdown';
+import EvalYoutuber from '@/components/EvalYoutuber';
 import SubmitButton from '@/components/SubmitButton';
+
+export interface IEvalYoutubers {
+  count: number;
+  list: { youtuberId: string; rating: number }[];
+}
 
 export default function Home() {
   const { userObj } = useContext(UserContext);
@@ -21,7 +27,10 @@ export default function Home() {
     };
   }, []);
 
-  const [evalYoutubers, setEvalYoutubers] = useState({ count: 0, list: [] });
+  const [evalYoutubers, setEvalYoutubers] = useState<IEvalYoutubers>({
+    count: 0,
+    list: [],
+  });
   const [category, setCategory] = useState<string>('0');
 
   const router = useRouter();
@@ -71,14 +80,13 @@ export default function Home() {
         )}
 
         <div className="eval_list">
-          {youtuberList.map((data, idx) => (
-            <div key={idx}>유튜버 카드</div>
-            // <FirstEvalYoutuber
-            //   key={data.id}
-            //   data={data}
-            //   evalYoutubers={evalYoutubers}
-            //   setEvalYoutubers={setEvalYoutubers}
-            // />
+          {youtuberList.map((data) => (
+            <EvalYoutuber
+              key={data.id}
+              data={data}
+              evalYoutubers={evalYoutubers}
+              setEvalYoutubers={setEvalYoutubers}
+            />
           ))}
           <div className="btn_box" onClick={onBtnClick}>
             <SubmitButton
@@ -173,7 +181,7 @@ export default function Home() {
 
 const youtuberList = [
   {
-    id: 0,
+    id: '0',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -182,7 +190,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 1,
+    id: '1',
     thumbnail:
       'https://yt3.ggpht.com/Fef_8oLf6u9pS1TEX6a4e12sTRr-IP-XQo26eg63vZizMItQiGrDZgcTJxugtE08216IZn2zNA=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '딩고 뮤직 / dingo music',
@@ -191,7 +199,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 2,
+    id: '2',
     thumbnail:
       'https://yt3.ggpht.com/ytc/AMLnZu8Ia8DsIhh46F6WWu1xhktgEfbSZgSo8y-02K9dmQ=s176-c-k-c0x00ffffff-no-rj',
     title: '빠더너스',
@@ -200,7 +208,7 @@ const youtuberList = [
     category: 23,
   },
   {
-    id: 3,
+    id: '3',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -209,7 +217,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 4,
+    id: '4',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -218,7 +226,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 5,
+    id: '5',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -227,7 +235,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 6,
+    id: '6',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -236,7 +244,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 7,
+    id: '7',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -245,7 +253,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 8,
+    id: '8',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
@@ -254,7 +262,7 @@ const youtuberList = [
     category: 10,
   },
   {
-    id: 9,
+    id: '9',
     thumbnail:
       'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
     title: '월간 윤종신',
