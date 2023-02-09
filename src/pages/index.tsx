@@ -80,14 +80,16 @@ export default function Home() {
         )}
 
         <div className="eval_list">
-          {youtuberList.map((data) => (
-            <EvalYoutuber
-              key={data.id}
-              data={data}
-              evalYoutubers={evalYoutubers}
-              setEvalYoutubers={setEvalYoutubers}
-            />
-          ))}
+          <div>
+            {youtuberList.map((data) => (
+              <EvalYoutuber
+                key={data.id}
+                data={data}
+                evalYoutubers={evalYoutubers}
+                setEvalYoutubers={setEvalYoutubers}
+              />
+            ))}
+          </div>
           <div className="btn_box" onClick={onBtnClick}>
             <SubmitButton
               text={
