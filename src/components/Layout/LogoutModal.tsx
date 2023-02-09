@@ -31,7 +31,7 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   // 마이페이지 이동 함수
   const onProfileClick = () => {
     setShowLogout(false);
-    router.push('/profile');
+    router.push('/recommend');
   };
 
   // 로그아웃 함수

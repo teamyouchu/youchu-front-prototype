@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import Link from 'next/link';
+import { UserContext } from '@/lib/context';
+import YoutuberList from '@/components/YoutuberList';
 
 export default function Recommend() {
+  const { userObj } = useContext(UserContext);
   return (
     <>
       <div className="recs_container">
@@ -14,10 +18,10 @@ export default function Recommend() {
               <span className="evaled_link">평가한 유튜버 보러 가기</span>
             </Link>
           </div>
-          <span className="evaled_count">6</span>
+          <span className="evaled_count">{userObj.data?.reviewCount}</span>
           <span className="evaled_count_text">5개 평가하기 달성!</span>
         </div>
-        {/* <FirstYoutuberList from={'recs'} /> */}
+        <YoutuberList from={'recs'} />
       </div>
 
       <style jsx>{`

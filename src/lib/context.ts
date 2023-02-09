@@ -4,7 +4,6 @@ export interface IUser {
   isLogin: boolean;
   data: {
     id: number;
-    googleName: string;
     nickname: string;
     imageUrl: string;
     email: string;
