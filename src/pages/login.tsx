@@ -24,7 +24,7 @@ export default function Login() {
         localStorage.setItem('accessToken', res.data.authToken.accessToken);
         localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
         if (from === 'button') {
-          router.push('recommendation');
+          router.push('recommend');
         } else {
           router.back();
         }

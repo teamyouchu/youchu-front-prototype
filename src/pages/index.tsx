@@ -46,7 +46,7 @@ export default function Home() {
   const onBtnClick = () => {
     if (isSatisfy) {
       if (userObj.isLogin) {
-        router.push('/recommendation');
+        router.push('/recommend');
       } else {
         router.push({
           pathname: '/login',
