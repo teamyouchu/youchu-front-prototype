@@ -1,6 +1,6 @@
 import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
-import { IEvalYoutubers } from '@/pages';
+import { IEvalYoutubers } from '@/lib/types';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from '@mui/material/Rating';
 

@@ -6,11 +6,7 @@ import Seo from '@/components/Seo';
 import ClearableDropdown from '@/components/ClearableDropdown';
 import EvalYoutuber from '@/components/EvalYoutuber';
 import SubmitButton from '@/components/SubmitButton';
-
-export interface IEvalYoutubers {
-  count: number;
-  list: { youtuberId: string; rating: number }[];
-}
+import { IEvalYoutubers } from '@/lib/types';
 
 export default function Home() {
   const { userObj } = useContext(UserContext);

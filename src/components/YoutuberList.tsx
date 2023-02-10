@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 import { UserContext } from '@/lib/context';
+// import { IYoutuberList } from '@/lib/type';
 import RecsCard from './RecsCard';
 import SubmitButton from './SubmitButton';
 
 interface IProps {
   from: string;
+  // data: IYoutuberList[];
 }
 
 export default function YoutuberList({ from }: IProps) {

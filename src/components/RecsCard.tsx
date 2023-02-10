@@ -1,20 +1,14 @@
 import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
+import { IYoutuberList } from '@/lib/types';
 import StarRating from './StarRating';
 
 interface IProps {
-  data: {
-    id: string;
-    thumbnail: string;
-    title: string;
-    rating: number;
-    reviews: number;
-    category: number;
-  };
+  data: IYoutuberList;
 }
 
 export default function RecsCard({
-  data: { id, thumbnail, title, rating, reviews, category },
+  data: { thumbnail, title, rating, reviews, category },
 }: IProps) {
   return (
     <>
