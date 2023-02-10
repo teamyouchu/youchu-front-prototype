@@ -2,11 +2,13 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { UserContext } from '@/lib/context';
 import YoutuberList from '@/components/YoutuberList';
+import Seo from '@/components/Seo';
 
 export default function Recommend() {
   const { userObj } = useContext(UserContext);
   return (
     <>
+      <Seo title="추천 목록" />
       <div className="recs_container">
         <div className="evaled_count_box">
           <div className="row_flex">

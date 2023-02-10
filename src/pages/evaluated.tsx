@@ -1,8 +1,10 @@
+import Seo from '@/components/Seo';
 import YoutuberList from '@/components/YoutuberList';
 
 export default function Evaluated() {
   return (
     <>
+      <Seo title="평가 목록" />
       <div className="evaled_container">
         <YoutuberList from={'evaled'} />
       </div>
