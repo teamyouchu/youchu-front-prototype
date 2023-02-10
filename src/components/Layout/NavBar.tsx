@@ -19,24 +19,24 @@ export default function NavBar() {
     <>
       <div className="header_container">
         <div className="header_box">
-          <Link href="/">
+          <Link href="/" style={{ height: '40px' }}>
             <img src={'images/YouChu_logo.png'} className="logo_img" />
           </Link>
           {!userObj.isLogin ? (
-            // 유저가 로그인 하지 않았을 때
-            <Link
-              href={{
-                pathname: '/login',
-                query: {
-                  from: 'header',
-                },
-              }}
-              as={`/login`}
-            >
-              {pathname !== '/login' && (
-                <button className="login_button">로그인</button>
-              )}
-            </Link>
+            pathname !== '/login' && (
+              // 유저가 로그인 하지 않았을 때
+              <Link
+                href={{
+                  pathname: '/login',
+                  query: {
+                    from: 'header',
+                  },
+                }}
+                as={`/login`}
+              >
+                <div className="login_button">로그인</div>
+              </Link>
+            )
           ) : (
             // 유저가 로그인 했을 때
             <div className="avatar_img_box" ref={ModalRef}>
@@ -71,6 +71,7 @@ export default function NavBar() {
           display: flex;
           padding: 24px 24px 18px 24px;
           justify-content: space-between;
+          align-items: flex-start;
         }
 
         .logo_img {
@@ -83,6 +84,9 @@ export default function NavBar() {
           height: 30px;
           background: #ffffff 0% 0% no-repeat padding-box;
           border: 1px solid #dedede;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           font-family: 'SHSN-M';
           text-align: center;
