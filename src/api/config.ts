@@ -48,27 +48,28 @@ axios.interceptors.response.use(
     } = error;
     if (status === 401) {
       // 401 에러 중에서
-      if (type === 'expired.access_token') {
-        // accessToken 만료면 refreshToken 재발급 요청
-        const originalRequest = config;
-        const { data } = await axios.post('/refresh');
-        // 성공적으로 재발급 받으면 데이터 저장
-        const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
-          data;
-        // cookie에 기존 값 삭제하고 새로 발급 받은 token 저장
-        deleteCookie('accessToken');
-        deleteCookie('refreshToken');
-        setCookie('accessToken', newAccessToken, 1000 * 60 * 30); // 유효 기간: 30분
-        setCookie('refreshToken', newRefreshToken, 7 * 1000 * 60 * 60 * 24); // 유효 기간: 7일
-        // 오류났던 api 요청 다시 재요청
-        return axios(originalRequest);
-      }
       if (type === 'expired.refresh_token') {
         // refreshToken 만료면 아예 로그아웃
         alert('인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.');
         deleteCookie('accessToken');
         deleteCookie('refreshToken');
         // TODO 서지수 로그인화면으로 이동가능한지 확인
+      } else {
+        if (getCookie('refreshToken')) {
+          // accessToken 만료면 refreshToken 재발급 요청
+          const originalRequest = config;
+          const { data } = await axios.post('/refresh');
+          // 성공적으로 재발급 받으면 데이터 저장
+          const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
+            data;
+          // cookie에 기존 값 삭제하고 새로 발급 받은 token 저장
+          deleteCookie('accessToken');
+          deleteCookie('refreshToken');
+          setCookie('accessToken', newAccessToken, 1000 * 60 * 30); // 유효 기간: 30분
+          setCookie('refreshToken', newRefreshToken, 7 * 1000 * 60 * 60 * 24); // 유효 기간: 7일
+          // 오류났던 api 요청 다시 재요청
+          return axios(originalRequest);
+        }
       }
     }
     return Promise.reject(error);
