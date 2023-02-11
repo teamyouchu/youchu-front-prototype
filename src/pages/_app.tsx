@@ -6,12 +6,13 @@ import userAPI from '@/api/userAPI';
 import Layout from '@/components/Layout/Layout';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import 'semantic-ui-css/semantic.min.css';
+import { deleteCookie, getCookie } from '@/lib/cookies';
 
 export default function App({ Component, pageProps }: AppProps) {
   // 로그인 유저 객체 상태값
   const [userObj, setUserObj] = useState<IUser>({ isLogin: false, data: null });
   useEffect(() => {
-    if (localStorage.getItem('refreshToken')) {
+    if (getCookie('refreshToken')) {
       userAPI
         .getMe()
         .then(({ data }) => {
@@ -28,8 +29,8 @@ export default function App({ Component, pageProps }: AppProps) {
             isLogin: false,
             data: null,
           });
-          window.localStorage.removeItem('accessToken');
-          window.localStorage.removeItem('refreshToken');
+          deleteCookie('accessToken');
+          deleteCookie('refreshToken');
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

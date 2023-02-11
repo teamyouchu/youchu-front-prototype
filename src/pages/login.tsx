@@ -5,6 +5,7 @@ import { UserContext } from '@/lib/context';
 import authAPI from '@/api/authAPI';
 import userAPI from '@/api/userAPI';
 import Seo from '@/components/Seo';
+import { setCookie } from '@/lib/cookies';
 
 export default function Login() {
   const { userObj, setUserObj } = useContext(UserContext);
@@ -21,8 +22,9 @@ export default function Login() {
         redirectUri: window.location.origin,
       })
       .then((res) => {
-        localStorage.setItem('accessToken', res.data.authToken.accessToken);
-        localStorage.setItem('refreshToken', res.data.authToken.refreshToken);
+        const { accessToken, refreshToken } = res.data.authToken;
+        setCookie('accessToken', accessToken, 1000 * 60 * 30);
+        setCookie('refreshToken', refreshToken, 7 * 1000 * 60 * 60 * 24);
         if (from === 'button') {
           router.push('recommend');
         } else {

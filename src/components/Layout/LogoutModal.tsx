@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { UserContext } from '@/lib/context';
 import { useRouter } from 'next/router';
+import { deleteCookie } from '@/lib/cookies';
 
 interface IProps {
   setShowLogout: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,8 +38,8 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   // 로그아웃 함수
   const onLogoutClick = () => {
     setShowLogout(false);
-    window.localStorage.removeItem('accessToken');
-    window.localStorage.removeItem('refreshToken');
+    deleteCookie('accessToken');
+    deleteCookie('refreshToken');
     setUserObj({
       ...userObj,
       isLogin: false,
