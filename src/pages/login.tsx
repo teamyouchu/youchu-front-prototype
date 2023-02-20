@@ -60,11 +60,22 @@ export default function Login() {
       <Seo title="로그인" />
       <div className="login_container">
         <div className="login_box">
-          <span>
-            유튜버 평점을 남기고
-            <br />
-            추천 받아봐요!
-          </span>
+          {from == 'withAuth' ? (
+            <span>
+              로그인이 필요한 서비스입니다.
+              <br />
+              로그인 후 이용해주세요!
+            </span>
+          ) : (
+            <>
+              <span>
+                유튜버 평점을 남기고
+                <br />
+                추천 받아봐요!
+              </span>
+            </>
+          )}
+
           <button className="login_btn" onClick={login}>
             <div className="LoginLetter">
               <img className="google_logo" src={'images/googleLogo.png'} />

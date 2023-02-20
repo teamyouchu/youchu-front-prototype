@@ -1,7 +1,8 @@
 import Seo from '@/components/Seo';
+import withAuth from '@/components/withAuth';
 import YoutuberList from '@/components/YoutuberList';
 
-export default function Evaluated() {
+const Evaluated = () => {
   return (
     <>
       <Seo title="평가 목록" />
@@ -25,4 +26,7 @@ export default function Evaluated() {
       `}</style>
     </>
   );
-}
+};
+
+export default withAuth(Evaluated);
+
