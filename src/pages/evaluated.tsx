@@ -28,4 +28,3 @@ const Evaluated = () => {
 };
 
 export default Evaluated;
-
