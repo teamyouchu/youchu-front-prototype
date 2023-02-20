@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { UserContext } from '@/lib/context';
 import YoutuberList from '@/components/YoutuberList';
 import Seo from '@/components/Seo';
+import withAuth from '@/components/HOC/withAuth';
 
 const Recommend = () => {
   const { userObj } = useContext(UserContext);
@@ -112,4 +113,4 @@ const Recommend = () => {
   );
 };
 
-export default Recommend;
+export default withAuth(Recommend);

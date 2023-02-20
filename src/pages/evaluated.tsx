@@ -1,5 +1,6 @@
 import Seo from '@/components/Seo';
 import YoutuberList from '@/components/YoutuberList';
+import withAuth from '@/components/HOC/withAuth';
 
 const Evaluated = () => {
   return (
@@ -27,4 +28,4 @@ const Evaluated = () => {
   );
 };
 
-export default Evaluated;
+export default withAuth(Evaluated);
