@@ -1,5 +1,6 @@
 import { useContext, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { UserContext } from '@/lib/context';
 import LogoutModal from './LogoutModal';
 import { useRouter } from 'next/router';
@@ -20,7 +21,12 @@ export default function NavBar() {
       <div className="header_container">
         <div className="header_box">
           <Link href="/" style={{ height: '40px' }}>
-            <img src={'images/YouChu_logo.png'} className="logo_img" />
+            <Image
+              src={'/images/YouChu_logo.png'}
+              alt={'YouChu logo'}
+              width={62}
+              height={40}
+            />
           </Link>
           {!userObj.isLogin ? (
             pathname !== '/login' && (
@@ -40,9 +46,16 @@ export default function NavBar() {
           ) : (
             // 유저가 로그인 했을 때
             <div className="avatar_img_box" ref={ModalRef}>
-              <img
-                className="avatar_img"
-                src={'images/DefaultProfile.png'}
+              <Image
+                src={'/images/DefaultProfile.png'}
+                alt={'avatar'}
+                width={30}
+                height={30}
+                style={{
+                  borderRadius: '50%',
+                  border: '1px solid #dedede',
+                  cursor: 'pointer',
+                }}
                 onClick={onAvatarClick}
               />
               {showLogout && (
@@ -74,11 +87,6 @@ export default function NavBar() {
           align-items: flex-start;
         }
 
-        .logo_img {
-          width: 62px;
-          height: 40px;
-        }
-
         .login_button {
           width: 60px;
           height: 30px;
@@ -103,13 +111,6 @@ export default function NavBar() {
           height: 30px;
           position: relative;
           z-index: 90;
-        }
-        .avatar_img {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          border: 1px solid #dedede;
-          cursor: pointer;
         }
 
         @media (max-width: 400px) {

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useGoogleLogin } from '@react-oauth/google';
 import { UserContext } from '@/lib/context';
 import authAPI from '@/api/authAPI';
@@ -78,7 +79,13 @@ export default function Login() {
 
           <button className="login_btn" onClick={login}>
             <div className="LoginLetter">
-              <img className="google_logo" src={'images/googleLogo.png'} />
+              <Image
+                src={'/images/googleLogo.png'}
+                alt={'google logo'}
+                width={18}
+                height={18}
+                style={{ position: 'absolute', left: '-32px', top: '0.5px' }}
+              />
               구글로 로그인
             </div>
           </button>
