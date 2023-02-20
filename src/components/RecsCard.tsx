@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
 import { IYoutuberList } from '@/lib/types';
@@ -13,7 +14,17 @@ export default function RecsCard({
   return (
     <>
       <div className="recs_card_container">
-        <img src={thumbnail} alt={title} />
+        <Image
+          src={thumbnail}
+          alt={title}
+          width={36}
+          height={36}
+          style={{
+            border: '1px solid #dedede',
+            borderRadius: '50%',
+            marginRight: '16px',
+          }}
+        />
         <div className="group_box">
           <div className="group margin-3">
             <span className="channel_name">{title}</span>
@@ -52,14 +63,6 @@ export default function RecsCard({
         .recs_card_container:last-child {
           padding: 16px 0 30px 0;
           border-bottom: 0;
-        }
-
-        img {
-          border: 1px solid #dedede;
-          border-radius: 50%;
-          width: 36px;
-          height: 36px;
-          margin-right: 16px;
         }
 
         .group_box {

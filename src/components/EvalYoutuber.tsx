@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
 import { IEvalYoutubers } from '@/lib/types';
@@ -56,7 +57,13 @@ export default function EvalYoutuber({
   return (
     <>
       <div className="eval_youtuber_container">
-        <img className="thumbnail" src={thumbnail} alt={title} />
+        <Image
+          src={thumbnail}
+          alt={title}
+          width={54}
+          height={54}
+          style={{ borderRadius: '50%', marginRight: '10px' }}
+        />
         <div className="group_box">
           <div className="group margin-6">
             <div className="category_box">
@@ -101,13 +108,6 @@ export default function EvalYoutuber({
         }
         .eval_youtuber_container:last-child {
           border-bottom: 0;
-        }
-
-        .thumbnail {
-          width: 54px;
-          height: 54px;
-          border-radius: 50%;
-          margin-right: 10px;
         }
 
         .group_box {
