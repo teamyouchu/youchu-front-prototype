@@ -30,10 +30,10 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   }, []);
 
   // 마이페이지 이동 함수
-  const onProfileClick = () => {
-    setShowLogout(false);
-    router.push('/recommend');
-  };
+  // const onProfileClick = () => {
+  //   setShowLogout(false);
+  //   router.push('/recommend');
+  // };
 
   // 로그아웃 함수
   const onLogoutClick = () => {
@@ -49,9 +49,9 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   return (
     <>
       <div className="logout_modal">
-        <div className="my_info_btn" onClick={onProfileClick}>
+        {/* <div className="my_info_btn" onClick={onProfileClick}>
           내 정보
-        </div>
+        </div> */}
         <div className="my_info_btn logout_btn" onClick={onLogoutClick}>
           로그아웃
         </div>
@@ -60,7 +60,6 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
       <style jsx>{`
         .logout_modal {
           width: 192px;
-          height: 106px;
           background: #ffffff 0% 0% no-repeat padding-box;
           box-shadow: 0px 0px 15px #00000029;
           opacity: 1;
