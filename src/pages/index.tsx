@@ -25,6 +25,16 @@ export default function Home() {
     count: 0,
     list: [],
   });
+  useEffect(() => {
+    if (userObj.isLogin) {
+      setEvalYoutubers({
+        ...evalYoutubers,
+        count: userObj.data?.reviewCount as number,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userObj]);
+
   // const [category, setCategory] = useState<string>('0');
 
   const router = useRouter();
