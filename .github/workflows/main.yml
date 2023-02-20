@@ -26,7 +26,7 @@ jobs:
         
       - name: Setting .env
         run: |
-          echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}" >> .env
+          echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}" >> .env
 
       - name: Build                   # React Build
         run: yarn build
