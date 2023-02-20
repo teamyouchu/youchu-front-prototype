@@ -44,12 +44,7 @@ export default function Home() {
       if (userObj.isLogin) {
         router.push('/recommend');
       } else {
-        router.push({
-          pathname: '/login',
-          query: {
-            from: 'button',
-          },
-        });
+        router.push('/login?from=button', '/login');
       }
     }
   };
