@@ -21,6 +21,7 @@ interface IUserContext {
 
 const UserContextState: IUserContext = {
   userObj: { isLogin: false, data: null },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setUserObj: () => {},
 };
 

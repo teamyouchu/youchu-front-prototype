@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout source code.   # Repo checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Check Node v            # Node v 확인
         run: node -v
@@ -26,7 +26,7 @@ jobs:
         
       - name: Setting .env
         run: |
-          echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}" >> .env
+          echo "NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}" >> .env
 
       - name: Build                   # React Build
         run: yarn build

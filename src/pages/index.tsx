@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/lib/context';
-import { categoryArray } from '@/lib/arrays';
 import Seo from '@/components/Seo';
-import ClearableDropdown from '@/components/ClearableDropdown';
 import EvalYoutuber from '@/components/EvalYoutuber';
 import SubmitButton from '@/components/SubmitButton';
 import { IEvalYoutubers } from '@/lib/types';
@@ -27,7 +25,17 @@ export default function Home() {
     count: 0,
     list: [],
   });
-  const [category, setCategory] = useState<string>('0');
+  useEffect(() => {
+    if (userObj.isLogin) {
+      setEvalYoutubers({
+        ...evalYoutubers,
+        count: userObj.data?.reviewCount as number,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userObj]);
+
+  // const [category, setCategory] = useState<string>('0');
 
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
@@ -64,11 +72,11 @@ export default function Home() {
           </span>
         </div>
 
-        {userObj.isLogin && (
+        {/* {userObj.isLogin && (
           <div className="eval_category">
             <ClearableDropdown options={categoryArray} setSort={setCategory} />
           </div>
-        )}
+        )} */}
 
         <div className="eval_list">
           <div>
