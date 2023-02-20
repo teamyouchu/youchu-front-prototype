@@ -15,4 +15,3 @@ export const deleteCookie = (name: string) => {
   document.cookie =
     name + '= ' + '; expires=' + date.toUTCString() + '; path=/';
 };
-
