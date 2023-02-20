@@ -26,6 +26,7 @@ export default function NavBar() {
               alt={'YouChu logo'}
               width={62}
               height={40}
+              priority={true}
             />
           </Link>
           {!userObj.isLogin ? (
