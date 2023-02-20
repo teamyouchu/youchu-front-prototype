@@ -1,6 +1,5 @@
 import { useContext, useEffect } from 'react';
 import { UserContext } from '@/lib/context';
-import { useRouter } from 'next/router';
 import { deleteCookie } from '@/lib/cookies';
 
 interface IProps {
@@ -10,7 +9,6 @@ interface IProps {
 
 export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   const { userObj, setUserObj } = useContext(UserContext);
-  const router = useRouter();
 
   // 모달 외 영역 클릭 시 종료
   useEffect(() => {
@@ -29,12 +27,6 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 마이페이지 이동 함수
-  // const onProfileClick = () => {
-  //   setShowLogout(false);
-  //   router.push('/recommend');
-  // };
-
   // 로그아웃 함수
   const onLogoutClick = () => {
     setShowLogout(false);
@@ -49,9 +41,6 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
   return (
     <>
       <div className="logout_modal">
-        {/* <div className="my_info_btn" onClick={onProfileClick}>
-          내 정보
-        </div> */}
         <div className="my_info_btn logout_btn" onClick={onLogoutClick}>
           로그아웃
         </div>
