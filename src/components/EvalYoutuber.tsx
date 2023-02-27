@@ -1,25 +1,17 @@
 import Image from 'next/image';
-import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
-import { IEvalYoutubers } from '@/lib/types';
+import { IEvalYoutubers, IYoutuber } from '@/lib/types';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from '@mui/material/Rating';
 
 interface IProps {
-  data: {
-    id: string;
-    thumbnail: string;
-    title: string;
-    rating: number | null;
-    reviews: number;
-    category: number;
-  };
+  data: IYoutuber;
   evalYoutubers: IEvalYoutubers;
   setEvalYoutubers: React.Dispatch<React.SetStateAction<IEvalYoutubers>>;
 }
 
 export default function EvalYoutuber({
-  data: { id, thumbnail, title, rating, reviews, category },
+  data: { id, thumbnail, name, rating, reviewCount },
   evalYoutubers,
   setEvalYoutubers,
 }: IProps) {
@@ -59,21 +51,22 @@ export default function EvalYoutuber({
       <div className="eval_youtuber_container">
         <Image
           src={thumbnail}
-          alt={title}
+          alt={`${name} 썸네일`}
           width={54}
           height={54}
           style={{ borderRadius: '50%', marginRight: '10px' }}
         />
         <div className="group_box">
-          <div className="group margin-6">
+          {/* 카테고리 삭제로 주석 처리 */}
+          {/* <div className="group margin-6">
             <div className="category_box">
               {category
                 ? categoryArray.find((x) => x.key === category)?.text
                 : '미지정'}
             </div>
-          </div>
+          </div> */}
           <div className="group margin-5">
-            <span className="eval_youtuber_name">{title}</span>
+            <span className="eval_youtuber_name">{name}</span>
           </div>
           <div className="group margin-10">
             <span className="star_span">★</span>
@@ -81,7 +74,7 @@ export default function EvalYoutuber({
               {rating !== null ? rating.toFixed(1) : 0}
             </span>
             <span className="review_count">
-              ({overThousand(reviews)}개 평가)
+              ({overThousand(reviewCount)}개 평가)
             </span>
           </div>
           <div className="group">
