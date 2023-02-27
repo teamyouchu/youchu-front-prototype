@@ -3,11 +3,23 @@ export interface IEvalYoutubers {
   list: { youtuberId: string; rating: number }[];
 }
 
-export interface IYoutuberList {
+export interface IYoutuber {
   id: string;
   thumbnail: string;
-  title: string;
+  name: string;
   rating: number;
-  reviews: number;
-  category: number;
+  reviewCount: number;
+}
+
+export interface IYoutuberList {
+  data: IYoutuber[];
+  hasNext: boolean;
+}
+
+export interface IReview extends IYoutuber {
+  channelId: number;
+}
+
+export interface IReviewList extends IYoutuberList {
+  data: IReview[];
 }
