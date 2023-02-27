@@ -1,12 +1,30 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { UserContext } from '@/lib/context';
 import YoutuberList from '@/components/YoutuberList';
 import Seo from '@/components/Seo';
 import withAuth from '@/components/HOC/withAuth';
+import { IYoutuber } from '@/lib/types';
+import channelAPI from '@/api/channelAPI';
 
 const Recommend = () => {
   const { userObj } = useContext(UserContext);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [recommendList, setRecommendList] = useState<IYoutuber[]>([]);
+
+  useEffect(() => {
+    const getRecommends = async () => {
+      await channelAPI
+        .getRecommendChannel()
+        .then(({ data: { data } }) => {
+          setIsLoading(true);
+          setRecommendList(data);
+        })
+        .catch((err) => console.log(err));
+    };
+    getRecommends();
+  }, []);
   return (
     <>
       <Seo title="추천 목록" />
@@ -23,8 +41,11 @@ const Recommend = () => {
           </div>
           <span className="evaled_count">{userObj.data?.reviewCount}</span>
           <span className="evaled_count_text">5개 평가하기 달성!</span>
+          <span className="evaled_count_text">
+            더 많이 평가하시면 추천이 더 정확해져요!
+          </span>
         </div>
-        <YoutuberList from={'recs'} />
+        {isLoading && <YoutuberList from={'recs'} data={recommendList} />}
       </div>
 
       <style jsx>{`
