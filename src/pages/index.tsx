@@ -37,8 +37,6 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userObj]);
 
-  // const [category, setCategory] = useState<string>('0');
-
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
   useEffect(() => {
