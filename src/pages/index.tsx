@@ -23,6 +23,26 @@ export default function Home() {
     };
   }, []);
 
+  // 평가할 채널 조회
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [rateChannels, setRateChannels] = useState<IYoutuberList>({
+    data: [],
+    hasNext: true,
+  });
+
+  useEffect(() => {
+    const getRateChannels = async () => {
+      await channelAPI
+        .getRateChannel(0, 10)
+        .then(({ data }) => {
+          setIsLoading(true);
+          setRateChannels(data);
+        })
+        .catch((err) => console.log(err));
+    };
+    getRateChannels();
+  }, []);
+
   const [evalYoutubers, setEvalYoutubers] = useState<IEvalYoutubers>({
     count: 0,
     list: [],
@@ -57,24 +77,6 @@ export default function Home() {
     }
   };
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [evalList, setEvalList] = useState<IYoutuberList>({
-    data: [],
-    hasNext: true,
-  });
-  useEffect(() => {
-    const getRates = async () => {
-      await channelAPI
-        .getRateChannel(0, 10)
-        .then(({ data }) => {
-          setIsLoading(true);
-          setEvalList(data);
-        })
-        .catch((err) => console.log(err));
-    };
-    getRates();
-  }, []);
-
   return (
     <>
       <Seo title="홈" />
@@ -99,7 +101,7 @@ export default function Home() {
         <div className="eval_list">
           <div>
             {isLoading
-              ? evalList.data.map((data) => (
+              ? rateChannels.data.map((data) => (
                   <EvalYoutuber
                     key={data.id}
                     data={data}
