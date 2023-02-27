@@ -5,12 +5,7 @@ export interface IUser {
   data: {
     id: number;
     nickname: string;
-    imageUrl: string;
-    email: string;
-    favoriteCategory: number[];
-    hasReview: boolean;
     reviewCount: number;
-    status: number;
   } | null;
 }
 
