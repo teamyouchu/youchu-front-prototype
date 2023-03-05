@@ -1,13 +1,34 @@
+import { useEffect, useState } from 'react';
+import { IReviewList } from '@/lib/types';
 import Seo from '@/components/Seo';
 import YoutuberList from '@/components/YoutuberList';
+import userAPI from '@/api/userAPI';
 import withAuth from '@/components/HOC/withAuth';
 
 const Evaluated = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [evaledList, setEvaledList] = useState<IReviewList>({
+    data: [],
+    hasNext: true,
+  });
+  useEffect(() => {
+    const getReviews = async () => {
+      await userAPI
+        .getMyReviews(0, 10)
+        .then(({ data }) => {
+          setIsLoading(true);
+          setEvaledList(data);
+        })
+        .catch((err) => console.log(err));
+    };
+    getReviews();
+  }, []);
+
   return (
     <>
       <Seo title="평가 목록" />
       <div className="evaled_container">
-        <YoutuberList from={'evaled'} />
+        {isLoading && <YoutuberList from={'evaled'} data={evaledList.data} />}
       </div>
 
       <style jsx>{`
