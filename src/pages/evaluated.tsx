@@ -1,28 +1,48 @@
 import { useEffect, useState } from 'react';
 import { IReviewList } from '@/lib/types';
+import userAPI from '@/api/userAPI';
 import Seo from '@/components/Seo';
 import YoutuberList from '@/components/YoutuberList';
-import userAPI from '@/api/userAPI';
 import withAuth from '@/components/HOC/withAuth';
+import { useInView } from 'react-intersection-observer';
 
 const Evaluated = () => {
+  const [skip, setSkip] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [evaledList, setEvaledList] = useState<IReviewList>({
     data: [],
     hasNext: true,
   });
+
+  // 나의 평가 조회 함수
+  const getReviews = async () => {
+    await userAPI
+      .getMyReviews(skip, 10)
+      .then(({ data }) => {
+        console.log('data: ', data);
+        setIsLoading(true);
+        setEvaledList({
+          ...evaledList,
+          data: [...evaledList.data, ...data.data],
+          hasNext: data.hasNext,
+        });
+        setSkip(skip + 10);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // 무한 스크롤 기능
+  const [ref, inView] = useInView({
+    threshold: 0,
+    initialInView: true,
+    rootMargin: '300px',
+  });
   useEffect(() => {
-    const getReviews = async () => {
-      await userAPI
-        .getMyReviews(0, 10)
-        .then(({ data }) => {
-          setIsLoading(true);
-          setEvaledList(data);
-        })
-        .catch((err) => console.log(err));
-    };
-    getReviews();
-  }, []);
+    if (evaledList.hasNext && inView) {
+      getReviews();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
 
   return (
     <>
@@ -30,6 +50,7 @@ const Evaluated = () => {
       <div className="evaled_container">
         {isLoading && <YoutuberList from={'evaled'} data={evaledList.data} />}
       </div>
+      <div ref={ref} />
 
       <style jsx>{`
         .evaled_container {
