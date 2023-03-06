@@ -74,6 +74,8 @@ export default function Home() {
       } else {
         router.push('/login?from=button', '/login');
       }
+    } else {
+      alert('5개 이상 평가해야 추천받을 수 있어요.');
     }
   };
 
@@ -115,6 +117,7 @@ export default function Home() {
           </div>
           <div className="btn_box" onClick={onBtnClick}>
             <SubmitButton
+              isSatisfy={isSatisfy}
               text={
                 userObj.isLogin
                   ? '추천 받으러 가기'

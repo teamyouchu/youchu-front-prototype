@@ -1,11 +1,12 @@
 interface IProps {
   text: string;
+  isSatisfy: boolean;
 }
 
-export default function SubmitButton({ text }: IProps) {
+export default function SubmitButton({ isSatisfy = true, text }: IProps) {
   return (
     <>
-      <button>{text}</button>
+      <button className={isSatisfy ? '' : 'unsatisfy'}>{text}</button>
       <style jsx>{`
         button {
           width: 352px;
@@ -23,6 +24,10 @@ export default function SubmitButton({ text }: IProps) {
 
           border: 0;
           cursor: pointer;
+        }
+        button.unsatisfy {
+          background: #cccccc 0% 0% no-repeat padding-box;
+          cursor: default;
         }
         @media (max-width: 400px) {
           .submit_button {
