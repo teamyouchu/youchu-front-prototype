@@ -1,51 +1,54 @@
 import Image from 'next/image';
 import { overThousand } from '@/lib/numberFomat';
-import { IEvalYoutubers, IYoutuber } from '@/lib/types';
+import { IYoutuber } from '@/lib/types';
+import { RatedReviewsContext } from '@/lib/context';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from '@mui/material/Rating';
+import { useContext } from 'react';
 
 interface IProps {
   data: IYoutuber;
-  evalYoutubers: IEvalYoutubers;
-  setEvalYoutubers: React.Dispatch<React.SetStateAction<IEvalYoutubers>>;
 }
 
 export default function EvalYoutuber({
   data: { id, thumbnail, name, rating, reviewCount },
-  evalYoutubers,
-  setEvalYoutubers,
 }: IProps) {
+  const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
+  const findIndex = ratedReviews.reviews.findIndex((el) => el.channelId === id);
+
   const onRatingChange = (newValue: number | null) => {
     if (newValue === null) {
       // 평가 삭제
-      setEvalYoutubers({
-        ...evalYoutubers,
-        count: evalYoutubers.count - 1,
-        list: [...evalYoutubers.list.filter((el) => el.youtuberId !== id)],
+      setRatedReviews({
+        ...ratedReviews,
+        count: ratedReviews.count - 1,
+        reviews: [...ratedReviews.reviews.filter((el) => el.channelId !== id)],
       });
     } else {
-      const isIncludes = evalYoutubers.list.find((el) => el.youtuberId === id);
+      // 평가 목록에 있는지 판단
+      const isIncludes = ratedReviews.reviews.find((el) => el.channelId === id);
       if (isIncludes) {
         // 평가 수정
-        const findIndex = evalYoutubers.list.findIndex(
-          (el) => el.youtuberId === id,
-        );
-        const copyArray = [...evalYoutubers.list];
+        const copyArray = [...ratedReviews.reviews];
         copyArray[findIndex] = { ...copyArray[findIndex], rating: newValue };
-        setEvalYoutubers({
-          ...evalYoutubers,
-          list: copyArray,
+        setRatedReviews({
+          ...ratedReviews,
+          reviews: copyArray,
         });
       } else {
         // 평가 추가
-        setEvalYoutubers({
-          ...evalYoutubers,
-          count: evalYoutubers.count + 1,
-          list: [...evalYoutubers.list, { youtuberId: id, rating: newValue }],
+        setRatedReviews({
+          ...ratedReviews,
+          count: ratedReviews.count + 1,
+          reviews: [
+            ...ratedReviews.reviews,
+            { channelId: id, comment: '', rating: newValue },
+          ],
         });
       }
     }
   };
+
   return (
     <>
       <div className="eval_youtuber_container">
@@ -81,6 +84,9 @@ export default function EvalYoutuber({
             <Rating
               style={{ color: '#f8d26a', fontSize: '48px' }}
               precision={0.5}
+              value={
+                findIndex === -1 ? null : ratedReviews.reviews[findIndex].rating
+              }
               onChange={(_, newValue) => {
                 onRatingChange(newValue);
               }}

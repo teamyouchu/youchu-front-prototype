@@ -1,6 +1,21 @@
-export interface IEvalYoutubers {
+export interface IUser {
+  isLogin: boolean;
+  data: {
+    id: number;
+    nickname: string;
+    reviewCount: number;
+  };
+}
+
+export interface IReviews {
+  channelId: string;
+  comment: string;
+  rating: number;
+}
+
+export interface IRatedReviews {
   count: number;
-  list: { youtuberId: string; rating: number }[];
+  reviews: IReviews[];
 }
 
 export interface IYoutuber {

@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { UserContext } from '@/lib/context';
+import { RatedReviewsContext, UserContext } from '@/lib/context';
 import Seo from '@/components/Seo';
 import EvalYoutuber from '@/components/EvalYoutuber';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IEvalYoutubers, IYoutuberList } from '@/lib/types';
+import { IYoutuberList } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 
 export default function Home() {
-  const { userObj } = useContext(UserContext);
+  const { userObj, setUserObj } = useContext(UserContext);
+  const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +30,6 @@ export default function Home() {
     data: [],
     hasNext: true,
   });
-
   useEffect(() => {
     const getRateChannels = async () => {
       await channelAPI
@@ -43,33 +43,49 @@ export default function Home() {
     getRateChannels();
   }, []);
 
-  const [evalYoutubers, setEvalYoutubers] = useState<IEvalYoutubers>({
-    count: 0,
-    list: [],
-  });
+  // 로그인 유저라면 평가한 채널 수 적용
   useEffect(() => {
     if (userObj.isLogin) {
-      setEvalYoutubers({
-        ...evalYoutubers,
+      setRatedReviews({
+        ...ratedReviews,
         count: userObj.data?.reviewCount as number,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userObj]);
 
+  // 평가 갯수 5개 이상 여부
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
   useEffect(() => {
-    if (evalYoutubers.count >= 5) {
+    if (ratedReviews.count >= 5) {
       setIsSatisfy(true);
     } else {
       setIsSatisfy(false);
     }
-  }, [evalYoutubers.count]);
+  }, [ratedReviews.count]);
 
-  const onBtnClick = () => {
+  // submit 버튼
+  const onBtnClick = async () => {
     if (isSatisfy) {
       if (userObj.isLogin) {
+        await channelAPI
+          .postReviews(ratedReviews.reviews)
+          .then(() => {
+            setUserObj({
+              ...userObj,
+              data: {
+                ...userObj.data,
+                reviewCount:
+                  userObj.data.reviewCount + ratedReviews.reviews.length,
+              },
+            });
+            setRatedReviews({
+              count: 0,
+              reviews: [],
+            });
+          })
+          .catch((err) => console.log(err));
         router.push('/recommend');
       } else {
         router.push('/login?from=button', '/login');
@@ -86,9 +102,9 @@ export default function Home() {
         <div
           className={isScrolled ? 'eval_count_box scrolled' : 'eval_count_box'}
         >
-          <span className="eval_count">{evalYoutubers.count}</span>
+          <span className="eval_count">{ratedReviews.count}</span>
           <span className="eval_count_text">
-            {evalYoutubers.count < 5
+            {ratedReviews.count < 5
               ? '유튜버 5명에게 평점 남기기 도전!!'
               : '더 많이 평가하시면 추천이 더 정확해져요!'}
           </span>
@@ -104,12 +120,7 @@ export default function Home() {
           <div>
             {isLoading
               ? rateChannels.data.map((data) => (
-                  <EvalYoutuber
-                    key={data.id}
-                    data={data}
-                    evalYoutubers={evalYoutubers}
-                    setEvalYoutubers={setEvalYoutubers}
-                  />
+                  <EvalYoutuber key={data.id} data={data} />
                 ))
               : Array(6)
                   .fill(null)
