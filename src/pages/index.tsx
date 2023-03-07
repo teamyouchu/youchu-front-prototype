@@ -5,7 +5,7 @@ import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IChannelList } from '@/lib/types';
+import { IChannel, IChannelList } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 import { useInView } from 'react-intersection-observer';
 
@@ -36,12 +36,15 @@ export default function Home() {
     await channelAPI
       .getRateChannel(skip, 10)
       .then(({ data }) => {
-        setIsLoading(true);
+        const onooverlap = data.data.filter((item: IChannel) => {
+          return !rateChannels.data.some((other) => other.id === item.id);
+        });
         setRateChannels({
           ...rateChannels,
-          data: [...rateChannels.data, ...data.data],
+          data: [...rateChannels.data, ...onooverlap],
           hasNext: data.hasNext,
         });
+        setIsLoading(true);
         setSkip(skip + 10);
       })
       .catch((err) => console.log(err));
