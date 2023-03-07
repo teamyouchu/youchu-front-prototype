@@ -32,6 +32,7 @@ export default function Home() {
     data: [],
     hasNext: true,
   });
+  const [isMoreLoading, setIsMoreLoading] = useState<boolean>(false);
   const getRateChannels = async () => {
     await channelAPI
       .getRateChannel(skip, 10)
@@ -45,6 +46,7 @@ export default function Home() {
           hasNext: data.hasNext,
         });
         setIsLoading(true);
+        setIsMoreLoading(false);
         setSkip(skip + 10);
       })
       .catch((err) => console.log(err));
@@ -58,6 +60,7 @@ export default function Home() {
   });
   useEffect(() => {
     if (rateChannels.hasNext && inView) {
+      setIsMoreLoading(true);
       getRateChannels();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,13 +141,14 @@ export default function Home() {
 
         <div className="rate_list">
           <div>
-            {isLoading
-              ? rateChannels.data.map((data) => (
-                  <RateChannel key={data.id} data={data} />
-                ))
-              : Array(6)
-                  .fill(null)
-                  .map((_, index) => <RateChannelSkeleton key={index} />)}
+            {isLoading &&
+              rateChannels.data.map((data) => (
+                <RateChannel key={data.id} data={data} />
+              ))}
+            {isMoreLoading &&
+              Array(3)
+                .fill(null)
+                .map((_, index) => <RateChannelSkeleton key={index} />)}
           </div>
           <div className="btn_box" onClick={onBtnClick}>
             <SubmitButton
