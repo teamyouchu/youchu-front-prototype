@@ -8,7 +8,7 @@ interface IProps {
 }
 
 export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
-  const { userObj, setUserObj } = useContext(UserContext);
+  const { setUserObj } = useContext(UserContext);
 
   // 모달 외 영역 클릭 시 종료
   useEffect(() => {
@@ -33,9 +33,12 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
     deleteCookie('accessToken');
     deleteCookie('refreshToken');
     setUserObj({
-      ...userObj,
       isLogin: false,
-      data: null,
+      data: {
+        id: 0,
+        nickname: '',
+        reviewCount: 0,
+      },
     });
   };
   return (

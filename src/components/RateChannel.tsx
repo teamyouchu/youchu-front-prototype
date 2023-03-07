@@ -1,79 +1,75 @@
 import Image from 'next/image';
-import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
-import { IEvalYoutubers } from '@/lib/types';
+import { IChannel } from '@/lib/types';
+import { RatedReviewsContext } from '@/lib/context';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from '@mui/material/Rating';
+import { useContext } from 'react';
 
 interface IProps {
-  data: {
-    id: string;
-    thumbnail: string;
-    title: string;
-    rating: number | null;
-    reviews: number;
-    category: number;
-  };
-  evalYoutubers: IEvalYoutubers;
-  setEvalYoutubers: React.Dispatch<React.SetStateAction<IEvalYoutubers>>;
+  data: IChannel;
 }
 
-export default function EvalYoutuber({
-  data: { id, thumbnail, title, rating, reviews, category },
-  evalYoutubers,
-  setEvalYoutubers,
+export default function RateChannel({
+  data: { id, thumbnail, name, rating, reviewCount },
 }: IProps) {
+  const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
+  const findIndex = ratedReviews.reviews.findIndex((el) => el.channelId === id);
+
   const onRatingChange = (newValue: number | null) => {
     if (newValue === null) {
       // 평가 삭제
-      setEvalYoutubers({
-        ...evalYoutubers,
-        count: evalYoutubers.count - 1,
-        list: [...evalYoutubers.list.filter((el) => el.youtuberId !== id)],
+      setRatedReviews({
+        ...ratedReviews,
+        count: ratedReviews.count - 1,
+        reviews: [...ratedReviews.reviews.filter((el) => el.channelId !== id)],
       });
     } else {
-      const isIncludes = evalYoutubers.list.find((el) => el.youtuberId === id);
+      // 평가 목록에 있는지 판단
+      const isIncludes = ratedReviews.reviews.find((el) => el.channelId === id);
       if (isIncludes) {
         // 평가 수정
-        const findIndex = evalYoutubers.list.findIndex(
-          (el) => el.youtuberId === id,
-        );
-        const copyArray = [...evalYoutubers.list];
+        const copyArray = [...ratedReviews.reviews];
         copyArray[findIndex] = { ...copyArray[findIndex], rating: newValue };
-        setEvalYoutubers({
-          ...evalYoutubers,
-          list: copyArray,
+        setRatedReviews({
+          ...ratedReviews,
+          reviews: copyArray,
         });
       } else {
         // 평가 추가
-        setEvalYoutubers({
-          ...evalYoutubers,
-          count: evalYoutubers.count + 1,
-          list: [...evalYoutubers.list, { youtuberId: id, rating: newValue }],
+        setRatedReviews({
+          ...ratedReviews,
+          count: ratedReviews.count + 1,
+          reviews: [
+            ...ratedReviews.reviews,
+            { channelId: id, comment: '', rating: newValue },
+          ],
         });
       }
     }
   };
+
   return (
     <>
-      <div className="eval_youtuber_container">
+      <div className="rate_channel_container">
         <Image
           src={thumbnail}
-          alt={title}
+          alt={`${name} 썸네일`}
           width={54}
           height={54}
           style={{ borderRadius: '50%', marginRight: '10px' }}
         />
         <div className="group_box">
-          <div className="group margin-6">
+          {/* 카테고리 삭제로 주석 처리 */}
+          {/* <div className="group margin-6">
             <div className="category_box">
               {category
                 ? categoryArray.find((x) => x.key === category)?.text
                 : '미지정'}
             </div>
-          </div>
+          </div> */}
           <div className="group margin-5">
-            <span className="eval_youtuber_name">{title}</span>
+            <span className="rate_channel_name">{name}</span>
           </div>
           <div className="group margin-10">
             <span className="star_span">★</span>
@@ -81,13 +77,16 @@ export default function EvalYoutuber({
               {rating !== null ? rating.toFixed(1) : 0}
             </span>
             <span className="review_count">
-              ({overThousand(reviews)}개 평가)
+              ({overThousand(reviewCount)}개 평가)
             </span>
           </div>
           <div className="group">
             <Rating
               style={{ color: '#f8d26a', fontSize: '48px' }}
               precision={0.5}
+              value={
+                findIndex === -1 ? null : ratedReviews.reviews[findIndex].rating
+              }
               onChange={(_, newValue) => {
                 onRatingChange(newValue);
               }}
@@ -98,7 +97,7 @@ export default function EvalYoutuber({
       </div>
 
       <style jsx>{`
-        .eval_youtuber_container {
+        .rate_channel_container {
           width: 100%;
           display: flex;
           flex-direction: row;
@@ -106,7 +105,7 @@ export default function EvalYoutuber({
           border-bottom: 1px solid #dedede;
           padding: 18px 0 15px 0;
         }
-        .eval_youtuber_container:last-child {
+        .rate_channel_container:last-child {
           border-bottom: 0;
         }
 
@@ -152,7 +151,7 @@ export default function EvalYoutuber({
           color: #000000;
         }
 
-        .eval_youtuber_name {
+        .rate_channel_name {
           font-size: 16px;
           line-height: 21px;
         }

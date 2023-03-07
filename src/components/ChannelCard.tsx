@@ -1,22 +1,21 @@
 import Image from 'next/image';
-import { categoryArray } from '@/lib/arrays';
 import { overThousand } from '@/lib/numberFomat';
-import { IYoutuberList } from '@/lib/types';
+import { IReview, IChannel } from '@/lib/types';
 import StarRating from './StarRating';
 
 interface IProps {
-  data: IYoutuberList;
+  data: IChannel | IReview;
 }
 
-export default function RecsCard({
-  data: { thumbnail, title, rating, reviews, category },
+export default function ChannelCard({
+  data: { thumbnail, name, rating, reviewCount },
 }: IProps) {
   return (
     <>
       <div className="recs_card_container">
         <Image
           src={thumbnail}
-          alt={title}
+          alt={`${name} 썸네일`}
           width={36}
           height={36}
           style={{
@@ -27,7 +26,7 @@ export default function RecsCard({
         />
         <div className="group_box">
           <div className="group margin-3">
-            <span className="channel_name">{title}</span>
+            <span className="channel_name">{name}</span>
           </div>
           <div className="group margin-5">
             <StarRating rating={rating} />
@@ -35,16 +34,17 @@ export default function RecsCard({
               {rating !== null ? rating.toFixed(1) : 0}
             </span>
             <span className="review_count">
-              ({overThousand(reviews)}개 리뷰)
+              ({overThousand(reviewCount)}개 리뷰)
             </span>
           </div>
-          <div className="group">
+          {/* 카테고리 삭제로 주석 처리 */}
+          {/* <div className="group">
             <div className="category_box">
               {category
                 ? categoryArray.find((x) => x.key === category)?.text
                 : '미지정'}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

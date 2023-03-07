@@ -1,18 +1,5 @@
 import { createContext } from 'react';
-
-export interface IUser {
-  isLogin: boolean;
-  data: {
-    id: number;
-    nickname: string;
-    imageUrl: string;
-    email: string;
-    favoriteCategory: number[];
-    hasReview: boolean;
-    reviewCount: number;
-    status: number;
-  } | null;
-}
+import { IUser, IRatedReviews } from './types';
 
 interface IUserContext {
   userObj: IUser;
@@ -20,12 +7,32 @@ interface IUserContext {
 }
 
 const UserContextState: IUserContext = {
-  userObj: { isLogin: false, data: null },
+  userObj: {
+    isLogin: false,
+    data: {
+      id: 0,
+      nickname: '',
+      reviewCount: 0,
+    },
+  },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setUserObj: () => {},
 };
 
 export const UserContext = createContext(UserContextState);
+
+interface IRatedReviewsContext {
+  ratedReviews: IRatedReviews;
+  setRatedReviews: React.Dispatch<React.SetStateAction<IRatedReviews>>;
+}
+
+const RatedReviewsContextState: IRatedReviewsContext = {
+  ratedReviews: { count: 0, reviews: [] },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setRatedReviews: () => {},
+};
+
+export const RatedReviewsContext = createContext(RatedReviewsContextState);
 
 // interface IStateContext {
 //   isShowHeader: boolean;

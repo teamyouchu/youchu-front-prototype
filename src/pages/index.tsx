@@ -1,13 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { UserContext } from '@/lib/context';
+import { RatedReviewsContext, UserContext } from '@/lib/context';
 import Seo from '@/components/Seo';
-import EvalYoutuber from '@/components/EvalYoutuber';
+import RateChannel from '@/components/RateChannel';
+import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IEvalYoutubers } from '@/lib/types';
+import { IChannel, IChannelList } from '@/lib/types';
+import channelAPI from '@/api/channelAPI';
+import { useInView } from 'react-intersection-observer';
 
 export default function Home() {
-  const { userObj } = useContext(UserContext);
+  const { userObj, setUserObj } = useContext(UserContext);
+  const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
 
   // 스크롤 여부 (하단 그림자)
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,39 +25,96 @@ export default function Home() {
     };
   }, []);
 
-  const [evalYoutubers, setEvalYoutubers] = useState<IEvalYoutubers>({
-    count: 0,
-    list: [],
+  // 평가할 채널 조회
+  const [skip, setSkip] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [rateChannels, setRateChannels] = useState<IChannelList>({
+    data: [],
+    hasNext: true,
+  });
+  const [isMoreLoading, setIsMoreLoading] = useState<boolean>(false);
+  const getRateChannels = async () => {
+    await channelAPI
+      .getRateChannel(skip, 10)
+      .then(({ data }) => {
+        const onooverlap = data.data.filter((item: IChannel) => {
+          return !rateChannels.data.some((other) => other.id === item.id);
+        });
+        setRateChannels({
+          ...rateChannels,
+          data: [...rateChannels.data, ...onooverlap],
+          hasNext: data.hasNext,
+        });
+        setIsLoading(true);
+        setIsMoreLoading(false);
+        setSkip(skip + 10);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // 무한 스크롤을 이용한 채널 조회
+  const [ref, inView] = useInView({
+    threshold: 0,
+    initialInView: true,
+    rootMargin: '300px',
   });
   useEffect(() => {
+    if (rateChannels.hasNext && inView) {
+      setIsMoreLoading(true);
+      getRateChannels();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  // 로그인 유저라면 평가한 채널 수 적용
+  useEffect(() => {
     if (userObj.isLogin) {
-      setEvalYoutubers({
-        ...evalYoutubers,
+      setRatedReviews({
+        ...ratedReviews,
         count: userObj.data?.reviewCount as number,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userObj]);
 
-  // const [category, setCategory] = useState<string>('0');
-
+  // 평가 갯수 5개 이상 여부
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
   useEffect(() => {
-    if (evalYoutubers.count >= 5) {
+    if (ratedReviews.count >= 5) {
       setIsSatisfy(true);
     } else {
       setIsSatisfy(false);
     }
-  }, [evalYoutubers.count]);
+  }, [ratedReviews.count]);
 
-  const onBtnClick = () => {
+  // submit 버튼
+  const onBtnClick = async () => {
     if (isSatisfy) {
       if (userObj.isLogin) {
+        await channelAPI
+          .postReviews(ratedReviews.reviews)
+          .then(() => {
+            setUserObj({
+              ...userObj,
+              data: {
+                ...userObj.data,
+                reviewCount:
+                  userObj.data.reviewCount + ratedReviews.reviews.length,
+              },
+            });
+            setRatedReviews({
+              count: 0,
+              reviews: [],
+            });
+          })
+          .catch((err) => console.log(err));
         router.push('/recommend');
       } else {
         router.push('/login?from=button', '/login');
       }
+    } else {
+      alert('5개 이상 평가해야 추천받을 수 있어요.');
     }
   };
 
@@ -62,35 +123,36 @@ export default function Home() {
       <Seo title="홈" />
       <div className="home_container">
         <div
-          className={isScrolled ? 'eval_count_box scrolled' : 'eval_count_box'}
+          className={isScrolled ? 'rate_count_box scrolled' : 'rate_count_box'}
         >
-          <span className="eval_count">{evalYoutubers.count}</span>
-          <span className="eval_count_text">
-            {evalYoutubers.count < 5
+          <span className="rate_count">{ratedReviews.count}</span>
+          <span className="rate_count_text">
+            {ratedReviews.count < 5
               ? '유튜버 5명에게 평점 남기기 도전!!'
               : '더 많이 평가하시면 추천이 더 정확해져요!'}
           </span>
         </div>
 
         {/* {userObj.isLogin && (
-          <div className="eval_category">
+          <div className="rate_category">
             <ClearableDropdown options={categoryArray} setSort={setCategory} />
           </div>
         )} */}
 
-        <div className="eval_list">
+        <div className="rate_list">
           <div>
-            {youtuberList.map((data) => (
-              <EvalYoutuber
-                key={data.id}
-                data={data}
-                evalYoutubers={evalYoutubers}
-                setEvalYoutubers={setEvalYoutubers}
-              />
-            ))}
+            {isLoading &&
+              rateChannels.data.map((data) => (
+                <RateChannel key={data.id} data={data} />
+              ))}
+            {isMoreLoading &&
+              Array(3)
+                .fill(null)
+                .map((_, index) => <RateChannelSkeleton key={index} />)}
           </div>
           <div className="btn_box" onClick={onBtnClick}>
             <SubmitButton
+              isSatisfy={isSatisfy}
               text={
                 userObj.isLogin
                   ? '추천 받으러 가기'
@@ -98,6 +160,7 @@ export default function Home() {
               }
             />
           </div>
+          <div ref={ref} />
         </div>
       </div>
 
@@ -117,7 +180,7 @@ export default function Home() {
           }
         }
 
-        .eval_count_box {
+        .rate_count_box {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -144,11 +207,11 @@ export default function Home() {
           color: #000000;
         }
 
-        .eval_count {
+        .rate_count {
           margin-bottom: 5px;
         }
 
-        .eval_count_text {
+        .rate_count_text {
           font-family: 'SHSN-M';
           font-size: 15px;
           line-height: 19px;
@@ -156,13 +219,13 @@ export default function Home() {
           margin-bottom: 0;
         }
 
-        .eval_category {
+        .rate_category {
           width: 100%;
           padding: 0 24px;
           z-index: 70;
         }
 
-        .eval_list {
+        .rate_list {
           width: 100%;
           background: #ffffff 0% 0% no-repeat padding-box;
           opacity: 1;
@@ -179,96 +242,3 @@ export default function Home() {
     </>
   );
 }
-
-const youtuberList = [
-  {
-    id: '0',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '1',
-    thumbnail:
-      'https://yt3.ggpht.com/Fef_8oLf6u9pS1TEX6a4e12sTRr-IP-XQo26eg63vZizMItQiGrDZgcTJxugtE08216IZn2zNA=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '딩고 뮤직 / dingo music',
-    rating: 4.5,
-    reviews: 1000,
-    category: 10,
-  },
-  {
-    id: '2',
-    thumbnail:
-      'https://yt3.ggpht.com/ytc/AMLnZu8Ia8DsIhh46F6WWu1xhktgEfbSZgSo8y-02K9dmQ=s176-c-k-c0x00ffffff-no-rj',
-    title: '빠더너스',
-    rating: 3,
-    reviews: 200,
-    category: 23,
-  },
-  {
-    id: '3',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '4',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '5',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '6',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '7',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '8',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-  {
-    id: '9',
-    thumbnail:
-      'https://yt3.googleusercontent.com/ytc/AMLnZu_uDVGXlffthbwItGEmpb9B_H9gg7C67oKkJLys=s176-c-k-c0x00ffffff-no-rj-mo',
-    title: '월간 윤종신',
-    rating: 5,
-    reviews: 381,
-    category: 10,
-  },
-];

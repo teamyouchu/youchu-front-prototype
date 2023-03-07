@@ -1,7 +1,8 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
-import { IUser, UserContext } from '@/lib/context';
+import { IRatedReviews, IUser } from '@/lib/types';
+import { RatedReviewsContext, UserContext } from '@/lib/context';
 import userAPI from '@/api/userAPI';
 import Layout from '@/components/Layout/Layout';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -10,7 +11,14 @@ import { deleteCookie, getCookie } from '@/lib/cookies';
 
 export default function App({ Component, pageProps }: AppProps) {
   // 로그인 유저 객체 상태값
-  const [userObj, setUserObj] = useState<IUser>({ isLogin: false, data: null });
+  const [userObj, setUserObj] = useState<IUser>({
+    isLogin: false,
+    data: {
+      id: 0,
+      nickname: '',
+      reviewCount: 0,
+    },
+  });
   useEffect(() => {
     if (getCookie('refreshToken')) {
       userAPI
@@ -27,7 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
           setUserObj({
             ...userObj,
             isLogin: false,
-            data: null,
+            data: {
+              id: 0,
+              nickname: '',
+              reviewCount: 0,
+            },
           });
           deleteCookie('accessToken');
           deleteCookie('refreshToken');
@@ -36,6 +48,12 @@ export default function App({ Component, pageProps }: AppProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 평가 예정 채널
+  const [ratedReviews, setRatedReviews] = useState<IRatedReviews>({
+    count: 0,
+    reviews: [],
+  });
+
   return (
     <UserContext.Provider
       value={{
@@ -43,13 +61,20 @@ export default function App({ Component, pageProps }: AppProps) {
         setUserObj,
       }}
     >
-      <GoogleOAuthProvider
-        clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+      <RatedReviewsContext.Provider
+        value={{
+          ratedReviews,
+          setRatedReviews,
+        }}
       >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </GoogleOAuthProvider>
+        <GoogleOAuthProvider
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </GoogleOAuthProvider>
+      </RatedReviewsContext.Provider>
     </UserContext.Provider>
   );
 }
