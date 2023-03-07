@@ -16,8 +16,8 @@ export default function ChannelCard({
         <Image
           src={thumbnail}
           alt={`${name} 썸네일`}
-          width={36}
-          height={36}
+          width={42}
+          height={42}
           style={{
             border: '1px solid #dedede',
             borderRadius: '50%',
@@ -28,7 +28,7 @@ export default function ChannelCard({
           <div className="group margin-3">
             <span className="channel_name">{name}</span>
           </div>
-          <div className="group margin-5">
+          <div className="group">
             <StarRating rating={rating} />
             <span className="rating_span">
               {rating !== null ? rating.toFixed(1) : 0}
