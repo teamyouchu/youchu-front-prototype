@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { UserContext } from '@/lib/context';
-import YoutuberList from '@/components/YoutuberList';
+import ChannelList from '@/components/ChannelList';
 import Seo from '@/components/Seo';
 import withAuth from '@/components/HOC/withAuth';
 import { IYoutuber } from '@/lib/types';
@@ -35,7 +35,7 @@ const Recommend = () => {
               <span className="star_span">★</span>
               <span className="evaled_count_title">평가 수</span>
             </div>
-            <Link href={'evaluated'}>
+            <Link href={'rated'}>
               <span className="evaled_link">평가한 유튜버 보러 가기</span>
             </Link>
           </div>
@@ -45,7 +45,7 @@ const Recommend = () => {
             더 많이 평가하시면 추천이 더 정확해져요!
           </span>
         </div>
-        {isLoading && <YoutuberList from={'recs'} data={recommendList} />}
+        {isLoading && <ChannelList from={'recs'} data={recommendList} />}
       </div>
 
       <style jsx>{`

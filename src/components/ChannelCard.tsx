@@ -7,7 +7,7 @@ interface IProps {
   data: IYoutuber | IReview;
 }
 
-export default function RecsCard({
+export default function ChannelCard({
   data: { thumbnail, name, rating, reviewCount },
 }: IProps) {
   return (

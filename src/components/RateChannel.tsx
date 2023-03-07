@@ -10,7 +10,7 @@ interface IProps {
   data: IYoutuber;
 }
 
-export default function EvalYoutuber({
+export default function RateChannel({
   data: { id, thumbnail, name, rating, reviewCount },
 }: IProps) {
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);

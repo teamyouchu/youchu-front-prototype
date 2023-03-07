@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { UserContext } from '@/lib/context';
 import { IReview, IYoutuber } from '@/lib/types';
-import RecsCard from './RecsCard';
+import ChannelCard from './ChannelCard';
 import SubmitButton from './SubmitButton';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
   data: IYoutuber[] | IReview[];
 }
 
-export default function YoutuberList({ from, data }: IProps) {
+export default function ChannelList({ from, data }: IProps) {
   const { userObj } = useContext(UserContext);
 
   return (
@@ -24,7 +24,7 @@ export default function YoutuberList({ from, data }: IProps) {
         </span>
         <div>
           {data.map((youtuber) => (
-            <RecsCard key={youtuber.id} data={youtuber} />
+            <ChannelCard key={youtuber.id} data={youtuber} />
           ))}
         </div>
         <Link href={'/'}>

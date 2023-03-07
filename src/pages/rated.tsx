@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { IReviewList } from '@/lib/types';
 import userAPI from '@/api/userAPI';
 import Seo from '@/components/Seo';
-import YoutuberList from '@/components/YoutuberList';
+import ChannelList from '@/components/ChannelList';
 import withAuth from '@/components/HOC/withAuth';
 import { useInView } from 'react-intersection-observer';
 
-const Evaluated = () => {
+const Rated = () => {
   const [skip, setSkip] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [evaledList, setEvaledList] = useState<IReviewList>({
@@ -47,7 +47,7 @@ const Evaluated = () => {
     <>
       <Seo title="평가 목록" />
       <div className="evaled_container">
-        {isLoading && <YoutuberList from={'evaled'} data={evaledList.data} />}
+        {isLoading && <ChannelList from={'evaled'} data={evaledList.data} />}
       </div>
       <div ref={ref} />
 
@@ -69,4 +69,4 @@ const Evaluated = () => {
   );
 };
 
-export default withAuth(Evaluated);
+export default withAuth(Rated);

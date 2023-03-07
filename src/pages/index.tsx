@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { RatedReviewsContext, UserContext } from '@/lib/context';
 import Seo from '@/components/Seo';
-import EvalYoutuber from '@/components/EvalYoutuber';
+import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
 import { IYoutuberList } from '@/lib/types';
@@ -120,7 +120,7 @@ export default function Home() {
           <div>
             {isLoading
               ? rateChannels.data.map((data) => (
-                  <EvalYoutuber key={data.id} data={data} />
+                  <RateChannel key={data.id} data={data} />
                 ))
               : Array(6)
                   .fill(null)
