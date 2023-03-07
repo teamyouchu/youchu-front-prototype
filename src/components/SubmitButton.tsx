@@ -1,6 +1,6 @@
 interface IProps {
   text: string;
-  isSatisfy: boolean;
+  isSatisfy?: boolean;
 }
 
 export default function SubmitButton({ isSatisfy = true, text }: IProps) {
