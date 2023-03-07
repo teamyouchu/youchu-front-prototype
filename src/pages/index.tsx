@@ -100,10 +100,10 @@ export default function Home() {
       <Seo title="홈" />
       <div className="home_container">
         <div
-          className={isScrolled ? 'eval_count_box scrolled' : 'eval_count_box'}
+          className={isScrolled ? 'rate_count_box scrolled' : 'rate_count_box'}
         >
-          <span className="eval_count">{ratedReviews.count}</span>
-          <span className="eval_count_text">
+          <span className="rate_count">{ratedReviews.count}</span>
+          <span className="rate_count_text">
             {ratedReviews.count < 5
               ? '유튜버 5명에게 평점 남기기 도전!!'
               : '더 많이 평가하시면 추천이 더 정확해져요!'}
@@ -111,12 +111,12 @@ export default function Home() {
         </div>
 
         {/* {userObj.isLogin && (
-          <div className="eval_category">
+          <div className="rate_category">
             <ClearableDropdown options={categoryArray} setSort={setCategory} />
           </div>
         )} */}
 
-        <div className="eval_list">
+        <div className="rate_list">
           <div>
             {isLoading
               ? rateChannels.data.map((data) => (
@@ -155,7 +155,7 @@ export default function Home() {
           }
         }
 
-        .eval_count_box {
+        .rate_count_box {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -182,11 +182,11 @@ export default function Home() {
           color: #000000;
         }
 
-        .eval_count {
+        .rate_count {
           margin-bottom: 5px;
         }
 
-        .eval_count_text {
+        .rate_count_text {
           font-family: 'SHSN-M';
           font-size: 15px;
           line-height: 19px;
@@ -194,13 +194,13 @@ export default function Home() {
           margin-bottom: 0;
         }
 
-        .eval_category {
+        .rate_category {
           width: 100%;
           padding: 0 24px;
           z-index: 70;
         }
 
-        .eval_list {
+        .rate_list {
           width: 100%;
           background: #ffffff 0% 0% no-repeat padding-box;
           opacity: 1;

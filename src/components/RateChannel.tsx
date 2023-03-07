@@ -51,7 +51,7 @@ export default function RateChannel({
 
   return (
     <>
-      <div className="eval_channel_container">
+      <div className="rate_channel_container">
         <Image
           src={thumbnail}
           alt={`${name} 썸네일`}
@@ -69,7 +69,7 @@ export default function RateChannel({
             </div>
           </div> */}
           <div className="group margin-5">
-            <span className="eval_channel_name">{name}</span>
+            <span className="rate_channel_name">{name}</span>
           </div>
           <div className="group margin-10">
             <span className="star_span">★</span>
@@ -97,7 +97,7 @@ export default function RateChannel({
       </div>
 
       <style jsx>{`
-        .eval_channel_container {
+        .rate_channel_container {
           width: 100%;
           display: flex;
           flex-direction: row;
@@ -105,7 +105,7 @@ export default function RateChannel({
           border-bottom: 1px solid #dedede;
           padding: 18px 0 15px 0;
         }
-        .eval_channel_container:last-child {
+        .rate_channel_container:last-child {
           border-bottom: 0;
         }
 
@@ -151,7 +151,7 @@ export default function RateChannel({
           color: #000000;
         }
 
-        .eval_channel_name {
+        .rate_channel_name {
           font-size: 16px;
           line-height: 21px;
         }

@@ -29,19 +29,19 @@ const Recommend = () => {
     <>
       <Seo title="추천 목록" />
       <div className="recs_container">
-        <div className="evaled_count_box">
+        <div className="rated_count_box">
           <div className="row_flex">
-            <div className="evaled_count_title_box">
+            <div className="rated_count_title_box">
               <span className="star_span">★</span>
-              <span className="evaled_count_title">평가 수</span>
+              <span className="rated_count_title">평가 수</span>
             </div>
             <Link href={'rated'}>
-              <span className="evaled_link">평가한 유튜버 보러 가기</span>
+              <span className="rated_link">평가한 유튜버 보러 가기</span>
             </Link>
           </div>
-          <span className="evaled_count">{userObj.data?.reviewCount}</span>
-          <span className="evaled_count_text">5개 평가하기 달성!</span>
-          <span className="evaled_count_text">
+          <span className="rated_count">{userObj.data?.reviewCount}</span>
+          <span className="rated_count_text">5개 평가하기 달성!</span>
+          <span className="rated_count_text">
             더 많이 평가하시면 추천이 더 정확해져요!
           </span>
         </div>
@@ -64,7 +64,7 @@ const Recommend = () => {
           }
         }
 
-        .evaled_count_box {
+        .rated_count_box {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -81,7 +81,7 @@ const Recommend = () => {
           margin-bottom: 24px;
         }
 
-        .evaled_count_title_box {
+        .rated_count_title_box {
           display: flex;
         }
 
@@ -100,13 +100,13 @@ const Recommend = () => {
           margin-right: 6px;
         }
 
-        .evaled_count_title {
+        .rated_count_title {
           font-family: 'SHSN-B';
           font-size: 16px;
           line-height: 21px;
         }
 
-        .evaled_link {
+        .rated_link {
           font-family: 'SHSN-L';
           text-align: right;
           font-size: 16px;
@@ -115,7 +115,7 @@ const Recommend = () => {
           text-decoration: underline;
         }
 
-        .evaled_count {
+        .rated_count {
           text-align: center;
           font-size: 45px;
           line-height: 57px;
@@ -123,7 +123,7 @@ const Recommend = () => {
           margin-bottom: 10px;
         }
 
-        .evaled_count_text {
+        .rated_count_text {
           text-align: center;
           font-size: 14px;
           line-height: 18px;
