@@ -19,7 +19,6 @@ const Evaluated = () => {
     await userAPI
       .getMyReviews(skip, 10)
       .then(({ data }) => {
-        console.log('data: ', data);
         setIsLoading(true);
         setEvaledList({
           ...evaledList,
