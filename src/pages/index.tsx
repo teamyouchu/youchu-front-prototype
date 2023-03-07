@@ -7,6 +7,7 @@ import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
 import { IChannelList } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
+import { useInView } from 'react-intersection-observer';
 
 export default function Home() {
   const { userObj, setUserObj } = useContext(UserContext);
@@ -25,23 +26,39 @@ export default function Home() {
   }, []);
 
   // 평가할 채널 조회
+  const [skip, setSkip] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [rateChannels, setRateChannels] = useState<IChannelList>({
     data: [],
     hasNext: true,
   });
+  const getRateChannels = async () => {
+    await channelAPI
+      .getRateChannel(skip, 10)
+      .then(({ data }) => {
+        setIsLoading(true);
+        setRateChannels({
+          ...rateChannels,
+          data: [...rateChannels.data, ...data.data],
+          hasNext: data.hasNext,
+        });
+        setSkip(skip + 10);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // 무한 스크롤을 이용한 채널 조회
+  const [ref, inView] = useInView({
+    threshold: 0,
+    initialInView: true,
+    rootMargin: '300px',
+  });
   useEffect(() => {
-    const getRateChannels = async () => {
-      await channelAPI
-        .getRateChannel(0, 10)
-        .then(({ data }) => {
-          setIsLoading(true);
-          setRateChannels(data);
-        })
-        .catch((err) => console.log(err));
-    };
-    getRateChannels();
-  }, []);
+    if (rateChannels.hasNext && inView) {
+      getRateChannels();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
 
   // 로그인 유저라면 평가한 채널 수 적용
   useEffect(() => {
@@ -136,6 +153,7 @@ export default function Home() {
               }
             />
           </div>
+          <div ref={ref} />
         </div>
       </div>
 
