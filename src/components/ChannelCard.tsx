@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { overThousand } from '@/lib/numberFomat';
-import { IReview, IYoutuber } from '@/lib/types';
+import { IReview, IChannel } from '@/lib/types';
 import StarRating from './StarRating';
 
 interface IProps {
-  data: IYoutuber | IReview;
+  data: IChannel | IReview;
 }
 
 export default function ChannelCard({

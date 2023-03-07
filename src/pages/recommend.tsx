@@ -4,14 +4,14 @@ import { UserContext } from '@/lib/context';
 import ChannelList from '@/components/ChannelList';
 import Seo from '@/components/Seo';
 import withAuth from '@/components/HOC/withAuth';
-import { IYoutuber } from '@/lib/types';
+import { IChannel } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 
 const Recommend = () => {
   const { userObj } = useContext(UserContext);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [recommendList, setRecommendList] = useState<IYoutuber[]>([]);
+  const [recommendList, setRecommendList] = useState<IChannel[]>([]);
 
   useEffect(() => {
     const getRecommends = async () => {

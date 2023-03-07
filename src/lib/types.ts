@@ -18,7 +18,7 @@ export interface IRatedReviews {
   reviews: IReviews[];
 }
 
-export interface IYoutuber {
+export interface IChannel {
   id: string;
   thumbnail: string;
   name: string;
@@ -26,15 +26,15 @@ export interface IYoutuber {
   reviewCount: number;
 }
 
-export interface IYoutuberList {
-  data: IYoutuber[];
+export interface IChannelList {
+  data: IChannel[];
   hasNext: boolean;
 }
 
-export interface IReview extends IYoutuber {
+export interface IReview extends IChannel {
   channelId: number;
 }
 
-export interface IReviewList extends IYoutuberList {
+export interface IReviewList extends IChannelList {
   data: IReview[];
 }

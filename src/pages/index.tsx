@@ -5,7 +5,7 @@ import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IYoutuberList } from '@/lib/types';
+import { IChannelList } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
 
   // 평가할 채널 조회
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [rateChannels, setRateChannels] = useState<IYoutuberList>({
+  const [rateChannels, setRateChannels] = useState<IChannelList>({
     data: [],
     hasNext: true,
   });
