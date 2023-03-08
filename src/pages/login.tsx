@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useGoogleLogin } from '@react-oauth/google';
