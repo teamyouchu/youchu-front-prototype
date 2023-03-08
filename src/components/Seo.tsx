@@ -27,7 +27,7 @@ export default function Seo({ title, description, keywords = '' }: IProps) {
       <meta property="og:site_name" content="유추 Youchu" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="/images/og_image.jpg" />
+      <meta property="og:image" content="/images/og image.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
 
@@ -35,7 +35,7 @@ export default function Seo({ title, description, keywords = '' }: IProps) {
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="/images/og_image.jpg" />
+      <meta name="twitter:image" content="/images/og image.jpg" />
     </Head>
   );
 }

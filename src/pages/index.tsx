@@ -131,17 +131,17 @@ export default function Home() {
           '유튜브 채널에 평가를 남기면 좋아할만한 채널을 추천해줘요!'
         }
       />
-      <div className="home_container">
-        <div
+      <main className="home_container">
+        <section
           className={isScrolled ? 'rate_count_box scrolled' : 'rate_count_box'}
         >
           <span className="rate_count">{ratedReviews.count}</span>
-          <span className="rate_count_text">
+          <h3 className="rate_count_text">
             {ratedReviews.count < 5
               ? '유튜버 5명에게 평점 남기기 도전!!'
-              : '더 많이 평가하시면 추천이 더 정확해져요!'}
-          </span>
-        </div>
+              : '더 많이 평가하면 추천이 더 정확해져요!'}
+          </h3>
+        </section>
 
         {/* {userObj.isLogin && (
           <div className="rate_category">
@@ -149,8 +149,8 @@ export default function Home() {
           </div>
         )} */}
 
-        <div className="rate_list">
-          <div>
+        <section className="rate_list">
+          <ul>
             {isLoading &&
               rateChannels.data.map((data) => (
                 <RateChannel key={data.id} data={data} />
@@ -159,7 +159,7 @@ export default function Home() {
               Array(3)
                 .fill(null)
                 .map((_, index) => <RateChannelSkeleton key={index} />)}
-          </div>
+          </ul>
           <div className="btn_box" onClick={onBtnClick}>
             <SubmitButton
               isSatisfy={isSatisfy}
@@ -171,8 +171,8 @@ export default function Home() {
             />
           </div>
           <div ref={ref} />
-        </div>
-      </div>
+        </section>
+      </main>
 
       <style jsx>{`
         .home_container {
@@ -194,6 +194,7 @@ export default function Home() {
           width: 100%;
           display: flex;
           flex-direction: column;
+          align-items: center;
           padding: 12px;
           background: #ffffff 0% 0% no-repeat padding-box;
           opacity: 1;
@@ -226,6 +227,7 @@ export default function Home() {
           font-size: 15px;
           line-height: 19px;
           color: #787878;
+          margin: 0;
           margin-bottom: 0;
         }
 

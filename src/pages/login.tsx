@@ -77,7 +77,7 @@ export default function Login() {
   return (
     <>
       <Seo title="로그인" description={'유추 로그인 페이지입니다.'} />
-      <div className="login_container">
+      <main className="login_container">
         <div className="login_box">
           {from == 'withAuth' ? (
             <span>
@@ -98,7 +98,7 @@ export default function Login() {
           <button className="login_btn" onClick={login}>
             <div className="LoginLetter">
               <Image
-                src={'/images/googleLogo.png'}
+                src={'/images/google logo.png'}
                 alt={'google logo'}
                 width={18}
                 height={18}
@@ -108,7 +108,7 @@ export default function Login() {
             </div>
           </button>
         </div>
-      </div>
+      </main>
 
       <style jsx>{`
         .login_container {

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <div className="footer_container">
+      <footer className="footer_container">
         <div className="footer_box">
           <ul className="footer_ul">
             <li className="link_li">
@@ -32,14 +32,14 @@ export default function Footer() {
             </li>
           </ul>
 
-          <ul className="footer_ul">
+          <div className="footer_ul">
             <span className="footer_span mail_title">
               문의&nbsp;:&nbsp;
               <span className="footer_span mail">youchukmu@gmail.com</span>
             </span>
-          </ul>
+          </div>
         </div>
-      </div>
+      </footer>
 
       <style jsx>{`
         .footer_container {

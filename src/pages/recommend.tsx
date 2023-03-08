@@ -31,25 +31,25 @@ const Recommend = () => {
         title="추천 목록"
         description={'남긴 평점을 이용해 좋아할만한 채널을 추천해요.'}
       />
-      <div className="recs_container">
-        <div className="rated_count_box">
+      <main className="recs_container">
+        <section className="rated_count_box">
           <div className="row_flex">
             <div className="rated_count_title_box">
               <span className="star_span">★</span>
-              <span className="rated_count_title">평가 수</span>
+              <h2 className="rated_count_title">평가 수</h2>
             </div>
             <Link href={'rated'}>
               <span className="rated_link">평가한 유튜버 보러 가기</span>
             </Link>
           </div>
           <span className="rated_count">{userObj.data?.reviewCount}</span>
-          <span className="rated_count_text">5개 평가하기 달성!</span>
-          <span className="rated_count_text">
+          <h3 className="rated_count_text">5개 평가하기 달성!</h3>
+          <h3 className="rated_count_text">
             더 많이 평가하시면 추천이 더 정확해져요!
-          </span>
-        </div>
+          </h3>
+        </section>
         {isLoading && <ChannelList from={'recs'} data={recommendList} />}
-      </div>
+      </main>
 
       <style jsx>{`
         .recs_container {
@@ -107,6 +107,7 @@ const Recommend = () => {
           font-family: 'SHSN-B';
           font-size: 16px;
           line-height: 21px;
+          margin: 0;
         }
 
         .rated_link {
@@ -131,6 +132,7 @@ const Recommend = () => {
           font-size: 14px;
           line-height: 18px;
           color: #787878;
+          margin: 0;
         }
       `}</style>
     </>

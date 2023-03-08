@@ -12,7 +12,7 @@ export default function ChannelCard({
 }: IProps) {
   return (
     <>
-      <div className="recs_card_container">
+      <li className="recs_card_container">
         <Image
           src={thumbnail}
           alt={`${name} 썸네일`}
@@ -46,7 +46,7 @@ export default function ChannelCard({
             </div>
           </div> */}
         </div>
-      </div>
+      </li>
 
       <style jsx>{`
         .recs_card_container {

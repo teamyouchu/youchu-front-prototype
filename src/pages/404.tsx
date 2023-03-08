@@ -8,7 +8,7 @@ export default function NotFound() {
         title="페이지를 찾을 수 없습니다"
         description={'접근이 불가능한 페이지입니다.'}
       />
-      <div className="not-found_container">
+      <main className="not-found_container">
         <div className="not-found_box">
           <div className="emoji_box">
             <div className="emoji" role="img" aria-label="writing hand">
@@ -22,7 +22,7 @@ export default function NotFound() {
             <Link href="/">홈</Link>으로 가볼까요?
           </span>
         </div>
-      </div>
+      </main>
 
       <style jsx>{`
         .not-found_container {
