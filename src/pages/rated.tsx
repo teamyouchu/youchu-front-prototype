@@ -45,10 +45,13 @@ const Rated = () => {
 
   return (
     <>
-      <Seo title="평가 목록" />
-      <div className="rated_container">
+      <Seo
+        title="평가 목록"
+        description={'내가 평점을 남긴 유튜버 목록입니다.'}
+      />
+      <main className="rated_container">
         {isLoading && <ChannelList from={'rated'} data={ratedList.data} />}
-      </div>
+      </main>
       <div ref={ref} />
 
       <style jsx>{`

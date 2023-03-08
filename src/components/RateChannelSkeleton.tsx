@@ -3,7 +3,7 @@ import Skeleton from '@mui/material/Skeleton';
 export default function RateChannelSkeleton() {
   return (
     <>
-      <div className="rate_channel_container">
+      <li className="rate_channel_container">
         <Skeleton
           variant="circular"
           width={66}
@@ -27,7 +27,7 @@ export default function RateChannelSkeleton() {
             <Skeleton variant="rounded" width={240} height={48} />
           </div>
         </div>
-      </div>
+      </li>
 
       <style jsx>{`
         .rate_channel_container {

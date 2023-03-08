@@ -51,7 +51,7 @@ export default function RateChannel({
 
   return (
     <>
-      <div className="rate_channel_container">
+      <li className="rate_channel_container">
         <Image
           src={thumbnail}
           alt={`${name} 썸네일`}
@@ -94,7 +94,7 @@ export default function RateChannel({
             />
           </div>
         </div>
-      </div>
+      </li>
 
       <style jsx>{`
         .rate_channel_container {

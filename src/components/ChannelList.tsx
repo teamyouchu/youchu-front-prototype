@@ -15,22 +15,22 @@ export default function ChannelList({ from, data }: IProps) {
 
   return (
     <>
-      <div className="channel_list">
-        <span className="recs_title">
+      <section className="channel_list">
+        <h1 className="recs_title">
           {userObj.data?.nickname}님이
           <br />
           {from === 'recs' ? '좋아하실 만한 ' : '평가한 '}
           <span className="recs_title blue">유튜버</span>
-        </span>
-        <div>
+        </h1>
+        <ul>
           {data.map((channel) => (
             <ChannelCard key={channel.id} data={channel} />
           ))}
-        </div>
+        </ul>
         <Link href={'/'}>
           <SubmitButton text={'유튜버 평가 더하기'} />
         </Link>
-      </div>
+      </section>
 
       <style jsx>{`
         .channel_list {
