@@ -120,7 +120,12 @@ export default function Home() {
 
   return (
     <>
-      <Seo title="홈" />
+      <Seo
+        title="홈"
+        description={
+          '유튜브 채널에 평가를 남기면 좋아할만한 채널을 추천해줘요!'
+        }
+      />
       <div className="home_container">
         <div
           className={isScrolled ? 'rate_count_box scrolled' : 'rate_count_box'}

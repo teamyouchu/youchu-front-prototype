@@ -27,7 +27,10 @@ const Recommend = () => {
   }, []);
   return (
     <>
-      <Seo title="추천 목록" />
+      <Seo
+        title="추천 목록"
+        description={'남긴 평점을 이용해 좋아할만한 채널을 추천해요.'}
+      />
       <div className="recs_container">
         <div className="rated_count_box">
           <div className="row_flex">

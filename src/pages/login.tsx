@@ -76,7 +76,7 @@ export default function Login() {
 
   return (
     <>
-      <Seo title="로그인" />
+      <Seo title="로그인" description={'유추 로그인 페이지입니다.'} />
       <div className="login_container">
         <div className="login_box">
           {from == 'withAuth' ? (

@@ -4,7 +4,10 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <>
-      <Seo title="페이지를 찾을 수 없습니다" />
+      <Seo
+        title="페이지를 찾을 수 없습니다"
+        description={'접근이 불가능한 페이지입니다.'}
+      />
       <div className="not-found_container">
         <div className="not-found_box">
           <div className="emoji_box">
