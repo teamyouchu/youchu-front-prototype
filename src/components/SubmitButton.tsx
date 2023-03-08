@@ -30,7 +30,7 @@ export default function SubmitButton({ isSatisfy = true, text }: IProps) {
           cursor: default;
         }
         @media (max-width: 400px) {
-          .submit_button {
+          button {
             width: 100%;
           }
         }
