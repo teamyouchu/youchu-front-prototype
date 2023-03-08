@@ -71,7 +71,12 @@ export default function Home() {
     if (userObj.isLogin) {
       setRatedReviews({
         ...ratedReviews,
-        count: userObj.data?.reviewCount as number,
+        count: userObj.data?.reviewCount + ratedReviews.reviews.length,
+      });
+    } else {
+      setRatedReviews({
+        ...ratedReviews,
+        count: ratedReviews.reviews.length,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
