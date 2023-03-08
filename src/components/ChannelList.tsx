@@ -16,11 +16,11 @@ export default function ChannelList({ from, data }: IProps) {
   return (
     <>
       <section className="channel_list">
-        <h1 className="recs_title">
+        <h1 className="list_title">
           {userObj.data?.nickname}님이
           <br />
           {from === 'recs' ? '좋아하실 만한 ' : '평가한 '}
-          <span className="recs_title blue">유튜버</span>
+          <span className="list_title blue">유튜버</span>
         </h1>
         <ul>
           {data.map((channel) => (
@@ -40,7 +40,7 @@ export default function ChannelList({ from, data }: IProps) {
           padding: 24px 24px 30px 24px;
         }
 
-        .recs_title {
+        .list_title {
           font-family: 'SHSN-B';
           text-align: left;
           font-size: 24px;

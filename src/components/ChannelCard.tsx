@@ -12,7 +12,7 @@ export default function ChannelCard({
 }: IProps) {
   return (
     <>
-      <li className="recs_card_container">
+      <li className="card_container">
         <Image
           src={thumbnail}
           alt={`${name} 썸네일`}
@@ -49,7 +49,7 @@ export default function ChannelCard({
       </li>
 
       <style jsx>{`
-        .recs_card_container {
+        .card_container {
           display: flex;
           flex-direction: row;
           align-items: flex-start;
@@ -57,10 +57,10 @@ export default function ChannelCard({
           border-bottom: 1px solid #dedede;
           padding: 16px 0;
         }
-        .recs_card_container:first-child {
+        .card_container:first-child {
           padding: 30px 0 16px 0;
         }
-        .recs_card_container:last-child {
+        .card_container:last-child {
           padding: 16px 0 30px 0;
           border-bottom: 0;
         }
