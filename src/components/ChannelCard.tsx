@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { overThousand } from '@/lib/numberFomat';
 import { IChannel } from '@/lib/types';
 import StarRating from './StarRating';
+import { useRouter } from 'next/router';
 
 interface IProps {
   data: IChannel;
@@ -10,59 +11,72 @@ interface IProps {
 export default function ChannelCard({
   data: { id, channelId, thumbnail, name, rating, reviewCount },
 }: IProps) {
+  const { pathname } = useRouter();
   return (
     <>
       <li className="card_container">
-        <Image
-          src={thumbnail}
-          alt={`${name} 썸네일`}
-          width={42}
-          height={42}
-          style={{
-            border: '1px solid #dedede',
-            borderRadius: '50%',
-            marginRight: '16px',
-          }}
-        />
-        <div className="group_box">
-          <div className="group margin-3">
-            <span className="channel_name">{name}</span>
-          </div>
-          <div className="group">
-            <StarRating rating={rating} />
-            <span className="rating_span">
-              {rating !== null ? rating.toFixed(1) : 0}
-            </span>
-            <span className="review_count">
-              ({overThousand(reviewCount)}개 리뷰)
-            </span>
-          </div>
-          {/* 카테고리 삭제로 주석 처리 */}
-          {/* <div className="group">
+        <a
+          href={`https://www.youtube.com/channel/${
+            pathname === '/recommend' ? id : channelId
+          }`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image
+            className="asdfasdfasdfsd"
+            src={thumbnail}
+            alt={`${name} 썸네일`}
+            width={42}
+            height={42}
+            style={{
+              border: '1px solid #dedede',
+              borderRadius: '50%',
+              marginRight: '16px',
+            }}
+          />
+          <div className="group_box">
+            <div className="group margin-3">
+              <span className="channel_name">{name}</span>
+            </div>
+            <div className="group">
+              <StarRating rating={rating} />
+              <span className="rating_span">
+                {rating !== null ? rating.toFixed(1) : 0}
+              </span>
+              <span className="review_count">
+                ({overThousand(reviewCount)}개 리뷰)
+              </span>
+            </div>
+            {/* 카테고리 삭제로 주석 처리 */}
+            {/* <div className="group">
             <div className="category_box">
               {category
                 ? categoryArray.find((x) => x.key === category)?.text
                 : '미지정'}
             </div>
           </div> */}
-        </div>
+          </div>
+        </a>
       </li>
 
       <style jsx>{`
         .card_container {
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          width: 100%;
           border-bottom: 1px solid #dedede;
           padding: 16px 0;
         }
         .card_container:first-child {
-          padding: 30px 0 16px 0;
+          padding-top: 30px;
         }
         .card_container:last-child {
-          padding: 16px 0 30px 0;
+          padding-bottom: 30px;
           border-bottom: 0;
+        }
+
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          width: 100%;
         }
 
         .group_box {
