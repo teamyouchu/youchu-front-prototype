@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IReviewList } from '@/lib/types';
+import { IChannelList } from '@/lib/types';
 import userAPI from '@/api/userAPI';
 import Seo from '@/components/Seo';
 import ChannelList from '@/components/ChannelList';
@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 const Rated = () => {
   const [skip, setSkip] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [ratedList, setRatedList] = useState<IReviewList>({
+  const [ratedList, setRatedList] = useState<IChannelList>({
     data: [],
     hasNext: true,
   });
