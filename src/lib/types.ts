@@ -20,6 +20,7 @@ export interface IRatedReviews {
 
 export interface IChannel {
   id: string;
+  channelId?: number;
   thumbnail: string;
   name: string;
   rating: number;
@@ -29,12 +30,4 @@ export interface IChannel {
 export interface IChannelList {
   data: IChannel[];
   hasNext: boolean;
-}
-
-export interface IReview extends IChannel {
-  channelId: number;
-}
-
-export interface IReviewList extends IChannelList {
-  data: IReview[];
 }

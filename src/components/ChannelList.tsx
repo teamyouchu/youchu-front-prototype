@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 import { UserContext } from '@/lib/context';
-import { IReview, IChannel } from '@/lib/types';
+import { IChannel } from '@/lib/types';
 import ChannelCard from './ChannelCard';
 import SubmitButton from './SubmitButton';
 
 interface IProps {
   from: string;
-  data: IChannel[] | IReview[];
+  data: IChannel[];
 }
 
 export default function ChannelList({ from, data }: IProps) {

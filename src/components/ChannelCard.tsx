@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { overThousand } from '@/lib/numberFomat';
-import { IReview, IChannel } from '@/lib/types';
+import { IChannel } from '@/lib/types';
 import StarRating from './StarRating';
 
 interface IProps {
-  data: IChannel | IReview;
+  data: IChannel;
 }
 
 export default function ChannelCard({
-  data: { thumbnail, name, rating, reviewCount },
+  data: { id, channelId, thumbnail, name, rating, reviewCount },
 }: IProps) {
   return (
     <>
