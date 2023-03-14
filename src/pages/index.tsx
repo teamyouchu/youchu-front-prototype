@@ -86,12 +86,16 @@ export default function Home() {
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
   useEffect(() => {
-    if (ratedReviews.count >= 5) {
-      setIsSatisfy(true);
+    if (userObj.isLogin) {
+      if (ratedReviews.count >= 5) {
+        setIsSatisfy(true);
+      } else {
+        setIsSatisfy(false);
+      }
     } else {
-      setIsSatisfy(false);
+      setIsSatisfy(true);
     }
-  }, [ratedReviews.count]);
+  }, [userObj.isLogin, ratedReviews.count]);
 
   const postReview = async (ratedReview: IReviews) => {
     await channelAPI
@@ -119,14 +123,14 @@ export default function Home() {
 
   // submit 버튼
   const onBtnClick = async () => {
-    if (isSatisfy) {
-      if (userObj.isLogin) {
+    if (userObj.isLogin) {
+      if (isSatisfy) {
         router.push('/recommend');
       } else {
-        router.push('/login?from=button', '/login');
+        alert('5개 이상 평가해야 추천받을 수 있어요.');
       }
     } else {
-      alert('5개 이상 평가해야 추천받을 수 있어요.');
+      router.push('/login?from=button', '/login');
     }
   };
 
