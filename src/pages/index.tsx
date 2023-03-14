@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import { RatedReviewsContext, UserContext } from '@/lib/context';
 import Seo from '@/components/Seo';
@@ -9,7 +10,9 @@ import { IChannel, IChannelList, IReviews } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 import { useInView } from 'react-intersection-observer';
 
-export default function Home() {
+export default function Home({
+  data,
+}: InferGetServerSidePropsType<GetServerSideProps>) {
   const { userObj, setUserObj } = useContext(UserContext);
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
 
@@ -27,9 +30,8 @@ export default function Home() {
 
   // 평가할 채널 조회
   const [skip, setSkip] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [rateChannels, setRateChannels] = useState<IChannelList>({
-    data: [],
+    data: data.data,
     hasNext: true,
   });
   const [isMoreLoading, setIsMoreLoading] = useState<boolean>(false);
@@ -45,7 +47,6 @@ export default function Home() {
           data: [...rateChannels.data, ...nonooverlap],
           hasNext: data.hasNext,
         });
-        setIsLoading(true);
         setIsMoreLoading(false);
         setSkip(skip + 10);
       })
@@ -162,14 +163,13 @@ export default function Home() {
 
         <section className="rate_list">
           <ul>
-            {isLoading &&
-              rateChannels.data.map((rateChannel) => (
-                <RateChannel
-                  key={rateChannel.id}
-                  data={rateChannel}
-                  postReview={postReview}
-                />
-              ))}
+            {rateChannels.data.map((rateChannel) => (
+              <RateChannel
+                key={rateChannel.id}
+                data={rateChannel}
+                postReview={postReview}
+              />
+            ))}
             {isMoreLoading &&
               Array(3)
                 .fill(null)
@@ -268,4 +268,13 @@ export default function Home() {
       `}</style>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const { data } = await channelAPI.getRateChannel(0, 20);
+  return {
+    props: {
+      data,
+    },
+  };
 }
