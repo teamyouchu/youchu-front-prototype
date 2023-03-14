@@ -29,7 +29,7 @@ const Recommend = () => {
     <>
       <Seo
         title="추천 목록"
-        description={'남긴 평점을 이용해 좋아할만한 채널을 추천해요.'}
+        description={'유추 추천 페이지에서 취향에 맞는 채널을 추천 받아보세요.'}
       />
       <main className="recs_container">
         <section className="rated_count_box">
