@@ -1,4 +1,4 @@
-import axios from './config';
+import instance from './config';
 
 interface ILogin {
   code: string;
@@ -8,7 +8,7 @@ interface ILogin {
 const authAPI = {
   // 로그인
   postLogin(data: ILogin) {
-    return axios.post('/login', data);
+    return instance.post('/login', data);
   },
 };
 

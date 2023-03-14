@@ -20,7 +20,7 @@ export interface IRatedReviews {
 
 export interface IChannel {
   id: string;
-  channelId?: number;
+  channelId?: string;
   thumbnail: string;
   name: string;
   rating: number;

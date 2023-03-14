@@ -29,39 +29,34 @@ export default function Login() {
         const { accessToken, refreshToken } = res.data.authToken;
         setCookie('accessToken', accessToken, 1000 * 60 * 30);
         setCookie('refreshToken', refreshToken, 7 * 1000 * 60 * 60 * 24);
-        if (from === 'button') {
-          channelAPI
-            .postReviews(ratedReviews.reviews)
-            .then(() => {
-              setRatedReviews({
-                ...ratedReviews,
-                count: 0,
-                reviews: [],
+        channelAPI
+          .postReviews(ratedReviews.reviews)
+          .then(() => {
+            setRatedReviews({
+              ...ratedReviews,
+              count: 0,
+              reviews: [],
+            });
+            // 로그인 시 사용자 상태값 수정
+            userAPI
+              .getMe()
+              .then(({ data }) => {
+                setUserObj({
+                  ...userObj,
+                  isLogin: true,
+                  data,
+                });
+              })
+              .catch((err) => {
+                console.error(err);
               });
-            })
-            .catch((err) => console.log(err));
+          })
+          .catch((err) => console.log(err));
+        if (from === 'button') {
           router.push('/');
         } else {
-          setRatedReviews({
-            ...ratedReviews,
-            count: 0,
-            reviews: [],
-          });
           router.back();
         }
-        // 로그인 시 사용자 상태값 수정
-        userAPI
-          .getMe()
-          .then(({ data }) => {
-            setUserObj({
-              ...userObj,
-              isLogin: true,
-              data,
-            });
-          })
-          .catch((err) => {
-            console.error(err);
-          });
       })
       .catch((err) => {
         console.error(err);
@@ -104,7 +99,7 @@ export default function Login() {
             <div className="LoginLetter">
               <Image
                 src={'/images/google logo.png'}
-                alt={'google logo'}
+                alt={'Google logo'}
                 width={18}
                 height={18}
                 style={{ position: 'absolute', left: '-32px', top: '0.5px' }}

@@ -1,50 +1,63 @@
 import Image from 'next/image';
 import { overThousand } from '@/lib/numberFomat';
-import { IChannel } from '@/lib/types';
-import { RatedReviewsContext } from '@/lib/context';
+import { IChannel, IReviews } from '@/lib/types';
+import { UserContext, RatedReviewsContext } from '@/lib/context';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from '@mui/material/Rating';
 import { useContext } from 'react';
 
 interface IProps {
   data: IChannel;
+  postReview(ratedReview: IReviews): void;
 }
 
 export default function RateChannel({
   data: { id, thumbnail, name, rating, reviewCount },
+  postReview,
 }: IProps) {
+  const { userObj } = useContext(UserContext);
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
   const findIndex = ratedReviews.reviews.findIndex((el) => el.channelId === id);
 
   const onRatingChange = (newValue: number | null) => {
-    if (newValue === null) {
-      // 평가 삭제
-      setRatedReviews({
-        ...ratedReviews,
-        count: ratedReviews.count - 1,
-        reviews: [...ratedReviews.reviews.filter((el) => el.channelId !== id)],
-      });
+    if (userObj.isLogin) {
+      if (newValue !== null) {
+        postReview({ channelId: id, comment: '', rating: newValue });
+      }
     } else {
-      // 평가 목록에 있는지 판단
-      const isIncludes = ratedReviews.reviews.find((el) => el.channelId === id);
-      if (isIncludes) {
-        // 평가 수정
-        const copyArray = [...ratedReviews.reviews];
-        copyArray[findIndex] = { ...copyArray[findIndex], rating: newValue };
+      if (newValue === null) {
+        // 평가 삭제
         setRatedReviews({
           ...ratedReviews,
-          reviews: copyArray,
-        });
-      } else {
-        // 평가 추가
-        setRatedReviews({
-          ...ratedReviews,
-          count: ratedReviews.count + 1,
+          count: ratedReviews.count - 1,
           reviews: [
-            ...ratedReviews.reviews,
-            { channelId: id, comment: '', rating: newValue },
+            ...ratedReviews.reviews.filter((el) => el.channelId !== id),
           ],
         });
+      } else {
+        // 평가 목록에 있는지 판단
+        const isIncludes = ratedReviews.reviews.find(
+          (el) => el.channelId === id,
+        );
+        if (isIncludes) {
+          // 평가 수정
+          const copyArray = [...ratedReviews.reviews];
+          copyArray[findIndex] = { ...copyArray[findIndex], rating: newValue };
+          setRatedReviews({
+            ...ratedReviews,
+            reviews: copyArray,
+          });
+        } else {
+          // 평가 추가
+          setRatedReviews({
+            ...ratedReviews,
+            count: ratedReviews.count + 1,
+            reviews: [
+              ...ratedReviews.reviews,
+              { channelId: id, comment: '', rating: newValue },
+            ],
+          });
+        }
       }
     }
   };
@@ -54,10 +67,14 @@ export default function RateChannel({
       <li className="rate_channel_container">
         <Image
           src={thumbnail}
-          alt={`${name} 썸네일`}
+          alt={`${name} 프로필 사진`}
           width={54}
           height={54}
-          style={{ borderRadius: '50%', marginRight: '10px' }}
+          style={{
+            borderRadius: '50%',
+            marginRight: '10px',
+            backgroundColor: '#dedede',
+          }}
         />
         <div className="group_box">
           {/* 카테고리 삭제로 주석 처리 */}

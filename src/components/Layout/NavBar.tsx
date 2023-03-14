@@ -11,7 +11,7 @@ export default function NavBar() {
 
   // 로그아웃 모달 토글
   const [showLogout, setShowLogout] = useState<boolean>(false);
-  const ModalRef = useRef<HTMLButtonElement>(null);
+  const ModalRef = useRef<HTMLDivElement>(null);
   const onAvatarClick = () => {
     setShowLogout(!showLogout);
   };
@@ -23,7 +23,7 @@ export default function NavBar() {
           <Link href="/" style={{ height: '40px' }}>
             <Image
               src={'/images/youchu logo.png'}
-              alt={'youchu logo'}
+              alt={'YouChu logo'}
               width={62}
               height={40}
               priority={true}
@@ -46,7 +46,7 @@ export default function NavBar() {
             )
           ) : (
             // 유저가 로그인 했을 때
-            <button className="avatar_img_box" ref={ModalRef}>
+            <div className="avatar_img_box" ref={ModalRef}>
               <Image
                 src={'/images/default avatar.png'}
                 alt={'user avatar'}
@@ -65,7 +65,7 @@ export default function NavBar() {
                   setShowLogout={setShowLogout}
                 />
               )}
-            </button>
+            </div>
           )}
         </nav>
       </header>

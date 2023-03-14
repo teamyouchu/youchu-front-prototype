@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import { RatedReviewsContext, UserContext } from '@/lib/context';
 import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IChannel, IChannelList } from '@/lib/types';
+import { IChannel, IChannelList, IReviews } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 import { useInView } from 'react-intersection-observer';
 
-export default function Home() {
+export default function Home({
+  data,
+}: InferGetServerSidePropsType<GetServerSideProps>) {
   const { userObj, setUserObj } = useContext(UserContext);
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
 
@@ -27,9 +30,8 @@ export default function Home() {
 
   // 평가할 채널 조회
   const [skip, setSkip] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [rateChannels, setRateChannels] = useState<IChannelList>({
-    data: [],
+    data: data.data,
     hasNext: true,
   });
   const [isMoreLoading, setIsMoreLoading] = useState<boolean>(false);
@@ -37,15 +39,14 @@ export default function Home() {
     await channelAPI
       .getRateChannel(skip, 10)
       .then(({ data }) => {
-        const onooverlap = data.data.filter((item: IChannel) => {
+        const nonooverlap = data.data.filter((item: IChannel) => {
           return !rateChannels.data.some((other) => other.id === item.id);
         });
         setRateChannels({
           ...rateChannels,
-          data: [...rateChannels.data, ...onooverlap],
+          data: [...rateChannels.data, ...nonooverlap],
           hasNext: data.hasNext,
         });
-        setIsLoading(true);
         setIsMoreLoading(false);
         setSkip(skip + 10);
       })
@@ -86,40 +87,51 @@ export default function Home() {
   const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
   useEffect(() => {
-    if (ratedReviews.count >= 5) {
-      setIsSatisfy(true);
+    if (userObj.isLogin) {
+      if (ratedReviews.count >= 5) {
+        setIsSatisfy(true);
+      } else {
+        setIsSatisfy(false);
+      }
     } else {
-      setIsSatisfy(false);
+      setIsSatisfy(true);
     }
-  }, [ratedReviews.count]);
+  }, [userObj.isLogin, ratedReviews.count]);
+
+  const postReview = async (ratedReview: IReviews) => {
+    await channelAPI
+      .postReviews([ratedReview])
+      .then(() => {
+        setUserObj({
+          ...userObj,
+          data: {
+            ...userObj.data,
+            reviewCount: userObj.data.reviewCount + 1,
+          },
+        });
+        // 평가할 목록에서 제거
+        setRateChannels({
+          ...rateChannels,
+          data: [
+            ...rateChannels.data.filter(
+              (el) => el.id !== ratedReview.channelId,
+            ),
+          ],
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 
   // submit 버튼
   const onBtnClick = async () => {
-    if (isSatisfy) {
-      if (userObj.isLogin) {
-        await channelAPI
-          .postReviews(ratedReviews.reviews)
-          .then(() => {
-            setUserObj({
-              ...userObj,
-              data: {
-                ...userObj.data,
-                reviewCount:
-                  userObj.data.reviewCount + ratedReviews.reviews.length,
-              },
-            });
-            setRatedReviews({
-              count: 0,
-              reviews: [],
-            });
-          })
-          .catch((err) => console.log(err));
+    if (userObj.isLogin) {
+      if (isSatisfy) {
         router.push('/recommend');
       } else {
-        router.push('/login?from=button', '/login');
+        alert('5개 이상 평가해야 추천받을 수 있어요.');
       }
     } else {
-      alert('5개 이상 평가해야 추천받을 수 있어요.');
+      router.push('/login?from=button', '/login');
     }
   };
 
@@ -151,10 +163,13 @@ export default function Home() {
 
         <section className="rate_list">
           <ul>
-            {isLoading &&
-              rateChannels.data.map((data) => (
-                <RateChannel key={data.id} data={data} />
-              ))}
+            {rateChannels.data.map((rateChannel) => (
+              <RateChannel
+                key={rateChannel.id}
+                data={rateChannel}
+                postReview={postReview}
+              />
+            ))}
             {isMoreLoading &&
               Array(3)
                 .fill(null)
@@ -253,4 +268,13 @@ export default function Home() {
       `}</style>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const { data } = await channelAPI.getRateChannel(0, 20);
+  return {
+    props: {
+      data,
+    },
+  };
 }
