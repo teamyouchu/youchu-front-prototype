@@ -5,7 +5,7 @@ import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IChannel, IChannelList } from '@/lib/types';
+import { IChannel, IChannelList, IReviews } from '@/lib/types';
 import channelAPI from '@/api/channelAPI';
 import { useInView } from 'react-intersection-observer';
 
@@ -93,27 +93,34 @@ export default function Home() {
     }
   }, [ratedReviews.count]);
 
+  const postReview = async (ratedReview: IReviews) => {
+    await channelAPI
+      .postReviews([ratedReview])
+      .then(() => {
+        setUserObj({
+          ...userObj,
+          data: {
+            ...userObj.data,
+            reviewCount: userObj.data.reviewCount + 1,
+          },
+        });
+        // 평가할 목록에서 제거
+        setRateChannels({
+          ...rateChannels,
+          data: [
+            ...rateChannels.data.filter(
+              (el) => el.id !== ratedReview.channelId,
+            ),
+          ],
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
   // submit 버튼
   const onBtnClick = async () => {
     if (isSatisfy) {
       if (userObj.isLogin) {
-        await channelAPI
-          .postReviews(ratedReviews.reviews)
-          .then(() => {
-            setUserObj({
-              ...userObj,
-              data: {
-                ...userObj.data,
-                reviewCount:
-                  userObj.data.reviewCount + ratedReviews.reviews.length,
-              },
-            });
-            setRatedReviews({
-              count: 0,
-              reviews: [],
-            });
-          })
-          .catch((err) => console.log(err));
         router.push('/recommend');
       } else {
         router.push('/login?from=button', '/login');
@@ -152,8 +159,12 @@ export default function Home() {
         <section className="rate_list">
           <ul>
             {isLoading &&
-              rateChannels.data.map((data) => (
-                <RateChannel key={data.id} data={data} />
+              rateChannels.data.map((rateChannel) => (
+                <RateChannel
+                  key={rateChannel.id}
+                  data={rateChannel}
+                  postReview={postReview}
+                />
               ))}
             {isMoreLoading &&
               Array(3)
