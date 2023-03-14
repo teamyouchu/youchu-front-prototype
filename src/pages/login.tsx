@@ -40,7 +40,7 @@ export default function Login() {
               });
             })
             .catch((err) => console.log(err));
-          router.push('recommend');
+          router.push('/');
         } else {
           setRatedReviews({
             ...ratedReviews,
