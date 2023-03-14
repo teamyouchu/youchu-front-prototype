@@ -37,12 +37,12 @@ export default function Home() {
     await channelAPI
       .getRateChannel(skip, 10)
       .then(({ data }) => {
-        const onooverlap = data.data.filter((item: IChannel) => {
+        const nonooverlap = data.data.filter((item: IChannel) => {
           return !rateChannels.data.some((other) => other.id === item.id);
         });
         setRateChannels({
           ...rateChannels,
-          data: [...rateChannels.data, ...onooverlap],
+          data: [...rateChannels.data, ...nonooverlap],
           hasNext: data.hasNext,
         });
         setIsLoading(true);
