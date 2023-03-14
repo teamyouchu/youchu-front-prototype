@@ -40,7 +40,7 @@ export default function Login() {
               });
             })
             .catch((err) => console.log(err));
-          router.push('recommend');
+          router.push('/');
         } else {
           setRatedReviews({
             ...ratedReviews,
@@ -76,7 +76,12 @@ export default function Login() {
 
   return (
     <>
-      <Seo title="로그인" description={'유추 로그인 페이지입니다.'} />
+      <Seo
+        title="로그인"
+        description={
+          '유추 계정을 만들거나 로그인해보세요. 취향에 맞는 유튜브 채널, 유튜버를 추천받아보세요.'
+        }
+      />
       <main className="login_container">
         <div className="login_box">
           {from == 'withAuth' ? (

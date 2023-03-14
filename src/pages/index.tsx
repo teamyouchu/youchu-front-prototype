@@ -128,7 +128,7 @@ export default function Home() {
       <Seo
         title="홈"
         description={
-          '유튜브 채널에 평가를 남기면 좋아할만한 채널을 추천해줘요!'
+          '유추에 유튜브 채널을 평가하고 취향에 맞는 채널, 유튜버를 추천 받아	보세요.'
         }
       />
       <main className="home_container">

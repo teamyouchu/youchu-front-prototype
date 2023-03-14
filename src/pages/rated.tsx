@@ -47,7 +47,7 @@ const Rated = () => {
     <>
       <Seo
         title="평가 목록"
-        description={'내가 평점을 남긴 유튜버 목록입니다.'}
+        description={'자신이 평가한 채널을 확인해보세요.'}
       />
       <main className="rated_container">
         {isLoading && <ChannelList from={'rated'} data={ratedList.data} />}
