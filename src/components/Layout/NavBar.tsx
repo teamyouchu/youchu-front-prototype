@@ -23,7 +23,7 @@ export default function NavBar() {
           <Link href="/" style={{ height: '40px' }}>
             <Image
               src={'/images/youchu logo.png'}
-              alt={'youchu logo'}
+              alt={'YouChu logo'}
               width={62}
               height={40}
               priority={true}

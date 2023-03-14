@@ -25,13 +25,14 @@ export default function ChannelCard({
           <Image
             className="asdfasdfasdfsd"
             src={thumbnail}
-            alt={`${name} 썸네일`}
+            alt={`${name} 프로필 사진`}
             width={42}
             height={42}
             style={{
               border: '1px solid #dedede',
               borderRadius: '50%',
               marginRight: '16px',
+              backgroundColor: '#dedede',
             }}
           />
           <div className="group_box">

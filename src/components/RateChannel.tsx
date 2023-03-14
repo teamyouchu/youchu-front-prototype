@@ -67,10 +67,14 @@ export default function RateChannel({
       <li className="rate_channel_container">
         <Image
           src={thumbnail}
-          alt={`${name} 썸네일`}
+          alt={`${name} 프로필 사진`}
           width={54}
           height={54}
-          style={{ borderRadius: '50%', marginRight: '10px' }}
+          style={{
+            borderRadius: '50%',
+            marginRight: '10px',
+            backgroundColor: '#dedede',
+          }}
         />
         <div className="group_box">
           {/* 카테고리 삭제로 주석 처리 */}

@@ -104,7 +104,7 @@ export default function Login() {
             <div className="LoginLetter">
               <Image
                 src={'/images/google logo.png'}
-                alt={'google logo'}
+                alt={'Google logo'}
                 width={18}
                 height={18}
                 style={{ position: 'absolute', left: '-32px', top: '0.5px' }}
