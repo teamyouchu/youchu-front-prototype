@@ -4,7 +4,7 @@ import { deleteCookie } from '@/lib/cookies';
 
 interface IProps {
   setShowLogout: React.Dispatch<React.SetStateAction<boolean>>;
-  ModalRef: React.RefObject<HTMLButtonElement>;
+  ModalRef: React.RefObject<HTMLDivElement>;
 }
 
 export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
@@ -15,7 +15,7 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
     const handleCloseModal = (e: MouseEvent) => {
       if (
         !ModalRef.current ||
-        !ModalRef.current.contains(e.target as HTMLButtonElement)
+        !ModalRef.current.contains(e.target as HTMLDivElement)
       ) {
         setShowLogout(false);
       }
