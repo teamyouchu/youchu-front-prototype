@@ -44,9 +44,11 @@ export default function ChannelCard({
               <span className="rating_span">
                 {rating !== null ? rating.toFixed(1) : 0}
               </span>
-              <span className="review_count">
-                ({overThousand(reviewCount)}개 평가)
-              </span>
+              {pathname === '/recommend' && (
+                <span className="review_count">
+                  ({overThousand(reviewCount)}개 평가)
+                </span>
+              )}
             </div>
             {/* 카테고리 삭제로 주석 처리 */}
             {/* <div className="group">
