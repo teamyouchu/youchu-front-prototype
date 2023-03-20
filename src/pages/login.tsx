@@ -6,7 +6,6 @@ import { RatedReviewsContext, UserContext } from '@/lib/context';
 import authAPI from '@/api/authAPI';
 import userAPI from '@/api/userAPI';
 import Seo from '@/components/Seo';
-import { setCookie } from '@/lib/cookies';
 import channelAPI from '@/api/channelAPI';
 
 export default function Login() {
@@ -27,8 +26,8 @@ export default function Login() {
       })
       .then((res) => {
         const { accessToken, refreshToken } = res.data.authToken;
-        setCookie('accessToken', accessToken, 1000 * 60 * 30);
-        setCookie('refreshToken', refreshToken, 7 * 1000 * 60 * 60 * 24);
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
         channelAPI
           .postReviews(ratedReviews.reviews)
           .then(() => {

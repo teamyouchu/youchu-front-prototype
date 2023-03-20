@@ -1,13 +1,12 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { getCookie } from '@/lib/cookies';
 
 const withAuth = (WrappedComponent: NextPage) => {
   return (props: JSX.IntrinsicAttributes) => {
     // checks whether we are on client / browser or server.
     if (typeof window !== 'undefined') {
       const router = useRouter();
-      const refreshToken = getCookie('refreshToken');
+      const refreshToken = localStorage.getItem('refreshToken');
 
       // If there is no refresh token we redirect to "/login" page.
       if (!refreshToken) {
