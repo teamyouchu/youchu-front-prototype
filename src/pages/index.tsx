@@ -57,7 +57,7 @@ export default function Home({
   const [ref, inView] = useInView({
     threshold: 0,
     initialInView: true,
-    rootMargin: '300px',
+    rootMargin: '200px',
   });
   useEffect(() => {
     if (rateChannels.hasNext && inView) {
