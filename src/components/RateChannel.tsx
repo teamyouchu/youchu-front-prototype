@@ -1,62 +1,96 @@
-import Image from 'next/image';
-import { overThousand } from '@/lib/numberFomat';
-import { IChannel, IReviews } from '@/lib/types';
-import { UserContext, RatedReviewsContext } from '@/lib/context';
-import StarIcon from '@mui/icons-material/Star';
-import Rating from '@mui/material/Rating';
 import { useContext } from 'react';
+import Image from 'next/image';
+import channelAPI from '@/api/channelAPI';
+import { overThousand } from '@/lib/numberFomat';
+import { IChannel } from '@/lib/types';
+import { UserContext, RatedReviewsContext } from '@/lib/context';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 interface IProps {
   data: IChannel;
-  postReview(ratedReview: IReviews): void;
 }
 
 export default function RateChannel({
   data: { id, thumbnail, name, rating, reviewCount },
-  postReview,
 }: IProps) {
-  const { userObj } = useContext(UserContext);
+  const { userObj, setUserObj } = useContext(UserContext);
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
-  const findIndex = ratedReviews.reviews.findIndex((el) => el.channelId === id);
+
+  // 로그인 유저 평가 하나씩 추가
+  const postReview = async (newValue: number, isNew?: boolean) => {
+    await channelAPI
+      .postReviews([{ channelId: id, comment: '', rating: newValue }])
+      .then(() => {
+        if (isNew) {
+          setUserObj({
+            ...userObj,
+            data: {
+              ...userObj.data,
+              reviewCount: userObj.data.reviewCount + 1,
+            },
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // 로그인 유저 평가 하나씩 삭제
+  const delReview = async () => {
+    await channelAPI
+      .delReview(id)
+      .then(() => {
+        setUserObj({
+          ...userObj,
+          data: {
+            ...userObj.data,
+            reviewCount: userObj.data.reviewCount - 1,
+          },
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 
   const onRatingChange = (newValue: number | null) => {
-    if (userObj.isLogin) {
-      if (newValue !== null) {
-        postReview({ channelId: id, comment: '', rating: newValue });
+    if (newValue === null) {
+      // 평가 삭제
+      setRatedReviews({
+        ...ratedReviews,
+        count: ratedReviews.count - 1,
+        reviews: [...ratedReviews.reviews.filter((el) => el.channelId !== id)],
+      });
+      if (userObj.isLogin) {
+        delReview();
       }
     } else {
-      if (newValue === null) {
-        // 평가 삭제
-        setRatedReviews({
-          ...ratedReviews,
-          count: ratedReviews.count - 1,
-          reviews: [
-            ...ratedReviews.reviews.filter((el) => el.channelId !== id),
-          ],
-        });
-      } else {
-        // 평가 목록에 있는지 판단
-        const isIncludes = ratedReviews.reviews.find(
+      // 평가 목록에 있는지 판단
+      const isIncludes = ratedReviews.reviews.find((el) => el.channelId === id);
+      if (isIncludes) {
+        // 평가 수정
+        const copyArray = [...ratedReviews.reviews];
+        const findIndex = ratedReviews.reviews.findIndex(
           (el) => el.channelId === id,
         );
-        if (isIncludes) {
-          // 평가 수정
-          const copyArray = [...ratedReviews.reviews];
-          copyArray[findIndex] = { ...copyArray[findIndex], rating: newValue };
-          setRatedReviews({
-            ...ratedReviews,
-            reviews: copyArray,
-          });
-        } else {
-          // 평가 추가
-          setRatedReviews({
-            ...ratedReviews,
-            count: ratedReviews.count + 1,
-            reviews: [
-              ...ratedReviews.reviews,
-              { channelId: id, comment: '', rating: newValue },
-            ],
-          });
+        copyArray[findIndex] = { ...copyArray[findIndex], rating: newValue };
+        setRatedReviews({
+          ...ratedReviews,
+          reviews: copyArray,
+        });
+        if (userObj.isLogin) {
+          postReview(newValue);
+        }
+      } else {
+        // 평가 추가
+        setRatedReviews({
+          ...ratedReviews,
+          count: ratedReviews.count + 1,
+          reviews: [
+            ...ratedReviews.reviews,
+            { channelId: id, comment: '', rating: newValue },
+          ],
+        });
+        if (userObj.isLogin) {
+          postReview(newValue, true);
         }
       }
     }
@@ -101,9 +135,6 @@ export default function RateChannel({
             <Rating
               style={{ color: '#f8d26a', fontSize: '48px' }}
               precision={0.5}
-              value={
-                findIndex === -1 ? null : ratedReviews.reviews[findIndex].rating
-              }
               onChange={(_, newValue) => {
                 onRatingChange(newValue);
               }}

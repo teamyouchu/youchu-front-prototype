@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
+import channelAPI from '@/api/channelAPI';
+import { IChannel, IChannelList } from '@/lib/types';
 import { RatedReviewsContext, UserContext } from '@/lib/context';
 import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import { IChannel, IChannelList, IReviews } from '@/lib/types';
-import channelAPI from '@/api/channelAPI';
 import { useInView } from 'react-intersection-observer';
 
 export default function Home({
   data,
 }: InferGetServerSidePropsType<GetServerSideProps>) {
-  const { userObj, setUserObj } = useContext(UserContext);
+  const { userObj } = useContext(UserContext);
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
 
   // 스크롤 여부 (하단 그림자)
@@ -67,62 +67,24 @@ export default function Home({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
 
-  // 로그인 유저라면 평가한 채널 수 적용
-  useEffect(() => {
-    if (userObj.isLogin) {
-      setRatedReviews({
-        ...ratedReviews,
-        count: userObj.data?.reviewCount + ratedReviews.reviews.length,
-      });
-    } else {
-      setRatedReviews({
-        ...ratedReviews,
-        count: ratedReviews.reviews.length,
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userObj]);
-
   // 평가 갯수 5개 이상 여부
-  const router = useRouter();
   const [isSatisfy, setIsSatisfy] = useState(false);
   useEffect(() => {
     if (userObj.isLogin) {
-      if (ratedReviews.count >= 5) {
+      if (userObj.data.reviewCount >= 5) {
         setIsSatisfy(true);
       } else {
         setIsSatisfy(false);
       }
     } else {
       setIsSatisfy(true);
+      setRatedReviews({ count: 0, reviews: [] });
     }
-  }, [userObj.isLogin, ratedReviews.count]);
-
-  const postReview = async (ratedReview: IReviews) => {
-    await channelAPI
-      .postReviews([ratedReview])
-      .then(() => {
-        setUserObj({
-          ...userObj,
-          data: {
-            ...userObj.data,
-            reviewCount: userObj.data.reviewCount + 1,
-          },
-        });
-        // 평가할 목록에서 제거
-        setRateChannels({
-          ...rateChannels,
-          data: [
-            ...rateChannels.data.filter(
-              (el) => el.id !== ratedReview.channelId,
-            ),
-          ],
-        });
-      })
-      .catch((err) => console.log(err));
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userObj]);
 
   // submit 버튼
+  const router = useRouter();
   const onBtnClick = async () => {
     if (userObj.isLogin) {
       if (isSatisfy) {
@@ -147,7 +109,9 @@ export default function Home({
         <section
           className={isScrolled ? 'rate_count_box scrolled' : 'rate_count_box'}
         >
-          <span className="rate_count">{ratedReviews.count}</span>
+          <span className="rate_count">
+            {userObj.isLogin ? userObj.data.reviewCount : ratedReviews.count}
+          </span>
           <h3 className="rate_count_text">
             {ratedReviews.count < 5
               ? '유튜버 5명에게 평점 남기기 도전!!'
@@ -164,11 +128,7 @@ export default function Home({
         <section className="rate_list">
           <ul>
             {rateChannels.data.map((rateChannel) => (
-              <RateChannel
-                key={rateChannel.id}
-                data={rateChannel}
-                postReview={postReview}
-              />
+              <RateChannel key={rateChannel.id} data={rateChannel} />
             ))}
             {isMoreLoading &&
               Array(3)
