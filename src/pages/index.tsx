@@ -8,6 +8,7 @@ import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
+import SnackBar from '@/components/Snackbar';
 import { useInView } from 'react-intersection-observer';
 
 export default function Home({
@@ -84,13 +85,14 @@ export default function Home({
   }, [userObj]);
 
   // submit 버튼
+  const [openSnackBar, setOpenSnackBar] = useState<boolean>(false);
   const router = useRouter();
   const onBtnClick = async () => {
     if (userObj.isLogin) {
       if (isSatisfy) {
         router.push('/recommend');
       } else {
-        alert('5개 이상 평가해야 추천받을 수 있어요.');
+        setOpenSnackBar(true);
       }
     } else {
       router.push('/login?from=button', '/login');
@@ -140,13 +142,16 @@ export default function Home({
               isSatisfy={isSatisfy}
               text={
                 userObj.isLogin
-                  ? '추천 받으러 가기'
+                  ? isSatisfy
+                    ? '추천 받으러 가기'
+                    : '5개 이상 평가하고 추천 받기'
                   : '5초만에 가입하고 계속하기'
               }
             />
           </div>
           <div ref={ref} />
         </section>
+        <SnackBar open={openSnackBar} setOpen={setOpenSnackBar} />
       </main>
 
       <style jsx>{`
