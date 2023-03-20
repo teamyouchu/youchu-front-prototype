@@ -120,16 +120,16 @@ export default function RateChannel({
             </div>
           </div> */}
           <div className="group margin-5">
-            <span className="rate_channel_name">{name}</span>
+            <h3 className="rate_channel_name">{name}</h3>
           </div>
           <div className="group margin-10">
             <span className="star_span">★</span>
             <span className="rating_span">
               {rating !== null ? rating.toFixed(1) : 0}
             </span>
-            <span className="review_count">
+            <h4 className="review_count">
               ({overThousand(reviewCount)}개 평가)
-            </span>
+            </h4>
           </div>
           <div className="group">
             <Rating
@@ -192,11 +192,15 @@ export default function RateChannel({
           color: #808084;
         }
 
-        span {
+        span,
+        h3,
+        h4 {
           font-family: 'SHSN-M';
           text-align: left;
+          font-weight: 500;
           letter-spacing: 0px;
           color: #000000;
+          margin: 0;
         }
 
         .rate_channel_name {

@@ -104,21 +104,25 @@ export default function Home({
       <Seo
         title="홈"
         description={
-          '유추에 유튜브 채널을 평가하고 취향에 맞는 채널, 유튜버를 추천 받아	보세요.'
+          '유추에서 유튜브 채널을 평가하고 자신의 취향에 맞는 채널, 유튜버를 추천받아 보세요.'
         }
       />
       <main className="home_container">
+        <h1>
+          유추 홈에서 좋아하는 유튜버, 채널을 평가하고 자신의 취향에 맞는 채널을
+          추천받아 보세요.
+        </h1>
         <section
           className={isScrolled ? 'rate_count_box scrolled' : 'rate_count_box'}
         >
           <span className="rate_count">
             {userObj.isLogin ? userObj.data.reviewCount : ratedReviews.count}
           </span>
-          <h3 className="rate_count_text">
+          <h2 className="rate_count_text">
             {ratedReviews.count < 5
               ? '유튜버 5명에게 평점 남기기 도전!!'
               : '더 많이 평가하면 추천이 더 정확해져요!'}
-          </h3>
+          </h2>
         </section>
 
         {/* {userObj.isLogin && (
@@ -170,6 +174,10 @@ export default function Home({
           }
         }
 
+        h1 {
+          display: none;
+        }
+
         .rate_count_box {
           width: 100%;
           display: flex;
@@ -204,6 +212,7 @@ export default function Home({
 
         .rate_count_text {
           font-family: 'SHSN-M';
+          font-weight: 500;
           font-size: 15px;
           line-height: 19px;
           color: #787878;
