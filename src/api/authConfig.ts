@@ -47,13 +47,7 @@ authInstance.interceptors.response.use(
     } = error;
     if (status === 401) {
       // 401 에러 중에서
-      if (type === 'expired.refresh_token') {
-        // refreshToken 만료면 아예 로그아웃
-        alert('인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.');
-        window.localStorage.removeItem('accessToken');
-        window.localStorage.removeItem('refreshToken');
-        // TODO 서지수 로그인화면으로 이동가능한지 확인
-      } else {
+      if (type === 'expired.access_token') {
         if (localStorage.getItem('refreshToken')) {
           // accessToken 만료면 refreshToken 재발급 요청
           const originalRequest = config;
@@ -67,6 +61,12 @@ authInstance.interceptors.response.use(
           // 오류났던 api 요청 다시 재요청
           return authInstance(originalRequest);
         }
+      } else {
+        // refreshToken 만료거나 탈퇴한 계정이면 아예 로그아웃
+        alert('인증 정보가 만료되었습니다. 다시 로그인 후 시도해 주세요.');
+        window.localStorage.removeItem('accessToken');
+        window.localStorage.removeItem('refreshToken');
+        // TODO 서지수 로그인화면으로 이동가능한지 확인
       }
     }
     return Promise.reject(error);
