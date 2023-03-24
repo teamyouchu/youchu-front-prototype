@@ -6,7 +6,6 @@ import { RatedReviewsContext, UserContext } from '@/lib/context';
 import authAPI from '@/api/authAPI';
 import userAPI from '@/api/userAPI';
 import Seo from '@/components/Seo';
-import { setCookie } from '@/lib/cookies';
 import channelAPI from '@/api/channelAPI';
 
 export default function Login() {
@@ -27,8 +26,8 @@ export default function Login() {
       })
       .then((res) => {
         const { accessToken, refreshToken } = res.data.authToken;
-        setCookie('accessToken', accessToken, 1000 * 60 * 30);
-        setCookie('refreshToken', refreshToken, 7 * 1000 * 60 * 60 * 24);
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
         channelAPI
           .postReviews(ratedReviews.reviews)
           .then(() => {
@@ -80,18 +79,18 @@ export default function Login() {
       <main className="login_container">
         <div className="login_box">
           {from == 'withAuth' ? (
-            <span>
+            <h1>
               로그인이 필요한 서비스입니다.
               <br />
               로그인 후 이용해주세요!
-            </span>
+            </h1>
           ) : (
             <>
-              <span>
+              <h1>
                 유튜버 평점을 남기고
                 <br />
                 추천 받아봐요!
-              </span>
+              </h1>
             </>
           )}
 
@@ -124,10 +123,12 @@ export default function Login() {
           flex-direction: column;
         }
 
-        span {
+        span,
+        h1 {
           text-align: left;
           font-family: 'SHSN-L';
           font-size: 25px;
+          font-weight: 300;
           line-height: 35px;
           color: #000000;
           letter-spacing: 0px;

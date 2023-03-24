@@ -42,6 +42,7 @@ export default function ChannelList({ from, data }: IProps) {
 
         .list_title {
           font-family: 'SHSN-B';
+          font-weight: bold;
           text-align: left;
           font-size: 24px;
           line-height: 35px;

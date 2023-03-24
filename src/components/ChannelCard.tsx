@@ -37,16 +37,18 @@ export default function ChannelCard({
           />
           <div className="group_box">
             <div className="group margin-3">
-              <span className="channel_name">{name}</span>
+              <h4 className="channel_name">{name}</h4>
             </div>
             <div className="group">
               <StarRating rating={rating} />
               <span className="rating_span">
                 {rating !== null ? rating.toFixed(1) : 0}
               </span>
-              <span className="review_count">
-                ({overThousand(reviewCount)}개 평가)
-              </span>
+              {pathname === '/recommend' && (
+                <span className="review_count">
+                  ({overThousand(reviewCount)}개 평가)
+                </span>
+              )}
             </div>
             {/* 카테고리 삭제로 주석 처리 */}
             {/* <div className="group">
@@ -96,8 +98,10 @@ export default function ChannelCard({
           margin-bottom: 5px;
         }
 
-        span {
+        span,
+        h4 {
           font-family: 'SHSN-M';
+          font-weight: 500;
           text-align: left;
           letter-spacing: 0px;
           color: #000000;

@@ -7,7 +7,6 @@ import userAPI from '@/api/userAPI';
 import Layout from '@/components/Layout/Layout';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import 'semantic-ui-css/semantic.min.css';
-import { deleteCookie, getCookie } from '@/lib/cookies';
 
 export default function App({ Component, pageProps }: AppProps) {
   // 로그인 유저 객체 상태값
@@ -20,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
     },
   });
   useEffect(() => {
-    if (getCookie('refreshToken')) {
+    if (localStorage.getItem('refreshToken')) {
       userAPI
         .getMe()
         .then(({ data }) => {
@@ -41,8 +40,8 @@ export default function App({ Component, pageProps }: AppProps) {
               reviewCount: 0,
             },
           });
-          deleteCookie('accessToken');
-          deleteCookie('refreshToken');
+          window.localStorage.removeItem('accessToken');
+          window.localStorage.removeItem('refreshToken');
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

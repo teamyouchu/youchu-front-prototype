@@ -105,6 +105,7 @@ const Recommend = () => {
 
         .rated_count_title {
           font-family: 'SHSN-B';
+          font-weight: bold;
           font-size: 16px;
           line-height: 21px;
           margin: 0;
