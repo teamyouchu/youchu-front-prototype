@@ -8,7 +8,7 @@ import Seo from '@/components/Seo';
 import RateChannel from '@/components/RateChannel';
 import RateChannelSkeleton from '@/components/RateChannelSkeleton';
 import SubmitButton from '@/components/SubmitButton';
-import SnackBar from '@/components/Snackbar';
+import SnackBar from '@/components/SnackBar';
 import { useInView } from 'react-intersection-observer';
 
 export default function Home({
