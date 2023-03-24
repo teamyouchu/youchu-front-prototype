@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import channelAPI from '@/api/channelAPI';
 import { IChannel, IChannelList } from '@/lib/types';
@@ -11,9 +10,7 @@ import SubmitButton from '@/components/SubmitButton';
 import SnackBar from '@/components/SnackBar';
 import { useInView } from 'react-intersection-observer';
 
-export default function Home({
-  data,
-}: InferGetServerSidePropsType<GetServerSideProps>) {
+export default function Home() {
   const { userObj } = useContext(UserContext);
   const { ratedReviews, setRatedReviews } = useContext(RatedReviewsContext);
 
@@ -32,7 +29,7 @@ export default function Home({
   // 평가할 채널 조회
   const [skip, setSkip] = useState<number>(0);
   const [rateChannels, setRateChannels] = useState<IChannelList>({
-    data: data.data,
+    data: [],
     hasNext: true,
   });
   const [isMoreLoading, setIsMoreLoading] = useState<boolean>(false);
@@ -244,11 +241,11 @@ export default function Home({
   );
 }
 
-export async function getServerSideProps() {
-  const { data } = await channelAPI.getRateChannel(0, 20);
-  return {
-    props: {
-      data,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const { data } = await channelAPI.getRateChannel(0, 20);
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
