@@ -31,6 +31,9 @@ export default function LogoutModal({ setShowLogout, ModalRef }: IProps) {
     setShowLogout(false);
     window.localStorage.removeItem('accessToken');
     window.localStorage.removeItem('refreshToken');
+    if (location.pathname === '/') {
+      location.reload();
+    }
     setUserObj({
       isLogin: false,
       data: {
