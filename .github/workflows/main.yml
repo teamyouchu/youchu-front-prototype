@@ -1,14 +1,10 @@
 name: CI
 
 on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
-  push:
-    branches: [ "firstMain" ]
-  pull_request:
-    branches: [ "firstMain" ]
+   push:
+     branches: [ "main" ]
+   pull_request:
+     branches: [ "main" ]
 
 jobs:
   build:
