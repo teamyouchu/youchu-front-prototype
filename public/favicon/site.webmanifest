@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "YouChu-prototype",
+    "short_name": "YouChu",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
